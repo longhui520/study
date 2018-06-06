@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 500px;
+            width: 500px;
+            border:1px solid red;
+        }
+        #small {
+            height: 100px;
+            width: 100px;
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="small"></div>
+    </div>
+    <script>
+        let box=document.getElementById('box')
+        let small=document.getElementById('small')
+        box.onmouseover=function(e){
+           if(this===e.target){
+            box.style.backgroundColor='red';
+            console.log(e.currentTarget)
+            console.log(e.target)
+           }else{
+               console.log(222)
+           }
+            
+
+        }
+    </script>
+</body>
+</html>
