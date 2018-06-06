@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        .container {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            margin: 100px auto;
+        }
+        /* 组合样式 */
+        .f-left{
+            float:left;
+        }
+        .f-right{
+            float:right;
+        }
+        .w-50p{
+            width:50%
+        }
+        .bl{
+            border-left:3px solid #000;
+        }
+        .br{
+            border-right: 3px solid #000;
+        }
+        .bb{
+            border-bottom: 3px solid #000;
+        }
+        /*  */
+       .box2{
+           height: 200px;
+           background: #faa;
+       }
+       .box1{
+           height: 100px;
+           background: #0f0;
+       }
+       .box11 {
+           height: 100px;
+           background: #00f;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1 f-right w-50p bb"></div>
+        <div class="box2 f-left w-50p br"></div>
+        <div class="box11 f-right w-50p"></div>
+    </div>
+    <div class="container">
+        <div class="box2 f-right w-50p bl"></div>
+        <div class="box1 f-left w-50p bb"></div>
+        <div class="box11 f-left w-50p"></div>
+    </div>
+</body>
+</html>

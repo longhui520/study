@@ -1,0 +1,54 @@
+*,*::after,*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    font-size: 14px;
+    font-family: 'Microsoft Yahei',sans-serif;
+    color:#333;
+}
+ul,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color:#333;
+}
+input,textarea {
+    border:none;
+    outline:none;
+    resize:none;
+    /* 元素的外观，none 为没有 */
+    appearance: none;
+    -webkit-appearance: none;
+}
+.f-left{
+    float:left;
+}
+.f-right {
+    float: right;
+}
+.clearfix::before,.clearfix::after{
+    content:"";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+    clear: both;
+}
+.m-l10{
+    margin-left:10px;
+}
+.m-r10{
+    margin-right:10px;
+}
+.m-t10{
+    margin-top:10px;
+}
+.m-b10{
+    margin-bottom:10px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav"></div>
+    <div class="nav"></div>
+    <script>
+        function $class(ClassName){
+            let objArr= document.getElementsByTagName('*')
+            let arr=[]
+            let classStr
+            let classArr
+            for(let i=0;i<objArr.length;i++){
+                classStr=objArr[i].className
+                if(classStr.trim()!=''){
+                    classArr=classStr.split(' ')
+                    for(let j=0;j<classArr.length;j++){
+                        if(classArr[j]===ClassName){
+                            arr.push(objArr[i])
+                            break;
+                        }
+                    }
+                }   
+            }
+            return arr
+        }
+        console.log($class('nav'))
+    </script>
+</body>
+</html>
