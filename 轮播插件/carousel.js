@@ -2,55 +2,118 @@
  * author by longhui
  */
 
-function Carousel(ele,obj){
-    this.ele=ele
-    this.obj=obj
+function MyCarousel(ele, obj) {
+    this.ele = ele
+    this.url = obj.url
+    this.width=obj.imgWidth
+    this.height=obj.imgHeight
+    this.index=1
+
+
+
+    this.init()
+
+}
+
+MyCarousel.prototype.addBanner = addBanner
+MyCarousel.prototype.addIndicator = addIndicator
+MyCarousel.prototype.animate = animate
+MyCarousel.prototype.addSlider=addSlider
+MyCarousel.prototype.init = function () {
+    this.banner=this.addBanner()
+    this.indicator=this.addIndicator()
+    this.slider=this.addSlider()
+    //设置主盒子
+    this.ele.style.width=this.width+'px'
+    this.ele.style.height=this.height+'px'
+    this.ele.onmouseover=()=>{
+        this.slider.style.display='block'
+    }
+    this.ele.onmouseout=()=>{
+        this.slider.style.display='none'
+    }
+    //设置banner盒子
+    let first=this.banner.children[0].cloneNode(true)
+    let last=this.banner.children[this.banner.children.length-1].cloneNode(true)
+    this.banner.insertBefore(last,this.banner.children[0])
+    this.banner.appendChild(first)
+    this.banner.style.left=-this.width+'px'
+    this.banner.style.width=this.width*this.banner.children.length+'px'
+    //设置向前按钮的点击事件
+    this.slider.children[0].onclick=()=>{
+        this.index++
+        console.log(this.index)
+        if(this.index>this.url.length){
+            this.index=1
+            this.banner.style.left=0+'px'
+        }
+        this.animate(this.banner,-this.index*this.width,10)
+    }
+   this.slider.children[1].onclick=()=>{
+       this.index--
+       if(this.index==0){
+           this.index=this.url.length
+           this.banner.style.left=-(this.url.length+1)*this.width+'px'
+       }
+       this.animate(this.banner,-this.index*this.width,10)
+   }
 
 }
 
 
 
-
-
-
-function banner(ele,url){
-    let amount=url.length
-    let ul=document.createElement('ul')
-    ele.appendChild(ul)
-    ul.setAttribute('class','banner')
-    for(let i=0;i<amount;i++){
-        let li=document.createElement('li')
-        li.innerHTML=`<a href="#"><img src=${url[i]}></a>`
+function addBanner() {
+    let amount = this.url.length
+    let ul = document.createElement('ul')
+    this.ele.appendChild(ul)
+    ul.setAttribute('class', 'banner')
+    for (let i = 0; i < amount; i++) {
+        let li = document.createElement('li')
+        li.innerHTML = `<a href="#"><img src=${this.url[i]}></a>`
         ul.appendChild(li)
     }
+    return ul
 }
-function indicator(ele){
-    let length=4
-    let ul=document.createElement('ul')
-    ele.appendChild(ul)
-    ul.setAttribute('class','circle clearfix')
-    for(let i=0;i<length;i++){
-        let li=document.createElement('li')
+function addIndicator() {
+    let amount = this.url.length
+    let ul = document.createElement('ul')
+    this.ele.appendChild(ul)
+    ul.setAttribute('class', 'circle clearfix')
+    for (let i = 0; i < amount; i++) {
+        let li = document.createElement('li')
         ul.appendChild(li)
-    }   
+    }
+    return ul
 }
-function animate(ele,target,step){
-    clearInterval(ele.time)
-    ele.time=setInterval(function(){
-        let current=ele.offsetWidth
-        step=current<target?step:-step
-        current+=step
-        if(Math.abs(current-target)>Math.abs(step)){
-            ele.style.left=current+'px'
-        }else {
-            clearInterval(ele.time)
-            ele.style.left=target+'px'
+function addSlider() {
+    let div = document.createElement('div')
+    this.ele.appendChild(div)
+    div.innerHTML='<span id="slider-pre">&lt;</span><span id="slider-next">&gt;</span'
+    div.setAttribute('class','slider')
+    return div 
+    
+}
+function animate(ul, target, step) {
+    clearInterval(ul.time)
+    ul.time = setInterval(function () {
+        let current = ul.offsetLeft
+        step = current<target? Math.abs(step) : -Math.abs(step)
+        console.log(step)
+        current += step
+        if (Math.abs(current - target) > Math.abs(step)) {
+            ul.style.left = current + 'px'
+        } else {
+            clearInterval(ul.time)
+            ul.style.left = target + 'px'
         }
-    })
+    },20)
 }
-window.onload=function(){
-    let url=['images/1.jpg','images/2.jpg','images/3.jpg']
-    var container=document.getElementById('lunbo')
-    banner(container,url)
-    indicator(container)
+
+
+
+window.onload = function () {
+    let url = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg']
+    let obj = { url: url ,imgWidth:500,imgHeight:200}
+    let container = document.getElementById('lunbo')
+    let aswipper = new MyCarousel(container, obj)
 }

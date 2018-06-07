@@ -18,10 +18,10 @@ ul,ol{
 }
 .container {
     margin:100px auto 0;
-    width: 502px;
-    height: 202px;
-    border:1px solid red;
-    box-sizing: border-box;
+    /* width: 500px;
+    height: 200px; */
+    /* border:1px solid red; */
+    /* box-sizing: border-box; */
     position: relative;
     overflow: hidden;
 
@@ -30,12 +30,14 @@ ul,ol{
     position: absolute;
     left: 0;
     top: 0;
-    width: 300%;
+    /* width: 300%; */
 }
 .banner li {
     float: left;
-    width:33.333%;
     height: 200px;
+}
+.banner li a {
+    display: block;
 }
 .banner li a img {
     width: 500px;
@@ -61,4 +63,28 @@ ul,ol{
     /* border-radius: 50%; */
     text-align: center;
 
+}
+.slider {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top:50%;
+    height: 30px;
+    margin-top:-15px;
+    display: none;
+}
+.slider span {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size:  24px;
+    font-family: "黑体";
+    background: rgba(0,0,0,0.5);
+    cursor: pointer;
+
+}
+.slider #slider-next {
+    float: right;
 }
