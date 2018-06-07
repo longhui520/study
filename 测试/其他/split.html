@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // a=['¥2.4万','¥2.4万','¥2.4万']
+        s='¥0.2万¥0.1万¥'
+        // arr=s.split(/[^0-9\.]+/)
+        // arrs=arr.map(function(value){
+        //     return parseFloat(value)?parseFloat(value):0
+        // })
+        // arrss=arrs.reduce(function(a,b){
+        //     return a+b
+        // })
+        // console.log(arrss)
+        console.log(s.split(/[^0-9\.]+/).map(value=>Number(value)?Number(value):0).reduce((a,b)=>a+b).toFixed(4))
+
+
+
+
+    </script>
+</body>
+</html>
