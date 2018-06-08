@@ -8,6 +8,7 @@ function MyCarousel(ele, obj) {
     this.width=obj.imgWidth
     this.height=obj.imgHeight
     this.index=1
+    this.flag=true
     this.init()
 }
 // 原型函数
@@ -41,6 +42,7 @@ MyCarousel.prototype.init = function () {
     /**********************功能函数************************* */
     //向后
     var next=()=>{
+        
         this.index++
         // console.log(this.index)
         if(this.index>this.url.length){
@@ -54,6 +56,7 @@ MyCarousel.prototype.init = function () {
         }
     //向前
     var pre= ()=>{
+        
         this.index--
         if(this.index==0){
             this.index=this.url.length
@@ -67,7 +70,7 @@ MyCarousel.prototype.init = function () {
     function auto(){
         let timer= setInterval(function(){
              next()
-        },1000)
+        },2000)
         return timer
     }
     /*************************************/  
@@ -160,6 +163,7 @@ function animate(ul, target, step) {
 // 程序执行开始
 window.onload = function () {
     let url = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg']
+    // 有些css样式还未进行参数化
     let obj = { url: url ,imgWidth:500,imgHeight:200}
     let container = document.getElementById('lunbo')
     let aswipper = new MyCarousel(container, obj)
