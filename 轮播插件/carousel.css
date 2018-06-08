@@ -60,9 +60,11 @@ ul,ol{
     font-size: 14px;
     border:1px solid #000;
     margin-left: 10px;
-    /* border-radius: 50%; */
+    border-radius: 50%;
     text-align: center;
-
+}
+.circle li.now {
+    background-color: orange;
 }
 .slider {
     position: absolute;

@@ -1,20 +1,16 @@
 /**
  * author by longhui
  */
-
+// 构造函数
 function MyCarousel(ele, obj) {
     this.ele = ele
     this.url = obj.url
     this.width=obj.imgWidth
     this.height=obj.imgHeight
     this.index=1
-
-
-
     this.init()
-
 }
-
+// 原型函数
 MyCarousel.prototype.addBanner = addBanner
 MyCarousel.prototype.addIndicator = addIndicator
 MyCarousel.prototype.animate = animate
@@ -26,12 +22,7 @@ MyCarousel.prototype.init = function () {
     //设置主盒子
     this.ele.style.width=this.width+'px'
     this.ele.style.height=this.height+'px'
-    this.ele.onmouseover=()=>{
-        this.slider.style.display='block'
-    }
-    this.ele.onmouseout=()=>{
-        this.slider.style.display='none'
-    }
+    
     //设置banner盒子
     let first=this.banner.children[0].cloneNode(true)
     let last=this.banner.children[this.banner.children.length-1].cloneNode(true)
@@ -39,29 +30,87 @@ MyCarousel.prototype.init = function () {
     this.banner.appendChild(first)
     this.banner.style.left=-this.width+'px'
     this.banner.style.width=this.width*this.banner.children.length+'px'
-    //设置向前按钮的点击事件
-    this.slider.children[0].onclick=()=>{
+   
+    //设置引导栏的状态
+    var setIndicatorState=index=>{
+        for(let i=0;i<this.url.length;i++){
+            this.indicator.children[i].className=''
+        }
+        this.indicator.children[index].className='now'
+    }
+    /**********************功能函数************************* */
+    //向后
+    var next=()=>{
         this.index++
-        console.log(this.index)
+        // console.log(this.index)
         if(this.index>this.url.length){
             this.index=1
             this.banner.style.left=0+'px'
         }
+        //设置引导栏状态
+        setIndicatorState(this.index-1)
+        // 执行动画
+        this.animate(this.banner,-this.index*this.width,10)
+        }
+    //向前
+    var pre= ()=>{
+        this.index--
+        if(this.index==0){
+            this.index=this.url.length
+            this.banner.style.left=-(this.url.length+1)*this.width+'px'
+        }
+        //设置引导栏状态
+        setIndicatorState(this.index-1)
+        // 执行动画
         this.animate(this.banner,-this.index*this.width,10)
     }
-   this.slider.children[1].onclick=()=>{
-       this.index--
-       if(this.index==0){
-           this.index=this.url.length
-           this.banner.style.left=-(this.url.length+1)*this.width+'px'
-       }
-       this.animate(this.banner,-this.index*this.width,10)
-   }
+    function auto(){
+        let timer= setInterval(function(){
+             next()
+        },1000)
+        return timer
+    }
+    /*************************************/  
 
+     //设置向后的点击事件
+    this.slider.children[0].onclick=next
+     //设置向前的点击事件
+    this.slider.children[1].onclick=pre
+    //自动播放
+    this.auto=auto()
+    
+    this.ele.onmouseover=()=>{
+        this.slider.style.display='block'
+        clearInterval(this.auto)   
+    }
+    this.ele.onmouseout=()=>{
+        this.slider.style.display='none'
+        clearInterval(this.auto)
+        this.auto=auto()
+    }
+    // 指示器指定图片
+    for(let i=0;i<this.url.length;i++){
+        let that=this
+        this.indicator.children[i].onmouseover=(function(i){
+            return function(){
+                //关闭自动轮播定时器    
+                clearInterval(that.auto)
+                console.log(that.auto)
+                that.index=i+1
+                setIndicatorState(that.index-1)
+                console.log(-that.index*that.width)
+                that.banner.style.left=-that.index*that.width+'px'
+            }    
+        })(i)
+        this.indicator.children[i].onmouseout=function(){
+            clearInterval(that.auto)
+            that.auto=auto()
+        }
+    }
+   
 }
 
-
-
+//功能函数
 function addBanner() {
     let amount = this.url.length
     let ul = document.createElement('ul')
@@ -98,7 +147,7 @@ function animate(ul, target, step) {
     ul.time = setInterval(function () {
         let current = ul.offsetLeft
         step = current<target? Math.abs(step) : -Math.abs(step)
-        console.log(step)
+        // console.log(step)
         current += step
         if (Math.abs(current - target) > Math.abs(step)) {
             ul.style.left = current + 'px'
@@ -108,9 +157,7 @@ function animate(ul, target, step) {
         }
     },20)
 }
-
-
-
+// 程序执行开始
 window.onload = function () {
     let url = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg']
     let obj = { url: url ,imgWidth:500,imgHeight:200}
