@@ -85,6 +85,7 @@ ul,ol{
     font-family: "黑体";
     background: rgba(0,0,0,0.5);
     cursor: pointer;
+    user-select: none;
 
 }
 .slider #slider-next {

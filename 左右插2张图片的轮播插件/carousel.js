@@ -42,8 +42,8 @@ MyCarousel.prototype.init = function () {
     /**********************功能函数************************* */
     //向后
     var next=()=>{
-        
-        this.index++
+        if(this.flag){
+         this.index++
         // console.log(this.index)
         if(this.index>this.url.length){
             this.index=1
@@ -54,9 +54,12 @@ MyCarousel.prototype.init = function () {
         // 执行动画
         this.animate(this.banner,-this.index*this.width,10)
         }
+       
+        }
     //向前
     var pre= ()=>{
-        
+        if(this.flag)
+        {
         this.index--
         if(this.index==0){
             this.index=this.url.length
@@ -66,6 +69,8 @@ MyCarousel.prototype.init = function () {
         setIndicatorState(this.index-1)
         // 执行动画
         this.animate(this.banner,-this.index*this.width,10)
+        }
+       
     }
     function auto(){
         let timer= setInterval(function(){
@@ -146,19 +151,25 @@ function addSlider() {
     
 }
 function animate(ul, target, step) {
-    clearInterval(ul.time)
-    ul.time = setInterval(function () {
+    if(this.flag){
+        var that=this
+        clearInterval(ul.time)
+        ul.time = setInterval(function () {
         let current = ul.offsetLeft
         step = current<target? Math.abs(step) : -Math.abs(step)
         // console.log(step)
         current += step
         if (Math.abs(current - target) > Math.abs(step)) {
             ul.style.left = current + 'px'
+            that.flag=false
         } else {
             clearInterval(ul.time)
             ul.style.left = target + 'px'
+            that.flag=true
         }
     },20)
+    }
+    
 }
 // 程序执行开始
 window.onload = function () {

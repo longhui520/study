@@ -1,0 +1,48 @@
+body,html{
+    height: 100%;
+    width: 100%;
+    
+}
+#container {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: relative;
+    display: block;
+}
+#dialog {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    box-sizing: border-box;
+    transform: translate(-50%,-50%);
+    background: #fff;
+}
+.title {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: skyblue;
+    text-align: center;
+    font-size: 26px;
+}
+#input {
+    width: 100%;
+    height: 400px;
+    font-size: 20px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    border:0;
+}
+#submit{
+    display: block;
+    text-align: center;
+    border:0;
+    outline-style: none;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+}

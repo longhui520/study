@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery插件开发</title>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <script>
+        jQuery.extend({
+            minValue:function(a,b){
+                return a<b?a:b
+            },
+            maxValue:function(a,b){
+                return a>b?a:b
+            }
+        })
+        // console.log(jQuery.minValue(1,2))
+        jQuery.fn.console=function(){
+            this.each(function(){
+                console.log($(this).text())
+            })
+        }
+        $('.box').console()
+    </script>
+    <script src="setColor.js"></script>
+</body>
+</html>
