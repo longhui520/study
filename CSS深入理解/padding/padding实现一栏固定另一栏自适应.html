@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左固定右自适应</title>
+    <style>
+        .box1 {
+            border: 1px solid #000;
+            padding-left: 200px;
+            word-break: normal;
+        }
+        .box1 .left {
+            background: #f00;
+            float:left;
+            margin-left: 200px;
+        }
+        .box2 {
+            border: 1px solid #000;
+        }
+        .box2 .right {
+            padding-left: 200px;
+        }
+        .box2 .left {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="left"></div>
+      中国中国中国中国中国中国
+    </div>
+    <div class="box2">
+        <div class="left"></div>
+        <div class="right">中国中国中国中国中国中国</div>
+    </div>
+</body>
+</html>
