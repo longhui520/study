@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动条</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .dropBar{
+            height: 10px;
+            width: 500px;
+            background-color: #ccc;
+            margin:100px;
+            position: relative;
+        }
+        .Bar{
+            height: 22px;
+            width: 10px;
+            position: absolute;
+            left: 0px;
+            top: -6px;
+            background-color: #369;
+        }
+        .mark{
+            width: 0px;
+            height: 100%;
+            background-color: #369;
+        }
+        #info{
+            margin-top:20px;
+            padding-left: 20px;
+            font-size:30px;
+        }
+    </style>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div class="dropBar">
+        <div class="Bar"></div>
+        <div class="mark"></div>
+    </div>
+    <div id="info">已经滑动 0%</div>
+<script>
+    let dropBar=document.querySelector('.dropBar')
+    let bar=document.querySelector('.Bar')
+    let mark=document.querySelector('.mark')
+    let info=document.querySelector('#info')
+    $(dropBar).on('click',function(e){
+        $(bar).css('left',e.pageX-$(this).offset().left)
+        $(mark).css('width',e.pageX-$(this).offset().left)
+    })
+    $(bar).on('mousedown',function(e){
+        let that=this
+        // let leftValue=e.pageX-$(dropBar).offset().left
+        $(document).on('mousemove',function(e){
+            let leftValue=(e.pageX-$(dropBar).offset().left)>=500?$(dropBar).outerWidth():(e.pageX-$(dropBar).offset().left)
+            leftValue=leftValue<0?0:leftValue
+            $(bar).css('left',leftValue)
+            $(mark).css('width',leftValue) 
+            let per=leftValue/$(dropBar).outerWidth()
+            console.log($(dropBar).outerWidth())
+            $(info).text('已经滑动 '+parseInt(per*100)+'%')
+        })
+        $(document).on('mouseup',function(){
+            $(document).off('mousemove')
+        })
+    })
+</script>
+</body>
+</html>
