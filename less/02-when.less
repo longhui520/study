@@ -1,0 +1,8 @@
+@len:4;
+.w(@index) when(@index<=@len){
+   p{
+    width: 0px+@index;
+   }  
+    .w(@index+1)
+}
+.w(1);
