@@ -1,0 +1,67 @@
+/*重置默认样式*/
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    -webkit-boxsizing:border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    font-size: 14px;
+    font-family: "Microsoft Yahei",sans-serif;
+    color:#333;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration:none;
+    color:#333;
+}
+input,textarea {
+    border:none;
+    outline:none;
+    resize: none;
+    -webkit-appearance: none;
+}
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+.clearfix:before,
+.clearfix:after{
+    content:"";
+    display:block;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    clear: both;
+}
+/*外边距样式*/
+.m-l10{
+    margin-left: 10px;
+}
+.m-r10 {
+    margin-right: 10px;
+}
+.m-t10{
+    margin-top:10px;
+}
+.m-b10{
+    margin-bottom: 10px;
+}
+/*版心*/
+.sn-container {
+    position: relative;
+    width:100%;
+    max-width: 750px;
+    min-width: 320px;
+    margin:0 auto;
+    padding-top:90rem/@baseFontSize;
+    padding-bottom:100rem/@baseFontSize;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选中弹出层</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        #showbox{
+            position:absolute;
+            background: #ccc;
+        }
+    </style>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <p class="box">
+        淡淡的月色，笼罩着大地，仿若一层虚幻的银纱。
+
+　　黑暗的精神空间中，林动的身影再度出现，而随着他的身影出现，两道光影也是紧随而现，通背拳以及八荒掌，各自施展而开。
+
+　　不过这次，林动的目光倒是未曾放在这两道光影上，而是紧紧地盯着第二道光影之后，神情紧张。
+
+　　下午的时候，他已经将那卷奇门印尽数翻阅，不过也正如林霞所说，这只是一卷残篇，想要将那种看上去极为复杂与繁琐的东西学会，的确是太过困难。
+
+　　所以，下午的研习，效果微乎其微，而这部奇门印残篇，也的确与林动所接触的其他武学不一样，例如通背拳以及八荒掌，这都是有着固定的套路，但这奇门印却是不同，这部武学，需要使用某种印法，引动体内的元气，而当元气与印法相结合时，便是能够爆发出极强的力量。
+
+　　虽然只是匆匆一瞥，但林动还是能够感觉到，这残篇上的印法，并不完全，可能这也是为何林啸，林震天他们在将其修炼成功后又是放弃的主要原因，没有完整的印发，就无法将这奇门印的真正威力发挥出来。
+
+　　而至于后面所缺失的一些印法，就得依靠石符光影，试试它能否将其完善了……
+
+　　在林动紧张的注视下，第二道光影后的黑暗处，寂静了片刻，最后终于是在一阵波荡中，再度形成了一道光影。
+    </p>
+    <script>
+        $(function () {
+                $('.box').on({
+                    mouseup: function (e) {
+                        let x = e.pageX
+                        let y = e.pageY
+                        if(window.getSelection){
+                            txt=window.getSelection().toString()
+                        }else{
+                            txt=document.getSelection.createRange().text
+                        }
+                        if(txt.trim()!==""){
+                            setTimeout(function(){
+                                 showBox(x,y,txt)
+                            },200)
+                        }
+                    }
+
+                })
+               document.onmousedown=function(e){
+                   console.log(e.target.id)
+                   if(e.target.id!='showbox'){
+                       $('#showbox').remove()
+                   }
+               }
+                function showBox(x,y,text){
+                    let box=document.createElement('div')
+                    box.id="showbox"
+                    box.style.left=x+'px'
+                    box.style.top=y+'px'
+                    box.innerText=text
+                    document.body.appendChild(box)
+                }
+            })
+    </script>
+</body>
+</html>

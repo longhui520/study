@@ -1,0 +1,9 @@
+// 迭代输出设备适配样式
+.adapterMixin(@index) when (@index>0){
+    @media screen and(min-width:extract(@adapterDeviceList,@index)){
+        html {
+            font-size:@baseFontSize/@psdWidth*extract(@adapterDeviceList,@index);
+        }
+    }
+    .adapterMixin(@index - 1);
+}

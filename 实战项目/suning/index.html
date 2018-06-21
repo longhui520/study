@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>suning</title>
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="less/index.css">
+    <link rel="stylesheet" href="lib/swiper/css/swiper.min.css">
+   
+</head>
+<body>
+<!-- 版心 -->
+<div class="sn-container">
+    <!-- 顶部通栏 -->
+    <div class="sn-topBar">
+        <a href="#"class="icon-category"></a>
+        <form action="">
+            <span class="icon-search"></span>
+            <input type="search" placeholder="60寸电视免费拿">
+        </form>
+        <a href="#" class="icon-cart"></a>
+    </div>
+    <!-- 轮播图 -->
+    <style>
+        .swiper-container img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <div class="swiper-container">
+        <ul class="swiper-wrapper clearfix">
+            <li class="swiper-slide"><a href="#"><img src="images/banner01.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner02.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner03.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner04.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner05.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner06.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner07.jpg"></a></li>
+            <li class="swiper-slide"><a href="#"><img src="images/banner08.jpg"></a></li>
+        </ul>
+        <ul class="swiper-pagination">
+            
+        </ul>
+    </div>
+    <!-- 分类 -->
+    <div class="sn-nav">
+        <ul class="clearfix">
+            <li><a href="#"><img src="images/nav01.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav02.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav03.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav04.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav05.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav01.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav02.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav03.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav04.png" alt=""><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav05.png" alt=""><p>分类</p></a></li>
+        </ul>  
+    </div>
+    <!-- 底部页签 -->
+    <div class="sn-tabs">
+        <ul>
+            <li><a href="#"><span class="fa fa-home"></span><p>首页</p></a></li>
+            <li><a href="#"><span class="fa fa-reorder"></span><p>分类</p></a></li>
+            <li><a href="#"><span class="fa fa-file-text-o"></span><p>必抢清单</p></a></li>
+            <li><a href="#"><span class="fa fa-user"></span><p>我的易购</p></a></li>
+            <li><a href="#"><span class="fa fa-suitcase"></span><p>新手大礼包</p></a></li>
+        </ul>
+    </div>
+</div>
+<script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/swiper/js/swiper.jquery.min.js"></script>
+<script>
+    // 轮播
+    $(function(){
+        //1.自动轮播
+        //2.无缝滚动
+        //指示功能
+        new Swiper('.swiper-container',{
+            autoplay:1000,
+            loop:true,
+            pagination:'.swiper-pagination',
+            autoplayDisableOnInteraction:false
+        });
+    })
+
+</script>   
+</body>
+</html>
