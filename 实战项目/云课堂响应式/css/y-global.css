@@ -1,0 +1,328 @@
+@charset "utf-8";
+/* CSS Document */
+  /* 初始化CSS  重置浏览器样式*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+fieldset, img { border:none; } /*为了照顾ie6 链接图片有边框*/
+img{display: block;}
+ul, ol { list-style:none; }
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+select, input { vertical-align:middle; }
+ select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; }
+table { border-collapse:collapse; }
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+body {font-size:12px; color:#999;}
+.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
+ .clearfix { zoom:1; }
+ .clearit { clear:both; height:0; font-size:0; overflow:hidden; }
+ a { color:#666; text-decoration:none; }
+
+a:hover { color:#ff8400; text-decoration:none; }
+
+/*版心是可以控制的，所以我们以后尽量把版心提取*/
+.wrap{
+	width:1200px;  /*版心  正常的pc版心*/
+}
+
+/*小屏 电脑 的版心*/
+@media screen and (min-width:960px)  and (max-width:1200px){
+	.wrap{
+		width: 960px;
+	}
+}
+/*pad  版心*/
+
+
+/*手机端的版心*/
+
+
+
+/*头部开始*/
+.site-nav{
+	height: 60px;
+	background-color: #262626;
+	}
+.nav-inner{
+	height: 60px;
+	margin: 0 auto;
+	}
+.yunLogo{
+	float: left;
+	width: 22%;
+	height: 39px;
+	background-color: purple;
+	margin-top: 9px;
+	background:url(../images/logo.png) no-repeat;
+	}
+.yunLogo a{
+	display:block;
+	width:100%;
+	height: 39px;
+	text-indent:-3000px;	
+	}
+.nav{
+	float: left;
+	margin-left:85px;	
+	}
+	
+.nav li{
+	float: left;}
+.nav li a{
+	display: inline-block;
+	padding:0 18px;
+	line-height: 60px;
+	font-size:14px;
+	color:white;
+	height:60px;
+	}
+.nav li a.current,.nav li a:hover{
+	background-color:#008aff;
+	color:white;
+	}
+.user-btn{
+	float: right;}
+.login,.register{	
+	width:45px;
+	height:26px;
+	border:2px solid #ff6400;
+	float:left;
+	text-align:center;
+	line-height:26px;
+	font-size:14px;
+	color:#ff6400;
+	margin-top:13px;
+	}
+.register{
+	background-color: #ff6400;
+	color:white;
+	margin-left:6px;
+	}
+.nav1{
+	display: none;
+}
+.user{
+	width: 25px;
+	height: 25px;
+	background: url(../images/user-icon.png) no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+	position: absolute;
+	top:16px;
+	right:10%;
+	display: none;
+}
+/*三条线的小按钮*/
+.line{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top:20px;
+	left:10%;
+	display: none;
+}
+.line>div
+{
+	width: 100%;
+	height:3px;
+	background-color: #fff;
+	position: absolute;
+	top:0;
+	left:0;
+	border-radius: 3px;
+	transition:all 0.5s ease 0s;
+	-webkit-transition:all 0.5s ease 0s;
+	-moz-transition:all 0.5s ease 0s;
+	-o-transition:all 0.5s ease 0s;
+}
+.line .line2{
+	top:9px;
+}
+.line .line3{
+	top:18px;
+}
+.toggle .line1{
+	transform:rotate(45deg)
+   -webkit-transform:rotate(45deg);
+   -moz-transform:rotate(45deg);
+   -o-transform:rotate(45deg);
+	top:9px;
+}
+.toggle .line2{
+	transform:rotate(-45deg)
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-o-transform:rotate(-45deg);
+}
+.toggle .line3{
+	opacity: 0;
+}
+
+.yunLogo span{
+	display: none;
+}
+/*处理上面 导航栏*/
+
+  /*小屏头部*/
+@media screen and (min-width:960px)  and (max-width:1200px) {
+	.nav{
+		margin-left: 0;
+	}
+	.nav li a
+	{
+		padding:0 15px;
+	}
+
+}
+/* pad 版本的头部*/
+
+
+ /*难点  手机版本 的头部分  */
+
+
+
+
+
+
+
+
+
+/*banner start*/
+.banner{
+	height:520px;
+     position:relative;
+	}
+.slide{
+	width:1000%;
+	height:520px;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.slide li{
+	/*他 的宽度让 js 给屏幕的宽度*/
+	height:520px;
+	background:url(../images/banner1.jpg) no-repeat 50% 50%;
+	-webkit-background-size: cover;
+	background-size: cover;
+	float:left;
+}
+.slide li:nth-child(2)
+{
+	background-image: url(../images/banner2.jpg);
+}
+.slide li:nth-child(3)
+{
+	background-image: url(../images/banner3.jpg);
+}
+
+.disc{
+	width: 94px;
+	height: 22px;
+	left:50%;
+	margin-left:-55px;
+	position: absolute;
+	bottom:10px;
+	background:rgba(0,0,0,0.6);
+	border-radius:20px;	
+	padding:8px 0 0 16px;
+	}
+.disc li{
+	float:left;
+	width:14px;
+	height:14px;
+	background-color:#968181;
+	margin-right:16px;
+	border-radius:7px;
+	cursor:pointer;
+	
+	}
+.disc li.current{
+	background-color: #fff;
+	}
+
+/*手机bananer 样式 */
+
+.focus{ width:100%; height:auto;  margin:0 auto; position:relative; overflow:hidden;
+	display: none;   }
+.focus .hd{ width:100%; height:11px;  position:absolute; z-index:1; bottom:5px; text-align:center;  }
+.focus .hd ul{ display:inline-block; height:5px; padding:3px 5px; background-color:rgba(255,255,255,0.7);
+	-webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; font-size:0; vertical-align:top;
+}
+.focus .hd ul li{ display:inline-block; width:5px; height:5px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#8C8C8C; margin:0 5px;  vertical-align:top; overflow:hidden;   }
+.focus .hd ul .on{ background:#FE6C9C;  }
+
+.focus .bd{ position:relative; z-index:0; }
+.focus .bd li img{ width:100%;  height:auto; background:url(../images/loading.gif) center center no-repeat;  }
+.focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */  }
+
+
+/*手机端的轮播图*/
+
+
+.footer{
+	border-top:2px solid #293751;
+	}
+.footer-t{
+	height:180px;
+	background-color: #314363;
+	}
+.footer-b{
+	height:40px;
+	line-height: 40px;
+	background-color: #1b2435;}
+.footer-con{
+	margin:0 auto;
+	padding-top:30px;
+	position:relative;	
+	}
+.footer-con dl{
+	width:190px;
+	float:left;}
+.footer-con dt{
+	height:36px;
+	font-size:18px;
+	color:white;}
+.footer-con dd{
+	height:25px;
+}
+.footer-con dd a{
+	color:#b0bcd0;
+	background:url(../images/square_05.png) no-repeat left center;
+	padding-left:12px;}
+.footer-con dd a:hover{
+	color:#b0bcd0;
+	text-decoration:underline;}
+.erweima{
+	position: absolute;
+	right:0;
+	top:40px;}
+.footer-b p{
+	margin:0 auto;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+

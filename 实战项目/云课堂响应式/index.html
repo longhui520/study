@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>传智云课堂</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link  id="stylecss" rel="stylesheet" href="">
+	<script src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<!-- 头部 -->
+	<header class="site-nav">
+		<div class="nav-inner">
+		<!-- logo pc端 -->
+			<div class="logo">
+				<h1><a href="#" title="云课堂">云课堂</a></h1>
+				<span>传智云课堂</span>
+			</div>
+			<nav class="nav pc-nav">
+				<ul>
+					<li><a class="current" href="#">首页</a></li>
+					<li><a href="#">课程</a></li>
+					<li><a href="#">每日作业</a></li>
+					<li><a href="#">免费视频</a></li>
+					<li><a href="#">免费直播厅</a></li>
+					<li><a href="#">问答</a></li>
+					<li><a href="#">学习指南</a></li>
+					<li><a href="#">个人中心</a></li>
+				</ul>
+			</nav>
+			<div class="user-btn">
+				<a class="login" href="#">登陆</a>
+				<a class="register" href="#">注册</a>
+			</div>
+			<!-- 手机 -->
+			<!-- 三条线-->
+			<div class="lines">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
+			<nav class="nav mobile-nav">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">课程</a></li>
+					<li><a href="#">每日作业</a></li>
+					<li><a href="#">免费直播厅</a></li>
+					<li><a href="#">问答</a></li>
+				</ul>
+			</nav>
+			<div class="user"></div>
+		</div>	
+	</header>
+	<script>
+		window.onload=function(){
+		function client(){
+			if(window.innerWidth!=null){
+				return {
+					width:window.innerWidth,
+					height:window.innerHeight
+				}
+			}else if(document.compatMode==="CSS1Compt") {
+				return {
+					width:document.documentElement.clientWidth,
+					height:document.documentElement.clientHeight
+				}	
+			}
+			
+			return {
+				width:document.body.clientWidth,
+				height:document.body.clientHeight
+			}
+			
+		}	
+		var style=document.getElementById('stylecss')
+		window.onresize=reSize
+		function reSize(){
+			var clientWidth=client().width
+			console.log(clientWidth)
+			if(clientWidth>640){
+				style.href="css/global.css"
+			}else if(clientWidth<640){
+				style.href="css/mobile.css"
+			}
+		}
+		}
+		
+	</script>
+</body>
+</html>

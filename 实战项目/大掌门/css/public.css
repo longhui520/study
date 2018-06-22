@@ -1,0 +1,94 @@
+/* 重置样式和公共样式 */
+/* 重置样式 */
+ *,
+*::after,
+*::before{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+} 
+ul,ol{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    outline: none;
+    border:none;
+}
+input,button {
+    outline:none;
+    border:0;
+}
+img {
+    vertical-align: middle;
+}
+p{
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+h1,h2,h3{
+    padding: 0;
+    margin: 0;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+/* 公共样式 */
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+/* 顶部通栏 */
+.top-bar-before{
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.top-bar {
+    height: 120px;
+    width: 100%;
+    background: #d7faff;
+    position: fixed;
+    padding:0 60px;
+    padding-top:37px;
+}
+.top-bar .menu{
+    float: left;
+}
+.top-bar .shop{
+    float:right;
+}
+.top-bar form {
+    float:right;
+}
+.top-bar .search {
+    position: relative;
+}
+.top-bar .search input{
+    display:block;
+    width: 280px;
+    height: 45px;
+    border:1px solid #bbbbbb;
+    border-radius: 45px;
+    margin-right: 10px;
+    background-color: transparent;
+    text-indent: 20px;
+    font-size: 18px;
+}
+.top-bar .search button{
+    position: absolute;
+    display:block;
+    right: 20px;
+    top: 10px;
+    background-color:transparent;
+}

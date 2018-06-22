@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="0" x2="200" y2="200" style="stroke-width:1;stroke:black"/>
+    </svg> -->
+    <svg width="300" height="150">
+        <circle id="l" cx="150" cy="75" r="10" />
+        <circle id="c" cx="200" cy="75" r="10" />
+        <circle id="r" cx="250" cy="75" r="10" />
+    </svg>
+    <script>
+        let l=document.getElementById('l')
+        let c=document.getElementById('c')
+        let r=document.getElementById('r')
+        let currentAnimationTime=0
+        const centerY=75
+        animate()
+        function animate(){
+            l.setAttribute('cy',centerY+(Math.sin(currentAnimationTime))*30)
+            c.setAttribute('cy',centerY+(Math.sin(currentAnimationTime+1))*30)
+            r.setAttribute('cy',centerY+(Math.sin(currentAnimationTime+2))*30)
+            currentAnimationTime+=0.15
+            requestAnimationFrame(animate)
+        }
+    </script>
+     <!-- <svg width="300" height="150">
+        <circle id="l" cx="150" cy="30" r="10" />
+    </svg>
+    <script>
+         let l=document.getElementById('l')
+         let currentDeg=Math.PI/2
+         animate()
+         function animate(){
+             l.setAttribute('cx',150+45*(Math.sin(currentDeg)))
+             l.setAttribute('cy',75+45*(Math.cos(currentDeg)))
+             currentDeg+=0.015
+             requestAnimationFrame(animate)
+         }
+    </script> -->
+</body>
+</html>

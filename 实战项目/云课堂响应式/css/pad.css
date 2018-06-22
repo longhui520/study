@@ -1,0 +1,30 @@
+.wrap{
+    width: 100%;
+}
+.yunLogo
+{
+    width: 30%;
+}
+.nav{
+    display: none;
+}
+.nav1{
+    display: block;
+    margin-left: 0;
+}
+.nav1 li a{
+    padding:0 10px;
+}
+.footer-con dl
+{
+    width: 20%;
+}
+.con-title h2{
+    height:auto;
+}
+.con-title h2 span{
+    display: block;
+}
+.price{
+    margin-left:0;
+}

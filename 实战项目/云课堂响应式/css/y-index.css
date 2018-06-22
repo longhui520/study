@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+.free{
+	padding-top: 35px;
+	overflow: hidden;
+	}
+.inner{
+	margin:0 auto;
+	text-align:center;
+}
+.free h2,.vip h2{
+	font-size:30px;
+	color:#333;
+	font-family:'microsoft yahei';
+	height:50px;
+	}
+.free p{
+	font-size:14px;
+	color:#999;
+	height:38px;}
+.free-desk li{
+	float:left;
+	width:32%;
+}
+.free-desk li img{
+	width: 100%;
+}
+.free-desk-m{
+	 margin:0 1.5%;
+	}
+/*vip开始*/	
+.vip{
+	background:url(../images/vip-bg_03.png) repeat-x  #f2f2f2;
+	padding:60px 0;
+	}
+.vip h2{
+	 height:45px;
+	}
+
+
+.all a{
+	display:inline-block;
+	width: 93px;
+	height: 33px;
+	border:2px solid #526da0;
+	text-align:center;
+	line-height:33px;
+	font-size:14px;
+	color:#526da0;
+	border-radius:5px;
+	position:relative;
+	}	
+.all a.current{
+	background-color: #526da0;
+	color:white;
+	}
+.arrow{
+	width: 0;
+	height: 0;
+	border-width:8px;
+	border-style: solid dashed dashed dashed;
+	border-color: #526da0 transparent transparent transparent;
+	position: absolute;	
+	bottom:-16px;
+	left:40px;
+	overflow:hidden;
+	}	
+	
+.content{
+	margin-top: 44px;
+	}
+.content li{
+	width:32.33%;
+	height: 343px;
+	background-color:white;
+	float:left;
+	margin:0 1% 40px 0;
+	border:1px solid #ccc;
+	}
+.content img{
+	width: 100%;
+}
+.content li:hover{
+	border:1px solid #ff6400;
+	}	
+.content li.nomargin{
+	margin-right:0;}
+.con-img{
+	position:relative;
+	width: 100%;
+	}
+.play{
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin:-38px 0 0 -38px;
+	}	
+.con-title{
+	margin-top:12px;
+ }	
+.con-title h2{
+	font-size:18px;
+	font-family:'microsoft yahei';
+	text-align:left;
+	height:27px;
+	 padding-left:10px;
+	}	
+.con-title p{
+	padding:0 10px;
+	text-align:left;
+	line-height:24px;
+	
+	}
+.price{
+	margin-left:65px;
+	color:#ff6400;
+	}
+.con-buy{
+	text-align: right;
+	padding-right:10px;
+	}	
+.con-buy a{
+	 width: 73px;
+	 height: 28px;
+	 background-color: #ff6400;
+	 display:inline-block;
+	 text-align:center;
+	 line-height:28px;
+	 color:white;
+	 border-radius:3px;
+	}
+.more{
+	display:block;
+	width: 253px;
+	height: 50px;
+	border:2px solid #526da0;
+	border-radius:6px;
+	margin:0 auto;
+	font-size:18px;
+	color:#526da0;
+	text-align:center;
+	line-height:50px;
+	_margin-top:40px;	
+	}
+.more:hover{
+	background-color: #526da0;
+	color:white;
+	}	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

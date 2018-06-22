@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul {
+            list-style: none;
+        }
+        div {
+            width: 1150px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+        div ul {
+            width: 1300px;
+        }
+
+    </style>
+    <script src="jquery-3.0.0.js"></script>
+
+
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        $(function(){
+            $('li').css('backgroundImage',function(index,value){
+                return "url(images/"+(index+1)+".jpg)"
+            }).on({mouseenter:function(){
+                $(this).stop().animate({width:800},"fast").siblings().stop().animate({width:100},"fast")                                                                                                  
+            },mouseleave:function(){
+                $(this).siblings().addBack().stop().animate({width:240},"fast")
+            }})
+            
+        })
+    </script>
+</body>
+</html>

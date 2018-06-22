@@ -1,0 +1,29 @@
+/* 手机端 */
+html {
+    background: #fff;
+    -webkit-text-size-adjust: none;
+    -webkit-appearance:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+body{
+    min-width: 320px;
+    max-width: 640px;
+    width: 100%;
+    font-family:Helvetica,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* pc端的隐藏 */
+.logo {
+	display: none;
+}
+.pc-nav{
+	display: none;
+}
+.user-btn {
+	display: none;
+}
+
+
