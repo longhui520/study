@@ -1,0 +1,128 @@
+html{
+    height: 100%;
+   
+}
+body{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+} 
+.fullpage{
+    height: 100%;
+    position: relative;
+}
+/********************swiper插件样式********************* */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.swiper-container img{
+    width:100%;
+    height: 100%;
+}
+/* ************************************************* */
+.fullpage .before-page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top:0;
+    background-color: transparent;
+    text-align: center;
+    z-index: 96;
+}
+.before-page .left-page{
+   position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.0);
+    z-index:95;
+}
+
+.before-page .right-page{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 50%;
+    height: 100%;
+    z-index: 95;
+    background-color:rgba(0,0,0,0.0);
+}
+.before-page .big-title{
+    font-size: 50px;
+    color:#fff;
+    margin-top:420px;
+    text-align: center;
+}
+.before-page .bar {
+    margin-top:20px;
+    margin-left:10%;
+    margin-right: 10%;
+    width: 80%;
+    height: 5px;
+    background-color: #fff;
+}
+.before-page .link-box {
+    line-height: 60px;
+}
+.before-page .link-box a{
+    font-size: 20px;
+    color:#fff;
+    margin-right: 30px;
+}
+.before-page .logo{
+  margin-top:40px;
+}
+
+.before-page .bt-text{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 96;
+    width: 100%;
+    height: 152px;
+    text-align: center;
+    color:#fff;
+}
+.bt-text .name {
+    font-size: 30px;
+    line-height: 30px;
+    font-family: AHS;
+    font-weight: lighter;
+    letter-spacing: 5px;
+}
+.bt-text .short-bar {
+    width: 25px;
+    height: 1px;
+    background: #fff;
+    margin:12px auto;
+}
+.bt-text .record-number{
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    font-family: simSum;
+}
+

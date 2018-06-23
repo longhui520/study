@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行内元素的特性</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin:100px;
+            margin-top:0px;
+        }
+        span{
+            line-height: 30px;
+            padding-left: 10px;
+            padding-top:10px;
+            margin-left:10px;
+            margin-top:10px;
+            background: #f0f;
+        }
+    </style>
+</head>
+<body>
+    <p>实测证明垂直方向的margin padding 不会干扰文档流，但是可设置背景</p>
+    <div>
+
+        <span>111111</span>
+    </div>
+</body>
+</html>

@@ -5,40 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>大掌门</title>
-    <script src="lib/jquery-3.0.0.js"></script>
+    <script src="lib/jquery-1.11.1.js"></script>
     <script src="lib/bootstrap.js"></script>
     <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="lib/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="lib/swiper/js/swiper.jquery.min.js"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
     <!-- 顶部 -->
     <div class="top-bar-before">
         <div class="top-bar">
-            <div class="menu">
-                <img src="images/icon-menu.png" alt="">
-                <p>菜单</p>
-            </div>
-            <div class="shop">
-                <img src="images/icon-shop.png" alt="">
-                <p>商店</p>
-            </div>
-            <form action="">
-                <div class="search">
-                    <input  type="text">
-                    <button>
-                        <img src="images/icon-search.png" alt="">
-                    </button>
+            <div class="onelist">
+                <div class="menu">
+                    <img src="images/icon-menu.png" alt="">
+                    <p>菜单</p>
                 </div>
-            </form>
+                <div class="shop">
+                    <img src="images/icon-shop.png" alt="">
+                    <p>商店</p>
+                </div>
+                <form action="">
+                    <div class="search">
+                        <input  type="text">
+                        <button>
+                            <img src="images/icon-search.png" alt="">
+                        </button>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+    <!-- 左侧导航 -->
+    <div class="left-nav" style="left:-350px;">
+        <div class="menu">
+            <img src="images/icon-menu.png" alt="">
+            <p>菜单</p>
+        </div>
+        <div class="main-nav">
+            <ul>
+                <li><a class="circle" href="#">返回首页</a></li>
+                <li><a class="circle" href="#">掌门美食</a></li>
+                <li><a class="circle" href="#">店面展示</a></li>
+                <li><a class="circle" href="#">项目介绍</a></li>
+                <li><a class="circle" href="#">掌门社区</a></li>
+                <li><a class="circle" href="#">新闻资讯</a></li>
+                <li><a class="circle" href="#">关于我们</a></li>
+                <li><a class="circle" href="#">人才招聘</a></li>
+                <li><a class="circle" href="#">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="three-line"></div>
+        <div class="bottom-box">
+            <p class="name">宜百易</p>
+            <div class="short-bar"></div>
+            <p class="record-number">Copyright 2018益百易 渝ICP备18005769号-2</p>
         </div>
     </div>
     <!-- 全屏轮播 -->
-    <div class="full-page">
-        <ul>
-            <li></li>
-        </ul>
+
+    <div class="fullpage">
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/1.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div> 
+        <div class="before-page">
+                <!-- 左边 -->
+            <div class="left-page">
+                <p class="big-title">百誉大掌门</p>
+                <div class="bar"></div>
+                <div class="link-box">
+                    <a href="">项目介绍</a>
+                    <a href="">掌门社区</a>
+                </div>
+            </div>
+            <!-- 右边 -->
+            <div class="right-page">
+                <p class="big-title">誓在行</p>
+                <div class="bar"></div>
+                <div class="link-box">
+                    <a href="">关于我们</a>
+                    <a href="">联系我们</a>
+                </div>
+            </div>
+            <img class="logo" src="images/logo_white.png" alt="">
+            <div class="bt-text">
+                <p class="name">宜百易</p>
+                <div class="short-bar"></div>
+                <p class="record-number">Copyright 2018益百易 渝ICP备18005769号-2</p>
+            </div>
+        </div>
     </div>
-</body>
+       
+     
 </html>

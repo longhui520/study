@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换行有关的</title>
+    <style>
+        div{
+            width: 500px;
+            height: 1000px;
+            border:1px solid greenyellow;
+            margin:0 auto;
+            font-size: 20px;
+        }
+        div p:nth-child(2n+1){
+            color:red;
+        }
+        p{
+            /* white-space: nowrap; 强制不换行*/
+            /* word-wrap: break-word; 数字和长单词不换行，汉字和英文句子换行，英文句子不会打断单词，p标签默认表现*/
+            /* word-break: break-all; 都会换行，但是会打断单词 此处要求是块级元素*/
+            /* text-overflow: ellipsis;
+            overflow: hidden; 没有换行的部分省略符号*/
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p> 数字默认不会自动换行</p>
+        <p>111111111111111111111111111111111111111111111</p>
+        <p>很长的单词默认不会换行</p>
+        <p>ssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>很长的汉字默认会换行</p>
+        <p>很长的汉字很长的汉字很长的汉字很长的汉字很长的汉字很长的汉字很长的汉字</p>
+        <p>很长的英文句子默认会换行</p>
+        <p>It's a long time!t's a long time!t's a long time!t's a long time!t's a long time!</p>
+        <p>2行文本溢出省略号</p>
+        <p>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        </p>
+    </div>
+</body>
+</html>
