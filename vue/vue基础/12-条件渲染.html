@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>条件渲染</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+    </div>
+    <div id="app2">
+         <template v-if="ok">
+             <h1>Title</h1>
+             <p>Paragraph1</p>
+             <p>Paragraph2</p>
+         </template>  
+    </div>
+    <div id="app3">
+        <div v-if="type=='A'">A</div>
+        <div v-else-if="type=='B'">B</div>
+        <div v-else-if="type=='C'">C</div>
+    </div>
+    <div id="app4">
+        <template v-if="loginType==='username'">
+            <label>UserName: <input type="text" placeholder="Enter your username"></label>
+        </template>
+        <template v-else>
+                <label>Email: <input type="text" placeholder="Enter your Email address"></label>
+        </template>
+        <button @click="toggle">Toggle loginType</button>
+    </div>
+    <div id="app5">
+            <template v-if="loginType==='username'">
+                <label>UserName: <input type="text" placeholder="Enter your username" key="'input-username'"></label>
+            </template>
+            <template v-else>
+                    <label>Email: <input type="text" placeholder="Enter your Email address" :key="'input-email'"></label>
+            </template>
+            <button @click="toggle">Toggle loginType</button>
+        </div>
+    <div id="app6">
+        <h1 v-show="show">v-show只是切换display属性</h1>
+    </div>
+    <script>
+        var app1=new Vue({
+            el:'#app1',
+            data:{
+                ok:true
+            }
+        })
+        var app2=new Vue({
+            el:'#app2',
+            data:{
+                ok:true
+            }
+        })
+        var app3=new Vue({
+            el:'#app3',
+            data:{
+               type:'A'
+            }
+        })
+        var app4=new Vue({
+            el:'#app4',
+            data:{
+                loginType:'username'
+            },
+            methods:{
+               toggle (){
+                  this.loginType=this.loginType==='username'?'email':'username'
+               }     
+            }
+        })
+        var app5=new Vue({
+            el:'#app5',
+            data:{
+                loginType:'username'
+            },
+            methods:{
+               toggle (){
+                  this.loginType=this.loginType==='username'?'email':'username'
+               }     
+            }
+        })
+        var app6=new Vue({
+            el:'#app6',
+            data:{
+                show:true
+            }
+        })
+    </script>
+</body>
+</html>

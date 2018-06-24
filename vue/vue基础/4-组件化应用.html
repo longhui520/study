@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue组件化</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <todo-item v-for="it in list" v-bind:todo=it v-bind:key=it.id></todo-item>
+        </ol>
+    </div>
+    <script>
+        Vue.component('todo-item',{
+            props:['todo'],
+            template:'<li>{{todo.text}}</li>'
+        })
+        var app=new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {'id':0,text:'python'},
+                    {'id':1,text:'java'},
+                    {'id':2,text:'javascript'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

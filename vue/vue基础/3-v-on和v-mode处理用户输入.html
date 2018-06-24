@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on和v-model</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+    </div>
+    <div id="app2">
+        <h1>{{message}}</h1>
+        <input v-model="message" type="text">
+    </div>
+    <script>
+     var app1= new Vue({
+        el:'#app1',
+        data:{
+            message:"Hello Vue.js!"
+        },
+        methods:{
+            reverseMessage:function(){
+                this.message=this.message.split('').reverse().join('')
+            }
+        }
+    })
+    var app2=new Vue({
+        el:'#app2',
+        data:{
+            message:' '
+        }
+    })
+    </script> 
+</body>
+</html>

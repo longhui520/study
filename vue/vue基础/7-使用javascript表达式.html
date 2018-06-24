@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <p v-bind:id="'list-' + number">{{'我是列表中第'+number+'个'}}</p> 
+    </div>
+    <script>
+        var app=new Vue ({
+            el:'#app',
+            data:{
+                number:1
+            }
+        })
+    </script>
+</body>
+</html>

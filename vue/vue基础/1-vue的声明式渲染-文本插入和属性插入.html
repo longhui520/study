@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue申明式渲染</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- Vue 的元素内容插值 -->
+    <div id="app1">{{message}}</div>
+    <div id="app2" v-bind:title="message">鼠标悬停才看动态绑定的数据</div>
+    <script>
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                message: 'Hello Vue'
+            }
+        })
+        var app2 = new Vue({
+            el:'#app2',
+            data:{
+                message:'页面加载于 '+new Date().toLocaleString()
+            }
+        })
+    </script>
+</body>
+
+</html>

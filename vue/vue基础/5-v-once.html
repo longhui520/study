@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-once</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-once>{{message}}</p>
+    </div>
+    <script>
+        var app =new Vue({
+            el:'#app',
+            data:{
+                message:'这里的信息不会更新,其他绑定的数据也不更新'
+            }
+        })
+        app.message="我更新试试"
+    </script>
+</body>
+</html>
