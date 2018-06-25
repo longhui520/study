@@ -93,15 +93,19 @@ body{
     margin-right: 30px;
 }
 .before-page .logo{
-  margin-top:40px;
+  top:40px;
+  position: absolute;
+  left:50%;
+  transform: translate(-50%,0);
 }
 
 .before-page .bt-text{
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform:translate(-50%,0);
     bottom: 0;
     z-index: 96;
-    width: 100%;
+    width: 50%;
     height: 152px;
     text-align: center;
     color:#fff;

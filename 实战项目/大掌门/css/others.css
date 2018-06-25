@@ -1,0 +1,60 @@
+.top-bar {
+    opacity: 1;
+}
+.top-bar .logo-black{
+    position: absolute;
+    width:100%;
+    top:23px;
+    opacity: 0;
+    z-index: -1;
+    transition: all .5s;
+}
+.top-bar .onelist .search{
+    float:right;
+    height: 51px;
+    overflow: hidden;
+    padding-right: 40px;
+    transition: all .5s;
+}
+.top-bar .onelist .search input{
+    width:280px;
+    height: 45px;
+    border:1px solid #bbb;
+    border-radius: 23px;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+    text-indent: 20px;
+    font-size: 18px;
+    display: block;
+    float:left;
+    margin-right: auto;
+    transition: all .5s;
+}
+.top-bar .onelist .search img{
+    margin-top:10px;
+    margin-left:-50px;
+    cursor: pointer;
+    transition: all .5s;
+}
+.top-bar .onelist .search p {
+    display: none;
+    transition: all .5s;
+    color: #626262;
+}
+
+.top-bar .onelist .re-search input{
+    width:0;
+    border:0;
+}
+.top-bar .onelist .re-search img{
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.top-bar .onelist .re-search p{
+    padding-top: 2px;
+    font-size: 14px;
+    display: inline-block;
+    color: #626262;
+}
+

@@ -12,9 +12,12 @@ $(function(){
         left_nav=$('.left-nav'),
         top_menu=$('.top-bar .menu'),
         three_line=$('.left-nav .three-line'),
+        before_page=$('.before-page'),
         left_page=$('.before-page .left-page'),
-        right_page=$('.before-page','.right-page')
-        console.log(right_page)
+        right_page=$('.before-page .right-page'),
+        bt_text=$('.bt-text')
+        logo=$('.logo')
+        console.log(before_page.outerWidth())
 
 
     /**************全局变量 */
@@ -23,23 +26,32 @@ $(function(){
     // 页面动画
     //顶部导航的显示和隐藏
     top_bar.on({'mouseenter':function(){
-        $(this).animate({'opacity':1})
+        logo.animate({'top':130},function(){top_bar.animate({'opacity':1})})
     },'mouseleave':function(){
-        $(this).animate({'opacity':0})}
-    })
+        top_bar.animate({'opacity':0},function(){logo.animate({'top':40})})
+    }})
     //
     top_menu.on('click',showLeft)
     three_line.on('click',hideLeft)
     left_page.on({'mouseenter':function(){
-        $(this).css('background-color','rgba(0,0,0,0.2)') 
+        $(this).css('background-color','rgba(0,0,0,0.2)').find('.bar,.link-box').css('opacity',0) 
+        logo.stop().animate({'left':'25%','top':40},100)
+        bt_text.stop().animate({'left':'25%'},100)
+       
     },'mouseleave':function(){
-        $(this).css('background-color','rgba(0,0,0,0.0)')
+        $(this).css('background-color','rgba(0,0,0,0.0)').find('.bar,.link-box').css('opacity',1)
+        logo.stop().animate({'left':'50%','top':40},100)
+        bt_text.stop().animate({'left':'50%'},100)
     }})
     right_page.on({'mouseenter':function(){
-        $(this).css('background-color','rgba(0,0,0,0.2)') 
-        console.log(11111111111)
+        $(this).css('background-color','rgba(0,0,0,0.2)').find('.bar,.link-box').css('opacity',0)
+        logo.stop().animate({'left':'75%','top':40},100)
+        bt_text.stop().animate({'left':'75%'},200)
+        
     },'mouseleave':function(){
-        $(this).css('background-color','rgba(0,0,0,0.0)')
+        $(this).css('background-color','rgba(0,0,0,0.0)').find('.bar,.link-box').css('opacity',1)
+        logo.stop().animate({'left':'50%','top':40},100)
+        bt_text.stop().animate({'left':'50%'},100)
     }})
     /*********具体动画函数************ */
     //左侧菜单的移出

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About me</title>
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="css/others.css">
+    <script src="lib/jquery-1.11.1.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-black">
+            <img src="images/logo_black.png" alt="">
+        </div>
+        <div class="onelist">
+            <div class="menu">
+                <img src="images/icon-menu.png" alt="">
+                <P>菜单</P>
+            </div>
+            <div class="shop">
+                <img src="images/icon-shop.png" alt="">
+                <p>商城</p>
+            </div>
+            <div class="search re-search">
+                <input type="text">
+                <img src="images/icon-search.png" alt="">
+                <p>搜索</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('.onelist .search').on('click',function(){
+                $(this).removeClass('re-search')
+            })
+        })
+    </script>
+</body>
+</html>

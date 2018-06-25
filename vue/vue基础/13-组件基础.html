@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件基础</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <div id="app2">
+        <!-- 直接使用自定义属性,绑定字符串 v:bind的自定义属性就是获取父级的数据 -->
+        <blog-post title="js如何编程"></blog-post>
+        <blog-post v-for="post in posts"
+                   v-bind:title="post.title"
+                   v-bind:key="post.id"
+        ></blog-post>
+    </div>
+    <script>
+        Vue.component('button-counter',{
+            //用函数来返回数据值，这些值每个组件单独维护
+            data:function (){
+                    return {count:0}
+            },
+            template:'<button v-on:click="count++">你点击了{{count}}次</button>'
+        })
+        Vue.component('blog-post',{
+            // 自定义属性
+            props:['title'],
+            //组件模板，只能只有一个根节点，当多个元素的时候要用一个元素来包裹它们
+            template:'<p>{{title}}</p>'
+        })
+        var app1=new Vue({
+            el:'#app1'
+        })
+        var app2=new Vue({
+            el:'#app2',
+            data:{
+                posts:[
+                {id:1,title:"My journey with Vue"},
+                {id:2,title:"Blogging with Vue"},
+                {id:3,title:"Why Vue is so fun"}
+                ]
+            }   
+        })
+
+    </script>
+</body>
+</html>

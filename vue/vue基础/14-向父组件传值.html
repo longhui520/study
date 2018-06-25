@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>向父组件传值</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="blog-posts-events-demo">
+        <div v-bind:style="{fontSize:postFontSize+'em'}">
+            <blog-post
+            v-for=" post in posts"
+            v-bind:post="post"
+            v-bind:key="post.id"
+            v-on:enlarge-text="postFontSize +=$event"
+            ></blog-post>
+        </div>
+        <div v-bind:style="{fontSize:postFontSize+'em'}">
+                <blog-post
+                v-for=" post in posts"
+                v-bind:post="post"
+                v-bind:key="post.id"
+                v-on:enlarge-text="enlargeAmount"
+                ></blog-post>
+            </div>
+       
+    </div>
+    <script>
+        Vue.component('blog-post',{
+            props:['post'],
+            template:`
+                <div class="blog-post">
+                    <h3>{{post.title}}</h3>
+                    <button v-on:click="$emit('enlarge-text',0.1)"> Enlarge text</button>
+                    <div v-html="post.content"></div>
+                </div>
+            `
+        })
+        var blog=new Vue({
+            el:'#blog-posts-events-demo',
+            data:{
+                posts:[
+                    {id:1,title:"My journey with Vue",content:'内容待添加'},
+                    {id:1,title:"My journey with Vue",content:'内容待添加'},
+                    {id:1,title:"My journey with Vue",content:'内容待添加'}
+                ],
+                postFontSize:1
+            },
+            methods:{
+                enlargeAmount(Amount){
+                    this.postFontSize=this.postFontSize+Amount
+                }
+            }
+        })
+        //总结，在组件的子组件中注册定义事件，在组件中绑定事件，就可以改变其组件的父级的data数据
+    </script>
+</body>
+</html>

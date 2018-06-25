@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model在组件上的应用</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <myinput v-model="text"></myinput>
+    </div>
+    <script>
+        Vue.component('myinput',{
+            props:['value'],
+            template:`
+                <div class="myinput">
+                    <p>{{value}}</p>
+                    <input v-bind:value="value"
+                           v-on:input="$emit('input',$event.target.value)"
+                           />
+                </div>
+            `
+        })
+        var app= new Vue({
+            el:'#app',
+            data:{
+                text:'nihao'
+            }
+        })
+    </script>
+</body>
+</html>
