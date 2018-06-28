@@ -1,60 +1,366 @@
+/* 关于我们 */
 .top-bar {
     opacity: 1;
 }
 .top-bar .logo-black{
     position: absolute;
-    width:100%;
+    /* width:100%; */
     top:23px;
-    opacity: 0;
+    left:50%;
+    transform: translate(-50%,0);
+    opacity: 1;
     z-index: -1;
     transition: all .5s;
 }
-.top-bar .onelist .search{
-    float:right;
-    height: 51px;
-    overflow: hidden;
-    padding-right: 40px;
-    transition: all .5s;
+.page-name{
+    height:200px;
+    background: #d7faff;
+    text-align: center;
 }
-.top-bar .onelist .search input{
-    width:280px;
-    height: 45px;
-    border:1px solid #bbb;
-    border-radius: 23px;
-    background-color: rgba(0,0,0,0);
-    outline: none;
-    text-indent: 20px;
+.page-name p{
+    font-size:32px;
+    padding-top:120px;
+}
+.about-me .banner img {
+    width:100%;
+}
+.about-me .content{
+    padding-top:80px;
+    padding-left: 60px;
+}
+.about-me .content div{
+    padding:0;
+}
+.about-me .content .left-img img{
+    width:100%;
+}
+.about-me .content .text-box {
+    padding-left:90px;
+    padding-top:35px;
+    padding-right: 110px;
+    line-height: 40px;
+    font-size: 26px;
+}
+.about-me .content .text-box .text1 {
+    margin-bottom: 50px;
+}
+.about-me .content .text-box .text2{
+    font-size:36px;
+    font-weight: 700;
+    line-height: 50px;
+}
+/* 产品底部 */
+.product-foot {
+    background: #e3e3e3;
+    padding:35px 60px;
+}
+.product-foot .left-side{
+    border-left: 4px solid #a8a8a8;
+}
+.product-foot .right-side{
+    text-align: right;
+    border-right: 4px solid #a8a8a8;
+}
+.product-foot p.title{
     font-size: 18px;
-    display: block;
-    float:left;
-    margin-right: auto;
-    transition: all .5s;
+    line-height: 25px;
+    color:#222222;
+    margin-bottom: 25px;
 }
-.top-bar .onelist .search img{
-    margin-top:10px;
-    margin-left:-50px;
-    cursor: pointer;
-    transition: all .5s;
-}
-.top-bar .onelist .search p {
-    display: none;
-    transition: all .5s;
-    color: #626262;
-}
-
-.top-bar .onelist .re-search input{
-    width:0;
-    border:0;
-}
-.top-bar .onelist .re-search img{
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-}
-.top-bar .onelist .re-search p{
-    padding-top: 2px;
+.producnt-foot p:not(:first-child){
     font-size: 14px;
-    display: inline-block;
-    color: #626262;
+    color:#636363;
+    line-height: 20px;
+}
+/* ********************************** */
+/* ***************项目介绍************ */
+.project img{
+    width: 100%;
+}
+.project .row {
+    padding:40px 60px 85px;
+}
+.project .left-img,.project .right-side{
+    padding:0;
+}
+.project .right-side p{
+    margin-top:70px;
+    line-height: 55px;
+    margin-left: 100px;
+    height: 370px;
+    font-size: 32px;
+    color:#4f4f4f;
+}
+/* 产品系列 */
+.product-s {
+    padding:0;
+}
+.product-s .big-box{
+    padding:40px 40px 85px 60px;
+}
+.product-s .big-box>div:not(:last-child){
+    margin-bottom: 10px;
+}
+.product-s .big-box .product-i {
+    padding-left: 0;
+    padding-right:20px;
 }
 
+.product-s .big-box .product-i .content{
+   position: relative;
+   overflow: hidden;
+}
+.product-s .big-box .product-i .content>img{
+   width: 100%;
+}
+.bottom-bar {
+    position: absolute;
+    height: 100px;
+    bottom: -100px;
+    width:100%;
+    background: rgba(255,255,255,0.9);
+    padding:20px 30px 8px 21px;
+    transition: all 0.5s;
+}
+.product-s .big-box :hover>.bottom-bar{
+    bottom:0;
+}
+.bottom-bar .bar-main {
+    border-left:4px solid #ccc;
+    padding-left:20px;
+    height: 70px;
+    position: relative;
+}
+.bottom-bar .bar-main .product-name {
+    font-size: 32px;
+    color:#4f4f4f;
+    margin-bottom: 3px;
+    line-height: 35px;
+}
+.bottom-bar .bar-main .short-bar{
+    width:48px;
+    border-top:1px solid #c1c1c1;
+}
+.bottom-bar .bar-main .product-description {
+    margin-top:8px;
+    font-size: 16px;
+    color:#868584;
+}
+.bottom-bar .bar-main .img-box {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    right: 0;
+    top:15px;
+}
+.img-box .share{
+    margin-left:25px;
+}
+/* 产品描述 */
+.product-d {
+    position: relative;
+}
+.product-d .big-img {
+    padding-right: 100px;
+}
+.product-d .big-img img{
+    width:100%;
+}
+/* 右侧条 */
+.right-bar{
+    width:700px;
+    height:100%;
+    position: absolute;
+    top:0;
+    right:-600px;
+    background-color: #f6efea;
+    transition: all 0.9s;
+}
+.right-bar .left-box{
+    width:100px;
+    height: 100%;
+    float:left;
+    overflow: hidden;
+}
+.right-bar .left-box .text-box{
+    width:40px;
+    margin:250px auto 0 auto ;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s;
+}
+.right-bar .left-box .text-box .short-bar{
+    width:40px;
+    height:3px;
+    background-color: #5e1b0e;
+    transition: all 1s;
+
+}
+.right-bar .left-box .text-box .chinese{
+    font-size: 30px;
+    line-height: 32px;
+    padding-top: 28px;
+    color:#6b2408;
+}
+.right-bar .left-box .text-box .english{
+    font-size:40px;
+    line-height: 42px;
+    margin-top:-60px;
+    transform: rotate(90deg);
+    opacity: 0.3;
+    /* 字母之间的间隙 */
+    letter-spacing: -3px;
+    color: #f9d5c7;
+}
+.right-bar .left-box .text-box .chinese.close{
+   display: none;
+}
+/* 右侧显示切换类 */
+.right-show .right-bar{
+    right:0;
+}
+.right-show .right-bar .left-box{
+    width:80px;
+}
+.right-show .right-bar .left-box .text-box{
+    margin:390px 0 0 20px;
+}
+.right-show .right-bar .left-box .text-box .short-bar{
+    width: 3px;
+    height: 40px;
+    background-color: #a0a0a0;
+    margin:0 auto;
+
+}
+.right-show .right-bar .left-box .text-box .english{
+    display:none;
+}
+.right-show .right-bar .left-box .text-box .open{
+    display:none;
+}
+.right-show .right-bar .left-box .text-box .close{
+    display:block;
+    padding-top: 20px;
+    color: #a0a0a0;
+}
+/* **************** */
+.right-bar .article {
+    float:left;
+    width:600px;
+    height: 100%;
+}
+.right-bar .article-short-bar{
+    width:60px;
+    height:6px;
+    background: #606060;
+    margin-top:80px;
+    margin-bottom: 30px;
+}
+.right-bar .title-box{
+   margin-bottom: 60px;
+}
+.right-bar .title-box .chinese-title{
+    font-size:50px;
+    line-height: 60px;
+}
+.right-bar .title-box .english-title{
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 7px;
+}
+.right-bar .content-box{
+    margin-left:60px;
+}
+.bd{border-bottom: 1px solid #ccc;}
+.right-bar .content-box .section{
+    margin-bottom: 10px;
+}
+.right-bar .content-box .section .section-title{
+    font-size: 28px;
+    line-height: 40px;
+}
+.right-bar .content-box .section .section-content{
+    padding:20px 0;
+    font-size: 16px;
+    line-height: 30px;
+}
+/* 联系我们 */
+.map {
+    margin:40px 45px;
+}
+.contact-us {
+    margin:0 40px 70px;
+}
+.contact-us>div{
+    padding:0;
+}
+.contact-us .left-side,.contact-us .right-side{
+    border-bottom:1px solid #ccc;
+    height:611px;
+}
+.contact-us .left-side .title{
+    height:40px;
+    border-left:4px solid #737373;
+    font-size:34px;
+    line-height: 40px;
+    color:#5b5b5b;
+    padding-left:12px;
+}
+.contact-us .left-side .content{
+    margin-top:35px;
+
+}
+.contact-us .left-side .content p{
+    line-height: 50px;
+    font-size: 28px;
+    color:#5b5b5b;
+    padding-left:15px;
+}
+.contact-us .left-side .erweima-box{
+    margin-top:40px;
+    width:194px;
+    height:194px;
+    margin-left:15px;
+    padding:15px;
+    border:1px solid #ccc;
+    margin-bottom: 45px;
+}
+.contact-us .left-side .erweima-box img{
+    width:164px;
+    height:164px;
+}
+/* 右侧 */
+.right-side{}
+.right-side textarea{
+    margin-top:80px;
+    margin-left:60px;
+    width:810px;
+    height: 300px;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    padding:5px;
+    font-size: 16px;
+}
+.right-side textarea::placeholder{
+    padding-top:120px;
+    text-align: center;
+    font-size: 28px;
+    color:#d6d6d6;
+
+}
+.right-side .button{
+    float: right;
+    width:300px;
+    height: 55px;
+    border-radius: 55px;;
+    background: #929292;
+    text-align: center;
+    line-height: 55px;
+    font-size: 28px;
+    color: #fff;
+    margin-top:55px;
+    margin-right:12px;
+    box-shadow: 7px 10px 1px #ccc;
+}

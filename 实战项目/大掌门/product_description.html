@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About me</title>
+    <title>product description</title>
     <script src="lib/jquery-1.11.1.js"></script>
     <script src="lib/bootstrap.js"></script>
     <link rel="stylesheet" href="css/public.css">
@@ -63,49 +63,56 @@
     </div>
     <!-- 页面名字-->
     <div class="page-name">
-        <p>关于我们</p>
+        <p>产品描述</p>
     </div>
-    <!-- bootstrap 全屏流 -->
-    <div class="about-me container-fluid">
-        <div class="row banner">
-            <img src="images//about_banner.png" alt="">
+    <!-- 产品描述 -->
+    <div class="product-d container-fluild">
+        <div class="big-img">
+            <img src="images/big_img1.png" alt="">
         </div>
-        <div class="row content ">
-            <div class="col-lg-6 left-img">
-                <img src="images/about_img.png" alt="">
-            </div>
-            <div class="col-lg-6 text-box">
-                <p class="text1">在2018年成立重庆益百易餐饮管理有限公司，并在重庆沙坪坝三峡广场立海大厦24楼B3开设了办公点。公司旗下品牌“大掌门”创建于2014年，是一家专注于做爪爪的特色小吃专卖店。</p>
-                <p class="text2">公司文化</p>
-                <p class="culture">发展目标：立志成为全国特色鸡爪小吃品牌连锁店。</p>
-                <p class="culture">公司宗旨：专注极致做产品，一心一意为顾客服务。</p>
-                <p class="culture">经营理念：打造纯手工、无添加剂安全卫生的绿色休闲食品。</p>
-                <p class="culture">管理理念：做有益于群体的事，我们的发展才更容易。</p>
-            </div>
-        </div>
-    </div>
-    <!-- 产品 -->
-    <div class="product-foot container-fluid">
-        <div class="row">
-            <div class="col-lg-6 left-side">
-                <div class="left-box">
-                    <p class="foot-left title">益百易 重庆</p>
-                    <p>版权所有 2018-2022益百易（WWW.YIBAIYI.CN</p>
-                    <p>COPYRIGHT © 2018-2022 WWW.SJ</p>
-                    <p>ALL RIGHTS RESERVED</p>
-                    <p>渝ICP备09042739号-1</p>
+        <div class="right-bar">
+            <div class="left-box">
+                <div class="text-box">
+                    <div class="short-bar"></div>
+                    <p class="chinese open">工艺</p>
+                    <p class="english">PROCESS</p>
+                    <p class="chinese close">关闭</p>
                 </div>
             </div>
-            <div class="col-lg-6 right-side">
-                <div class="right-box">
-                    <P class="foot-right title">享受美味</P>
-                    <P>平淡，不是最佳道路；</P>
-                    <P>有味，才有丰富人生。</P>
-                    <P>订阅益百易微信公众号，</P>
-                    <P>多种福利送不停</P>
+            <!-- 右侧文章 -->
+            <div class="article" >
+                <div class="article-short-bar"></div>
+                <div class="title-box">
+                    <p class="chinese-title">用心制作每一个鸡爪</p>
+                    <p class="english-title">ELABORATE CRAFTSMANSHIP</p>
+                </div>
+                <div class="content-box">
+                    <div class="section">
+                        <div class="section-title bd">最新的</div>
+                        <div class="section-content bd">泡椒凤爪是近年来最为流行的小吃之一。以麻辣有滋、皮韧肉香而著称。 泡椒凤爪既能登大雅之堂，也为普通老百姓所喜爱。此款美食具有开</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title bd">制作工艺</div>
+                        <div class="section-content bd">成都是泡椒凤爪的发源地。几乎每一个风味卤菜拌菜店具有自制泡椒 凤爪出售。尤其以老坛泡菜水泡出的凤爪最为鲜美入味。绵竹清道脱骨 </div>
+                    </div>
+                    <!-- <div class="section">
+                        <div class="section-title">营养成分</div>
+                        <div class="section-content"></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">注意事项</div>
+                        <div class="section-content"></div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(function(){
+            $('.text-box').on('click',function(){
+                $('.product-d').toggleClass('right-show')
+            })
+        })
+    </script>
 </body>
 </html>

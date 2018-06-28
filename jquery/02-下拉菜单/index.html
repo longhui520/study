@@ -58,10 +58,10 @@
       //mouseleave：鼠标离开事件
       let  $li=$('.wrap>ul>li')
       $li.mouseover(function(){
-        $(this).children('ul').show()
+        $(this).children('ul').stop().show(200)
       })
       $li.mouseout(function(){
-        $(this).children('ul').hide()
+        $(this).children('ul').stop().hide(200)
       })
       
       

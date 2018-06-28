@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        //组件是可复用的vue实例
+        // 利用事件把子组件信息传给父组件(在一个通过new vue实例中用时，我们定义的组件可看做父组件
+        //与 new Vue的管理的el元素中普通html等同，可以直接使用 new Vue 的数据)
+        // 在子组件模版中注册一个事件，其事件处理函数是自定义一个事件$emit(eventName,throwValue)
+        //组件使用时，绑定子组件自定义的事件，当子组件触发了事件，就会立即抛出事件和事件值
+        //父组件触发子组件定义的事件，执行处理函数(子组件抛出的值通过$event来访问)
+        //v-model 等同 v-bind:value=dataValue(实例中的一个值)v-bind:input="dataValue=$event.target.value"
+        //在自定义组件中等同 v-bind:value=value v-bind:eventName=$emit('eventName',$event.target.value)
+        //value 为props属性
+        //全局注册，在注册后的实例或组件中都能使用，
+        //局部注册，在实例中添加组件后能使用
+        //1.创建构造器
+        var child=Vue.extend({
+            template:'<h1>123</h1>'
+        })
+        new child().$mount('#app')
+        //2.全局注册和局部注册
+        Vue.myComponent('parent',child)
+        var aa=Vue.extend({
+            template:'...',
+            components:{
+                'child':child
+            }
+        })
+        //注册语法糖
+        //<template id="ss"><h1>123</h1></template>
+
+    </script>
+</body>
+</html>

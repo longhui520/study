@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="lib/swiper/js/swiper.jquery.min.js"></script>
+    <script src="js/public.js"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -27,14 +28,11 @@
                     <img src="images/icon-shop.png" alt="">
                     <p>商店</p>
                 </div>
-                <form action="">
-                    <div class="search">
-                        <input  type="text">
-                        <button>
-                            <img src="images/icon-search.png" alt="">
-                        </button>
-                    </div>
-                </form>
+                <div class="search re-search">
+                    <input  type="text">
+                    <img src="images/icon-search.png" alt="">
+                    <p>搜索</p>
+                 </div>
             </div>  
         </div>
     </div>
@@ -105,5 +103,14 @@
         </div>
     </div>
        
-     
+    <script>
+        /*swiper插件轮播启动*/
+    new Swiper('.swiper-container',{
+        autoplay:3000,
+        loop:true,
+        pagination:'.swiper-pagination',
+        autoplayDisableOnInteraction:false
+    });
+    /******************************** */
+    </script> 
 </html>

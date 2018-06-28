@@ -59,7 +59,7 @@ body {
     height: 120px;
     width: 100%;
     background-color: #d7faff;
-    position: absolute;
+    position: fixed;
     z-index:99;
     padding-top:37px;
     overflow: hidden;
@@ -76,29 +76,53 @@ body {
     float:right;
     cursor: pointer;
 }
-.top-bar .onelist form {
+.top-bar .onelist .search{
     float:right;
-}
-.top-bar .onelist .search {
-    position: relative;
+    height: 51px;
+    overflow: hidden;
+    padding-right: 40px;
+    transition: all .5s;
 }
 .top-bar .onelist .search input{
-    display:block;
-    width: 280px;
+    width:280px;
     height: 45px;
-    border:1px solid #bbbbbb;
-    border-radius: 45px;
-    margin-right: 10px;
-    background-color: transparent;
+    border:1px solid #bbb;
+    border-radius: 23px;
+    background-color: rgba(0,0,0,0);
+    outline: none;
     text-indent: 20px;
     font-size: 18px;
+    display: block;
+    float:left;
+    margin-right: auto;
+    transition: all .5s;
 }
-.top-bar .onelist .search button{
-    position: absolute;
-    display:block;
-    right: 20px;
-    top: 10px;
-    background-color:transparent;
+.top-bar .onelist .search img{
+    margin-top:10px;
+    margin-left:-50px;
+    cursor: pointer;
+    transition: all .5s;
+}
+.top-bar .onelist .search p {
+    display: none;
+    transition: all .5s;
+    color: #626262;
+}
+
+.top-bar .onelist .re-search input{
+    width:0;
+    border:0;
+}
+.top-bar .onelist .re-search img{
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.top-bar .onelist .re-search p{
+    padding-top: 4px;
+    font-size: 14px;
+    display: inline-block;
+    color: #626262;
 }
 /* 小圆点伪类 */
 .circle{

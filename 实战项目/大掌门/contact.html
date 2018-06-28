@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>product list</title>
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="css/others.css">
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="js/public.js"></script>
+</head>
+<body>
+    <!-- 顶部 -->
+    <div class="top-bar">
+        <div class="logo logo-black">
+            <img src="images/logo_black.png" alt="">
+        </div>
+        <div class="onelist">
+            <div class="menu">
+                <img src="images/icon-menu.png" alt="">
+                <P>菜单</P>
+            </div>
+            <div class="shop">
+                <img src="images/icon-shop.png" alt="">
+                <p>商城</p>
+            </div>
+            <div class="search re-search">
+                <input type="text">
+                <img src="images/icon-search.png" alt="">
+                <p>搜索</p>  
+            </div>
+        </div>
+    </div>
+     <!-- 左侧导航 -->
+     <div class="left-nav" style="left:-350px;">
+            <div class="menu">
+                <img src="images/icon-menu.png" alt="">
+                <p>菜单</p>
+            </div>
+            <div class="main-nav">
+                <ul>
+                    <li><a class="circle" href="#">返回首页</a></li>
+                    <li><a class="circle" href="#">掌门美食</a></li>
+                    <li><a class="circle" href="#">店面展示</a></li>
+                    <li><a class="circle" href="#">项目介绍</a></li>
+                    <li><a class="circle" href="#">掌门社区</a></li>
+                    <li><a class="circle" href="#">新闻资讯</a></li>
+                    <li><a class="circle" href="#">关于我们</a></li>
+                    <li><a class="circle" href="#">人才招聘</a></li>
+                    <li><a class="circle" href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="three-line"></div>
+            <div class="bottom-box">
+                <p class="name">宜百易</p>
+                <div class="short-bar"></div>
+                <p class="record-number">Copyright 2018益百易 渝ICP备18005769号-2</p>
+            </div>
+    </div>
+    <!-- 页面名字-->
+    <div class="page-name">
+        <p>联系我们</p>
+    </div>
+   <!-- 地图 -->
+     <div class="contact container-fluid">
+        <div class="map">
+            <div id="baidu-map" class="baidu-map" style="height:500px;"></div>
+        </div>
+        <div class="contact-us row">
+            <div class="left-side col-lg-6">
+                <div class="title"><p>联系我们</p></div>
+                <div class="content">
+                    <p>公司名称：重庆百易餐饮管理有限公司</p>
+                    <p>公司电话：023-6581 7629</p>
+                    <p>电子邮箱：重庆市沙坪坝区三峡广场立海大夏 24-B3</p>
+                    <p>店铺地址：重庆市沙坪区正街39号附22-1</p>
+                </div>
+                <div class="erweima-box">
+                    <img src="images/erweima.png" alt="">
+                </div>
+            </div>
+            <div class="right-side col-lg-6">
+                <textarea name="message" id="" cols="30" rows="10" placeholder="有任何意见和建议请留言"></textarea>
+                <div class="button">提交</div>
+            </div>
+        </div>
+     </div>   
+    </div>
+     <!-- 产品 底部-->
+     <div class="product-foot container-fluid">
+            <div class="row">
+                <div class="col-lg-6 left-side">
+                    <div class="left-box">
+                        <p class="foot-left title">益百易 重庆</p>
+                        <p>版权所有 2018-2022益百易（WWW.YIBAIYI.CN</p>
+                        <p>COPYRIGHT © 2018-2022 WWW.SJ</p>
+                        <p>ALL RIGHTS RESERVED</p>
+                        <p>渝ICP备09042739号-1</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 right-side">
+                    <div class="right-box">
+                        <P class="foot-right title">享受美味</P>
+                        <P>平淡，不是最佳道路；</P>
+                        <P>有味，才有丰富人生。</P>
+                        <P>订阅益百易微信公众号，</P>
+                        <P>多种福利送不停</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=1u0LjVIAYyvysGGzGLQRMXgfbXAzWC6t"></script>
+        <script type="text/javascript">
+			var map = new BMap.Map("baidu-map");          // 创建地图实例  
+			var point = new BMap.Point(106.468597,29.56565);  // 创建点坐标  
+			var marker = new BMap.Marker(point); 
+			map.centerAndZoom(point, 20);                 // 初始化地图，设置中心点坐标和地图级别  
+			map.addOverlay(marker);           
+			map.enableScrollWheelZoom(true); 
+			map.addControl(new BMap.NavigationControl());    
+			map.addControl(new BMap.ScaleControl());    
+			map.addControl(new BMap.OverviewMapControl());    
+			map.addControl(new BMap.MapTypeControl());    
+		</script>
+
+</body>
+</html>
