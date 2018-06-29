@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父组件访问子组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <parent-component></parent-component>
+</div>
+
+<template id="parent-component">
+    <div class="parent">
+        <child-component1></child-component1>
+        <child-component2></child-component2>
+        <button v-on:click="showChildComponentData">显示子组件的数据</button>
+    </div>
+</template>
+
+<template id="child-component1">
+    <h2>This is child component 1</h2>
+</template>
+
+<template id="child-component2">
+    <h2>This is child component 2</h2>
+</template>
+
+<script>
+    Vue.component('parent-component', {
+        template: '#parent-component',
+        components: {
+            'child-component1': {
+                template: '#child-component1',
+                data: function () {
+                    return {
+                        msg: 'child component 111111'
+                    }
+                }
+            },
+            'child-component2': {
+                template: '#child-component2',
+                data: function () {
+                    return {
+                        msg: 'child component 222222'
+                    }
+                }
+            }
+        },
+        methods: {
+            showChildComponentData: function () {
+                for (var i = 0; i < this.$children.length; i++) {
+                    alert(this.$children[i].msg)
+                }
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+
+</body>
+</html>

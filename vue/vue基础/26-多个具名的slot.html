@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多个具名的slot</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component>
+            <template slot="header">
+                <h1>我是头部</h1>
+            </template>
+            <template slot="main">
+                <div><p>我是主要内容</p></div>
+            </template>
+            <template slot="footer">
+                <p>我是底部</p>
+            </template>
+        </my-component>
+    </div>
+    <template id="mycomponent">
+        <div class="container">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <div>
+                <slot name="main"></slot>
+            </div>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    
+    </template>
+    <script>
+        var app= new Vue({
+            el:'#app',
+            components:{
+                'my-component':{
+                    template:'#mycomponent'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

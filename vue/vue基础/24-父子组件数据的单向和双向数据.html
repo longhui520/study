@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据双向数据绑定</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        table{
+            border-collapse: collapse;
+            margin:50px auto;
+        }
+        table th {
+            background: #42b983;
+        }
+        td{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table border="1" cellpadding="20" cellspacing="0">
+            <tr>
+                <th colspan="3">父组件数据</th>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>{{name}}</td>
+                <td>
+                    <input type="text" v-model="name">
+                </td>
+            </tr>
+            <tr>
+                <td>age</td>
+                <td>{{age}}</td>
+                <td>
+                    <input type="text" v-model="age">
+                </td>
+            </tr>
+        </table>
+        <my-component v-bind:myname.sync="name" v-bind:myage.sync="age"></my-component>
+       
+    </div>
+    <template id="temp">
+            <table border="1" cellpadding="20" cellspacing="0">
+                <tr>
+                    <th colspan="3">子组件数据</th>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>{{myname}}</td>
+                    <td>
+                        <input type="text" v-model="myname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>{{myage}}</td>
+                    <td>
+                        <input type="text" v-model="myage">
+                    </td>
+                </tr>
+            </table>
+    </template>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                name:'joke',
+                age: 25
+            },
+            components:{
+               'my-component':{
+                template:'#temp',
+                 props:['myname','myage']
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
