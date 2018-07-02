@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue混入</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script>
+        // var mixin={ 
+        //     data:{
+        //         function(){
+        //             return {
+        //                 message:'hello',
+        //                 foo:'abc'
+        //         }
+        //     }
+        // }
+        // new Vue({
+        //     el:'#app',
+        //     mixins:[mixin],
+        //     data:function(){
+        //         return{
+        //             message:'goodbye',
+        //             bar:'def'
+        //         }
+        //     },
+        //     created: function(){
+        //         console.log(this.$data)v
+        //     }
+        // })
+            var mixin = {
+                created: function () {
+                    console.log('混入对象的钩子被调用')
+                }
+            }
+
+            new Vue({
+                mixins: [mixin],
+                created: function () {
+                    console.log('组件钩子被调用')
+                }
+            })
+
+    </script>
+</body>
+</html>

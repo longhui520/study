@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>max-height用于竖直折叠动画</title>
+    <style>
+        .container{
+            width:1200px;
+            margin:300px auto 0;
+        }
+        .box1{
+            width:150px;
+            margin:100px auto 0;
+            border:1px solid orange;
+            text-align: center;
+            overflow: hidden;
+        }
+        .box1 div{
+            max-height: 0;
+            transition: all 3s;
+        }
+        div.zhedie{
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+           <p id="pc">点击展开</p>
+           <div id="zhedie">这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字</div>
+        </div>
+    </div>
+    <div><span style="display: inline-block;"></span></div>
+    <img>
+    <script>
+        var p=document.getElementById('pc')
+        var zhedie=document.getElementById('zhedie')
+        p.onclick=function(){
+            if(zhedie.className=='zhedie'){
+                zhedie.className=''
+            }else{
+                zhedie.className='zhedie'
+            }
+        }
+    </script>
+</body>
+</html>

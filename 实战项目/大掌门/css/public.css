@@ -76,6 +76,9 @@ body {
     float:right;
     cursor: pointer;
 }
+.top-bar .onelist .shop p{
+    padding-top: 4px;
+} 
 .top-bar .onelist .search{
     float:right;
     height: 51px;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>align-item</title>
+    <style>
+        .items{
+            display:flex;
+            width:500px;
+            border:1px solid #ccc;
+            margin:100px auto 0;
+            flex-wrap: wrap;
+        }
+        .items>div{
+          
+           padding:10px;
+           margin:10px; 
+        }
+        .item1{
+            flex-grow: 1;
+            background-color: #f00;
+        }
+        .item2{
+            flex-grow: 2;
+            background-color: #0f0;
+        }
+        .item3{
+            flex-grow: 1;
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="items">
+        <div class="item1">111</div>
+        <div class="item2">111</div>
+        <div class="item3">222</div>
+    </div>
+</body>
+</html>
