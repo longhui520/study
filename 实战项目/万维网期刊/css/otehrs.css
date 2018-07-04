@@ -1,0 +1,164 @@
+html,body{
+    height: 100%;
+}
+body {
+    overflow: hidden;
+}
+/* 登陆页面样式 */
+.big-box{
+    height: 100%;
+    background-image: url(../images/bg-login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.position-box{
+    width:725px;
+    position: absolute;
+    left:50%;
+    top:10%;
+    transform: translate(-50%,0%);
+    background-color: #fff;
+}
+.login-box{
+    background-color: #fff;
+    padding:50px 100px 0;
+    border-radius: 10px 10px 0 0;
+}
+.login-box ul li {
+    float:left;
+    width:50%;
+    text-align: center;
+}
+.login-box ul li a{
+    font-size: 30px;
+    color:#bbbbbb;
+    text-decoration: none;
+}
+.login-box .tab-content form>div{
+    margin-bottom: 40px;
+}
+.login-box .tab-content form>div>input{
+    height: 70px;
+    font-size: 20px;
+}
+.btn-custom{
+    background-color: #1577e4;
+}
+.login-btn{
+    font-size: 30px;
+    color:#fff;
+}
+.login-box .title .active>a{
+    color:#000;
+}
+.login-box .forget-pas{
+    margin-top:-30px;
+    padding-bottom: 60px;
+    font-size: 20px;
+    color:#a7a7a7;
+    vertical-align: middle;
+}
+.login-box .forget-pas>a{
+    color:#a7a7a7;
+}
+.login-box .forget-pas>input{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    outline: none;
+    vertical-align: middle;
+    margin-top:-6px;
+    cursor: pointer;
+}
+.login-box .forget-pas>label{
+    vertical-align: middle;
+}
+.big-box .register-box .register{
+    display: block;
+    width:100%;
+    line-height: 85px;
+    text-decoration: none;
+    font-size: 24px;
+    background-color: #000;
+    text-align: center;
+    color:#fff;
+}
+/* ************************************* */
+/* 注册页面 */
+.register{
+    padding-left:100px;
+    padding-right: 100px;
+}
+.register h1{
+    margin-top:25px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color:#333333;
+    text-align: center;
+}
+.register>div{
+    height: 110px;
+}
+.register input{
+    height: 70px;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-right: 30px;
+}
+.register input.long{
+    width:100%;
+    border:1px solid #d4d4d4;
+    text-indent: 1em;
+}
+.register input.mess-ver{
+    border:1px solid #d4d4d4;
+    width:330px; text-indent: 1em;
+}
+.register input.get-ver{
+    width:182px;
+    float:right;
+    background-color: #1577e4;
+}
+.register input:focus{
+    border-color: #1577e4;
+}
+.register input.error{
+    border-color:#d81e06;
+}
+.register .yxzc {
+    float:right;
+    margin-top:10px;
+}
+.error-tips {
+    visibility: hidden;
+    visibility: 
+    padding:10px;
+}
+.error-tips img{
+    vertical-align: middle;
+}
+.error-tips span{
+    color:#d81e06;
+}
+.ok{
+    position: relative;
+}
+.ok::after{
+    position: absolute;
+    content: url(../images/icon-ok.png);
+    right: 8px;
+    top:   19px;
+}
+.registered a{
+    display: block;
+    width:100%;
+    line-height: 85px;
+    text-decoration: none;
+    font-size: 24px;
+    background-color: #000;
+    text-align: center;
+    color:#fff;
+}

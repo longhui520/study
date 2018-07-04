@@ -1,0 +1,67 @@
+.head{
+	background-color: #701723;
+}
+.head .logo{
+	padding-top:20px;
+	padding-bottom:20px; 
+}
+.head .logo>img{
+	max-width:400px;
+	width:100%;
+}
+.head .hotline{
+	padding-top:40px;
+	padding-bottom: 40px;
+}
+.head .hotline>img{
+	max-width:200px;
+	width:100%;
+}
+.head .middle .search {
+	height: 45px;
+	border-radius: 7px;
+	border:1px solid #ccc;
+	background-color: #fff;
+	overflow: hidden;
+	margin-top:39px;
+}
+.head .middle .search>input{
+	background-color: transparent;
+	width:90%;
+	line-height: 45px;
+	text-indent: 1em;
+}
+.head .middle .search>i{
+	font-size: 35px;
+	line-height: 45px;
+	color:#ccc;
+	cursor:pointer;
+}
+.head .middle nav{
+	margin-top:15px;
+}
+.head .middle nav ul{
+	margin-bottom: 0;
+	text-align: center;
+}
+.head .middle nav ul li{
+	display: inline-block;
+	padding-right:52px;
+}
+.head .middle nav ul li:last-child{
+	padding-right: 0;
+}
+.head .middle nav ul li a{
+	display: block;
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	color:#fff;
+	text-decoration: none;
+}
+.head .middle nav ul li a:hover{
+	
+	color:#e60012;
+	border-bottom:2px solid #e60012;
+}
+

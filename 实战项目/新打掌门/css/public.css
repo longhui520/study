@@ -1,0 +1,52 @@
+html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,nav{
+    margin: 0;
+    padding: 0;
+}
+html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span,nav{
+    box-sizing: border-box;
+}
+body{
+    font-size: 14px;
+}
+ul,ol{
+    list-style: none;
+}
+li {
+    list-style-type: none;
+}
+input{
+    outline: 0;
+    outline:none;
+    border:0;
+}
+a{
+    text-decoration: none;
+}
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.clearfix{*zoom:1;}
+.clearfix:after{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    content:'';
+    height:0;
+    line-height: 0;
+    visibility: hidden;
+}
+.vsl{
+    position: relative;
+}
+.vsl::after{
+    content:'';
+    display: block;
+    width:2px;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+    right: -29px;
+    top:15px;
+}

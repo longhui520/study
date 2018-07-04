@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>万维网期刊</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="lib/bootstrap.js"></script>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header-ind">
+        <div class="container">
+            <div class="row top-bar clearfix">
+               <h1 class="logo"><a href="#">万维网期刊</a></h1>
+               <div class="login-register">
+                   <a href="#" class="login">登陆</a>
+                   <span>|</span>
+                   <a href="#" class="register">注册</a>
+               </div>
+            </div>
+            <div class="row search">
+                <div class="search-box col-lg-10">
+                    <button type="button" class="btn dropdown-toggle my-btn" data-toggle="dropdown">
+                        <span class="buttonText">论文</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#" onclick="shows($(this).text())">论文</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="shows($(this).text())">期刊</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="shows($(this).text())">作者</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="shows($(this).text())">单位</a>
+                        </li>
+                    </ul>
+                    <input type="text" placeholder="请输入关键词">
+                </div>
+                <div class="search-submit col-lg-2">
+                    <button class="s-btn"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+        function shows(a) {
+            $('.buttonText').text(a)
+        }
+    </script>
+    <!-- 导航 -->
+    <nav class="nav-ind">
+        <div class="container">
+            <ul class="nav-inner clearfix">
+                <li><a href="#">教育类文献</a></li>
+                <li><a href="#">综合文献</a></li>
+                <li><a href="#">期刊联盟</a></li>
+                <li><a href="#">专利</a></li>
+                <li><a href="#">硕博</a></li>
+                <li><a href="#">云课堂</a></li>
+                <li><a href="#">课题</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 作者服务 -->
+    <div class="author-server">
+        <div class="container">
+            <div class="server-items">
+                <div class="item">
+                    <div class="item-left">
+                        <img src="images/icon-server-1.png" alt="">
+                        <p>上传文档</p>
+                    </div>
+                    <div class="item-right">
+                       <p>上传我的文献</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-left">
+                        <img src="images/icon-server-2.png" alt="">
+                        <p>投稿服务</p>
+                    </div>
+                    <div class="item-right">
+                        <p>用户自助投稿，以便
+                        投稿到相应杂志社</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-left">
+                        <img src="images/icon-server-3.png" alt="">
+                        <p>征稿信息</p>
+                    </div>
+                    <div class="item-right">
+                        <p>各杂志社提供的征稿
+                                信息</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-left">
+                        <img src="images/icon-server-4.png" alt="">
+                        <p>学者营</p>
+                    </div>
+                    <div class="item-right">
+                        <p>学者营知识点、领域
+                                的研究交流</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 最新文献 -->
+    <div class="new-doc">
+        <div class="container">
+            <div class="title">
+                <p><a href="">最新文献</a></p>
+            </div>
+            <div class="doc-classifys">
+                <div class="classify">
+                    <div class="classify-title">
+                        <p><a>教育类文献</a></p>
+                    </div>
+                    <div class="classify-content">
+                        <img src="images/new-doc_03.png" alt="">
+                        <ul>
+                            <li><a href="">公安机关受立案制度改革研究</a></li>
+                            <li><a href="">成长与规范：中国警察个人微信公众号发展研</a></li>
+                            <li><a href="">社会主义核心价值观融入法治公安建设全国程</a></li>
+                            <li><a href="">论治安咨询结构要素的现代性</a></li>
+                            <li><a href="">电动自行车交通安全法律规制研究</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="classify">
+                    <div class="classify-title">
+                        <p><a>教育类文献</a></p>
+                    </div>
+                    <div class="classify-content">
+                        <img src="images/new-doc_03.png" alt="">
+                        <ul>
+                            <li>
+                                <a href="">公安机关受立案制度改革研究</a>
+                            </li>
+                            <li>
+                                <a href="">成长与规范：中国警察个人微信公众号发展研</a>
+                            </li>
+                            <li>
+                                <a href="">社会主义核心价值观融入法治公安建设全国程</a>
+                            </li>
+                            <li>
+                                <a href="">论治安咨询结构要素的现代性</a>
+                            </li>
+                            <li>
+                                <a href="">电动自行车交通安全法律规制研究</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="classify">
+                    <div class="classify-title">
+                        <p><a>教育类文献</a></p>
+                    </div>
+                    <div class="classify-content">
+                            <img src="images/new-doc_03.png" alt="">
+                        <ul>
+                            <li>
+                                <a href="">公安机关受立案制度改革研究</a>
+                            </li>
+                            <li>
+                                <a href="">成长与规范：中国警察个人微信公众号发展研</a>
+                            </li>
+                            <li>
+                                <a href="">社会主义核心价值观融入法治公安建设全国程</a>
+                            </li>
+                            <li>
+                                <a href="">论治安咨询结构要素的现代性</a>
+                            </li>
+                            <li>
+                                <a href="">电动自行车交通安全法律规制研究</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 广告 -->
+    <div class="ad">
+        <div class="container">
+            <ul class="img-list">
+                <li><img src="images/ad-index_03.png" alt=""></li>
+                <li><img src="images/ad-index_05.png" alt=""></li>
+                <li><img src="images/ad-index_07.png" alt=""></li>
+                <li><img src="images/ad-index_09.png" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <footer class="foot">
+        <!-- 友情链接 -->
+        <div class="friend-link">
+            <div class="container">
+                <p class="link-title">友情链接</p>
+                <p class="links">
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                    <a href="">辉坛文学网</a>
+                </p>
+            </div>
+        </div>
+        <!-- 网站服务 -->
+        <div class="w-server">
+            <div class="container clearfix">
+                <div class="s-left">
+                    <ul class="s-s1">
+                        <li><a href="">关注我们</a></li>
+                        <li><a href="">服务承诺</a></li>
+                        <li><a href="">联系我们</a></li>
+                    </ul>
+                    <ul class="s-s1">
+                        <li><a href="">知识产权申明</a></li>
+                        <li><a href="">广告服务</a></li>
+                        <li><a href="">广告须知</a></li>
+                        <li><a href="">合作杂志</a></li>
+                    </ul>
+                    <ul class="s-s1">
+                        <li><a href="">使用帮助</a></li>
+                        <li><a href="">怎么充值?</a></li>
+                        <li><a href="">高级会员功能</a></li>
+                        <li><a href="">注册登录?</a></li>
+                    </ul>
+                </div>
+                <div class="s-right">
+                    <p class="number">010-56181807</p>
+                    <p class="s-time">周一至周五9:00-17:30</p>
+                </div>
+            </div>
+        </div>
+        <!-- 版权信息 -->
+        <div class="copyright">
+            <p>中国终身教育数据服务平台--中国终身教育学术研究中心课题组中教汇据（北京）科技有限公司京ICP备15058941号-1Copyright © 2013-2016 ZJHJ Corporation,All Rights Reserved</p>
+            <p>京ICP证161029</p>
+            <p>京公网安备 11011102000866号</p>
+        </div>
+    </footer>
+</body>
+</html>

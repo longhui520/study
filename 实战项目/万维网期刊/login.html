@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="css/otehrs.css">
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="lib/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container-fluid big-box">
+        <div class="position-box">
+            <div class="login-box">
+                <ul class="title clearfix">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">个人登陆</a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab">企业登陆</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="person-box tab-pane active" id="tab1">
+                        <form action="" name="person" method="post">
+                            <div class="username-box">
+                                <input id="person-name" class="username form-control" type="text" placeholder="手机号/邮箱/登陆名">
+                            </div>
+                            <div class="password-box">
+                                <input id="person-password" class="password form-control" type="password" placeholder="密码">
+                            </div>
+                            <div class="login-submit">
+                                <input class="login-btn btn btn-custom form-control" type="submit" value="登陆">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="company-box tab-pane" id="tab2">
+                        <form action="" name="company" method="post">
+                            <div class="username-box">
+                                <input id="company-name" class="username form-control" type="text" placeholder="企业账号">
+                            </div>
+                            <div class="password-box">
+                                <input id="company-password" class="password form-control" type="password" placeholder="密码">
+                            </div>
+                            <div class="login-submit">
+                                <input class="login-btn btn btn-custom form-control" type="submit" value="登陆">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="forget-pas">
+                    <a class="pull-right" href="#">忘记密码</a>
+                    <input type="checkbox">
+                    <label for="">记住密码</label>
+                </div>
+            </div>
+            <div class="register-box">
+                 <a class="register" href="">没有账号?注册</a>
+             </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>
