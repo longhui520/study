@@ -1,8 +1,8 @@
-html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,nav{
+html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,nav,header,footer{
     margin: 0;
     padding: 0;
 }
-html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span,nav{
+html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span,nav,header,footer{
     box-sizing: border-box;
 }
 body{
@@ -21,6 +21,10 @@ input{
 }
 a{
     text-decoration: none;
+}
+.container{
+    width: 1200px;
+    margin:0 auto;
 }
 .ellipsis{
     overflow: hidden;
@@ -50,3 +54,10 @@ a{
     right: -29px;
     top:15px;
 }
+.f-left{
+    float:left;
+}
+.f-left{
+    float:right;
+}
+

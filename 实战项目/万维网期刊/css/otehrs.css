@@ -1,9 +1,4 @@
-html,body{
-    height: 100%;
-}
-body {
-    overflow: hidden;
-}
+
 /* 登陆页面样式 */
 .big-box{
     height: 100%;
@@ -134,7 +129,6 @@ body {
 }
 .error-tips {
     visibility: hidden;
-    visibility: 
     padding:10px;
 }
 .error-tips img{
@@ -162,3 +156,284 @@ body {
     text-align: center;
     color:#fff;
 }
+/* 注册成功页面 */
+.zhezhao{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+}
+.position-box-s{
+    position: absolute;
+    left:50%;
+    top:20%;
+    transform: translate(-50%,0);
+    width:700px;
+}
+.r-s-b{
+    text-align:center;   
+}
+.r-s-b p{
+    
+    line-height: 50px;
+    color:#fff;
+    font-size: 30px;
+}
+.r-s-b button{
+    margin-top:20px;
+    border:0;
+    width:80%;
+    height: 80px;
+    background-color: #1577e4;
+    color:#fff;
+}
+.r-s-b button>a{
+    font-size: 30px;
+    color:#fff;
+}
+/* 个人中心 */
+.p-head{
+    height: 200px;
+    background-color: #3399ff;
+    padding-top:30px;
+}
+.p-head .logo{
+    width:385px;
+    float:left;
+}
+.p-head .h-right{
+    float:right;
+    margin-top:30px;
+    font-size: 24px;
+    color: #fff;
+    text-align: right;
+    color:#fff;
+}
+.p-head .h-right a{
+    color:#fff
+}
+.p-head .h-right span{
+    margin:0 15px;
+}
+
+.p-head .p-nav{
+   margin-top:45px;
+}
+/* 主内容 */
+.p-main{
+    margin-bottom: 60px;
+}
+/* 个人中心内容左侧 */
+.p-main .p-left-side{
+    float:left;
+    width:295px;
+    border: 1px solid #666666;
+}
+.p-info{
+    padding-left:20px;
+}
+.p-info .p-photo{
+    text-align: center;
+}
+.p-info .p-photo>img{
+    width:180px;
+    height: 180px;
+    margin-left:-20px;
+}
+.p-info .wk{
+    font-size:20px;
+    color:#333333;
+    margin-bottom: 30px;
+}
+.p-info .p-message{
+    font-size:20px;
+    color:#333333;
+    margin-bottom: 15px;
+}
+.p-info .account{
+    line-height: 35px;
+    padding-bottom: 15px;
+    color:#b0b0b0;
+    font-size: 18px;
+}
+.p-info .account .blance{
+    color:#ff5533;
+}
+.p-info .account .up-pay{
+    color:#333333;
+}
+.p-title{
+    padding-left:20px;
+    line-height: 75px;
+    border-bottom: 1px solid #666;
+    font-size: 20px;
+    border-top:1px solid #666;
+    border-bottom: 1px solid #666;
+    cursor: pointer;
+}
+.p-lists{
+    padding-left: 20px;
+    line-height: 45px;
+}
+.p-lists a{
+    color:#6eb0ff;
+}
+
+/* 向下的箭头 */
+.arrow-down{
+    position: relative;
+}
+.arrow-down::after{
+    display: block;
+    content:url(../images/arrow-down.png);
+    position: absolute;
+    right:15px;
+    top:0px;
+}
+/* 右侧 */
+.p-right-side {
+    padding-left:320px;
+}
+.p-right-side .p-ad{
+    height: 175px;
+    line-height: 175px;
+    text-align: center;
+    font-size: 100px;
+    background-color: #3399ff;
+    color:#fff;
+    margin-top:18px;
+    border-radius: 10px;
+}
+.p-right-side .station-mess{
+    background-color: #cde6ff;
+    margin-top:10px;
+    border:1px solid #3399ff;
+    border-radius: 10px;
+}
+.station-mess .s-m-title{
+    height: 58px;
+    border-bottom: 2px solid #fff;
+}
+.station-mess .s-m-title>div{
+    line-height: 58px;
+    float:left;
+    font-size: 14px;
+    color:#333333;
+}
+.station-mess .s-m-title>div>img{
+    vertical-align: -5px;
+}
+.s-m-m{
+    margin-left:350px;
+}
+.s-m-r{
+    margin-left:150px;
+}
+.a-blue{
+    color:#3399ff;
+}
+.s-m-content>.no-mess{
+    line-height: 75px;
+    text-align: center;
+}
+/* 底部 */
+.p-foot{
+    text-align: center;
+    padding-top:50px;
+    padding-bottom: 50px;
+    background-color: #d4d4d4;
+    line-height: 35px;
+    font-size: 20px;
+}
+.p-foot .p-friend-link a{
+    color:#525252;
+}
+.p-foot .p-friend-link>span{
+    margin-left:13px;
+    margin-right: 13px;
+}
+/* 最新期刊 */
+/* 最新期刊头部 */
+.l-head{
+    height: 190px;
+    background-color: #3399ff;
+    padding-top:20px;
+}
+.l-head .l-logo{
+    float:left;
+}
+.l-head .l-logo>img{
+    height: 50px;
+    width:250px;
+}
+.l-head .l-nav{
+    float:left;
+    margin-left:330px;
+}
+.l-head .top-bar a,.l-head .top-bar span{
+    font-size:24px;
+    color:#fff;
+}
+.l-head span {
+    margin:0 13px;
+}
+.l-head .l-login-register{
+    float:right;
+}
+.l-head .l-search-box{
+    margin-left: 225px;
+}
+.l-search-box>div{
+    display:inline-block;
+    vertical-align: middle;
+   
+}
+.l-search-box .l-search-way{
+    position: relative; 
+}
+.l-cur-way{
+    padding:0;
+    border:0;
+    margin:0;
+    padding-left:10px;
+    width:128px;
+    height: 65px;
+    background-color: #fff;
+    font-size:20px;
+    border-radius: 10px;
+}
+.l-input-box{
+    padding:0;
+    border:0;
+    width:600px;
+    line-height:65px;
+    background-color: #fff;
+}
+.l-input-box>input{
+    font-size: 20px;
+    text-indent: 2em;
+}
+.l-button-box>button {
+    padding:0;
+    border:0;
+    margin:0;
+    padding-left:10px;
+    width:114px;
+    height: 65px;
+    background-color: #fff;
+    font-size:20px;
+    border-radius: 10px;
+}
+/* 向下箭头 */
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    color:#515151;
+  }
+  /* 左侧 */
+  
