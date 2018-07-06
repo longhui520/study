@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>书籍目录</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        li{
+            list-style-type: none;
+            position: relative;
+        }
+        ul li div {
+            display: inline-block;
+            
+        }
+        .list-nap1{
+            max-width: 100px;       
+        }
+        .list-line {
+            border-top: 1px dashed #000;
+            position: absolute;
+            top: 11px;
+            margin: 0 5px;
+            width: 100%;
+        }
+    
+        .list-con1 {
+            position: absolute;
+            right: 0px;
+            padding: 0 5px;
+            z-index: 100;
+            text-align: right;
+            background: #fff;
+            padding-right: 80px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+      <li><div class="list-nap1">行驶12公里</div><div class="list-line"></div><div class="list-con1">25元</div></li>
+      <li><div class="list-nap1">时长30分钟</div><div class="list-line"></div><div class="list-con1">5元</div></li>
+      <li><div class="list-nap1">高速费/停车费</div><div class="list-line"></div><div class="list-con1">30元</div></li>
+      <li><div class="list-nap1">远途费</div><div class="list-line"></div><div class="list-con1">6元</div></li>
+      <li><div class="list-nap1">个人支付</div><div class="list-line"></div><div class="list-con1">30元</div></li>
+      <li><div class="list-nap1">企业支付</div><div class="list-line"></div><div class="list-con1">10元</div></li>
+    </ul>
+</body>
+</html>

@@ -1,8 +1,8 @@
-html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,nav,header,footer{
+html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,nav,header,footer,button,input{
     margin: 0;
     padding: 0;
 }
-html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span,nav,header,footer{
+html,body,div,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span,nav,header,footer,button,input{
     box-sizing: border-box;
 }
 body{

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .div_table{ display: table;}
+            .div_table_row{display: table-row;}
+            .div_table_cell{display: table-cell;}
+             
+            .ad_red{
+                color : #f74948;
+            }
+            div.div_table_cell {
+                border-top: 1px solid #f74948;
+                border-left: 1px solid #f74948;
+            }
+            /*类为div_table_cell的最后一个设置边线为红色*/
+            div.div_table_cell:last-child{
+                border-right: 1px solid #f74948;
+            }
+            /*类为div_table_row的最后一个下面的节点类为div_table_cell底边线为红色*/
+            div.div_table_row:last-child .div_table_cell{
+                border-bottom: 1px solid #f74948;
+            }
+            /*左上角为圆角，顺序依次是 上 右 下 左*/
+            .table_radius_top_left{
+                border-radius: 10px 0px 0px 0px;
+            }
+            /*右上角为圆角*/
+            .table_radius_top_right{
+                border-radius: 0px 10px 0px 0px;
+            }
+            /*左下角为圆角*/
+            .table_radius_bottom_left{
+                border-radius: 0px 0px 0px 10px;
+            }
+            /*右下角为圆角*/
+            .table_radius_bottom_right{
+                border-radius: 0px 0px 10px 0px;
+            }
+            </style>
+</head>
+<body>
+     
+     
+    <div class="div_table all_width margin_bottom_10">
+    	<div class="div_table_row">
+    		<div class="div_table_cell table_radius_top_left" >
+    			产品内容
+    		</div>
+    		<div class="div_table_cell">
+    			售价（元）
+    		</div>
+    		<div class="div_table_cell">
+    			服务内容
+    		</div>
+    		<div class="div_table_cell">
+    			使用要求
+    		</div>
+    		<div class="div_table_cell table_radius_top_right">
+    			活动政策
+    		</div>
+    	</div>
+    	<div class="div_table_row">
+    		<div class="div_table_cell">
+    			12小时保洁卡
+    		</div>
+    		<div class="div_table_cell">
+    			<span class="ad_red">336</span>元（28元/小时）
+    		</div>
+    		<div class="div_table_cell">
+    			12小时保洁服务
+    		</div>
+    		<div class="div_table_cell">
+    			3个月内有效
+    		</div>
+    		<div class="div_table_cell">
+    			平台通用券<br>共计<span class="ad_red">26</span>元
+    		</div>
+    	</div>
+    	<div class="div_table_row">
+    		<div class="div_table_cell">
+    			季度保洁卡
+    		</div>
+    		<div class="div_table_cell">
+    			<span class="ad_red">1008</span>元（28元/小时）
+    		</div>
+    		<div class="div_table_cell">
+    			36小时保洁服务
+    		</div>
+    		<div class="div_table_cell">
+    			6个月有效
+    		</div>
+    		<div class="div_table_cell">
+    			平台通用券共计<span class="ad_red">108</span>元
+    		</div>
+    	</div>
+    	<div class="div_table_row">
+    		<div class="div_table_cell table_radius_bottom_left">
+    			年度保洁卡
+    		</div>
+    		<div class="div_table_cell">
+    			<span class="ad_red">3744</span>元（26元/小时）
+    		</div>
+    		<div class="div_table_cell">
+    			144时保洁服务
+    		</div>
+    		<div class="div_table_cell">
+    			12个月内有效
+    		</div>
+    		<div class="div_table_cell table_radius_bottom_right ">
+    			平台通用券共计<span class="ad_red">288</span>元
+    		</div>
+    	</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员资料</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/otehrs.css">
+    <script src="lib/jquery-1.11.1.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="p-head">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div class="h-right">
+                <a href="#" class="p-email">7999769@qq.com</a>
+                <span>|</span>
+                <a href="#" class="login-out">退出</a>
+                <div class="p-nav">
+                    <a href="#">首页</a>
+                    <span>|</span>
+                    <a href="#">期刊</a>
+                    <span>|</span>
+                    <a href="#">文献</a>
+                    <span>|</span>
+                    <a href="#">论文</a>
+                    <span>|</span>
+                    <a href="#">我的</a>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    <!-- 主要区域 -->
+    <div class="p-main clearfix">
+        <div class="container">
+            <!-- 左部 -->
+            <div class="p-left-side">
+                <!-- 账户信息 -->
+                <div class="p-info">
+                    <div class="p-photo">
+                        <img src="images/p-phone.png" alt="">
+                    </div>
+                    <p class="wk">欢迎您79976379@qq.com</p>
+                    <p class="p-message">您有0条信息</p>
+                    <div class="account">
+                        <p>账户余额:
+                            <span class="blance">0.00</span>
+                            <a href="" class="up-pay">【充值】</a>
+                        </p>
+                        <p>阅读币:
+                            <span>0.00</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- 文献下载 -->
+                <div class="doc-download">
+                    <div class="p-title arrow-down">文献下载</div>
+                    <ul class="p-lists">
+                        <li> <a href="">下载记录</a></li>
+                        <li> <a href="">阅读包(购买)</a></li>
+                    </ul>
+                   
+                </div>
+                <!-- 消息中心 -->
+                <div class="message-center">
+                    <div class="p-title arrow-down">消息中心</div>
+                    <ul class="p-lists"></ul>
+                </div>
+                <!-- 系统设置 -->
+                <div class="system-setting">
+                    <div class="p-title arrow-down">系统设置</div>
+                    <ul class="p-lists">
+                        <li>
+                            <a href="">站内消息
+                                <span>(0条未读)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">个人资料</a>
+                        </li>
+                        <li>
+                            <a href="">账户明细</a>
+                        </li>
+                        <li>
+                            <a href="">充值记录</a>
+                        </li>
+                        <li>
+                            <a href="">收藏夹</a>
+                        </li>
+                        <li>
+                            <a href="">修改密码</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 右部 -->
+            <div class="p-right-side mb-r">
+               <div class="tabs">
+                   <button class="m-b-i active">会员资料</button>
+                   <button class="change-mm">修改密码</button>
+               </div>
+               <div class="m-s-content">
+                   <div class="r-e-a">
+                       <p>注册邮箱：799976379@qq.com     (不可修改)</p>
+                   </div>
+                   <div class="pet-name">
+                       <label for="">会员昵称:</label>
+                       <div class="inputs">
+                            <input type="text" value="799976379@qq.com">
+                       </div>
+                   </div>
+                   <div>
+                        <label for="">密保答案:</label>
+                        <div class="inputs">
+                            <input class="w310" type="text" value="">
+                        </div>
+                        <p class="tips"><img src="images/icon-tips.png" alt="">昵称可使用中文，用作账户登录，设置后不可修改，请认真填写，<a href="">检查是否重复</a></p>
+                    </div>
+                   <div>
+                        <label for="">性别:</label>
+                        <div class="inputs">
+                            <input type="text" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">出生日期:</label>
+                        <div class="inputs">
+                            <input class="w310"type="text" value=""><span>（格式：YYYY-MM-DD）</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">所属行业:</label>
+                       <div class="inputs">
+                            <input value="" list="list1" placeholder="请选择">
+                            <input class="w100" list="list1-1" placeholder="请选择">
+                            <datalist id="list1">
+                                <option value="计算机">计算机</option>
+                                <option value="土木">土木</option>
+                            </datalist>
+                            <datalist id="list1-1">
+                                <option value="C语言">C语言</option>
+                                <option value="javascript">javascript</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">学历背景:</label>
+                       <div class="inputs">
+                            <input value="" list="list2" class="w310" placeholder="请选择">
+                            <datalist id="list2">
+                                <option value="高中">高中</option>
+                                <option value="专科">专科</option>
+                                <option value="本科">本科</option>
+                            </datalist>
+                        </div>
+                    </div> 
+                    <div>
+                        <label for="">所属地区:</label>
+                      <div class="inputs">
+                            <input value="" list="list3" placeholder="所在省、直辖市、自治区" class="w310">
+                            <input value="" list="list3-1" placeholder="请选择" class="w100">
+                        </div>
+                         <datalist id="list3">
+                            <option value="北京">北京</option>
+                            <option value="天津">天津</option>
+                            <option value="上海">上海</option>
+                        </datalist>
+                         <datalist id="list3-1">
+                            <option value="朝阳区">朝阳区</option>
+                            <option value="东城区">东城区</option>
+                            <option value="西城区">西城区</option>
+                        </datalist>
+
+                    </div>
+                    <div>
+                        <label for="">MSN:</label>
+                    <div class="inputs">
+                            <input type="text" value="" class="w310">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">QQ:</label>
+                       <div class="inputs">
+                            <input type="text" value="">
+                        </div>
+                    </div>
+                    <div  class="select-photo-box clearfix">
+                        <label for="">用户头像:</label>
+                        <div>
+                            <div>
+                                <img src="images/defalut-photo.png" alt="">
+                            </div>
+                            <div>
+                                <input type="file" value="">
+                            </div>
+                            <div class="photo-description">
+                                <img src="images/icon-deng.png" alt="">
+                                点击“浏览”上传本地图片，尺寸120px*120px,容量不超过30k
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="sorc">
+                        <button class="save">保存设置</button>
+                        <button class="cancle">取消</button>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <!-- 个人中心底部 -->
+    <footer class="p-foot">
+        <p class="p-friend-link">
+            <a href="#">网站首页</a>
+                <span>|</span>
+            <a href="#">关于我们</a>
+                <span>|</span>
+            <a href="#">联系我们</a>
+                <span>|</span>
+            <a href="#">产品服务</a>
+                 <span>|</span>
+            <a href="#">广告服务</a>
+                <span>|</span>
+            <a href="#">版权申明</a>
+                <span>|</span>
+            <a href="#">友情链接</a>
+        </p>
+        <p class="p-copyright">重庆维普资讯有限公司 渝B2-20050021-1　渝公网安备 50019002500403号　违法和不良信息举报中心</p>
+        <p>互联网出版许可证 新出网证(渝)字10号 全国400电话 - 免长途话费</p>
+    </footer>
+
+</body>
+</html>

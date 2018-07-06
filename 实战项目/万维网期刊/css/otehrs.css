@@ -423,6 +423,9 @@
     font-size:20px;
     border-radius: 10px;
 }
+.l-button-box img{
+    vertical-align: middle;
+}
 /* 向下箭头 */
 .caret {
     display: inline-block;
@@ -435,5 +438,350 @@
     border-left: 6px solid transparent;
     color:#515151;
   }
+  /* 主内容 */
+  .l-main{
+      padding:40px 0;
+  }
+  .l-main>.container{
+      border:1px solid #333333;
+      background-color: #e8e8e8;
+      padding:20px 20px 30px 0;  
+  }
+  .l-main .l-side-bar{
+      float:left;
+      width:230px;
+  }
+  .l-main .l-side-bar>ul>li{
+      height:70px;
+      line-height: 70px;
+      margin-bottom: 10px;
+  }
+  .l-main .l-side-bar>ul>li>a{
+    padding-left:40px;
+    display: block;
+    height: 100%;
+    color:#1577e4;
+    font-size:20px;
+}
+.l-main .l-side-bar>ul>li>a:hover{
+    background-color: #fff;
+}
+/* 右侧 */
+.l-main .l-right-box {
+   padding:41px 41px 0;
+    margin-left:230px;
+    background-color: #fff;
+
+}
+.l-right-box .l-lists-box {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.l-lists-box .list{
+    width:180px;
+}
+.l-lists-box .list>img{
+    width:100%;
+}
+.l-lists-box .list>p{
+    text-align:center;
+    line-height: 55px;
+    height: 55px;
+    overflow: hidden;
+}
+/* 翻页 */
+.l-right-box .page-box{
+    margin-top:20px;
+    padding-bottom: 50px;
+}
+.page-box>ul>li{
+    float:left;
+    margin-right:20px;
+
+}
+.page-box>ul>li>a{
+    display:block;
+    line-height: 32px;
+    color:#6d8190;
+    width:34px;
+    border:1px solid #6d8190;
+    text-align:center;
+}
+.page-box>ul>li>a.pre,.page-box>ul>li>a.next{
+    width:82px;
+}
+.page-box a.active{
+    background-color: #6d8190;
+    color:#fff;
+}
+/* 期刊简介 */
+.aj-main{
+    background-color: #f7f3ed;
+    padding-top:38px;
+}
+/* 面包屑导航 */
+.breadcrumb-box{
+    padding: 18px 15px;
+    margin-bottom: 38px;
+    background-color: #fff;
+    border:1px solid #333;
+    border-radius: 10px;
+}
+.breadcrumb-box>span{
+    float:left;
+    margin-left:14px;
+    color:#6e6e6e;
+    padding-right: 10px;
+}
+.breadcrumb-box>ol>li{
+    display: inline-block;
+}
+.breadcrumb-box>ol>li + li:before {
+    padding: 0 5px;
+    color: #333;
+    content: "\003e";
+}
+.breadcrumb-box>ol>.active {
+    color: #333;
+  }
+  /* 期刊简介内容 */
   /* 左侧 */
-  
+.aj-left-side{
+    width:315px;
+    padding-top:21px;
+    padding-left:17px;
+    background-color: #f7f7f7;
+    float:left;
+} 
+.aj-left-side .aj-photo{
+    margin-bottom: 25px;
+}
+.aj-left-side .aj-journal-info{
+    line-height: 22px;
+    font-size: 12px;
+    margin-bottom: 35px;
+}
+.aj-left-side .aj-journal-info .fj{
+    color:#1577e4;
+}
+.aj-left-side .aj-journal-incloud{
+    font-size: 12px;
+}
+/* 右侧 */
+.aj-right-side{
+    margin-left:337px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.aj-r-content{
+    width:574px;
+    padding:15px 20px 0 24px;
+    float:left;
+}
+.aj-title{
+    margin-bottom: 45px;
+}
+.aj-title .chinese{
+    font-size:30px;
+    color:#333;
+}
+.aj-title .english{
+    font-size:18px;
+    color:#bbb;
+    margin-bottom: 15px;
+}
+.aj-title .aj-link{
+    font-size:14px;
+}
+.aj-title .aj-link a{
+    margin-right: 10px;
+}
+.aj-title .aj-link span{
+    margin-left: -5px;
+}
+.aj-tilte .aj-link .aj-current{
+    color:#333;
+}
+.aj-title .aj-link .links{
+    color:#1577e4;
+}
+.aj-ad{
+    padding-left:574px;
+}
+.aj-summary{
+    line-height: 24px;
+    color:#333333;
+    margin-bottom: 40px;
+}
+/* 期刊收录 */
+
+.aj-collections .section li{
+    line-height: 35px;
+    font-size: 18px;
+    float:left;
+}
+.aj-collections .section li+li{
+   margin-left:10px;
+}
+.aj-collections .section li>a{
+    display: block;
+    color:#6098ea;
+}
+.aj-collections .section li:first-child{
+    color:#333333;
+}
+.aj-collections p{
+    margin-top:30px;
+    text-align: right;
+}
+.aj-collections p a{
+    color:#333333;
+}
+.aj-j-contents .aj-c-title{
+    text-align: center;
+    line-height: 50px;
+}
+.aj-c-content>h3 {
+    line-height: 100px;
+    font-size: 20px;
+}
+.aj-c-content ul li{
+    position: relative;
+    overflow: hidden;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+.aj-c-content ul li  a{
+   text-decoration: underline;
+   color:#1577e4;
+}
+.c-box>div {
+    display: inline-block; 
+}
+.nap{
+    max-width: 400px;       
+}
+.line {
+    border-top: 1px dashed #000;
+    position: absolute;
+    top: 14px;
+    margin: 0 5px;
+    width: 50%;
+}
+.page {
+    position: absolute;
+    right: 0px;
+    padding: 0 5px;
+    z-index: 100;
+    text-align: right;
+    background: #fff;
+    padding-right: 80px;
+}
+.up{
+    border:0;
+    width:88px;
+    height: 27px;
+    background-color: #1577e4;
+    border-radius: 10px;
+    color:#fff;
+    float:right;
+}
+.aj-collections h3{
+    line-height: 50px;
+    font-size:24px;
+}
+.aj-collections.pb90{
+   padding-bottom: 90px;
+}
+/* 会员资料 */
+.mb-r{
+    padding:40px 0  0 320px;
+}
+.tabs>button{
+    padding:20px 40px;
+    font-size: 18px;
+    background-color: #efefef;
+    color:#333333;
+    border:0;
+    border:1px solid;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: -1px;
+}
+.tabs>button+button{
+   margin-left:-4px;
+}
+.tabs button.active{
+    background-color: #3399ff;
+    color:#fff;
+    border:0;
+}
+.m-s-content{
+    border:1px solid #3399ff;
+    padding:40px 0 0 86px;
+}
+.r-e-a{
+    color:#f7741e;
+    font-size: 16px;
+}
+.m-s-content .inputs input{
+    height: 34px;
+    border:1px solid #333333;
+}
+.m-s-content>div>div.inputs,.m-s-content>div>label{
+    vertical-align: middle;
+    display:inline-block;
+}
+.m-s-content>div{
+    margin-bottom: 18px;
+}
+.m-s-content>div>label{
+    width:118px;
+}
+.m-s-content>div>div>input{
+    text-indent: 1em;
+}
+.tips {
+    padding:10px 0 0 118px;
+}
+.tips>img{
+    vertical-align: middle;
+}
+.w310{
+    width:310px;
+}
+.w100{
+    width:100px;
+}
+.select-photo-box>label,.select-photo-box>div{
+    float:left;
+}
+.photo-description{
+    width:522px;
+    background:url(../images/bg-1.png) repeat;
+    height: 34px;
+    line-height: 34px;
+    margin-top:10px;
+}
+.photo-description>img{
+    margin-left:20px;
+    vertical-align: -4px;
+}
+.sorc{
+    padding-left:118px;
+}
+.sorc>button{
+    border:0;
+    width:130px;
+    height: 40px;
+    border:1px solid ;
+    background-color: #e5e5e5;
+    color:#4b4b4b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sorc .save{
+    background-color: #ffe2d0;
+    color:#f7741e;
+    margin-right: 80px;
+}
