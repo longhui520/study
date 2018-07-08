@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>替换特定字符串中的变量</title>
+</head>
+<body>
+    <script>
+        var d = "1[ddd]sfdsaf[ccc]fdsaf[bbbb]"; 
+        var patt = /\[[^\]]+\]/g; 
+        // console.log(d.match(patt))
+        //返回数组 ["[ddd]", "[ccc]", "[bbbb]"]
+        //如果你想得到["ddd","ccc","bbbb"]请循环数组每一项再替换 .replace(/\[/g,'').replace(/\]/g,'
+    </script>
+    <script>
+        o={v1:55,v2:54,v3:53}
+        var s='{{v1}}-{{v2}}-{{v3}}'
+        var re=/{{([^\{\}]+?)}}/g
+        // console.log(s.replace(re,o['$1']))
+        console.log(s.replace(re,function(match){
+            console.log(match.replace(re,'$1'))
+            return o[match.replace(re,'$1')]
+        }))
+        // b=s.replace(re,function(match){
+        //     console.log(match.replace(/^{{+|}}$/g,''))
+        // })
+        // '3 and 5'.replace(/[0-9]+/g, function (match) {
+        //     console.log(match)
+        // })
+        // console.log('{{v1}}'.replace(/{{}}/))
+    </script>
+</body>
+</html>

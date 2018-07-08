@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="EventEmit.js"></script>
+    <script src="myVue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message">
+        <div>
+            <div>
+                <p>{{message}}</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        new MyVue({
+            el:'#app',
+            data:{
+                message:'123'
+            }
+        })
+    </script>
+</body>
+</html>
