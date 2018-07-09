@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的路由</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>hello Vue Router</h1>
+        <p>
+            <!-- 这里使用路由 -->
+            <router-link to="/Foo">Go to Foo</router-link>
+            <router-link to="/Bar">Go to Bar</router-link>
+        </p>
+        <!-- 渲染路由的内容 -->
+        <router-view></router-view>
+    </div>
+    <script>
+        //定义vue组件构造器
+        const Foo={template:'<div>Foo</div>'}
+        const Bar={template:'<div>Bar</div>'}
+        // 定义路由
+        const routes=[
+            {path:'/foo',component:Foo},
+            {path:'/Bar',component:Bar}
+        ]
+        //创建路由
+        const router=new VueRouter({
+            routes,
+            mode:'history'
+        })
+        // 挂载实例
+        const app= new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>
