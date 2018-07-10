@@ -136,6 +136,52 @@
     font-size: 16px;
     color:#494949;
 }
+/* 推荐期刊 */
+.recommend-jour{
+    background-color: #ececec;
+    height: 490px;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.recommend-jour .title p{
+    font-size:32px;
+    padding:30px 0 55px;
+    text-align: center;
+}
+/* swiper */
+.swiper-container {
+    width: 100%;
+    height: 308px;
+   
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #ececec;
+  }
+.swiper-slide>img{
+      width:100%;
+}
+.recommend-jour .title p a{
+   color:#1577e4;
+}
+
 /* 最新文献 */
 .new-doc {
     margin-bottom: 150px;

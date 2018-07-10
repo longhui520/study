@@ -7,6 +7,7 @@
     <title>万维网期刊</title>
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="lib/bootstrap.css">
+    <link rel="stylesheet" href="lib/swiper/css/swiper.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="lib/jquery-1.11.1.js"></script>
     <script src="lib/bootstrap.js"></script>
@@ -113,6 +114,31 @@
                                 的研究交流</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- 推荐期刊 -->
+    <div class="recommend-jour">
+        <div class="container">
+            <div class="title">
+                <p><a href="">推荐期刊</a></p>
+            </div>
+            <div class="rj-content">
+                <!-- Swiper -->
+            <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/r-j-1.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-2.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-3.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-4.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-1.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-2.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-3.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-4.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-1.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/r-j-2.png" alt=""></div> 
+            </div>
+      </div>
             </div>
         </div>
     </div>
@@ -264,5 +290,17 @@
             <p>京公网安备 11011102000866号</p>
         </div>
     </footer>
+    <script src="lib/swiper/js/swiper.js"></script>
+    <script>
+            var swiper = new Swiper('.swiper-container', {
+              slidesPerView: 4,
+              spaceBetween: 30,
+              loop: true,
+              autoplay:{
+                disableOnInteraction: false
+              },
+              speed:1000
+            });
+    </script>
 </body>
 </html>

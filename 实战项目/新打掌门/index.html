@@ -4,11 +4,13 @@
    <meta charset="utf-8"> 
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>大掌门</title>
-   <link rel="stylesheet" href="css/public.css">
-   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
-   <link rel="stylesheet" href="css/index.css">
+   <link rel="stylesheet" href="css/public.css"> -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+   <link rel="stylesheet" href="css/index.css"> -->
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="lib/swiper/css/swiper.css">
+   <link rel="stylesheet" href="css/myswiper.css">
 </head>
 <body>
 	<header class="head">
@@ -40,5 +42,59 @@
 			</div>
     	</div>
 	</header>
+<div class="big-box">
+	<div class="swiper-container gallery-top">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" style="background-image:url(images/lg_01.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/lg_02.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/lg_03.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/lg_04.png)"></div>
+		</div>
+	</div>
+	<div class="swiper-button-next next1"></div>
+	<div class="swiper-button-prev prev1"></div>
+</div>
+<div class="small-box">
+	<div class="swiper-container gallery-thumbs">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" style="background-image:url(images/sm_03.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/sm_06.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/sm_08.png)"></div>
+			<div class="swiper-slide" style="background-image:url(images/sm_10.png)"></div>
+		</div>
+	</div>
+	<div class="swiper-button-next next2"></div>
+	<div class="swiper-button-prev prev2"></div>
+</div>
+	<!-- Swiper JS -->
+<script src="lib/swiper/js/swiper.js"></script>
+
+	<!-- Initialize Swiper -->
+<script>
+	 var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 10,
+      loop:true,
+      loopedSlides: 5, //looped slides should be the same
+      navigation: {
+        nextEl: '.next1',
+        prevEl: '.prev1',
+      },
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      touchRatio: 0.2,
+      loop: true,
+      loopedSlides: 5, //looped slides should be the same
+      slideToClickedSlide: true,
+	  navigation: {
+        nextEl: '.next2',
+        prevEl: '.prev2',
+      },
+    });
+    galleryTop.controller.control = galleryThumbs;
+    galleryThumbs.controller.control = galleryTop;
+
+</script>		
 </body>
 </html>
