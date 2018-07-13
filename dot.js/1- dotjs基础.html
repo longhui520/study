@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dotjs</title>
+    <script src="doT.js"></script>
+</head>
+<body>
+    <div id="interpolation">
+
+    </div>
+    <script id="interpolationtmpl" type="text/x-dot-template">
+        <div>H1{{=it.name}}</div>
+        <div>{{=it.age||""}}</div>
+    </script>
+    <script>
+        var dataInter={"name":"jake","age":31}
+        var innterText=doT.template(document.querySelector("#interpolationtmpl").text())
+        $("#interpolation").html(interText('dataInter'))
+    </script>
+</body>
+</html>

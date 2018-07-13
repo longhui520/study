@@ -8,15 +8,16 @@
     <script src="../node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
+    <div id="app">
+
+    </div>
    <template id="temp">
-       <div id="app">
-           <h1>我是特殊的挂载</h1>
-       </div>
+        <h1>我是特殊的挂载</h1>
    </template>
    <script>
        new Vue({
            el:"#app",
-           template:"temp"
+           template:"#temp"
        })
    </script>
 </body>
