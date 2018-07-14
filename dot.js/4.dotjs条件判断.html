@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dotjs</title>
+    <script src="doT.js"></script>
+    <script src="me.js"></script>
+</head>
+<body>
+    <div id="condition">
+
+    </div>
+    <script id="conditiontmpl" type="text/x-dot-template">
+        {{? it.age}}
+        <div>name存在时走这里，{{it.name}}!</div>
+        {{?}}
+    </script>
+    <script>
+        var data={'age':true,'name':1}
+        var tmp= me.byId("conditiontmpl").innerHTML
+        me.byId("condition").innerHTML=doT.template(tmp)(data)
+    </script>
+</body>
+</html>

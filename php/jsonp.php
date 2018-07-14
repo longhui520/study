@@ -1,7 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 龙辉
- * Date: 2018/7/13
- * Time: 23:13
- */
+header('Content-type:application/json');
+$jsoncallback=htmlspecialchars($_REQUEST['jsoncallback']);
+$json_data='["customername1","customername2"]';
+echo $jsoncallback."(".$json_data.")";

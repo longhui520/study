@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dotjs</title>
+    <script src="doT.js"></script>
+    <script src="me.js"></script>
+</head>
+<body>
+    <div id="array">
+
+    </div>
+    <script id="arraytmpl" type="text/x-dot-template">
+      {{~it:value:index}}
+      <div>下标：{{= index}}对应的值：{{= value}}!</div>
+      {{~}}
+    </script>
+    <script>
+        var data=[1,2,3,4,5]
+        var tmp= me.byId("arraytmpl").innerHTML
+        me.byId("array").innerHTML=doT.template(tmp)(data)
+    </script>
+</body>
+</html>

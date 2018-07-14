@@ -40,4 +40,12 @@
 - 数据类型判断
   + is_int is_string is_bool is_object is_float is_resource is_null
   + is_scalar 
-
+##2018.07.13
+- apicloud 页面的传值
+- apicloud 数据请求
+- php 常量
+  - define('长量',值)
+  - const 长量名=值
+##2018.07.14
+- 进制转换函数
+  + dec bin oct hex decbin

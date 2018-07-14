@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>dotjs</title>
     <script src="doT.js"></script>
+    <script src="me.js"></script>
 </head>
 <body>
     <div id="interpolation">
@@ -16,9 +17,9 @@
         <div>{{=it.age||""}}</div>
     </script>
     <script>
-        var dataInter={"name":"jake","age":31}
-        var innterText=doT.template(document.querySelector("#interpolationtmpl").text())
-        $("#interpolation").html(interText('dataInter'))
+        var data={"name":"jake","age":31}
+        var tmp= me.byId("interpolationtmpl").innerHTML
+        me.byId("interpolation").innerHTML=doT.template(tmp)(data)
     </script>
 </body>
 </html>
