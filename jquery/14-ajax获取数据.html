@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax获取数据</title>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <script>
+        $(function(){
+            $.ajax({
+                type:'POST',
+                url:'http://wlw.xedth.cn/api/Index/index',
+                dataType:'json',
+                contentType:'application/json',
+                data:{
+                    values:{
+                        lat:'29.579949',
+                        lng:'106.452391'
+                    }
+                },
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

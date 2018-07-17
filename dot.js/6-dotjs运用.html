@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dotjs</title>
+    <script src="doT.js"></script>
+    <script src="me.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script type="text/x-dot-template" id="wb-list">
+        {{~it.wb:v}}
+        <div class="wk-list">
+            <img class="wk-logo" src={{=v.img}} alt="">
+            <div class="right-side">
+                <h3 class="wk-name">{{=v.name}}</h3>
+                <p class="grade-ps"><em>★★★★★ {{=v.score}}</em><span>{{=v.time}}分钟|{{=v.position}}</span></p>
+                <p class="privilege">
+                    {{~v.privilege:vv}}
+                    <span>{{=vv}}</span>
+                    {{~}}
+                </p>
+                <p class="price"><span>会员上网{{=v.hprice}}￥,临时卡上网{{=v.lprice}}￥</span><em>到这里去</em></p>
+            </div>
+        </div>
+        {{~}}
+    </script>
+    <script>
+          var json={
+            wb:[
+              {img:'../image/icon-wk-1.png',
+              name:'杰拉网咖',
+              score:5.0,
+              time:10,
+              position:'120m',
+              privilege:['英雄联盟特权','QQ网吧','WiFi'],
+              hprice:3,
+              lprice:4
+              }
+            ]
+      }
+      var tmp=doT.template(m.byId('wb-list').innerHTML)
+      console.log(tmp)
+      m.html(m.byId('app'),tmp(json))
+    </script>
+</body>
+</html>

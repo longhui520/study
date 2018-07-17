@@ -37,6 +37,7 @@
 <?php if(true): ?>
     <h1>你好吧吧</h1>
 <?php endif?>
-<?php echo 0x12;?>
+<?php echo var_dump()?>
+<?php echo 'You deleted C:\'.*?';?>
 </body>
 </html>

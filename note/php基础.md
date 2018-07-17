@@ -119,3 +119,47 @@
   + pathinfo($path,[option dirname basename extension filename])
   + md5(str) 用于对str字符串md5加密
   + htmlspecialchars(str) 输出字符实体
+  + strlen(str) 获取字符串长度
+  + mb_** 处理宽字符集的字符串 mb_sting.dll
+  + str_repeat(str,n)
+##2018.07.16
+- api 
+  > 应用程序接口
+##2018.07.17
+- php 数组处理
+  + array_keys(arr) 获取数组的全部键值
+  + array_values(arr)  获取数组的全部值
+  + array_key_exists(arr,key) 判断是否有某个键
+  + php.ini 中只有display_errors =off 才能直接判断是否有键
+  + 生产阶段设置为off，开发阶段为on
+  + isset()判断变量是否被设置，也可判断是否有键 ，会吞掉这个警告
+  + empty() 判断变量是否为空或未设置
+  + array_unique()
+  + array_push $arrary[]
+  + array_pop()
+  + count()
+  + in_array() 判断是否存在某个值
+  + array_search() 在数组中搜索某个值
+- 时间日期处理
+  + time() 时间戳 格林威治时间1970 1月1日 0点0分0 秒 获取到的是秒数的时间戳
+  + date(format,time) 格式化一个事件戳
+  + date_default_timezone_set('RPC') 设置时区
+  + strtotime(str) 将一个格式化时间转化为时间戳
+- 文件操作
+  + bassename()
+  + file()
+  + file_exists()
+  + is_dir()
+  + mkdir()
+  + pathinfo()
+  + rmdir()
+- 常量
+  + define(name,value,ignore) 定义后不能修改
+- 表单
+ + form input:submit image button
+ + $_GET 用于接收URL地址中的提交数据
+ + $_POST 用于接收请求体重提交的数据
+  
+  
+  
+  
