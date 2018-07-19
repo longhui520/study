@@ -1,0 +1,213 @@
+/* 头部 */
+ header.index{
+     /* height: 103px; */
+     background-color: #f1f1f1;
+     padding:18px;
+ }
+ header .logo{
+     float:left;
+     width:532px;
+     height: 64px;
+     background-image: url(../images/sm-logo-bg.png);
+     background-repeat: no-repeat;
+     background-position: center center;
+ }
+ header .logo h1{
+     text-indent: -999em;
+ }
+header .telephone{
+    float: right;
+    width: 350px;
+    height: 64px;
+}
+.telephone>img{
+    float: left;
+    width:56px;
+    height: 46px;
+    margin-top:6px;
+    margin-right: 20px;
+}
+.telephone>p{
+    line-height: 28px;
+    font-size: 16px;
+    color:#323232;
+}
+nav{
+    height: 36px;
+    background-color: #025392;
+}
+nav ul li {
+    float: left;
+}
+nav ul li a {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    color:#fff;
+    margin:0 15px;
+}
+nav ul li a:hover {
+    border-bottom:2px solid #fff;
+}
+/* banner */
+.banner .swiper-container {
+    width: 100%;
+    height: 580px;
+}
+.banner .swiper-slide>img{
+    display: block;
+    width: 100%;
+    height: 580px;
+}
+/* sm 优势 */
+.advantage{
+  background-color: #fff;
+}
+.advantage .adv-list{
+    padding:40px 25px 0;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.adv-list li{
+    width: 288px;
+    height: 100%;
+    padding:24px 42px;
+}
+.adv-list li>img{
+    float: left; 
+    margin-right: 13px; 
+}
+.adv-list li h5{
+    text-indent: 1em;
+    font-size: 16px;
+    color:#000000;
+}
+.adv-list li p{
+    font-size: 12px;
+    color:#4b4b4b;
+    margin-top:8px;
+}
+/* 培训 */
+.train {
+    margin-top:70px;
+}
+.title{
+    text-align: center;
+}
+.title h2{
+    margin-bottom: 25px;
+    font-size: 34px;
+    color:#191919;
+}
+.title p {
+    font-size: 22px;
+    color:#484848;
+}
+/* 横线 */
+.horiz-bar{
+    position: relative;
+}
+.horiz-bar:after,.horiz-bar:before{
+    content:'';
+    display: inline-block;
+    width: 80px;
+    height: 5px;
+    background-color: #000;
+    vertical-align: middle;
+    margin:0px 10px;
+}
+/* train 中的swiper */
+.t-banner{
+    margin-top: 60px;
+
+}
+.swiper2{
+    width:100%;
+    height: 434px;
+    padding-bottom:74px;
+}
+.swiper2 .swiper-slide {
+    height: 166px;
+    width: 282px;
+  }
+.swiper2 .pagination2 {
+    bottom:25px;
+}
+/* 培训课程 */
+.course{
+    background-color: #f1f1f1;
+    padding-top:65px;
+}
+.course .title{
+    margin-bottom: 70px;
+}
+/* 课程导航 */
+.course-nav{
+    height: 36px;
+    position: relative;
+}
+.course-nav .nav-title{
+    float: left;
+    height: 36px;
+    border-left: 5px solid #3f86d6;
+    color:#484848;
+    padding-left:8px;
+}
+.course-nav .nav-title h3{
+    font-size: 24px;
+    line-height: 1;
+}
+.course-nav .nav-title p{
+    margin-top:5px;
+    font-size: 12px;
+    line-height: 1;
+}
+.course-nav .course-nav-c {
+    margin-left: 250px;
+}
+.course-nav-c{
+    border-bottom: 5px solid #ccc;
+    height: 39px;
+}
+.course-nav-c li{
+    float: left;
+}
+.course-nav-c li  a{
+    padding:3px 10px 10px;
+    font-size: 16px;
+    color:#484848;
+}
+.course-nav-c li a:hover{
+    border-bottom: 5px solid #33a0db;
+}
+.course-nav-c a{
+    float: right;
+}
+/* 课程详情 */
+.course-content {
+    margin-top:20px;
+}
+.course-content .left-side{
+    float:left;
+}
+.course-content .right-side{
+    float:left;
+    margin-left: 15px;
+}
+.right-side .top .about-course{
+    float:left;
+    width:695px;
+    height: 200px;
+}
+.right-side .top .about-course ul{
+    width: 100%;
+    height: 100%;
+}
+.about-course li{
+    float:left;
+    width:33.333%;
+    height: 50%;
+}

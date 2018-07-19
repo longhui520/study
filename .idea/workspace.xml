@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1c436e3-dbcc-416d-a486-39405f777cb7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/php/fieltotable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/note/ps.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dot.js/me.js" beforeDir="false" afterPath="$PROJECT_DIR$/dot.js/me.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note/php基础.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/php基础.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/note/学习日记.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/学习日记.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +18,7 @@
       <file leaf-file-name="fieltotable.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/fieltotable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
+            <state relative-caret-position="1050">
               <caret line="35" column="96" selection-start-line="35" selection-start-column="96" selection-end-line="35" selection-end-column="96" />
             </state>
           </provider>
@@ -31,8 +28,20 @@
         <entry file="file://$PROJECT_DIR$/note/php基础.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="282">
-                <caret line="159" column="24" lean-forward="true" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+              <first_editor relative-caret-position="102">
+                <caret line="161" column="30" lean-forward="true" selection-start-line="161" selection-start-column="30" selection-end-line="161" selection-end-column="30" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ps.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/note/ps.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="120">
+                <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="14" />
               </first_editor>
               <second_editor />
             </state>
@@ -55,6 +64,7 @@
         <option value="$PROJECT_DIR$/php/index.php" />
         <option value="$PROJECT_DIR$/php/filetoobjefct.php" />
         <option value="$PROJECT_DIR$/php/fieltotable.php" />
+        <option value="$PROJECT_DIR$/note/ps.md" />
         <option value="$PROJECT_DIR$/note/php基础.md" />
       </list>
     </option>
@@ -73,8 +83,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="120" />
-    <option name="y" value="76" />
+    <option name="x" value="-4" />
+    <option name="y" value="200" />
     <option name="width" value="1750" />
     <option name="height" value="1039" />
   </component>
@@ -143,11 +153,12 @@
       <workItem from="1531645091490" duration="5001000" />
       <workItem from="1531748889788" duration="8097000" />
       <workItem from="1531831982592" duration="8078000" />
+      <workItem from="1531921164470" duration="6749000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30801000" />
+    <option name="totallyTimeSpent" value="37550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -159,28 +170,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="96" y="61" width="1400" height="831" extended-state="0" />
+    <frame x="-3" y="160" width="1400" height="831" extended-state="0" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896653" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32896653" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32896653" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32896653" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +201,23 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/php/fieltotable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="35" column="96" selection-start-line="35" selection-start-column="96" selection-end-line="35" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note/php基础.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="4770">
+            <caret line="159" column="24" lean-forward="true" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/fieltotable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
@@ -427,16 +455,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/fieltotable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
+        <state relative-caret-position="1050">
           <caret line="35" column="96" selection-start-line="35" selection-start-column="96" selection-end-line="35" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note/ps.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/note/php基础.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="282">
-            <caret line="159" column="24" lean-forward="true" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+          <first_editor relative-caret-position="102">
+            <caret line="161" column="30" lean-forward="true" selection-start-line="161" selection-start-column="30" selection-end-line="161" selection-end-column="30" />
           </first_editor>
           <second_editor />
         </state>

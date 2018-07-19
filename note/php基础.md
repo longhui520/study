@@ -158,8 +158,16 @@
 - 表单
  + form input:submit image button
  + $_GET 用于接收URL地址中的提交数据
- + $_POST 用于接收请求体重提交的数据
-  
+ + $_POST 用于接收请求体提交的数据
+ + 一般提交给自己，把表单提交的数据处理放在html之前 
+ + $_SERVER['REQUEST_METHOD']==='POST' 判断请求方法
+ + get 提交 通过url传递
+ + 常见表单处理
+   * 单选框 要设置value值
+   * 复选框 ，如果选中则提交，未选中则不提交 要设置value 可设置name不同的值，则可提交多个选项或者name的值中以[]结尾
+   * 下拉选择框  如果选中 则提交 option中的值 ，有value则提交value
+   
+ 
   
   
   

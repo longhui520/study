@@ -1,0 +1,56 @@
+/* 重置样式 */
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+ul,ol{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    outline: none;
+    border:none;
+}
+input,button{
+    outline:none;
+    border:0;
+}
+img{
+    vertical-align: middle;
+}
+/* 公共样式 */
+.container{
+    width:1280px;
+    margin:0 auto;
+}
+.container-s{
+    width:1255px;
+    margin:0 auto;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+    clear: both;
+}
+.clear{
+    *zoom:1;
+}
+.bg-y{
+    background-color: #efa61c;
+}
+.bg-g{
+    background-color: #4ab182;
+}
+.bg-b{
+    background-color: #33a0db;
+}
+.bg-p{
+    background-color: #f36d78;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动条</title>
+    <style>
+        body{
+            height: 5000px;
+        }
+        div{
+            position: fixed;
+            top:0;
+            left: 0;
+            height: 10px;
+            width:0;
+            background-color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="bar"></div>
+    <div id="c"></div>
+    <script>
+        window.onscroll=function(){
+            var t= document.documentElement.scrollTop||document.body.scrollTop;
+            var c=getClientHeight()
+            var per= t/(5000-c)
+            document.getElementById('bar').style.width=per*100+'%'
+            
+        }
+        //可视区域的高度
+        function getClientHeight(){    
+        var clientHeight=0;    
+        if(document.body.clientHeight&&document.documentElement.clientHeight){    
+            var clientHeight=(document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;            
+        }else{    
+            var clientHeight=(document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;        
+        }    
+        return clientHeight;    
+        } 
+        //滚动条的高度
+        function getScrollTop(){    
+        var scrollTop=0;    
+        if(document.documentElement&&document.documentElement.scrollTop){    
+            scrollTop=document.documentElement.scrollTop;    
+        }else if(document.body){    
+            scrollTop=document.body.scrollTop;    
+        }    
+        return scrollTop;    
+        }
+        //实际内容高
+        function getScrollHeight(){    
+        return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);    
+        }  
+    </script>
+</body>
+</html>
