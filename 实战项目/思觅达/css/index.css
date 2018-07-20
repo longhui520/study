@@ -199,15 +199,264 @@ nav ul li a:hover {
 }
 .right-side .top .about-course{
     float:left;
-    width:695px;
-    height: 200px;
 }
 .right-side .top .about-course ul{
-    width: 100%;
+    float: left;
+    width:695px;
     height: 100%;
+    background-color: #fff;
+    padding-top:10px;
 }
 .about-course li{
     float:left;
     width:33.333%;
     height: 50%;
+    padding:20px 0 15px 20px;
+    display: flex;
+    align-items: center;
+}
+.about-course li .bg-box{
+    float: left;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: url(../images/icon-computer-a.png)no-repeat center;
+}
+.about-course li .cont-box{
+    padding-left: 10px;
+}
+.about-course li h4{
+    font-size:16px;
+    color:#000000;
+}
+.about-course li p{
+    margin-top:5px;
+    font-size: 12px;
+    color:#464646;
+}
+.about-course .sm-joinus{
+    margin-left: 16px;
+    float: right;
+    width:264px;
+    height: 200px;
+}
+/* 课程具体内容 */
+.right-side .bottom{
+    margin-top:20px;
+}
+.course-detail{
+    display: flex;
+    justify-content: space-between;
+    width:976px;
+    height: 184px;
+}
+.course-detail li{
+    position: relative;
+    width:314px;
+    height: 184px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.course-detail li:hover>div{
+    bottom: 0;
+  
+}
+.course-detail li img{
+    width: 100%;
+    height: 100%;
+}
+.course-detail li div{
+    position: absolute;
+    left: 0;
+    bottom: -32px;
+    width:100%;
+    height: 32px;
+    background-color: #33a0db;
+    transition: all 1s ;
+}
+.course-detail li div>p{
+    line-height: 32px;
+    text-align: center;
+    font-size: 16px;
+    color:#ffffff;
+}
+/* 已毕业学员信息 */
+.senior-info .title{
+    margin-top:75px;
+    margin-bottom: 65px;
+}
+.swiper3{
+    width:100%;
+    height: 434px;
+    padding-bottom:74px;
+}
+.swiper3 .swiper-slide {
+    height: 166px;
+    width: 282px;
+  }
+.swiper3 .pagination3 {
+    bottom:25px;
+}
+/* 老师信息 */
+.teacher{
+    background-color: #f1f1f1;
+    height: 780px;
+}
+.teacher .title{
+    margin-top:45px;
+    margin-bottom: 85px;
+}
+.swiper4 .swiper-wrapper{
+    padding-bottom: 80px;
+}
+.swiper4 .pagination4 {
+    bottom:25px;
+}
+.swiper4 .swiper-slide{
+    padding-top:28px;
+}
+.start:after {
+    content:'';
+    display: block;
+    position: absolute;
+    background:url(../images/icon-start.png) no-repeat center;
+    width:39px;
+    height: 48px;
+    top:5px;
+    left:50px;
+}
+/* 了解我们 */
+.sm-info .title{
+    margin-top:55px;
+    margin-bottom: 70px;
+}
+.sm-info ul{
+    display: flex;
+    padding:0 5px 40px;
+    justify-content: space-between;
+}
+.sm-info ul>li{
+    width:290px;
+}
+.sm-info ul>li>img{
+    width:100%;
+    height: 154px;
+    border-radius: 5px;
+}
+.sm-info li>.sm-content{
+    padding-left: 15px;
+}
+.sm-info li>.sm-content .c-title{
+    line-height: 42px;
+    font-size: 16px;
+    color:#000000;
+}
+.sm-info li>.sm-content>p{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.sm-info li>.sm-content>p>a{
+    line-height: 20px;
+    font-size: 12px;
+    color:#4e4e4e;
+}
+.sm-info li>.sm-content .more{
+    float:right;
+    font-size: 14px;
+    color:#000000;
+}
+/* 学校环境 */
+.school-env{
+    background-color: #f1f1f1;
+    height: 760px;
+}
+.school-env .title{
+   padding-top:60px;
+    margin-bottom: 70px;
+}
+.school-env .school-imgs{
+    display:flex;
+    justify-content: space-between;
+}
+.school-env .school-imgs li{
+    position: relative;
+    width:292px;
+    height: 460px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.school-env .school-imgs li:hover p{
+    bottom: 0;
+}
+.school-env .school-imgs li p{
+    position: absolute;
+    left: 0;
+    bottom: -40px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 20px;
+    background-color:rgba(0,0,0,0.66);
+    text-align: right;
+    color:#fff;
+    font-size: 16px;
+    transition: all 1s;
+}
+
+/* 合作伙伴 */
+.partner{
+    background-color: #fff;
+    height: 660px;
+}
+.partner .title{
+    padding-top:60px;
+    margin-bottom: 60px;
+}
+.partner .partner-lists{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+/* 页脚 */
+.footer{
+    height: 204px;
+    background-color: #025392;
+}
+.footer .f-nav {
+    position: relative;
+    font-size: 14px;
+    color:#fff;
+}
+.f-nav ul li {
+    float: left;
+}
+.f-nav ul li a{
+    display: block;
+    line-height: 86px;
+    padding-right: 42px;
+    color:#fff;
+}
+.f-nav>p{
+    line-height: 24px;
+}
+.copyright{
+    margin-top:10px;
+    text-align: center;
+}
+.erweima{
+    position: absolute;
+    right:0 ;
+    top:25px;
+    width:161px;
+    height: 133px;
+}
+.erweima img{
+    float: left;
+    margin-right: 6px;
+}
+.erweima p{
+    margin-top: 5px;
+   line-height: 1;
 }

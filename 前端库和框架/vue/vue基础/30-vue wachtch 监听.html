@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch监听属性</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        table{
+            margin:100px auto;
+            border-collapse: collapse;
+            border:1px solid #0094ff;
+        }
+        table,table thead td,table tbody td{
+            border:1px solid #0094ff;
+        }
+        table tr td:first-child{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                   <th colspan="2">watch监听属性</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>姓</td>
+                    <td><input type="text" v-model="firstName"></td>
+                </tr>
+                 <tr>
+                    <td>名</td>
+                    <td><input type="text" v-model="lastName"></td>
+                </tr>
+                <tr>
+                    <td>姓名</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td>计数</td>
+                    <td>{{count}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                firstName:'',
+                lastName:'',
+                count:0
+            },
+            computed:{
+                name(){
+                    return this.firstName+this.lastName
+                }
+            },
+            watch:{
+                firstName:function(){
+                    this.count++
+                },
+                lastName:function(){
+                    this.count++
+                }
+            }
+        })  
+    </script>
+</body>
+</html>

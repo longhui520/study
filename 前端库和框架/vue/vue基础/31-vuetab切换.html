@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vuetab切换</title>
+    <style>
+        span{
+            cursor: pointer;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span  @click="change" data-index="1">首页</span>
+        <span  @click="change" data-index="2">科学</span>
+        <p v-show="index==1">首页</p>
+        <p v-show="index==2">科学</p>
+    </div>
+    <script>
+        var app= new Vue({
+            el:'#app',
+            data:{
+                index:1
+            },
+            methods:{
+                change(e){
+                   this.index=e.target.dataset.index
+                }
+            }
+
+        })
+    
+    </script>
+</body>
+</html>
