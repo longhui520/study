@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sync修饰符</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-model="v">
+        <todo
+            :value="v"
+            @update:value='v=$event'
+        ></todo>
+    </div>
+    <div id="app1">
+        <input type="text" v-model="v">
+        <todo
+            :value.sync="v"
+        ></todo>
+    </div>
+    <script>
+        Vue.component('todo',{
+            template:`<input type='text' :value="value"
+            @change="$emit('update:value', $event.target.value)" >`,
+            props:['value']
+        })
+        var app= new Vue({
+            el:'#app',
+            data:{
+                v:'123'
+            }
+        })
+        var app1= new Vue({
+            el:'#app1',
+            data:{
+                v:'123'
+            }
+        })
+    </script>
+</body>
+</html>

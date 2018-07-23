@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise基础用法</title>
+</head>
+<body>
+    <script>
+        function runAsync(){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    console.log('执行完成1')
+                    resolve('随便什么数据1')
+                },5000)
+            })
+        }
+        runAsync().then(function(data){
+            console.log(data)
+        })
+        function prunAsync(callback){
+            setTimeout(function(){
+                console.log('执行完成2')
+                callback('什么东西都行2')
+            },2000)
+        }
+        prunAsync(function(data){
+            console.log(data)
+        })
+    </script>
+</body>
+</html>

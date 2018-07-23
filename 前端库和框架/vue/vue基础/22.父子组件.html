@@ -29,6 +29,14 @@
         // new Vue({
         //     el:'#app'
         // })
+        // Vue.extend(options)生成扩展实例构造器
+        //Vue.component('global-component', Vue.extend(baseOptions));
+        //传入一个选项对象（自动调用 Vue.extend）,等价于上行代码.
+       // Vue.component('global-component', baseOptions);
+        // 获取注册的组件（始终返回构造器）
+            // mix
+
+    var MyComponent = Vue.component('my-component')
     </script>
 </body>
 </html>

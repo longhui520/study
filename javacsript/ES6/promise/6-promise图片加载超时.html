@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>请求超时</title>
+</head>
+<body>
+    <script>
+        //请求某个图片资源
+        function requestImg(){
+            return new Promise(function(resolve,reject){
+                var img= new Image()
+                img.onload=function(){
+                    resolve(img)
+                }
+                img.src="xxxxxxx"
+            })
+        }
+        //超时函数
+        function timeout(){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    reject('图片请求超时')
+                },5000)
+            })
+        }
+        Promise.race([requestImg(),timeout()]).then(function(results){
+            console.log(results)
+        }).catch(function(results){
+            console.log(results)
+        })
+    </script>
+</body>
+</html>

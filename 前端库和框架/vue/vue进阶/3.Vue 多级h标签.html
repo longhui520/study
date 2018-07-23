@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多级h标签</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hn :level="1">我是一级</hn>
+        <hn :level="2">我是二级</hn>
+        <hn :level="6">我是三级</hn>
+    </div>
+    <script type="text/x-template" id="hn">
+        <h1 v-if="level===1">
+            <slot></slot>
+        </h1>
+        <h2 v-else-if="level===2">
+            <slot></slot>
+        </h2>
+        <h3 v-else-if="level===3">
+            <slot></slot>
+        </h3>
+        <h4 v-else-if="level===4">
+            <slot></slot>
+        </h4>
+        <h5 v-else-if="level===5">
+            <slot></slot>
+        </h5>
+        <h6 v-else-if="level===6">
+            <slot></slot>
+        </h6>
+    </script>
+    <script>
+        Vue.component('hn',{
+            template:'#hn',
+            props:{
+                level:{
+                    type:Number,
+                    required:true
+                }
+            }
+        })
+        var app= new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

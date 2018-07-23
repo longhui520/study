@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <input type="text" name="bookId" class="book" value="1003078">//这里的value值是对应的豆瓣书籍的ID;
+    <input type="submit" class="go">
+    <script>
+            $(function () {
+        $('.go').click(function () {
+            $.ajax({
+                url: 'https://api.douban.com/v2/book/' + $('.book').val(),
+                type: 'get',
+                dataType: 'jsonp',
+                success: function (backData) {
+                    console.log(backData);
+                }
+            })
+        })
+    })
+    </script>
+</body>
+</html>

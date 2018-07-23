@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue动态组件</title>
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+            }
+            .tab-button:hover {
+            background: #e0e0e0;
+            }
+            .tab-button.active {
+            background: #e0e0e0;
+            }
+            .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button
+            v-for="tab in tabs"
+            :key=tab.name
+            :class="['tab-button',{active:currentTab.name==tab.name}]"
+            @click=currentTab=tab >
+        {{tab.name}}
+        </button>
+        <component :is="currentTab.component" clss="tab"></component>
+    </div>
+    <script>
+        var tabs=[
+            {
+                name:'Home',
+                component:{
+                    template:'<div>Home component</div>'
+                }
+            },
+            {
+                name:'Posts',
+                component:{
+                    template:'<div>Posts component</div>'
+                }
+            },
+            {
+                name:'Archive',
+                component:{
+                    template:'<div>Archive component</div>'
+                }
+            },
+        ]
+        var appj = new Vue({
+            el:'#app',
+            data:{
+                tabs:tabs,
+                currentTab:tabs[0]
+            }
+        })
+    </script>
+</body>
+</html>

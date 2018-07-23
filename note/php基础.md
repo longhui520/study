@@ -173,7 +173,13 @@
    * 持久化
     > file_put_contents(file,data,flag) flag决定是否追加数据
    * 响应
-    
+##2018.07.20
+  + PHP return 
+   * >可用于输出文件 然后用 require 接收返回值
+  + PHP 文件上传
+    * enctype="multipart/form-data" 默认值为urlencoded
+    * $_FILES 获取文件
+    * 移动文件 move_upload_file(old ,new) 返回是否移动成功
 
  
  

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extend与全局注册</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <base-component></base-component>
+    </div>
+    <div id="app2">
+        <wb></wb>
+    </div>
+    <script>
+        //预配置选项
+        options={
+            template:`<p>{{firstName}} {{lastName}} {{alias}}</p>`,
+            data:function(){
+                return {
+                    firstName:'小龙',
+                    lastName:'小黄',
+                    alias:'小龙和小黄'
+                }
+            }
+        }
+        //注册全局组件,可以在任意的vue实例挂载的区域中用
+        let wc=Vue.component('base-component',options)//options 也可以写成Vue.extend(options)
+        let app1= new Vue({
+            el:'#app1'
+        })
+        //在
+        let app2= new Vue({
+            el:'#app2',
+            // template:'<h1><wb></wb></h1>',
+            //注册一个局部的wb组件只能在此实例挂载区域中用
+            components:{
+                // wb:wc 
+                wb:Vue.extend(options) // 这里也可以写成options,会默认执行Vue.extend(options)
+            }
+        })
+        //当配置中设置模板的时候，在实例区域中的任意内容都将会被模板替换
+    </script>
+</body>
+</html>

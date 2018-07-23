@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise all</title>
+</head>
+<body>
+    <script>
+        function runAsync1(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务1')
+                    resolve('异步任务1执行完成')
+                }, 5000);
+            })
+        }
+        function runAsync2(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务2')
+                    resolve('异步任务2执行完成')
+                }, 3000);
+            })
+        }function runAsync3(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务3')
+                    resolve('异步任务3执行完成')
+                }, 4000);
+            })
+        }
+        //同时执行，最先执行的返回results
+        Promise.race([runAsync1(),runAsync2(),runAsync3()])
+        .then(function(result){
+            console.log(result)
+        })
+    </script>
+</body>
+</html>

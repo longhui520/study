@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue自定义指令</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-demo="{color:'red',text:'你好吧'}">你好</h1>
+        <h2 :style="{backgroundColor:'red'}">123</h2>
+    </div>
+    <script>
+        Vue.directive('demo',function(el,binding){
+          el.style.backgroundColor=binding.value.color
+        })
+        var app = new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>

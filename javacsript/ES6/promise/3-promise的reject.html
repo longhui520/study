@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise的reject</title>
+</head>
+<body>
+    <script>
+        function getNumber(){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    let num = Math.ceil(Math.random()*10)
+                    if(num<=5){
+                        resolve('我获得的数字是' + num)
+                    }else{
+                        reject('数据太大')
+                    }
+                },1000)
+            })
+        }
+        //then第一个参数是resolved的时候调用，第二个参数是rejected时候调用
+        // getNumber().then(function(data){
+        //     console.log('resolved')
+        //     console.log(data)
+        // },function(reason,data){
+        //     console.log('rejected')
+        //     console.log(reason)
+        //     console.log(data)
+        // }
+        // )
+        //也可用catch来调用rejected
+        getNumber().then(data=>{
+            console.log('resolved')
+            console.log(data)
+            console.log(sshsfhshf) // 此处的会被传到catch中而不会卡死
+            })
+            .catch(data=>{
+            console.log('rejected')
+            console.log(data)})
+    </script>
+</body>
+</html>

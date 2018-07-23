@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise的链式调用</title>
+</head>
+<body>
+    <script>
+        function runAsync1(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务1')
+                    resolve('异步任务1执行完成')
+                }, 2000);
+            })
+        }
+        function runAsync2(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务2')
+                    resolve('异步任务2执行完成')
+                }, 2000);
+            })
+        }function runAsync3(){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    console.log('异步任务3')
+                    resolve('异步任务3执行完成')
+                }, 2000);
+            })
+        }
+        //链式调用
+        //1.在每个异步任务完成后，在返回一个异步任务
+        // runAsync1().then(function(data){
+        //     console.log(data)
+        //     return runAsync2()
+        // }).then(function(data){
+        //     console.log(data)
+        //     return runAsync3()
+        // }).then(function(data){
+        //     console.log(data)
+        // })
+        //2.在每个异步任务完成后，在返回一个数据
+        runAsync1().then(function(data){
+            console.log(data)
+            return '随便什么数据1'
+        }).then(function(data){
+            console.log(data)
+            return '随便什么数据2'
+        }).then(function(data){
+            console.log(data)
+        })
+    </script>
+</body>
+</html>
