@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Document</title>
+</head>
+<style type="text/css">
+ .box {
+ width: 100%;
+ height: 200px;
+ background: #ff0000;
+ margin-bottom: 10px;
+ text-align: center;
+ color: #fff;
+ line-height: 200px;
+ font-family: microsoft yahei;
+ font-size: 40px;
+  
+ }
+ .animate{
+ animation: showText 1s;
+ }
+ @keyframes showText
+ {
+ from {
+ font-size: 20px;
+ }
+ to {
+ font-size: 40px;
+ }
+ }
+</style>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+<script type="text/javascript">
+  
+ var box = document.getElementsByClassName('box');
+ document.addEventListener('scroll',function(){
+   
+  //滚动条高度+视窗高度 = 可见区域底部高度
+  var visibleBottom = window.scrollY + document.documentElement.clientHeight;
+  //可见区域顶部高度
+  var visibleTop = window.scrollY;
+  for (var i = 0; i < box.length; i++) {
+  var centerY = box[i].offsetTop+(box[i].offsetHeight/2);
+  if(centerY>visibleTop&&centerY<visibleBottom){
+   box[i].innerHTML = '区域可见'
+   box[i].setAttribute("class",'box animate')
+   console.log('第'+i+'个区域可见');
+  }else{
+   box[i].innerHTML = '';
+   box[i].setAttribute("class",'box')
+   console.log('第'+i+'个区域不可见');
+  }
+  }
+ })
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height: 100%;
+        }
+        
+        .tabs{
+            position: fixed;
+            top:50px;
+            bottom: 50px;
+            left: 0;
+            width:50px;
+            background-color: #eee;
+        }
+        .tabs tab{
+            height: 30px;
+            background-color: #888;
+        }
+        .content{
+            margin-left: 50px;
+        }
+        .box{
+            height:2000px;
+            background-color: #00f;
+        }
+        .box1{
+            height:2000px;
+            background-color: #0f0;
+        }
+        .active{
+            background-color: aquamarine;
+        }
+        </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab">1</div>
+        <div class="tab">2</div>
+        <div class="tab">3</div>
+        <div class="tab">4</div>
+    </div>
+    <div class="content">
+        <div class="box">1</div>
+        <div class="box1">2</div>
+        <div class="box">1</div>
+        <div class="box1">2</div>
+    </div>
+    <script>
+        document.addEventListener('scroll',function(){
+            var tabs=document.querySelectorAll('.tabs>div')
+            var contents=document.querySelectorAll('.content>div')
+            var top=window.scrollY
+            var bottom=window.scrollY+document.documentElement.clientHeight;
+            
+            for(let i=0;i<tabs.length;i++){
+                let Y=contents[i].offsetTop+contents[i].offsetHeight/2
+                if(Y>top && Y<bottom){
+                tabs[i].className='tab '+'active'     
+                }else{
+                    tabs[i].className='tab'
+                }   
+            }
+        })
+       
+        
+    </script>
+</body>
+</html>
