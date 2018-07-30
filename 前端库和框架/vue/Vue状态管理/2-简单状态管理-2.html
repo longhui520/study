@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue简单的状态管理</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{count}}</p>
+        <p>
+            <button @click="increment(currentlist)">+</button>
+            <button @click="decrement(currentlist)">-</button>
+        </p>
+        <template v-for="(value,key) in shareState.list">
+            <child :idk="key" @changkey="currentlist=$event"></child>
+        </template>
+    </div>
+    <script type="text/x-template" id="tmp">
+            <div @click="$emit('changkey',idk)">
+                <p>{{count}}{{idk}}</p>
+                <p>
+                    <button @click="increment(idk)">+</button>
+                    <button @click="decrement(idk)">-</button>
+                </p>
+            </div>
+    </script>
+    <script>
+        const store={
+            state:{
+            },
+            list:{
+                list1:{count:0},
+                list2:{count:0},
+                list3:{count:0},
+            },
+            increment(list){this.list[list].count++},
+            decrement(list){this.list[list].count--},  
+        }
+        store.state.list=store.list
+        Object.assign(store.list,{list4:{count:0}})
+        Vue.component('child',{
+            template:'#tmp',
+            props:['idk'],
+            data:function(){
+                return {shareState:store.state}
+            },
+            computed:{
+                count:function(){
+                    return this.shareState.list[this.idk].count
+                }
+            },
+            methods:{
+                increment(list){
+                    store.increment(list)
+                },
+                decrement(list){
+                    store.decrement(list)
+                }
+
+            }
+        })
+        var app=new Vue({
+            el:"#app",
+            data:{
+                shareState:store.state,
+                currentlist:'list2'
+            },
+            computed:{
+                count:function(){
+                    return this.shareState.list[this.currentlist].count
+                }
+            },
+            methods:{
+                increment(list){
+                    store.increment(list)
+                },
+                decrement(list){
+                    store.decrement(list)
+                },
+            }
+        })
+    </script>
+</body>
+</html>

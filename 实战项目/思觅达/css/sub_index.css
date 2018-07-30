@@ -1,0 +1,73 @@
+body{
+    font-family: '微软雅黑';
+}
+/* banner */
+.banner .swiper-container {
+    width: 100%;
+    height: 580px;
+}
+.banner .swiper-slide>img{
+    display: block;
+    width: 100%;
+    height: 580px;
+}
+/* 市场行情 */
+.market-info{
+  background-color: #f0fbfe;  
+}
+.market-info-inner{
+    padding:50px 70px 38px 75px;
+}
+.market-info-inner hgroup{
+    text-align: center;
+    padding-bottom: 15px;
+}
+hgroup>h2{
+    font-size: 36px;
+    color: #3c3c3c;
+    font-weight: 700;
+}
+strong.red{
+    color:#ff6d6d;
+}
+hgroup>h5{
+    line-height: 1.2;
+    font-size: 26px;
+    color:#383838;
+    font-weight: normal;
+}
+.market-info-inner figure{
+    width:552px;
+    margin-bottom: 28px;
+}
+.market-info-inner figure img{
+    width: 552px;
+    height: 490px;
+}
+.market-info-inner figure p{
+    padding:0 30px;
+    height: 90px;
+    line-height: 28px;
+    font-size: 16px;
+    color:#fff;
+    border-radius: 0 0 10px 10px;
+}
+.market-info-inner .more{
+    margin: 0 auto;
+    width:230px;
+    height: 70px;
+    border:1px solid #fb8383;
+    border-radius: 20px;
+    text-align:center;
+}
+.more div{
+    padding:10px;
+   
+}
+.more div a{
+    display: block;
+    line-height: 50px;
+    color:#fff;
+    background-color: #fb8383;
+    border-radius: 20px;
+}

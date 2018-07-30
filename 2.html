@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom: 0;
+            background-color: #ccc; 
+            cursor: zoom-in;
+            text-align: center;
+        }
+        .play{
+            cursor: zoom-in;
+            text-align: center;
+        }
+        .play>img{
+            width:100px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="play"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532809098396&di=990e6fb659417bd2770b62de485ee95d&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20150820%2Ftooopen_sy_139205349641.jpg" alt=""></div>
+    <script>
+        var p=document.querySelector('.play')
+        p.onclick=function(){
+            var d=document.createElement('div')
+            d.setAttribute('class','box')
+            d.innerHTML="<img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532809098396&di=990e6fb659417bd2770b62de485ee95d&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20150820%2Ftooopen_sy_139205349641.jpg'>"
+            d.onclick=function(){
+                document.body.removeChild(d)
+            }
+            document.body.appendChild(d)    
+        }
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function getData ( url, fn ) {
+			var oIframe = document.createElement('iframe'),
+				firstBtn = true,
+				loadFn = function () {
+					if ( firstBtn ) {
+						//导航回同一域下的air.html，以便获取到name值
+						oIframe.contentWindow.location = 'http://www.a.com/air.html';
+						firstBtn = false;
+					} else {
+						fn( oIframe.contentWindow.name );
+						oIframe.contentWindow.document.write('');
+						oIframe.contentWindow.close();
+						document.body.removeChild(oIframe);
+						oIframe.src = '';
+						oIframe = null;
+					}
+				};
+ 
+			oIframe.src = url;
+ 
+			//1.第一次iframe加载完毕触发事件，执行loadFn函数，会将iframe导航回air.html
+			//2.air.html加载完毕后又会触发事件，再次执行loadFn函数，此时会走else
+			if ( oIframe.attachEvent ) {
+				oIframe.attachEvent( 'onload', loadFn );
+			} else {
+				oIframe.onload = loadFn;
+			}
+ 
+			document.body.appendChild(oIframe);
+		}
+ 
+ 
+		//页面加载完毕后调用getData函数去获取数据
+		window.onload = function () {
+			getData( 'http://www.b.com/target.html', function ( data ) {
+				console.log( data );
+			} );
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

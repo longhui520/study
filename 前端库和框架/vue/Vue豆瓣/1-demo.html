@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>豆瓣</title>
+    <script src="../jquery-3.0.0.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="test">
+        <ul class="row">
+                <li class="m-lst" v-for="(value,index) in hotMovie">
+       
+                    <div>
+                        <img class="img-responsive center-block" :src="value.images.large" />
+                    </div>
+                    <div class="caption">
+                        <h4 class="h4 text-center" :title="value.title">{{value.title}}</h4>
+                        <p class="m-casts"><i class="glyphicon glyphicon-user"></i><a class="u-cast" :href="val.alt" v-for="val in value.casts">{{val.name}}</a></p>
+                        <p class="m-genres"><i class="glyphicon glyphicon-tags"></i> <span class="text-danger u-genres" v-for="val in value.genres">{{val}}</span> </p>
+                        <p class="m-time"><i class="glyphicon glyphicon-time"></i><span class="text-success u-time">{{value.year}}</span></p>
+                        <p class="text-right"><a href="03-detail.html" class="btn btn-info" @click="link(value.id)">查看详情</a></p>
+                    </div>
+                </li>
+            </ul>
+       </div>
+    <script type="text/javascript">
+         new Vue({
+            el:"#test",
+            data:{
+                hotMovie:[]
+            },
+            methods:{
+                link:function(tt){
+                    localStorage.setItem("id",tt)
+                }
+            },
+            created:function(){
+                $.ajax({
+                    type:"get",
+                    url:"https://api.douban.com//v2/movie/in_theaters",
+                    dataType :"jsonp",
+                    success:(data)=>{
+                        this.hotMovie=data.subjects
+                    }
+                });
+            }
+         })
+    </script>
+</body>
+</html>

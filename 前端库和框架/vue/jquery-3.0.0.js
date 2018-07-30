@@ -52,7 +52,7 @@ var document = window.document;
 var getProto = Object.getPrototypeOf;
 
 var slice = arr.slice;
-                                                                                                                                                
+
 var concat = arr.concat;
 
 var push = arr.push;

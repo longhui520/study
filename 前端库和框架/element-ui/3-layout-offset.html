@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <!-- import CSS -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+      .box{
+         height: 50px;
+      }
+      .red{background-color: #f00;}
+      .blue{background-color: blue;}
+      .green{background-color: green;}
+      .pink{background-color: pink;}
+  </style>
 </head>
 <body>
   <div id="app">
-    <el-button @click="visible = true">Button</el-button>
-    <el-dialog :visible.sync="visible" title="Hello world">
-      <p>hello world</p>
-    </el-dialog>
+    <el-row :gutter="20">
+        <el-col :span="6"><div class="box red"></div></el-col>
+        <el-col :span="6" :offset="6"><div class="box blue"></div></el-col>
+    </el-row>
   </div>
 </body>
   <!-- import Vue before Element -->
@@ -18,11 +27,8 @@
   <!-- import JavaScript -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script>
-    new Vue({
-      el: '#app',
-      data: function() {
-        return { visible: false }
-      }
-    })
+      new Vue({
+          el:'#app',
+      })
   </script>
 </html>

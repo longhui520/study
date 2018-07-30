@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的Vue Mixin</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <script type="text/x-template" id="modal">
+        <div>
+            <h3>Let's trigger this modal!</h3>
+            <button @click="toggleShow">
+                <span v-if="isShowing">Hide Child</span>
+                <span v-else>show child</span>
+            </button>
+            <app-child v-if="isShowing" class="modal">
+                <button @click="toggleShow">Close</button>
+            </app-child>
+        </div>
+    </script>
+    <script type="text/x-template" id="tooltip">
+        <div class="tooltip-demo">
+            <h3 @click="toggleShow">
+                
+            </h3>
+        </div>
+    </script>
+</body>
+</html>

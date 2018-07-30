@@ -211,6 +211,23 @@
 - php 中设置响应头
   * Content-type:text/html 设置内容的内容
   * charset=utf-8
+  * Location:路径  页面跳转 302临时跳转 不要循环重定向
+  * Content-Type:application/octet-stream
+  * Content-Disposition:attachment;filename=demo.text
+- JSON
+  * 字面量 表示数据的手段
+  * JSON 属性名称必须是双引号包裹
+  * JSON 字符串必须双引号
+  * JSON 不允许使用注释
+  * JSON 没有 undefined
+  * file-get-contents(文件)
+  * json_decode
+  * object of type stdClass  用 ->
+- 文件上传
+  * input file文件域 accept 设置问价类型
+  * in_array 判断是否在数组中
+  * 数组追加 $arr[] array_push
+  * 保存数据的路径用绝对路径
 
  
  

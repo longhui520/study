@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        .clearfix:after{content: '' ;display: block; overflow: hidden;}
+        li{
+            list-style: none;
+        }
+        .box{
+            margin:200px auto;
+            width: 500px;
+            height: 500px;
+            padding:10px;
+            overflow: hidden;
+            border:1px solid #ccc;
+            position: relative;
+        }
+        .box>ul{
+            height: 100%;
+            width: 500%;
+        }
+        .box>ul>li{
+            height: 100%;
+            width:20%;
+            float:left;
+        }
+        button{
+            position: absolute;
+        }
+        .b1{
+            left:0;
+            top:50%;
+        }
+        .b2{
+            right:0;
+            top:50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="clearfix">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <button class="b1">></button>
+        <button class="b2"><</button>
+    </div>
+    <script>
+        var li=document.querySelectorAll('li')
+        var ul=document.querySelector('ul')
+        var b1=document.querySelector('.b1')
+        var b2=document.querySelector('.b2')
+        li=Array.from(li)
+        b1.onclick=function(){
+           li.push(li.shift())
+           console.log(li)
+      
+        }
+    </script>
+</body>
+</html>

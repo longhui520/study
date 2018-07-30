@@ -42,6 +42,12 @@ img{
 .clear{
     *zoom:1;
 }
+.f-left{
+    float:left;
+}
+.f-right{
+    float:right;
+}
 .bg-y{
     background-color: #efa61c;
 }
@@ -53,4 +59,158 @@ img{
 }
 .bg-p{
     background-color: #f36d78;
+}
+/* 头部 */
+header.index{
+    /* height: 103px; */
+    background-color: #f1f1f1;
+    padding:18px;
+}
+header .logo{
+    float:left;
+    width:532px;
+    height: 64px;
+    background-image: url(../images/sm-logo-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+header .logo h1{
+    text-indent: -999em;
+}
+header .telephone{
+   float: right;
+   width: 350px;
+   height: 64px;
+}
+.telephone>img{
+   float: left;
+   width:56px;
+   height: 46px;
+   margin-top:6px;
+   margin-right: 20px;
+}
+.telephone>p{
+   line-height: 28px;
+   font-size: 16px;
+   color:#323232;
+}
+nav{
+   height: 36px;
+   background-color: #025392;
+}
+nav ul li {
+   float: left;
+}
+nav ul li a {
+   display: block;
+   height: 36px;
+   line-height: 36px;
+   font-size: 16px;
+   color:#fff;
+   margin:0 15px;
+}
+nav ul li a:hover {
+   border-bottom:2px solid #fff;
+}
+/* banner */
+.banner .swiper-container {
+   width: 100%;
+   height: 580px;
+}
+.banner .swiper-slide>img{
+   display: block;
+   width: 100%;
+   height: 580px;
+}/* 头部 */
+header.index{
+    /* height: 103px; */
+    background-color: #f1f1f1;
+    padding:18px;
+}
+header .logo{
+    float:left;
+    width:532px;
+    height: 64px;
+    background-image: url(../images/sm-logo-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+header .logo h1{
+    text-indent: -999em;
+}
+header .telephone{
+   float: right;
+   width: 350px;
+   height: 64px;
+}
+.telephone>img{
+   float: left;
+   width:56px;
+   height: 46px;
+   margin-top:6px;
+   margin-right: 20px;
+}
+.telephone>p{
+   line-height: 28px;
+   font-size: 16px;
+   color:#323232;
+}
+nav{
+   height: 36px;
+   background-color: #025392;
+}
+nav ul li {
+   float: left;
+}
+nav ul li a {
+   display: block;
+   height: 36px;
+   line-height: 36px;
+   font-size: 16px;
+   color:#fff;
+   margin:0 15px;
+}
+nav ul li a:hover {
+   border-bottom:2px solid #fff;
+}
+/* 底部 */
+.footer{
+    height: 204px;
+    background-color: #025392;
+}
+.footer .f-nav {
+    position: relative;
+    font-size: 14px;
+    color:#fff;
+}
+.f-nav ul li {
+    float: left;
+}
+.f-nav ul li a{
+    display: block;
+    line-height: 86px;
+    padding-right: 42px;
+    color:#fff;
+}
+.f-nav>p{
+    line-height: 24px;
+}
+.copyright{
+    margin-top:10px;
+    text-align: center;
+}
+.erweima{
+    position: absolute;
+    right:0 ;
+    top:25px;
+    width:161px;
+    height: 133px;
+}
+.erweima img{
+    float: left;
+    margin-right: 6px;
+}
+.erweima p{
+    margin-top: 5px;
+   line-height: 1;
 }
