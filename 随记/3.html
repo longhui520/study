@@ -11,16 +11,24 @@
     <input type="text" name="bookId" class="book" value="1003078">//这里的value值是对应的豆瓣书籍的ID;
     <input type="submit" class="go">
     <script>
-            $(function () {
-        $('.go').click(function () {
-            $.ajax({
-                url: 'https://api.douban.com/v2/book/' + $('.book').val(),
-                type: 'get',
-                dataType: 'jsonp',
-                success: function (backData) {
-                    console.log(backData);
-                }
-            })
+    //         $(function () {
+    //     $('.go').click(function () {
+    //         $.ajax({
+    //             url: 'https://api.douban.com/v2/book/' + $('.book').val(),
+    //             type: 'get',
+    //             dataType: 'jsonp',
+    //             success: function (backData) {
+    //                 console.log(backData);
+    //             }
+    //         })
+    //     })
+    // })
+    $(function(){
+        $.ajax({
+            url:'http://xyzj.api.ti132520.cn/brand?school_id=1',
+            success:function(data){
+                console.log(data)
+            }
         })
     })
     </script>

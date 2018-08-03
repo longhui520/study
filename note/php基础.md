@@ -228,9 +228,64 @@
   * in_array 判断是否在数组中
   * 数组追加 $arr[] array_push
   * 保存数据的路径用绝对路径
-
- 
- 
-  
+- 文件删除
+  * exit 
+- MySQL数据库
+  * 数据MySQL
+- 数据库命令行操作
+  * show databases 显示数据库
+  * create database <db-name>创建一个指定的数据库
+  * use <da-name> 使用一个数据库，相当于进入一个数据库
+  * show tables 显示当前数据库有哪些表
+  * create table <table-name> (id int , name var )创建一个数据表并添加字段
+  * desc <table-name> 查看指定表结构
+  * source ./path/to /sql/sql-file.sql --执行本地SQL的sql语句
+  * drop table <table-name> 删除一个指定名称的数据表
+  * drop database <db-name> 删除一个指定名称的数据库
+  * exit|quit 退出数据库终端
+- 数据库字段类型
+  * int
+  * char
+  * varchar
+  * date
+  * decimal
+- SQL 结构化查询语言
+  * 查询语句
+    * select `id`,`title`,`name` from `table-name`;
+    * select * from `table-name`;
+    * select 1 from  `table-name`
+    * select id,'foo' from `table-name`
+  * 新增加
+    * insert into users values|value (null,'ceo','麻子',18,0)
+    * insert into users(title,name,age,gender) value ('ceo','麻子',18,0)
+  * 删除 
+    * delete from users 
+    * delete from users where title = 'uf0' and|or id=|>|<1
+    * delete from users  where id in (1,2,3,4)  
+  * 更新
+    * update users set  title ='ceo'
+    * update users set  title='1111' where  title='ufo'
+  * 筛选
+  * 查询函数
+    * select count(id) from users
+    * select count(1) as count from users
+    * select max(id) as max from users
+    * avg min 
+    * select * from users limit 2
+    * select * from users limit 2,2
+    * select fn(field1 )from table
+- php 操作mysql 数据库
+  * mysqli_connect()
+  * php 配置文件 display_errors= on or off 
+  * 函数头前@会忽略错误
+  * mysqli_query(查询语句)
+  * mysqli_fetch_assoc
+  * mysqli_free
+  * mysqli_free_result
+  * mysqli_close
+  * mysqli_affected_rows(连接对象)
+- php 数据库查询中文
+  * mysql_set_charset($connection,'utf-8')
+  * mysql_query('    utf-8')
   
   

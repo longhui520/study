@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class Website extends React.Component{
+          constructor (){
+              super()
+              this.state={name:'百度',site:'http://www.baidu.com'}
+          }
+          render(){
+              return (
+                  <div>
+                    <Name name={this.state.name} />
+                    <Site site={this.state.site} />
+                  </div>
+              )
+          }
+      }
+      class Name extends React.Component{
+          render(props){
+              return <h1>{this.props.name}</h1>
+          }
+      }
+      class Site extends React.Component{
+          render(props){
+              return <a href={this.props.site}>{this.props.site}</a>
+          }
+      }
+      ReactDOM.render(
+        <Website />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

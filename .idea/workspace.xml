@@ -4,10 +4,13 @@
     <list default="true" id="f1c436e3-dbcc-416d-a486-39405f777cb7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note/php基础.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/php基础.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/前端库和框架/element-ui/1-简单运用模态弹框.html" beforeDir="false" afterPath="$PROJECT_DIR$/前端库和框架/element-ui/1-简单运用模态弹框.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/css/public.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/随记/jquery-3.0.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/随记/jquery-3.0.0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/css/soft_test.css" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/css/soft_test.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/css/sub_index.css" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/css/sub_index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/soft_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/soft_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/sub_embed.html" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/sub_embed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/实战项目/思觅达/sub_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/实战项目/思觅达/sub_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/随记/3.html" beforeDir="false" afterPath="$PROJECT_DIR$/随记/3.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,12 +44,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="php基础.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="php基础.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/note/php基础.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="204">
-                <caret line="226" column="31" selection-start-line="226" selection-start-column="31" selection-end-line="226" selection-end-column="31" />
+              <first_editor relative-caret-position="442">
+                <caret line="280" column="22" lean-forward="true" selection-start-line="280" selection-start-column="22" selection-end-line="280" selection-end-column="22" />
               </first_editor>
               <second_editor />
             </state>
@@ -56,17 +59,17 @@
       <file leaf-file-name="1-jsx.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/前端库和框架/react/JSX/1-jsx.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="330">
               <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hello.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hello.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/前端库和框架/react/JSX/hello.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="420">
+              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -110,8 +113,8 @@
         <option value="$PROJECT_DIR$/php/fieltotable.php" />
         <option value="$PROJECT_DIR$/note/ps.md" />
         <option value="$PROJECT_DIR$/php/uploadfile.php" />
-        <option value="$PROJECT_DIR$/note/php基础.md" />
         <option value="$PROJECT_DIR$/前端库和框架/react/JSX/hello.js" />
+        <option value="$PROJECT_DIR$/note/php基础.md" />
       </list>
     </option>
   </component>
@@ -129,16 +132,16 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="31" />
-    <option name="width" value="1820" />
-    <option name="height" value="1090" />
+    <option name="x" value="-163" />
+    <option name="y" value="30" />
+    <option name="width" value="1943" />
+    <option name="height" value="1089" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,32 +149,16 @@
               <item name="study" type="b2602c69:ProjectViewProjectNode" />
               <item name="study" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="study" type="b2602c69:ProjectViewProjectNode" />
-              <item name="study" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="前端库和框架" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="study" type="b2602c69:ProjectViewProjectNode" />
-              <item name="study" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="前端库和框架" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="react" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="study" type="b2602c69:ProjectViewProjectNode" />
-              <item name="study" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="前端库和框架" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="react" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="JSX" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/phpStudy/PHPTutorial/WWW" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="IntelliLang.Configuration" />
@@ -215,11 +202,14 @@
       <workItem from="1532619891836" duration="1181000" />
       <workItem from="1532846020019" duration="2817000" />
       <workItem from="1532881832840" duration="816000" />
+      <workItem from="1532961741713" duration="2771000" />
+      <workItem from="1533050955291" duration="2142000" />
+      <workItem from="1533130853268" duration="8373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64699000" />
+    <option name="totallyTimeSpent" value="77985000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -231,10 +221,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="25" y="0" width="1456" height="872" extended-state="0" />
+    <frame x="-130" y="24" width="1554" height="871" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25894135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896653" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32749325" />
@@ -637,27 +627,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/note/php基础.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="204">
-            <caret line="226" column="31" selection-start-line="226" selection-start-column="31" selection-end-line="226" selection-end-column="31" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/前端库和框架/react/JSX/1-jsx.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="330">
           <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/前端库和框架/react/JSX/hello.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="420">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note/php基础.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="442">
+            <caret line="280" column="22" lean-forward="true" selection-start-line="280" selection-start-column="22" selection-end-line="280" selection-end-column="22" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

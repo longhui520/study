@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      function He(){
+          return <h1>函数式jsx</h1>
+      }
+      class Hee extends React.Component{
+          render(){
+              return <h1>类jsx</h1>
+          }
+      }
+      let Hec=<He />
+      let Heec=<Hee />
+      ReactDOM.render(
+          <div><He /><Hee /></div>,
+          document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class Website extends React.Component{
+          render(){
+              return <div>{this.props.site}</div>
+          }
+      }
+      Website.defaultProps={site:'www.baidu.com'}
+      ReactDOM.render(
+        <Website />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

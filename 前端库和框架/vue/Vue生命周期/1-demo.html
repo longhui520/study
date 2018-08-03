@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生命周期</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 ref="hh">{{message}}</h1>
+    </div>
+    <script>
+        var app =new Vue({
+            el:'#app',
+            data:{
+                message:'我是信息'
+            },
+            beforeCreate() {
+                console.log(this.$options)
+                // alert(this.$options.data()['message'])
+                this.$nextTick(function(){
+                    alert(this.message)
+                })
+            },
+            created() {
+                alert(this.message)
+            },
+            beforeMount() {
+                alert(this.$refs.hh)
+            },
+            mounted() {
+                alert(this.$refs.hh)
+            },
+        })
+    </script>
+</body>
+</html>

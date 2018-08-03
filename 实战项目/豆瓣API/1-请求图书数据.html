@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>豆瓣api</title>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <script>
+        $.ajax({
+            url:'https://api.douban.com/v2/movie/in_theaters?start=0&&count=250',
+            dataType:'jsonp',
+            success:function(data){
+                console.log(data)
+            }
+        })    
+        
+        
+    </script>
+</body>
+</html>

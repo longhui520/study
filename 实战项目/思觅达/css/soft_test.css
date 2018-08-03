@@ -11,3 +11,163 @@ body{
     width: 100%;
     height: 580px;
 }
+/* 查看更多 */
+.more{
+    width: 190px;
+    height: 58px;
+    line-height: 58px;
+    background: url(../images/no-active--bg.png) no-repeat center;
+    text-align: center;
+    margin: 0 auto;
+}
+.more a{
+    font-size: 24px;
+    color:#ffffff;
+    
+}
+.more-active{
+    background: url(../images/click-active-bg.png) no-repeat center;
+}
+/* 关于提示 */
+.about-test{
+    margin-top:55px;
+    background-color: #f6f6f6;
+}
+.about-test-inner{
+    padding: 0 193px 58px 153px;
+}
+hgroup{
+    height: 180px;
+    box-sizing: border-box;
+    padding:55px 0;
+    text-align: center;
+}
+hgroup h2{
+    font-size: 36px ;
+    font-weight: 700px;
+    color:#000000;
+    margin-bottom: 15px;
+}
+hgroup h5{
+    font-weight: normal;
+    font-size: 18px;
+    color:#727272;
+}
+.test-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+figure .middle{
+    vertical-align: 70px;
+}
+figure p{
+    text-align: center;
+    padding:30px 0;
+}
+/* 职业前景 */
+.career {
+    background-color: #fff;
+}
+.career-inner{
+    padding:50px 0 112px;
+}
+.career-inner .money-bar{
+   text-align: center;
+}
+.list-group-1{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 48px;
+    margin-top:25px;
+}
+.list-item-1{
+    width:250px;
+}
+.list-item-1 .title{
+    height: 40px;
+}
+.list-item-1 .title>span{
+    border-bottom: 7px solid #efa61c;
+}
+.list-item-1 .content{
+    height: 210px;
+    box-sizing: border-box;
+    padding:15px 10px;
+    line-height: 32px;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    color:#4e4d4d;
+}
+/* 企业需求 */
+.company-need{
+    background-color: #f6f6f6;
+}
+.company-need-inner{
+    padding-bottom: 65px;
+}
+.list-group-2{
+    margin-bottom: 95px;
+    display: flex;
+    justify-content: space-around;
+}
+.list-item-2{
+    width:278px;
+}
+.list-item-2 .circle{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    padding:8px;
+    margin: 0 auto -75px;
+    background-color: #d4237a;
+    border-radius: 100%;
+}
+.list-item-2 .circle-inner{
+    width: 100%;
+    height: 100%;
+}
+.list-item-2 .circle-inner img{
+    padding:20%;
+    box-sizing: content-box;
+    width:60%;
+    height: 60%;
+}
+.list-item-2 .content{
+    padding-top:90px ;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.list-item-2 .content h4{
+    text-align: center;
+    line-height: 40px;
+    padding-bottom: 15px;
+}
+.list-item-2 .content h4>span{
+    border-bottom: 1px solid #fc68b1;
+} 
+.list-item-2 .course{
+    line-height: 32px;
+    font-size: 18px;
+    color:#48b986;
+    text-align: center
+}
+.list-item-2 .money{
+    padding:20px 45px 70px;
+    line-height: 32px;
+    font-size: 18px;
+    color:#434343;
+}
+/* 职业发展 */
+.career-devlopment{
+    background-color: #fff;
+}
+.career-devlopment-inner{
+    padding:90px 85px 112px;
+}
+.career-devlopment-inner img{
+    width:100%;
+    height:100%;
+    margin-bottom: 35px;
+}
