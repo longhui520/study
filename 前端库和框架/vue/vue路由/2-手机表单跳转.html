@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的路由</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="show">hello Vue Router</h1>
+    <p v-if="show">
+      <button @click="link">点击我跳转</button>
+        <p>表单带回数据{{formdata}}</p>
+    </p>
+    <!-- 渲染路由的内容 -->
+    <router-view></router-view>
+</div>
+<script>
+    //定义vue组件构造器
+    const Foo={
+        template:'<div><div @click="back">Foo</div><input type="text" v-model="msg"></div>',
+        data:function(){
+            return {msg}
+        },
+        methods:{back:function(){
+            this.$root.show=true
+            this.$root.formdata=this.msg
+            this.$router.go(-1)}
+        }}
+    const Bar={template:'<div>Bar</div>'}
+    // 定义路由
+    const routes=[
+        {path:'/foo',component:Foo},
+        {path:'/Bar',component:Bar},
+    ]
+    //创建路由
+    const router=new VueRouter({
+        routes,
+        mode:'history'
+    })
+    // 挂载实例
+    const app= new Vue({
+        router,
+        el:'#app',
+        data:{
+            show:true,
+            formdata:''
+        },
+        methods:{
+            link:function(){
+                this.show=false
+                this.$router.push({path:'/foo'})
+            }
+        },
+    })
+</script>
+</body>
+</html>

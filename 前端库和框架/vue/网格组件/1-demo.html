@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网格组件</title>
+    <link rel="stylesheet" href="demo.css">
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <form>
+             <label>search <input type="text" v-model="searchQuery"></label>
+        </form>
+        <demo-grid :data="gridData" 
+        :columns="gridColumns"
+        :filter-key="searchQuery"
+         ></demo-grid>
+    </div>
+    <script type="text/x-template" id="grid-template">
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="key in columns">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in filteredData">
+                    <td>{{item.name}}</td>
+                    <td>{{item.power}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    <script>
+        Vue.component('demo-grid',{
+            template:'#grid-template',
+            props:{
+                data:Array,
+                columns:Array,
+                filterKey:String
+            },
+            data:function(){
+                var sortOrders={}
+                this.columns.forEach(key => {
+                    sortOrders[key]=1
+                });
+                return {
+                    sortkey:'',
+                    sortOrders:sortOrders
+                }
+            },
+            computed:{
+                filteredData:function(){
+                    var sortkey=this.sortkey;
+                    var filterKey=this.filterKey && this.filterKey.toLowerCase()
+                    var order= this.sortOrders[sortkey]||1
+                    var data=this.data
+                    // 筛选展示
+                    if(filterKey){
+                        data=data.filter(function(row){
+                            return Object.keys(row).some(function(key){
+                               return String(row[key]).toLocaleLowerCase().indexOf(filterKey)>-1     
+                            })
+                        })
+                    }
+                    // 排序展示
+                    if(sortkey){
+                        data=data.slice().sort(function(a,b){
+                            a=a[sortkey]
+                            b=b[sortkey]
+                            return (a===b)?0:a<b?1:-1
+                        })
+                    }    
+                    return data;
+                },
+        
+            }
+        })
+        var gridData=[
+           {name:'a',power:3000},
+           {name:'b',power:2000},
+           {name:'c',power:3000},
+        ]
+        var gridColumns=['name','power']
+        var demo=new Vue({
+            el:'#demo',
+            data:{
+                gridData,
+                gridColumns,
+                searchQuery:'',
+            }
+        })
+
+    </script>
+</body>
+</html>

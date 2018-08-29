@@ -1,0 +1,1646 @@
+﻿/**
+ * TML 项目样式
+ * 
+ * @version 1.0.2
+ * @author zhanjiang
+ * @update 20140625
+ */
+
+
+/* 去掉 moz 浏览器 button 内部的边距和边框 */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.noData {
+  color: #aaa;
+  font-size: 18px;
+  line-height: 36px;
+  position: relative;
+  text-align: center;
+}
+
+.noDataText {
+  color: #666;
+  font: bold 16px/22px $base-headings-font;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+}
+
+.no-data {
+  color: #9a9a9a;
+  font-size: 18px;
+  text-align: center;
+}
+
+/**
+ * 辅助 class
+ * 单行文本溢出时自动省略
+ */
+.hellip {
+  @include ellipsis();
+}
+
+.select-list li a {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  line-height: 20px;
+  margin: 0 0 5px;
+  text-align: center;
+  &:hover {
+  	background-color: #e0e0e0;
+  }
+}
+
+.select-list li.active a {
+  background-color: #008299;
+  border-color: #e0e0e0;
+  color: #fff;
+}
+
+.floatNone {
+  float: none;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+	color: blue;
+}
+
+.fontGray {
+	color: #999;
+	line-height: 21px;
+	padding: 0 5px;
+}
+
+.taskfontblue {
+	color: blue;
+	line-height: 21px;
+	padding: 0 5px;
+}
+
+/* 交流反馈 */
+.comment {
+	padding: 7px 14px 0;
+}
+
+.commentBox h3 {
+	background: url(i/box_x.png) no-repeat 0 6px;
+	color: #333;
+	font: bold 14px/20px $base-headings-font;
+	height: 20px;
+	margin: 0 0 10px;
+	padding: 0 0 0 12px;
+}
+
+.commentItem{
+	border-bottom: 1px dotted #ced7e1;
+	padding: 0 0 5px;
+}
+
+.commentHeader {
+	padding: 8px 10px 5px 16px;
+}
+
+.comment {
+	.time {
+		color: #959595;
+		float: right;
+	}
+
+	.number {
+		color: #959595;
+	}
+
+	.author {
+		color:#0071c7;
+	}
+}
+
+.commentContent {
+  padding: 0 5px 5px 70px;
+}
+
+.commentText {
+  display: block;
+  font-size: 14px;
+  line-height: 24px;
+  padding:3px 10px 0;
+}
+
+.commentfooter {
+	text-align: right;
+}
+
+.commentfooter a {
+	color: #0071C7;
+	padding: 5px;
+}
+
+.commentItem-child {
+	background: #f9f9f9;
+	padding: 0 0 5px;
+	margin: 6px 0 0 60px;
+}
+
+/** 
+ * selectButton 插件样式 
+ * 需要配合该插件一起使用
+ */
+.selectButton li {
+	float: left;
+}
+
+.selectButton li a {
+	background-color: #f5f5f5;
+	background-image: linear-gradient(#fff, #e6e6e6);
+	border: 1px solid #ccc;
+	border-right: none;
+	@include box-shadow((0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05)));
+	display: block;
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	padding: 0 6px;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	white-space: nowrap;
+}
+
+.selectButton li.first a {
+	border-radius: 4px 0 0 4px;
+}
+
+.selectButton li.last a {
+	border-radius: 0 4px 4px 0;
+	border-right: 1px solid #ccc;
+}
+
+.selectButton li.only a {
+	border-radius: 4px;
+	border-right: 1px solid #ccc;
+}
+
+.selectButton li a.selected {
+	background-color: #ccc;
+	background-image: none;
+	@include box-shadow((0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05)));
+}
+
+/* 组织结构 */
+.xyGroup {
+	position: relative;
+}
+
+.xyGroupItems {
+	padding: 5px 0 0 5px;
+}
+
+.xyGroupItem {
+	float: left;
+	height: 126px;
+	margin: 5px;
+	padding: 5px;
+	width: 220px;
+	border: 1px solid #bababa;
+}
+
+.xyGroupItem:hover {
+	background: #eaf2ff;
+	border-color: #224781;
+}
+
+.xyGroupItemPhoto {
+	float: left;
+	margin: 0px 5px 5px 0px;
+	width: 87px;
+}
+
+.xyGroupItemPhotoCon {
+	border: 1px solid #ccc;
+	height: 80px;
+	margin: 0 0 6px;
+	padding: 2px;
+	position: relative;
+	width: 80px;
+}
+
+.xyGroupItemPhotoImg {
+	height: 80px;
+	overflow: hidden;
+	width: 80px;
+}
+
+.xyGroupItemPhotoSelf {
+	position: absolute;
+	right: 4px;
+	top: 0;
+}
+
+.xyGroupItemInfoName {
+	color: #15428B;
+	font-family: $base-headings-font;
+	text-align: center;
+}
+
+.xyGroupItemInfoDepartment {
+	color: #666;
+	text-align: center;
+	padding: 1px;
+	line-height: 20px;
+}
+
+.xyGroupItemInfo {
+	float: left;
+	width: 125px;
+}
+
+.xyGroupItemInfoList {
+	color: #666;
+	line-height: 16px;
+	overflow: hidden;
+	padding: 0 0 2px;
+	width: 125px;
+	white-space: nowrap;
+}
+
+.xyGroupItemInfoDepart {
+	background: url(i/organization/depart.png) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+.xyGroupItemInfoPosition {
+	background: url(i/organization/position.png) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+.xyGroupItemInfoExtPhone {
+	background: url(i/organization/extphone.gif) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+.xyGroupItemInfoPhone {
+	background: url(i/organization/phone.png) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+.xyGroupItemInfoShortPhone {
+	background: url(i/organization/shortphone.png) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+.xyGroupItemInfoMail {
+	background: url(i/organization/mail.png) no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 0 4px 0 0;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+/* message 邮件 */
+.xyMessage {
+	padding: 0;
+}
+.xyMessageTool {
+	background: #c1d9f3;
+	border-bottom: 1px solid #aac1de;
+	padding: 6px;
+}
+.xyMessageInfo {
+	border-bottom: 1px solid #99bbe8;
+	padding: 10px;
+}
+.xyMessageTitle {
+	border-bottom: 1px solid #99bbe8;
+	margin-bottom: 10px;
+	padding: 10px 0;
+}
+.xyMessageTitleCon {
+	color: #545454;
+	font: bold 16px $base-headings-font;
+}
+.xyMessageInfoList {
+	line-height: 16px;
+	margin-top: 6px;
+}
+.xyStar {
+	background: url(i/message/star_empty.png) no-repeat;
+	display: inline-block;
+	height: 16px;
+	vertical-align: middle;
+	width: 16px;
+}
+
+.xyStarActive {
+	background: url(i/message/star_full.png) no-repeat;
+	display: inline-block;
+	height: 16px;
+	vertical-align: middle;
+	width: 16px;
+}
+
+.xyMessageContent {
+	margin: 10px;
+	position: relative;
+}
+
+.xyMessageText {
+	color: #333;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+.xyMessageAttach {
+	background: #e0ecf9;
+	margin: 10px;
+	padding: 2px;
+}
+
+.xyMessageAttachItems {
+	background-color: #fff;
+	padding: 0 8px 6px 12px;
+	_height: 60px;
+	line-height: 140%;
+}
+
+.xyMessageAttachItem {
+	padding: 5px 2px;
+}
+
+/* mail */
+.xymail {
+	background: #fff;
+}
+
+.xymail .xymailSide {
+	background: #e1e2e6;
+	border-right: 1px solid #888;
+	float: left;
+	width: 178px;
+}
+
+.xymail .xymailIcon {
+	background: url(i/mail/mail.png) no-repeat;
+	color: #555;
+	font: 24px $base-headings-font;
+	height: 32px;
+	margin: 10px 0;
+	padding: 0 0 0 36px;
+}
+
+.xymail .xymailTool {
+	height: 35px;
+	margin: 0 0 15px;
+	text-align: center;
+}
+
+.xymailReadBtn {
+	background: url(i/mail.png) no-repeat 0 -28px;
+	display: block;
+	float: left;
+	height: 20px;
+	margin: -8px 6px 0 0;
+	width: 20px;
+}
+
+.xymailWriteBtn {
+	background: url(i/mail.png) no-repeat 0 4px;
+	display: block;
+	float: left;
+	height: 20px;
+	margin: -8px 6px 0 0;
+	width: 20px;
+}
+
+.xymail .xymailTop {
+	background: #4899ed;
+	font: bold 14px $base-headings-font;
+	margin: 10px 0;
+	padding: 10px 7px;
+}
+
+.xymail .xymailTopCon a,
+.xymail .xymailHead a,
+.xymail .xymailBottomCon a {
+	color: #555;
+	display: block;
+	font-weight: 700;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 0 0 21px;
+}
+
+.xymail .xymailHead {
+	background: #9AC5E8;
+	border-bottom: 1px solid #5b99ca;
+	padding: 0 0 0 5px;
+	width: 171px;
+}
+
+.xymail .xymailCon a {
+  border-top: 1px solid #ebecf0;
+  border-bottom: 1px solid #cfd0d4;
+  color: #0a0a0a;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 0 20px;
+
+  &:hover {
+    background: #c9ced3;
+  }
+
+  &.cu {
+    background: #1794ca;
+    color: #fff;
+  }
+
+  &.first {
+    border-top: none;
+  }
+
+  &.last {
+    border-bottom: none;
+  }
+}
+
+.xyMailRead {
+	background: #f3f3f3;
+	overflow: hidden;
+}
+
+.xyMailReadTools {
+	padding: 5px;
+}
+
+.xyMailReadTool {
+	float: left;
+	margin-right: 5px;
+}
+
+.xyMailReadContent {
+	border-top: 1px solid #99bbe8;
+}
+
+.xyMailTable {
+	background: #f3f3f3;
+	border-right: 1px solid #bbb;
+	line-height: 25px;
+	overflow: auto;
+}
+
+.xyMailTable tbody tr:nth-child(even) {
+	background: #fafafa;
+}
+
+.xyMailTable tbody tr:hover {
+	background: #eaf2ff;
+}
+
+.xyMailTable tbody tr.selected {
+	background: #fbec88;
+}
+
+.xyMailTable tbody tr.cu {
+	background: #fbec88;
+}
+
+.xyMailTable th {
+	border-bottom: 1px solid #ccc;
+	background: #f0eff0 url(i/tableth.png) repeat-x;
+	padding: 0 3px;
+}
+
+.xyMailTable td {
+	border-bottom: 1px dotted #ccc;
+	padding: 0 3px;
+}
+
+.Ru {
+	background: url(i/mail.png) no-repeat -48px 0;
+	height: 16px;
+	overflow: hidden;
+	width: 18px;
+}
+
+.Kw {
+	background: url(i/mail.png) no-repeat -48px -16px;
+	height: 16px;
+	overflow: hidden;
+	width: 18px;
+}
+
+.replied {
+	background: url(i/mail.png) no-repeat -48px -32px;
+	height: 16px;
+	overflow: hidden;
+	width: 18px;
+}
+
+.Ru a,
+.Kw a {
+	display: block;
+}
+
+.attach {
+	background: url(i/mail.png) no-repeat -65px 0;
+	height: 12px;
+	overflow: hidden;
+	width: 12px;
+}
+
+/* 引导步骤 */
+.xyGuideStep li {
+  float: left;
+  margin: 0 10px 0 0;
+}
+.xyGuideStep .xyGuideStepNum {
+  background: url(i/icon/gray_circle.png) no-repeat;
+  @include border-radius(8px);
+  color: #fff;
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  margin: 0 4px 0 0;
+  text-align: center;
+  width: 16px;
+}
+
+.xyGuideStep .do .xyGuideStepNum {
+	background: url(i/icon/green_circle.png) no-repeat;
+}
+
+.xyGuideStep .do .xyGuideStepName {
+	color: #65ab55;
+}
+
+.xyGuideStep .cu .xyGuideStepNum {
+	background: url(i/icon/orange_circle.png) no-repeat;
+}
+
+.xyGuideStep .cu .xyGuideStepName {
+	color: #ff6e00;
+}
+
+
+/** 
+ * tabs切换标签
+ * .xyTab
+ *   .xyTabHeader
+ *     .xyTabHeaderUl
+ *       .xyTabList + .xyTabListCu
+ *   .xyTabContent + .xyTabContentCu
+ * 
+ * .xyTabListCu 为当前选中样式
+ * .xyTabContentCu 为当前选中内容
+ */
+ 
+.xyTab .xyTabHeader,
+.xyTab .xyTabHeaderRe {
+  line-height: 24px;
+}
+
+.xyTab .xyTabHeader .xyTabHeaderUl,
+.xyTab .xyTabHeaderRe .xyTabHeaderUl {
+  background-color: #ebebeb;
+  border-top: 1px solid #99bbe8;
+  border-bottom: 1px solid #99bbe8;
+  padding: 3px;
+}
+
+.xyTab .xyTabList {
+  float: left;
+  margin: 0 4px 0 0;
+}
+
+.xyTab .xyTabListCu {
+  background: #008299;
+  border-radius: 5px;
+}
+
+.xyTab .xyTabList a {
+  display: block;
+  padding: 0 10px;
+}
+
+.xyTab .xyTabListCu a {
+	color: #fff;
+}
+
+.xyTab .xyTabContent {
+	display: none;
+	overflow: auto;
+	position: relative;
+}
+
+.xyTab .xyTabContentCu {
+	display: block;
+}
+
+.messageInfo{
+	background: #ffffe1;
+	border: 1px solid #000;
+	@include box-shadow(2px 2px 6px rgba(0,0,0,0.3));
+	display: none;
+	left: -6px;
+	padding: 2px;
+	position: absolute;
+	text-indent: 0;
+	top: 20px;
+	width: 88px;
+	z-index: 99;
+}
+
+.messageInfoArrow {
+	background: url(i/message_info_arrow.png) no-repeat;
+	display: block;
+	height: 4px;
+	left: 8px;
+	position: absolute;
+	text-indent: 0;
+	top: -4px;
+	width: 8px;
+	z-index: 99;
+}
+
+.messageInfo h3 {
+	color: #383838;
+}
+
+.messageInfo li {
+	float: none;
+}
+
+.messageInfo li a {
+	background: none;
+	color: #333;
+	float: none;
+	text-indent: 1em;
+	width: auto;
+}
+
+.messageInfo li a:hover {
+	color: #39f;
+}
+
+/* calendar */
+.calendar-triangle,
+.calendar-triangle-a,
+.calendar-triangle-b {
+	background: url(i/calendar/calendar_triangle.gif) no-repeat;
+	height: 16px;
+	left: 0;
+	position: absolute;
+	text-indent: -9999px;
+	top: 0;
+	width: 16px;
+}
+
+.calendar-triangle-a {
+	background: url(i/calendar/calendar_triangle2.gif) no-repeat;
+}
+
+.calendar-triangle-b {
+	background: url(i/calendar/calendar_triangle3.gif) no-repeat;
+}
+
+.calendar-tips {
+	background: #fff;
+	border: 1px solid #298cce;
+	left: -200px;
+	position: absolute;
+	top: 0;
+	width: 200px;
+	z-index: 2;
+}
+
+.calendar-tips-alt {
+	border-bottom: 1px dotted #ccc;
+	margin: 0 0 10px;
+	padding: 0 0 10px;
+}
+
+.calendar-tips-content {
+	color: #666;
+	line-height: 20px;
+	text-indent: 2em;
+}
+
+/* catalog */
+.side-catalog {
+	font: 14px/19px $base-text-font;
+	height: 255px;
+	left: 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	position: relative;
+	width: 160px;
+}
+
+.side-catalog-bar {
+	border-color: #eaeaea;
+	border-style: none solid;
+	border-width: 0 1px;
+	height: 253px;
+	left: 5px;
+	position: absolute;
+	top: 0;
+	width: 0;
+}
+
+.side-catalog-top,
+.side-catalog-bottom {
+	background: url(i/side_toolbar.png) no-repeat 0 -199px;
+	height: 10px;
+	left: -5px;
+	overflow: hidden;
+	position: absolute;
+	width: 10px;
+}
+
+.side-catalog-top {
+	top: 0;
+}
+
+.side-catalog-bottom {
+	bottom: 0;
+}
+
+.side-catalog-list {
+	height: 225px;
+	margin-top: 18px;
+	overflow: hidden;
+	padding-left: 23px;
+	position: relative;
+}
+
+.side-catalog-list {
+	width: 145px;
+}
+
+.side-catalog-box {
+	position: relative;
+}
+
+.side-catalog-item {
+	height: 20px;
+	line-height: 20px;
+	margin: 0 0 5px;
+	padding: 0 7px;
+	position: relative;
+}
+
+.side-catalog-item2 {
+	padding-left: 21px;
+}
+
+.side-catalog-item:hover {
+	background: #f5f5f5;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 4px;
+	a {
+		color: #36c;
+	}
+	.side-catalog-dot {
+		background-position: 0 -245px;
+	}
+}
+
+.side-catalog-index {
+	color: #999;
+	font-family: Arial;
+}
+
+.side-catalog-item a {
+	color: #555;
+	font-weight: 700;
+}
+
+.side-catalog-item2 a {
+	color: #666;
+	font-weight: 400;
+}
+
+.side-catalog-item a:hover {
+	color: #36c;
+}
+
+.side-catalog-dot {
+  background: url(i/side_toolbar.png) no-repeat 0 -222px;
+  cursor: pointer;
+  font-size: 12px;
+  height: 10px;
+  left: -20px;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  .side-catalog-item2 & {
+    background-position: 6px 10px;
+  }
+}
+
+.side-catalog-item.active .side-catalog-dot {
+  background-position: -271px -38px;
+  height: 13px;
+  left: -23px;
+  top: 3px;
+  width: 18px;
+}
+
+.side-catalog-btn,
+.side-catalog-up {
+	background: url(i/side_toolbar.png) no-repeat;
+	cursor: pointer;
+	display: block;
+	height: 45px;
+	margin: 0 0 5px 10px;
+	text-indent: -9999px;
+	width: 45px;
+}
+
+.side-catalog-btn.disabled {
+	background-position: -104px 0;
+}
+
+.side-catalog-btn.disabled:hover {
+	background-position: -154px 0;
+}
+
+.side-catalog-up {
+	background-position: -1px -62px;
+}
+
+.side-catalog-up:hover {
+	background-position: -74px -62px;
+}
+
+/* TML Gallery */
+.tml-gallery-header {
+	border-bottom: 1px solid #ccc;
+	padding: 4px 20px;
+}
+
+.tml-gallery-title {
+	font-size: 16px;
+}
+
+.tml-gallery-line {
+	border-color: #eaeaea;
+	border-style: none solid;
+	border-width: 0 1px;
+	height: 100%;
+	left: 80px;
+	position: absolute;
+	top: 0;
+	width: 0;
+}
+
+.tml-gallery-list {
+	padding-left: 120px;
+}
+
+.tml-gallery-item {
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.tml-gallery-dot {
+	background: url(i/side_toolbar.png) no-repeat 0 -222px;
+	height: 10px;
+	left: -42px;
+	position: absolute;
+	top: 40px;
+	width: 6px;
+}
+
+.tml-gallery-time {
+	left: -125px;
+	position: absolute;
+	top: 40px;
+}
+
+.tml-gallery-img {
+	float: left;
+	padding: 18px;
+	width: 182px;
+}
+
+.tml-gallery-img a {
+	border: 1px solid #ccc;
+	display: block;
+	height: 180px;
+	overflow: hidden;
+	width: 180px;
+}
+
+.tml-gallery-img img {
+	width: 100%;
+}
+
+/* entrybox */
+.entry-box {
+	border: 1px solid #cdcdcd;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	margin: 0 0 10px;
+	overflow: hidden;
+	padding: 0 0 0 30px;
+}
+
+.entry-box-header {
+	background-color: #f1f1f1;
+    background-image: -webkit-linear-gradient(top, #fff, #f1f1f1);
+    background-image: linear-gradient(to bottom, #fff, #f1f1f1);
+    border-right: 1px solid #cdcdcd;
+	-webkit-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+	float: left;
+	font: 15px/20px $base-headings-font;
+	height: 86px;
+	margin-left: -30px;
+	padding: 34px 4px 20px;
+	text-align: center;
+	width: 21px;
+	.entry-box-large & {
+		padding: 54px 4px 40px;
+	}
+	.entry-box-small & {
+		padding: 14px 4px 0;
+	}
+}
+
+.entry-box-body {
+	background-color: #fff;
+	height: 140px;
+	line-height: 16px;
+	overflow: hidden;
+	.entry-box-large & {
+		height: 180px;
+	}
+	.entry-box-small & {
+		height: 100px;
+	}
+}
+
+.entry-box-grid {
+	border-right: 1px solid #cdcdcd;
+	float: left;
+	height: 120px;
+	padding: 10px;
+	width: 50%;
+}
+
+.entry-box-data {
+	overflow: hidden;
+	padding: 10px;
+}
+
+/* step
+ * 表头步骤样式
+ * .form-step > .step-list
+ *
+ * step-prev 为上一步样式
+ * step-current 为当前步骤样式
+ * step-next 为下一步样式
+ * 根据步骤多少选择合适宽度样式 如 .grid-20
+ */
+
+.step-list {
+	background: url(i/step.png) no-repeat;
+	float: left;
+	text-align: center;
+}
+
+.step-done {
+	background-position: 100% 0;
+}
+
+.step-prev {
+	background-position: 100% -85px;
+}
+
+.step-current {
+	@include linear-gradient(#78bc6d, #4f8d44);
+	background-color: #5fa054;
+	color: #fff;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#78bc6d', endColorstr='#4f8d44',GradientType=0 )";
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78bc6d', endColorstr='#4f8d44',GradientType=0 );
+}
+
+.step-next {
+	background-position: 0 -41px;
+}
+
+.form-step {
+  @include linear-gradient(#f3f2f2, #dfdfdf);
+  border-bottom: 1px solid #cecece;
+  @include box-shadow(inset 0 1px 0 0 #f8f8f8);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f2f2', endColorstr='#dfdfdf',GradientType=0 )";
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f2f2', endColorstr='#dfdfdf',GradientType=0 );
+  font-family: $base-headings-font;
+  height: 36px;
+  line-height: 36px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/** 
+ * table
+ * 信息展示类表格
+ */
+
+.info-table {
+	line-height: 20px;
+	th {
+		background: #f3f3f3;
+		border: 1px solid #bae7fc;
+		color: #333;
+		padding: 6px 2px;
+		text-align: right;
+	}
+	td {
+		background: #f3f3f3;
+		border: 1px solid #bae7fc;
+		color: #999;
+		padding: 6px 2px;
+	}
+}
+
+/**
+ * 数据展示类表格
+ * 表格内部允许添加文本输入框
+ */
+
+.data-table {
+  background: #fff;
+  line-height: 2;
+  text-align: center;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #7b7b7b;
+  padding: 0 4px;
+}
+
+.data-table thead tr th,
+.data-table thead tr td {
+  background: #f2f2f2;
+  color: $color-primary;
+}
+
+.data-table .data-table-num {
+  width: 36px;
+}
+
+.data-table tbody tr td .textInput {
+  background: none;
+  border: none;
+  @include box-sizing(border-box);
+  float: none;
+  *padding-left: 1%;
+  *padding-right: 1%;
+  width: 100%;
+  *width: 98%;
+}
+
+/** 
+ * heading
+ * 标题样式
+ */
+.tml-h3 {
+	background: url(i/box_x.png) no-repeat 8px 5px;
+	color: #333;
+	font: bold 14px/20px $base-headings-font;
+	height: 20px;
+	margin: 0 0 10px;
+	padding: 0 0 0 20px;
+}
+
+/**
+ * checkbox radio 图片替换样式
+ */
+.checkbox-img,
+.radio-img {
+	background-image: url(i/radio.png);
+	display: inline-block;
+	height: 18px;
+	width: 18px;
+}
+
+.checkbox-img-checked {
+	background-position: -76px 0;
+}
+
+.radio-img {
+	background-position: 0 -18px;
+}
+
+.radio-img-checked {
+	background-position: -72px -18px;
+}
+
+/**
+ * badge
+ * 小部件
+ */
+
+.badge,
+.tml-badge {
+  background: #999;
+  border-radius: 6px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+.tml-btn .badge,
+.tml-pos-rel .badge,
+.tml-btn .tml-badge,
+.tml-pos-rel .tml-badge {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+
+@media (max-width: 1280px) {
+	.sideToolbar {
+		display: none;
+	}
+}
+
+/* 选人 */
+.addressee {
+	background: #fff;
+	border: 1px solid #ccc;
+	cursor: text;
+	min-height: 30px;
+	overflow: auto;
+	padding: 0 2px;
+}
+
+.addressee .addresseeText .textInput {
+	@include border-radius(0);
+	height: 20px;
+}
+
+.addressee .addresseeText .textInput:focus {
+	@include box-shadow(none);
+}
+
+/* 选人对话框 */
+.address-dialog {
+	background-color: #eaeaea;
+	border: 1px solid #aaa;
+	@include border-radius(5px);
+	@include box-shadow(0 0 8px rgba(0,0,0,0.2));
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -220px;
+	overflow: hidden;
+	position: fixed;
+	top: 50%;
+	width: 440px;
+}
+
+.address-dialog-header {
+	background: #eaeaea;
+	border-bottom: 1px solid #ccc;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	line-height: 25px;
+	padding: 5px 15px;
+	text-align: left;
+}
+
+.address-dialog-body {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	text-align: left;
+	padding: 0 10px 10px;
+}
+
+.address-dialog-box {
+	border: 1px solid #808080;
+	height: 340px;
+	margin: 5px;
+	overflow: auto;
+}
+
+.address-dialog-list li {
+	background: url(i/minus.png) no-repeat 95% center;
+	color: #494949;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 0 0 12px;
+}
+
+.address-dialog-list li:hover {
+  background-color: #ffeec2;
+}
+
+.address-dialog-list .delAddressee {
+	background: url(i/addressee_bg.png) no-repeat -165px -78px;
+	display: none;
+	float: right;
+	height: 13px;
+	margin: 5px 0 0 0;
+	text-indent: -9999px;
+	width: 13px;
+}
+.address-dialog-list .delAddressee:hover {
+	background-position: -167px -42px;
+}
+
+.address-dialog-footer {
+	background-color: #eaeaea;
+	border-top: 1px solid #ccc;
+	-webkit-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	line-height: 25px;
+	padding: 5px 12px;
+	text-align: right;
+}
+
+/* 统一预留 21 像素空间放置图片 */
+a[href$=".jpg"],
+a[href$=".png"],
+a[href$=".gif"],
+a[href$=".jpeg"],
+a[href$=".pdf"],
+a[href$=".doc"],
+a[href$=".docx"],
+a[href$=".rar"],
+a[href$=".zip"],
+a[href$=".csv"],
+a[href$=".xls"],
+a[href$=".xlsx"] {
+	background-repeat: no-repeat;
+	display: inline-block;
+	line-height: 16px;
+	padding-left: 21px;
+}
+
+/* 图片类型下载链接 */
+a[href$=".jpg"],
+a[href$=".png"],
+a[href$=".gif"],
+a[href$=".jpeg"] {
+	background-image: url(i/icon/doc_img.png);
+}
+
+/* PDF 格式下载链接 */
+a[href$=".pdf"] {
+	background-image: url(i/icon/doc_pdf.png);
+}
+
+/* 文档格式下载链接 */
+a[href$=".doc"],
+a[href$=".docx"] {
+	background-image: url(i/icon/doc_word.png);
+}
+
+/* 压缩包下载链接 */
+a[href$=".rar"],
+a[href$=".zip"] {
+	background-image: url(i/icon/doc_zip.png);
+}
+
+/* 数据表格下载链接 */
+a[href$=".csv"],
+a[href$=".xls"],
+a[href$=".xlsx"] {
+	background-image: url(i/icon/doc_excel.png);
+}
+
+.comments-box {
+	background: #f8f8f8;
+	border: 1px solid #ccc;
+	@include border-radius(5px);
+	@include box-shadow(2px 2px 5px rgba(0,0,0,0.3));
+	display: none;
+	line-height: 24px;
+	padding: 10px;
+	position: absolute;
+	width: 300px;
+	z-index: 100;
+	&:before {
+		border: 7px solid transparent;
+		border-bottom-color: #ccc;
+		content: "\00a0";
+		height: 0;
+		left: 50%;
+		margin-left: -7px;
+		position: absolute;
+		top: -14px;
+		width: 0;
+	}
+	&:after {
+		border: 5px solid transparent;
+		border-bottom-color: #f8f8f8;
+		content: "\00a0";
+		height: 0;
+		left: 50%;
+		margin-left: -5px;
+		position: absolute;
+		top: -10px;
+		width: 0;
+	}
+	.textInput {
+		@include border-radius(4px);
+		vertical-align: middle;
+		width: 200px;
+	}
+}
+
+.edit-text {
+  font-size: 14px;
+}
+
+.tml-more {
+  background: url(i/more.gif) no-repeat;
+  display: inline-block;
+  font-size: 0;
+  height: 17px;
+  width: 36px;
+}
+
+.tml-circle {
+	background: #65b2de;
+	border-radius: 50%;
+	float: left;
+	height: 128px;
+	line-height: 128px;
+	position: relative;
+	text-align: center;
+	width: 128px;
+
+	.tml-badge {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+	}
+
+	.icon {
+		color: #fff;
+		font-size: 64px;
+	}
+}
+
+.side-title {
+  background: #e1e1e1;
+  border-bottom: 1px solid #ddd;
+  height: 29px;
+  padding: 5px 2px;
+}
+
+.side-list {
+  background-color: #e1e1e1;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
+  padding: 2px;
+  text-align: center;
+}
+
+.side-list.active {
+  background-color: #1794ca;
+  color: #fff;
+}
+
+.treeleft .tree-search-input {
+  @include border-radius(3px);
+  float: left;
+  margin: 2px 12px 0 0;
+  width: 100px;
+}
+
+.app-side {
+  background: #fff;
+  border-left: 1px solid #ccc;
+  float: right;
+  width: 200px;
+}
+
+.app-side-list {
+  margin: 0 50px;
+}
+
+.app-header {
+  background-color: #f8f8f8;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 16px;
+  line-height: 30px;
+  padding-left: 24px;
+}
+
+.app-header-primary {
+  background-color: #1794ca;
+  color: #fff;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.app-title {
+  font-weight: 400;
+}
+
+.applecloth {
+  background: #fff url(i/bg_body1c01ee.jpg) repeat;
+}
+
+.calendar-box {
+  background: #fff;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  float: left;
+  height: 292px;
+  margin-bottom: 10px;
+  width: 26%;
+}
+
+/* tabs 样式修改 */
+.tabs, .tabsHeader,
+.tabsHeaderContent,
+.tabs .tabsHeader ul,
+.tabs .tabsHeader li,
+.tabs .tabsHeader li a,
+.tabs .tabsHeader li span,
+.tabs .tabsFooter,
+.tabs .tabsFooterContent {
+	background-image: url(i/tabspanel.png);
+}
+
+.tabs .tabsHeader li.hover span,
+.tabs .tabsHeader li.selected span {
+	color: #fff;
+}
+
+/* 横向 tabs */
+.tabh {
+	background: #f0f0f0;
+	border: 1px solid #99bbe8;
+}
+
+.tabh > .tabsHeader {
+	background: #e1e2e6;
+	float: left;
+	height: auto;
+	overflow: visible;
+	padding: 0;
+	width: 180px;
+}
+
+.tabh > .tabsHeader > .tabsHeaderContent {
+	background: none;
+	height: auto;
+	padding: 0;
+}
+
+.tabh > .tabsHeader ul{background:none;height:auto;}
+.tabh > .tabsHeader li {
+  background: none;
+  border-top: 1px solid #ebecf0;
+  border-bottom: 1px solid #cfd0d4;
+  float: none;
+  margin: 0;
+  text-align: center;
+}
+
+.tabh > .tabsHeader li.hover {
+  background: #1794ca;
+}
+
+.tabh > .tabsHeader li a {
+  background: none;
+  float: none;
+}
+
+.tabh > .tabsHeader li span {
+  background: none;
+  float: none;
+}
+
+.tabh > .tabsHeader li.selected {
+  background: #1794ca;
+}
+
+.tabh > .tabsHeader li.selected span {
+  color: #fff;
+}
+
+.tabh > .tabsContent {
+  background: #e4ebf6;
+  margin: 0;
+  overflow: hidden;
+}
+
+.tabh .tabsFooter {
+  display: none;
+}
+
+.tabh .xyEmployee {
+  background: #fff;
+  border: none;
+}
+
+.tabh .xyEmployee label {
+  color: #5b8fc8;
+}
+
+/* 左侧 tabs 特殊样式 */
+.tabh > .tabsHeader .close li {
+  border: none;
+
+  &.hover {
+    background: #eaf2ff;
+
+    span {
+      color: $link-color;
+    }
+  }
+
+  &.selected {
+    background: #eaf2ff;
+
+    span {
+      color: $link-color;
+    }
+  }
+}
+
+/* 左侧树 */
+.xyTree li {
+  margin: 0 0 6px !important;
+}
+
+.xyTree li span {
+  font-size: 14px;
+}
+
+.xyTree li.level1 span {
+  font-size: 13px;
+}
+
+.app-shortcut-list li {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: 100px;
+}
+
+.app-shortcut-name {
+  display: block;
+  text-align: center;
+}
+
+.app-shortcut-del {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

@@ -287,5 +287,9 @@
 - php 数据库查询中文
   * mysql_set_charset($connection,'utf-8')
   * mysql_query('    utf-8')
-  
+- php操作无状态
+  *  cookie
+  * header('Set-Cookie:foo=bar;foo2=bar2')
+  * cookie(name,value,expire,path,domain) 只传一个参数是删除
+  * $_COOKIE 
   

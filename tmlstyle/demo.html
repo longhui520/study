@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+	<link href="tml.min.css" rel="stylesheet"> 
+<style>
+pre {
+	background-color: #ffffd1;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,.3);
+	color: #666;
+	font: 400 12px/18px monospace;
+	padding: 10px;
+	position: absolute;
+	text-align: left;
+	word-break: normal;
+	z-index: 99;
+}
+
+.i-list .icon{
+	font-size: 14px;
+}
+
+.i-list li {
+	display: inline-block;
+	width: 200px;
+}
+
+.toolbar-list li {
+	background: url(images/grid/toolicon.png) no-repeat;
+	display: inline-block;
+	padding-left: 20px;
+	width: 180px;
+}
+
+/* Code */
+.html-p {
+  color: #690;
+}
+
+.html-e {
+  color: #905;
+}
+
+.html-v {
+  color: #07a;
+}
+</style>
+</head>
+<body style="background: #fff;overflow: auto;">
+	<header>
+		<h1>TML Demo</h1>
+	</header>
+	<div class="keepContentCenter form-affix-content">
+		<h2 class="contentTitle contentTitle_center form-affix-title" style="overflow: visible;">TML 样式
+			<span class="auto_code">
+				<span class="xyPrevButtonDisable"></span>
+				<b>No. </b>
+				<input type="text" name="" value="MPC2014051200001" readonly="readonly" class="xycodedata_read textInput readonly">
+				<span class="xyNextButtonDisable"></span>
+			</span>
+<pre>
+&lt;div class="keepContentCenter form-affix-content">
+  &lt;!-- form-affix-content 固定表单头参照 -->
+  &lt;h2 class="contentTitle contentTitle_center form-affix-title">TML 样式&lt;/h2>
+  &lt;!-- form-affix-title 固定表单头 -->
+&lt;/div>
+</pre>
+		</h2>
+		<fieldset>
+			<legend>
+				<b>表单控件</b>
+			</legend>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label for="">短文本框</label>
+					<input class="textInput" type="text">
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">div</span> <span class="html-p">class</span>="<span class="html-v">tml-form-col</span>">
+  &lt;!-- tml-form-col 表单列 -->
+  &lt;<span class="html-e">label</span>>短文本框&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label for="">日期选择</label>
+					<div class="tml-input-append">
+						<input class="textInput" style="float: left;" type="text">
+						<a class="input-addon input-addon-calendar" href="#"></a>
+					</div>
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-col</span>">
+  &lt;<span class="html-e">label</span>>日期选择&lt;/label>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append</span>">
+    &lt;!-- tml-input-append 设定文本框宽度变小 文本框后面可以追加内容 -->
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-calendar</span>" href="<span class="html-v">#</span>">&lt;/<span class="html-e">a</span>>
+    &lt;!-- input-addon 文本框追加内容主要样式 -->
+    &lt;!-- input-addon-calendar 文本框追加一个日历图标 -->
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>更好日期选择</label>
+					<div class="tml-input-append">
+						<input class="textInput" style="float: left;" type="text">
+						<a class="input-addon-link" href="#"><span class="icon icon-calendar-empty"></span></a>
+					</div>
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-col</span>">
+  &lt;<span class="html-e">label</span>>日期选择&lt;/label>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append</span>">
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon-link</span>" href="<span class="html-v">#</span>">&lt;<span class="html-e">span</span> class="<span class="html-v">icon icon-calendar-empty</span>">&lt;/<span class="html-e">span</span>>&lt;/<span class="html-e">a</span>>
+    &lt;!-- input-addon-link 文本框追加链接按钮主样式 -->
+    &lt;!-- icon 图标类 -->
+    &lt;!-- icon-calendar-empty 图标样式 空日历 -->
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label for="">单位</label>
+					<div class="tml-input-append">
+						<input class="textInput" style="float: left;" type="text">
+						<span class="input-addon-unit">个</span>
+					</div>
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-col</span>">
+  &lt;<span class="html-e">label</span>>单位&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append</span>">
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">span</span> class="<span class="html-v">input-addon-unit</span>">个&lt;/<span class="html-e">span</span>>
+    &lt;!-- input-addon-unit 文本框追加一个单位 单位文字可任意修改 -->
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+				<span class="tml-form-text">辅助说明文字，够长才够劲 <code>class="tml-form-text"</code></span>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>人员选择</label>
+					<div class="tml-input-append">
+						<input class="textInput" style="float: left;" type="text">
+						<a class="input-addon input-addon-userplus" href="#"></a>
+					</div>
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-col</span>">
+  &lt;<span class="html-e">label</span>>人员选择&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append</span>">
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-userplus</span>" href="<span class="html-v">#</span>">&lt;/<span class="html-e">a</span>>
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<div class="tml-input-append2">
+						<label for="">加号</label>
+						<input class="textInput" style="float: left;" type="text">
+						<a class="input-addon input-addon-addon input-addon-add" href="#"></a>
+						<a class="input-addon input-addon-recycle" href="#"></a>
+					</div>
+					<div class="clear"></div>
+<pre>
+&lt;<span class="html-e">label</span>>加号&lt;/<span class="html-e">label</span>>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append2</span>">
+  &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+  &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-addon input-addon-add</span>" href="<span class="html-v">#</span>">&lt;/<span class="html-e">a</span>>
+  &lt;!-- input-addon-addon 文本框追加内容再追加内容 右边少边框 -->
+  &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-recycle</span>" href="<span class="html-v">#</span>">&lt;/<span class="html-e">a</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+			</div>
+			<div class="tml-form-row">
+				<label for="">长文本框</label>
+				<input class="textInput" type="text">
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-row</span>">
+  &lt;<span class="html-e">label</span>>长文本框&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+&lt;/<span class="html-e">div</span>>
+</pre>
+			</div>
+			<div class="tml-form-row">
+				<label for="">带单位</label>
+				<div class="tml-input-append">
+					<input class="textInput" style="float: left;" type="text">
+					<span class="input-addon-unit">元</span>
+				</div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-row</span>">
+  &lt;<span class="html-e">label</span>>带单位&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append</span>">
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">span</span> class="<span class="html-v">input-addon-unit</span>">元&lt;/<span class="html-e">span</span>>
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+			</div>
+			<div class="tml-form-row">
+				<label>带2个按钮</label>
+				<div class="tml-input-append2">
+					<input class="textInput" style="float: left;" type="text">
+					<a class="input-addon input-addon-addon input-addon-userplus" href="#"></a>
+					<a class="input-addon input-addon-recycle" href="#">元</a>
+				</div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-row</span>">
+  &lt;<span class="html-e">label</span>>带2个按钮&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-append2</span>">
+    &lt;!-- tml-input-append2 设定文本框宽度变小 文本框可以追加2个内容 -->
+    &lt;<span class="html-e">input</span> type="<span class="html-v">text</span>">
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-addon input-addon-userplus</span>" href="#">&lt;/<span class="html-e">a</span>>
+    &lt;!-- input-addon-addon 文本框追加内容再追加内容 右边少边框 -->
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-recycle</span>" href="#">元&lt;/<span class="html-e">a</span>>
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+			</div>
+			<div class="tml-form-row">
+				<label for="">查找类型</label>
+				<div class="tml-input-find">
+					<input class="textInput tml-find-num" style="float: left;" type="text">
+					<a class="input-addon input-addon-addon input-addon-userplus" href="#"></a>
+					<input class="textInput tml-find-name" style="float: left;" type="text">
+					<a class="input-addon input-addon-recycle" href="#">元</a>
+				</div>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-row</span>">
+  &lt;<span class="html-e">label</span>>查找类型&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">div</span> class="<span class="html-v">tml-input-find</span>">
+    &lt;!-- tml-input-find 查找类型文本框主样式 -->
+    &lt;<span class="html-e">input</span> class="<span class="html-v">tml-find-num</span>" type="<span class="html-v">text</span>">
+    &lt;!-- tml-find-num 查找编号 -->
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-addon input-addon-userplus</span>" href="#">&lt;/<span class="html-e">a</span>>
+    &lt;<span class="html-e">input</span> class="<span class="html-v">tml-find-name</span>" type="<span class="html-v">text</span>">
+    &lt;!-- tml-find-name 查找名称 -->
+    &lt;<span class="html-e">a</span> class="<span class="html-v">input-addon input-addon-recycle</span>" href="#">元&lt;/<span class="html-e">a</span>>
+  &lt;/<span class="html-e">div</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+			</div>
+			<div class="tml-form-row">
+				<label>选择按钮</label>
+				<div class="tml-radio">
+					<label>
+						<input name="exampleRadio" type="radio">这是一个单选按钮
+					</label>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-radio</span>">
+  &lt;!-- tml-radio 单选按钮 -->
+  &lt;<span class="html-e">label</span>>
+    &lt;<span class="html-e">input</span> type="<span class="html-v">radio</span>">这是一个单选按钮
+  &lt;/<span class="html-e">label</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+				<div class="tml-radio">
+					<label>
+						<input name="exampleRadio" type="radio">这也是一个单选按钮
+					</label>
+				</div>
+				<div class="tml-radio">
+					<label>
+						<input name="exampleRadio" type="radio">这还是一个单选按钮
+					</label>
+				</div>
+			</div>
+			<div class="tml-form-row">
+				<label>选择按钮</label>
+				<div class="left tml-radio tml-w100">
+					<label>
+						<input name="exampleRadio" type="radio">单选按钮
+					</label>
+				</div>
+				<div class="left tml-radio tml-w100">
+					<label>
+						<input name="exampleRadio" type="radio">单选按钮
+					</label>
+				</div>
+				<div class="left tml-radio tml-w100">
+					<label>
+						<input name="exampleRadio" type="radio">单选按钮
+					</label>
+				</div>
+				<div class="left tml-radio tml-w100">
+					<label>
+						<input name="exampleRadio" type="radio">单选按钮
+					</label>
+				</div>
+				<div class="left tml-checkbox tml-w100">
+					<label>
+						<input name="exampleCheckbox" type="checkbox">复选按钮
+					</label>
+				</div>
+				<div class="left tml-checkbox tml-w100">
+					<label>
+						<input name="exampleCheckbox" type="checkbox">复选按钮
+					</label>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">left tml-checkbox tml-w100</span>">
+  &lt;!-- tml-checkbox 复选按钮 -->
+  &lt;!-- left 浮动 一行放多个 -->
+  &lt;!-- tml-w100 每个的宽度 根据内容多少自行定义 -->
+  &lt;<span class="html-e">label</span>>
+    &lt;<span class="html-e">input</span> type="<span class="html-v">checkbox</span>">复选按钮
+  &lt;/<span class="html-e">label</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+				</div>
+				<div class="left tml-checkbox tml-w100">
+					<label>
+						<input name="exampleCheckbox" type="checkbox">复选按钮
+					</label>
+				</div>
+			</div>
+			<div class="tml-form-row">
+				<label for="">文本域</label>
+				<textarea class="textInput" name="" id="" rows="4"></textarea>
+<pre>
+&lt;<span class="html-e">div</span> class="<span class="html-v">tml-form-row</span>">
+  &lt;<span class="html-e">label</span>>文本域&lt;/<span class="html-e">label</span>>
+  &lt;<span class="html-e">textarea</span> rows="<span class="html-v">4</span>">&lt;/<span class="html-e">textarea</span>>
+&lt;/<span class="html-e">div</span>>
+</pre>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>按钮</label>
+					<button class="tml-btn" type="button">按钮</button>
+<pre>
+&lt;button class="tml-btn" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>按钮2</label>
+					<button class="tml-btn tml-btn-primary" type="button">主要按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-primary" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>按钮3</label>
+					<button class="tml-btn tml-btn-green" type="button">绿色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-green" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>按钮4</label>
+					<button class="tml-btn tml-btn-red" type="button">红色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-red" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>按钮5</label>
+					<button class="tml-btn tml-btn-blue" type="button">蓝色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-blue" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>按钮6</label>
+					<button class="tml-btn tml-btn-white" type="button">白色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-white" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>按钮7</label>
+					<button class="tml-btn tml-btn-orange" type="button">橙色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-orange" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>按钮8</label>
+					<button class="tml-btn tml-btn-gray" type="button">灰色按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-gray" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>禁用按钮</label>
+					<button class="tml-btn tml-btn-disabled" type="button">禁用按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-disabled" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>特别按钮</label>
+					<button class="tml-btn tml-btn-special" type="button">宽按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-special" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>大按钮</label>
+					<button class="tml-btn tml-btn-large" type="button">大按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-large" type="button">按钮&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>小按钮</label>
+					<button class="tml-btn tml-btn-small" type="button">小按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-small" type="button">按钮&lt;/button>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>图标按钮</label>
+					<button class="tml-btn tml-btn-green" type="button"><span class="icon icon-plus"></span> 按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-large" type="button">
+  &lt;span class="icon icon-plus">&lt;/span> 按钮
+&lt;/button>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>小图标按钮</label>
+					<button class="tml-btn tml-btn-small tml-btn-blue" type="button"><span class="icon icon-trash"></span> 按钮</button>
+<pre>
+&lt;button class="tml-btn tml-btn-small" type="button">
+  &lt;span class="icon icon-plus">&lt;/span> 按钮
+&lt;/button>
+</pre>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>
+				<b>小部件</b>
+			</legend>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>分隔线</label>
+					<hr>
+<pre>
+&lt;hr>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>分隔线2</label>
+					<div class="divider-content"></div>
+<pre>
+&lt;div class="divider-content">&lt;/div>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>高级分隔线</label>
+					<div class="divider-content"><span></span></div>
+<pre>
+&lt;div class="divider-content">
+  &lt;span>&lt;/span>
+&lt;/div>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>非白色背景</label>
+					<div class="divider-content help"><span></span></div>
+<pre>
+&lt;div class="divider-content help">
+  &lt;span>&lt;/span>
+&lt;/div>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>Budge</label>
+					<span class="badge">badge</span>
+<pre>
+&lt;span class="badge">badge&lt;/span>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>换个颜色</label>
+					<span class="badge tml-bg-orange">badge</span>
+<pre>
+&lt;span class="badge tml-bg-orange">badge&lt;/span>
+&lt;!-- tml-bg-orange 橙色背景 -->
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>Label</label>
+					<span class="tml-label">tml-label</span>
+<pre>
+&lt;span class="tml-label">tml-label&lt;/span>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>标题3</label>
+					<div class="tml-h3">tml-h3</div>
+<pre>
+&lt;div class="tml-h3">tml-h3&lt;/div>
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>没有数据</label>
+					<p class="no-data">没有数据</p>
+<pre>
+&lt;div class="no-data">暂无相关信息&lt;/div>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>标题3</label>
+					<div class="tml-h3">tml-h3</div>
+<pre>
+&lt;div class="tml-h3">tml-h3&lt;/div>
+</pre>
+				</div>
+			</div>
+			<div class="tml-form-row" style="height: 100px;">
+				<label>没有数据</label>
+				<div class="no-data">
+					<div class="no-data-text">暂无数据</div>
+					<button class="tml-button tml-button-small">新增</button>
+				</div>
+<pre>
+&lt;div class="no-data">
+  &lt;div class="no-data-text">暂无数据&lt;/div>
+  &lt;button class="btn btn-small">新增&lt;/button>
+&lt;/div>
+</pre>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>
+				<b>表格</b>
+			</legend>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>普通表格</label>
+					<table class="tml-table tml-table-w">
+						<thead>
+							<tr>
+								<th>表头1</th>
+								<th>表头2</th>
+								<th>表头3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>单元格1</td>
+								<td>单元格2</td>
+								<td>单元格3</td>
+							</tr>
+							<tr>
+								<td>单元格1</td>
+								<td>单元格2</td>
+								<td>单元格3</td>
+							</tr>
+							<tr>
+								<td>单元格1</td>
+								<td>单元格2</td>
+								<td>单元格3</td>
+							</tr>
+						</tbody>
+					</table>
+<pre>
+&lt;table class="tml-table">
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>信息表格</label>
+					<table class="info-table tml-table-w">
+						<tbody>
+							<tr>
+								<th>单1</th>
+								<td>单2</td>
+								<th>单3</th>
+								<td>单2</td>
+							</tr>
+							<tr>
+								<th>单1</th>
+								<td>单2</td>
+								<th>单3</th>
+								<td>单2</td>
+							</tr>
+						</tbody>
+					</table>
+<pre>
+&lt;table class="info-table">
+</pre>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-h3">数据表格</div>
+				<table class="data-table tml-table-w">
+					<thead>
+						<tr>
+							<th>头1</th>
+							<th>头2</th>
+							<th>头3</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="textInput" type="text" value="文本框默认填满整个单元格"></td>
+							<td><input class="textInput" type="text"></td>
+							<td><input class="textInput" type="text"></td>
+						</tr>
+					</tbody>
+				</table>
+<pre>
+&lt;table class="data-table">
+</pre>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>
+				<b>辅助类</b>
+			</legend>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>颜色</label>
+					<ol>
+						<li class="tml-c-blue">tml-c-blue</li>
+						<li class="tml-c-bluelight tml-bg-cyan">tml-c-bluelight 背景是为了让你看清楚</li>
+						<li class="tml-c-bluedark">tml-c-bluedark</li>
+						<li class="tml-c-darken">tml-c-darken</li>
+						<li class="tml-c-graydark">tml-c-graydark</li>
+						<li class="tml-c-green">tml-c-green</li>
+						<li class="tml-c-greenlight">tml-c-greenlight</li>
+						<li class="tml-c-greendark">tml-c-greendark</li>
+						<li class="tml-c-lighten tml-bg-cyan">tml-c-lighten 背景是为了让你看清楚</li>
+						<li class="tml-c-orange">tml-c-orange</li>
+						<li class="tml-c-orangedark">tml-c-orangedark</li>
+						<li class="tml-c-pink">tml-c-pink</li>
+						<li class="tml-c-pinkdark">tml-c-pinkdark</li>
+						<li class="tml-c-purple">tml-c-purple</li>
+						<li class="tml-c-red">tml-c-red</li>
+						<li class="tml-c-yellow">tml-c-yellow</li>
+						<li class="tml-c-white tml-bg-cyan">tml-c-white 背景是为了让你看清楚</li>
+					</ol>
+				</div>
+				<div class="tml-form-col">
+					<label>背景</label>
+					<ul>
+						<li class="tml-bg-yellow">tml-bg-yellow</li>
+						<li class="tml-bg-white">tml-bg-white</li>
+						<li class="tml-bg-cyan tml-c-white">tml-bg-cyan</li>
+						<li class="tml-bg-magenta tml-c-white">tml-bg-magenta</li>
+						<li class="tml-bg-green tml-c-white">tml-bg-green</li>
+						<li class="tml-bg-blue tml-c-white">tml-bg-blue</li>
+						<li class="tml-bg-purple tml-c-white">tml-bg-purple</li>
+						<li class="tml-bg-orange tml-c-white">tml-bg-orange</li>
+					</ul>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>渐变背景</label>
+					<ol>
+						<li class="grd-white">grd-white</li>
+						<li class="grd-black tml-c-white">grd-black</li>
+						<li class="grd-teal tml-c-white">grd-teal</li>
+						<li class="grd-win8 tml-c-purple">grd-win8</li>
+						<li class="grd-blue tml-c-white">grd-blue</li>
+						<li class="grd-purple tml-c-white">grd-purple</li>
+						<li class="grd-purple-dark tml-c-white">grd-purple-dark</li>
+						<li class="grd-red tml-c-white">grd-red</li>
+						<li class="grd-orange tml-c-white">grd-orange</li>
+						<li class="grd-green tml-c-white">grd-green</li>
+						<li class="grd-sky tml-c-white">grd-sky</li>
+					</ol>
+				</div>
+				<div class="tml-form-col">
+				</div>
+			</div>
+			<div class="tml-form-row">
+				<label>文本对齐</label>
+				<ul>
+					<li class="tml-text-l">tml-text-l 文本左对齐</li>
+					<li class="tml-text-c">tml-text-c 文本居中对齐</li>
+					<li class="tml-text-r">tml-text-r 文本右对齐</li>
+				</ul>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>相对宽度</label>
+					<ol>
+						<li class="grid-100 tml-bg-yellow">grid-100 100% 背景是为了让你有个大概的对比</li>
+						<li class="grid-20 tml-bg-yellow">grid-20 20%</li>
+						<li class="grid-40 tml-bg-yellow">grid-40 40%</li>
+						<li class="grid-60 tml-bg-yellow">grid-60 60%</li>
+						<li class="grid-80 tml-bg-yellow">grid-80 80%</li>
+						<li class="grid-25 tml-bg-yellow">grid-25 25%</li>
+						<li class="grid-50 tml-bg-yellow">grid-50 50%</li>
+						<li class="grid-75 tml-bg-yellow">grid-75 75%</li>
+						<li class="grid-33 tml-bg-yellow">grid-33 1/3</li>
+						<li class="grid-66 tml-bg-yellow">grid-66 2/3</li>
+					</ol>
+				</div>
+				<div class="tml-form-col">
+					<label for="">绝对宽度</label>
+					<ul>
+						<li>tml-w30</li>
+						<li>tml-w40</li>
+						<li>tml-w50</li>
+						<li>tml-w60</li>
+						<li>tml-w70</li>
+						<li>tml-w80</li>
+						<li>tml-w100</li>
+						<li>tml-w150</li>
+						<li>tml-w160</li>
+						<li>tml-w180</li>
+						<li>tml-w200</li>
+						<li>tml-w240</li>
+						<li>tml-w300</li>
+						<li>tml-w330</li>
+						<li>tml-w500</li>
+						<li>tml-w590</li>
+					</ul>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>其它</label>
+					<ol>
+						<li>left float: left;</li>
+						<li>right float: right;</li>
+						<li>tml-row 行，自清楚浮动</li>
+						<li>tml-form-row 表单行，多了 10px 的下边距</li>
+						<li>tml-form-col 表单列，一行表单放两列</li>
+						<li>show display: block;</li>
+						<li>hide display: none;</li>
+						<li>tml-pos-abs 绝对定位</li>
+						<li>tml-pos-fix 固定定位</li>
+						<li>tml-pos-rel 相对定位</li>
+						<li>clearfix 清除浮动，包含</li>
+						<li>clear 清除浮动，末尾</li>
+						<li>hellip 单行内容超出添加省略号</li>
+					</ol>
+				</div>
+				<div class="tml-form-col">
+					<ul>
+						<li>p5 padding: 5px;</li>
+						<li>pt5 padding-top: 5px;</li>
+						<li>pt10 padding-top: 10px;</li>
+						<li>pl5 padding-left: 5px;</li>
+						<li>mr10 margin-right: 10px;</li>
+						<li>mb10 margin-bottom: 10px;</li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div class="tml-row">
+				<div class="tml-form-col">
+					<label>TML Icon</label>
+					<div class="tml-c-green">每个图标都需要一个基本class和一个代表特定图标的class</div>
+					<ol>
+						<li><span class="tml-icon tml-icon-mail"></span> mail</li>
+						<li><span class="tml-icon tml-icon-add"></span> add</li>
+						<li><span class="tml-icon tml-icon-comment"></span> comment</li>
+						<li><span class="tml-icon tml-icon-calculator"></span> calculator</li>
+						<li><span class="tml-icon tml-icon-cross"></span> cross</li>
+						<li><span class="tml-icon tml-icon-lookup"></span> lookup</li>
+						<li><span class="tml-icon tml-icon-disabled"></span> disabled</li>
+						<li><span class="tml-icon tml-icon-del"></span> del</li>
+						<li><span class="tml-icon tml-icon-file"></span> file</li>
+						<li><span class="tml-icon tml-icon-userplus"></span> userplus</li>
+						<li><span class="tml-icon tml-icon-download"></span> download</li>
+						<li><span class="tml-icon tml-icon-pencil"></span> pencil</li>
+						<li><span class="tml-icon tml-icon-search"></span> search</li>
+					</ol>
+<pre>
+&lt;span class="tml-icon tml-icon-mail">&lt;/span>
+</pre>
+				</div>
+				<div class="tml-form-col">
+					<label>新图标</label>
+					<span class="i-new"></span>
+<pre>
+&lt;span class="i-new">&lt;/span>
+</pre>
+				</div>
+			</div>
+			<div class="tml-form-row">
+				<label title="version 3.2.1">Awesome Font</label>
+				<div>详细参考 <a href="http://fontawesome.io/3.2.1/icons/">http://fontawesome.io/3.2.1/icons/</a></div>
+				<ol class="i-list">
+					<li><span class="icon icon-adjust"></span> icon-adjust</li>
+					<li><span class="icon icon-anchor"></span> icon-anchor</li>
+					<li><span class="icon icon-archive"></span> icon-archive</li>
+					<li><span class="icon icon-asterisk"></span> icon-asterisk</li>
+					<li><span class="icon icon-ban-circle"></span> icon-ban-circle</li>
+					<li><span class="icon icon-bar-chart"></span> icon-bar-chart</li>
+					<li><span class="icon icon-beaker"></span> icon-beaker</li>
+					<li><span class="icon icon-beer"></span> icon-beer</li>
+					<li><span class="icon icon-bell"></span> icon-bell</li>
+					<li><span class="icon icon-bell-alt"></span> icon-bell-alt</li>
+					<li><span class="icon icon-bolt"></span> icon-bolt</li>
+					<li><span class="icon icon-book"></span> icon-book</li>
+					<li><span class="icon icon-bookmark"></span> icon-bookmark</li>
+					<li><span class="icon icon-bookmark-empty"></span> icon-bookmark-empty</li>
+					<li><span class="icon icon-briefcase"></span> icon-briefcase</li>
+					<li><span class="icon icon-bug"></span> icon-bug</li>
+					<li><span class="icon icon-building"></span> icon-building</li>
+					<li><span class="icon icon-bullhorn"></span> icon-bullhorn</li>
+				</ol>
+<pre>
+&lt;span class="icon icon-adjust">&lt;/span>
+</pre>
+			</div>
+			<div class="tml-form-row">
+				<label>Toolbar</label>
+				<ol class="toolbar-list">
+					<li>add</li>
+					<li style="background-position: 0 -30px;">seaech</li>
+					<li style="background-position: 0 -60px;">delete</li>
+					<li style="background-position: 0 -90px;">tbpass</li>
+					<li style="background-position: 0 -120px;">edit</li>
+					<li style="background-position: 0 -150px;">detail</li>
+					<li style="background-position: 0 -180px;">icon</li>
+					<li style="background-position: 0 -210px;">amplifier</li>
+					<li style="background-position: 0 -240px;">redo</li>
+					<li style="background-position: 0 -270px;">tbnouse</li>
+					<li style="background-position: 0 -300px;">tbprint</li>
+					<li style="background-position: 0 -330px;">tbundo</li>
+					<li style="background-position: 0 -360px;">tbexcel</li>
+					<li style="background-position: 0 -390px;">tbinput</li>
+					<li style="background-position: 0 -420px;">tbcustom</li>
+					<li style="background-position: 0 -450px;">tbman</li>
+					<li style="background-position: 0 -480px;">tbcost</li>
+					<li style="background-position: 0 -510px;">tbpdf</li>
+					<li style="background-position: 0 -540px;">tbsave</li>
+					<li style="background-position: 0 -570px;">tbstart</li>
+					<li style="background-position: 0 -600px;">addChild</li>
+					<li style="background-position: 0 -630px;">trace</li>
+					<li style="background-position: 0 -660px;">excel</li>
+					<li style="background-position: 0 -690px;">addCalendar</li>
+					<li style="background-position: 0 -720px;">tbadduser</li>
+					<li style="background-position: 0 -750px;">tbremoveuser</li>
+					<li style="background-position: 0 -780px;">tbclock</li>
+					<li style="background-position: 0 -810px;">tbmailread</li>
+					<li style="background-position: 0 -840px;">tbmailair</li>
+					<li style="background-position: 0 -870px;">tbmailreply</li>
+					<li style="background-position: 0 -900px;">tbmailopen</li>
+					<li style="background-position: 0 -930px;">tbmaildel</li>
+					<li style="background-position: 0 -960px;">tbmailedit</li>
+					<li style="background-position: 0 -990px;">tbmailback</li>
+					<li style="background-position: 0 -1020px;">tbtask</li>
+					<li style="background-position: 0 -1050px;">tbtaskarrow</li>
+					<li style="background-position: 0 -1080px;">tbtaskpencil</li>
+					<li style="background-position: 0 -1110px;">tbtaskplus</li>
+					<li style="background-position: 0 -1140px;">tbuserarrow</li>
+					<li style="background-position: 0 -1170px;">tbuserexclamation</li>
+					<li style="background-position: 0 -1200px;">barcode</li>
+					<li style="background-position: 0 -1230px;">tbopt</li>
+					<li style="background-position: 0 -1260px;">tbboardimg</li>
+					<li style="background-position: 0 -1290px;">tbboardtxt</li>
+					<li style="background-position: 0 -1320px;">tbequip</li>
+					<li style="background-position: 0 -1350px;">tbword</li>
+					<li style="background-position: 0 -1380px;">tbokay</li>
+				</ol>
+<pre>
+&lt;div class="panelBar">
+  &lt;ul class="toolBar">
+    &lt;li>
+      &lt;a class="add disabled">&lt;span>新增&lt;/span>&lt;/a>
+      &lt;!-- 添加 disabled 呈现为灰色图标 -->
+    &lt;/li>
+  &lt;/ul>
+&lt;/div>
+</pre>
+			</div>
+		</fieldset>
+	</div><!-- end keepContentCenter -->
+<script src="../../Js/jquery-1.7.1.js"></script>
+<script>
+!(function() {
+	var i, m,
+		pres = $("pre");
+		pres.hide()
+			.each(function() {
+				var $this = $(this);
+				$this.parent()
+					.on("mouseenter", function() {
+						$this.show();
+					})
+					.on("mouseleave", function() {
+						$this.hide();
+					});
+			});
+})();
+</script>
+</body>
+</html>

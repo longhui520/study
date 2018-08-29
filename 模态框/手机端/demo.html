@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
+    <title></title>
+    <style type="text/css">
+        #typeid li {
+            line-height: 3em;
+            border-bottom: 1px solid #E6E6E6;
+            background-image: url("icons/selectright.png");
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 1em;
+        }
+
+            #typeid li span:nth-child(2) {
+                float: right;
+                margin-right: 1em;
+                color: rgb(199, 55, 69);
+            }
+
+        #tupelisttitle {
+            background-color: white;
+            line-height: 3em;
+            text-align: center;
+        }
+
+        #typelist li {
+            line-height: 3em;
+            margin-left: -1em;
+        }
+
+        #type {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            bottom: -100%;
+            transition: bottom 0.5s;
+            -moz-transition: bottom 0.5s;
+            -webkit-transition: bottom 0.5s;
+            -o-transition: bottom 0.5s;
+        }
+        /*覆盖一层灰色来实现弹出层效果*/
+        #mbDIV {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 10;
+            filter: alpha(opacity=50); /**写滤镜为了兼容ie，不过微信开发的话其实可以不要，微信的浏览器支持opacity **/
+            opacity: 0.5; /**设置50%透明 **/
+        }
+
+    li{
+        list-style: none;
+    }
+    </style>
+</head>
+<body>
+    <form id="form1">
+        <div style="width: 90%;">
+            <ul id="typeid" style="margin-top:10px; color: black;">
+                <li>
+                    <span>酒型</span>
+                    <span>酒型</span>
+                </li>
+                <li>
+                    <span>类型</span>
+                    <span>酒型</span>
+                </li>
+                <li>
+                    <span>品牌</span>
+                    <span>酒型</span>
+                </li>
+                <li>
+                    <span>产地</span>
+                    <span>酒型</span>
+                </li>
+                <li>
+                    <span>地级</span>
+                    <span>酒型</span>
+                </li>
+                <li>
+                    <span>价格</span>
+                    <span>酒型</span>
+                </li>
+            </ul>
+        </div>
+        <div id="mbDIV" style="display: none;" onclick="hiddenmbdiv()">
+            <%--设置弹出层的底部颜色，让底部文字不可见--%>
+        </div>
+        <div id="type">
+            <div id="tupelisttitle">
+                <span>产地</span>
+                <span style="max-width: 1em; position: absolute; right: 1em;" onclick="hiddenmbdiv();">X</span>
+            </div>
+            <ul id="typelist" style="background-color: rgb(230, 230, 230);">
+                <li>中国</li>
+                <li>法国</li>
+                <li>伊朗</li>
+                <li>澳大利亚</li>
+                <li>新西兰</li>
+            </ul>
+        </div>
+    </form>
+    <script type="text/javascript">
+        var e = window.event || e;
+        //事件注册
+        function addListener(element, e, fn) {
+            if (element.addEventListener) {
+                element.addEventListener(e, fn, false);
+            } else {
+                element.attachEvent(e, fn);
+            }
+        }
+         //弹出选项卡
+        var type = $('#typeid').children();
+        for (var i = 0; i < type.length; i++) {
+            addListener(type[i], "click", function (e) {
+                $("#tupelisttitle").find("span:nth-child(1)").text($(this).find("span:nth-child(1)").text());
+                $("#type")[0].style.bottom = "0";
+                $("#mbDIV").css("display", "")
+            });
+        }
+        //关闭选项
+        function hiddenmbdiv() {
+            $("#type")[0].style.bottom = "-100%";
+            $('#mbDIV').css('display', 'none');
+        }
+        //绑定选定的选项
+        var typelists = $('#typelist').children();
+        for (var k = 0; k < typelists.length; k++) {
+            addListener(typelists[k], "click", function (e) {
+                var typeids = $('#typeid').children();
+                for (var q = 0; q < typeids.length; q++) {
+                    if ($(typeids[q]).find("span:nth-child(1)").text() == $("#tupelisttitle").find("span:nth-child(1)").text()) {
+                        $(typeids[q]).find("span:nth-child(2)").text($(e.target).text());
+                    }
+                }
+                hiddenmbdiv();
+            });
+        }
+    </script>
+</body>
+</html>

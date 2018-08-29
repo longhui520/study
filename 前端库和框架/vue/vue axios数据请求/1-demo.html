@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios数据请求</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{info}}
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                info:{}
+            },
+            mounted(){
+                axios
+                    .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                    .then(response=>this.info=response)
+            }
+        })
+    </script>
+</body>
+</html>

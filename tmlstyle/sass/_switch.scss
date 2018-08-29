@@ -1,0 +1,56 @@
+/*
+ * Switch 插件
+ * <input class="switch-check" type="checkbox">
+ */
+.switch {
+  cursor: pointer;
+  display: inline-block;
+  *display: inline;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  width: 51px;
+  *zoom: 1;
+}
+
+.switch-container {
+  position: relative;
+  @include transition(left 0.5s);
+  width: 77px;
+}
+
+.switch-on {
+  left: -26px;
+}
+
+.switch-off {
+  left: 0;
+}
+
+.switch-left,
+.switch-right,
+.switch-label {
+  background: url(i/switch.png) no-repeat;
+  display: inline-block;
+  *display: inline;
+  height: 23px;
+  vertical-align: middle;
+  width: 26px;
+  *zoom: 1;
+}
+
+.switch-left {
+  background-position: -58px 0;
+}
+
+.switch-right {
+  background-position: -25px 0;
+}
+
+.switch-label {
+  width: 25px;
+}
+
+.switch-off .switch-label {
+  background-position: -84px 0;
+}

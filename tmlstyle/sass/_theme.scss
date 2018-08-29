@@ -1,0 +1,605 @@
+/* Icon */
+.tabsHeader li.main a span span, #taskbar li .taskbutton span {
+	background: url(images/icon.png) no-repeat;
+}
+
+/* Panel */
+.panel,
+.panel .panelHeader, .panel .panelHeaderContent, .panel .panelHeaderContent h1,
+.panel .panelFooter, .panel .panelFooterContent {
+	background: url(images/panel/panel.png) no-repeat;
+}
+
+.panel .expandable, .panel .collapsable {
+	background: url(images/panel/panel_icon.png) no-repeat;
+}
+
+.panel .panelHeaderContent h1 { color:#15428B; }
+.panel .panelContent { border-color:#99bbe8; background:#e4ebf6;}
+
+.panel .grid { border-color:#99bbe8;}
+
+/* Tabs */
+.tabs, .tabsHeader, .tabsHeaderContent,
+.tabs .tabsHeader ul, .tabs .tabsHeader li, .tabs .tabsHeader li a, .tabs .tabsHeader li span,
+.tabs .tabsFooter, .tabs .tabsFooterContent {
+	background: url(images/tabs/tabspanel.png) no-repeat;
+}
+
+.tabs .tabsHeader li a {
+	color: #03408b;
+}
+
+.tabs .tabsHeader li span {
+	color: #15428B;
+}
+
+.tabs .tabsContent {
+	border-color: #99bbe8;
+	border-width: 0;
+	background: #e4ebf6;
+}
+
+/* TabsPage */
+.tabsPage {
+  background: url(i/bg-content-header.png);
+}
+
+.tabsPage .tabsPageHeader,
+.tabsPage .tabsPageHeader li,
+.tabsPage .tabsPageHeader li a,
+.tabsPage .tabsPageHeader li span {
+	background: url(images/tabs/tabspage.png) no-repeat;
+}
+
+.tabsPage .tabsPageHeader {
+	background-position: 0 -450px;
+	background-repeat: repeat-x;
+	border-color: #99bbe8;
+	border-style: solid;
+	border-width: 1px 1px 0 1px;
+	display: block;
+	height: 32px;
+	position: relative;
+}
+
+.tabsPage .tabsPageHeader li a {
+	color: #868686;
+}
+
+.tabsPage .tabsPageHeader li.selected a {
+	color: #fff;
+}
+
+.tabsPage .tabsPageHeader li .close,
+.tabsPage .tabsPageHeader li.hover .close,
+.tabsPage .tabsPageHeader li.selected .close {
+	background: url(images/tabs/tabspage_icon.png) no-repeat;
+}
+
+.tabsPage .tabsLeft,
+.tabsPage .tabsRight,
+.tabsPage .tabsMore {
+	background: url(images/tabs/tabscontrol.png) no-repeat;
+}
+
+.tabsPage .tabsMoreList { border-color:#88a0be; background:#fff;}
+
+.tabsPage .tabsPageHeader .home_icon {
+	background: url(images/icon.png) no-repeat;
+}
+
+.tabsPage .tabsPageContent { border-color:#88a0be; background:#e4ebf6;}
+
+/* Alert */
+
+.alert .alertContent { border-color:#88a0be; background:#ced9e7;}
+.alert .warn .alertInner { border-color:#e83e09; background:#fefacf;}
+.alert .error .alertInner { border-color:#e50000; background:#fefacf;}
+.alert .correct .alertInner, .alert .info .alertInner { border-color:#99bbe8; background:#fefacf;}
+.alert .confirm .alertInner { border-color:#99bbe8; background:#fefacf;}
+
+.alert h1 {
+	border-color: #ccc;
+	background: url(images/alert/alertpanel_icon.png) no-repeat;
+}
+
+/* Dialog */
+.dialog .dialogHeader, .dialog .dialogHeader_r, .dialog .dialogHeader_c,
+.dialog .dialogFooter, .dialog .dialogFooter_r, .dialog .dialogFooter_c {
+	background: url(images/dialog/dialogpanel.png) no-repeat;
+}
+
+.dialog .dialogHeader h1, .dialog .dialogHeader .close, .dialog .dialogHeader .maximize, .dialog .dialogHeader .restore, .dialog .dialogHeader .minimize, .resizable_f_r {
+	background: url(images/dialog/dialogpanel_icon.png) no-repeat;
+}
+
+.dialog .dialogHeader h1 { color:#15428B;}
+.dialog .dialogContent { border-color:#99bbe8; background:#e4ebf6;}
+
+.resizable { border-color:#081629; background:#c3d7dc;}
+
+/* Shadow */
+.shadow .shadow_h_l { background:url(images/shadow/shadow_h_l.png) no-repeat;}
+.shadow .shadow_h_r { background:url(images/shadow/shadow_h_r.png) no-repeat;}
+.shadow .shadow_h_c { background:url(images/shadow/shadow_h_c.png) repeat-x;}
+.shadow .shadow_c_l { background:url(images/shadow/shadow_c_l.png) repeat-y;}
+.shadow .shadow_c_r { background:url(images/shadow/shadow_c_r.png) repeat-y;}
+.shadow .shadow_c_c { background:url(images/shadow/shadow_c_c.png) repeat;}
+.shadow .shadow_f_l { background:url(images/shadow/shadow_f_l.png) no-repeat;}
+.shadow .shadow_f_r { background:url(images/shadow/shadow_f_r.png) no-repeat;}
+.shadow .shadow_f_c { background:url(images/shadow/shadow_f_c.png) repeat-x;}
+
+/* Tree */
+.tree div div {
+	background: url(images/tree/tree.png) no-repeat;
+}
+
+.tree .folder_collapsable, .tree .folder_expandable, .tree .file { background:url(images/tree/folder.png) no-repeat;}
+.tree .checked, .tree .unchecked, .tree .indeterminate { background:url(images/tree/check.png) no-repeat;}
+.tree ul { background:#FFF;}
+.tree li a, .tree li span { color:#15428B;}
+.tree .hover { background:#eaf2ff;}
+.tree .selected { background-color:#FBEC88;}
+
+.treeleft {
+  background: #fff;
+  display: block;
+  float: left;
+  line-height: 21px;
+  overflow: visible;
+  position: relative;
+  width: 200px;
+}
+
+.treeleft .collapse {
+  border-right: 1px solid #99bbe8;
+  display: none;
+}
+
+.treeleft .close {
+  background: #fff;
+  border-right: 1px solid #99b8ee;
+  padding-right: 6px;
+}
+
+.treeleft .toggleCollapse {
+  background: #eee;
+  border: none;
+  height: 100%;
+  overflow: visible;
+  position: absolute;
+  right: 1px;
+  width: 5px;
+}
+
+.treeleft .toggleCollapse h2 {
+	padding: 0;
+}
+
+.treeleft .toggleCollapse div {
+  background: #{$brand-primary} url(i/layout/toggleSidebar.png) no-repeat scroll -10px -28px;
+  height: 62px;
+  margin-top: -31px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 5px;
+  z-index: 12;
+}
+
+.treeleft .toggleCollapse div:hover {
+  background-position: -10px -78px;
+}
+
+.treeleft .collapse .toggleCollapse div {
+  background-position: -10px -128px;
+  right: -5px;
+}
+
+.treeleft .collapse .toggleCollapse div:hover {
+  background-position: -10px -178px;
+}
+
+.treeright {
+  overflow: hidden;
+}
+
+/* Accordion */
+.accordion .accordionHeader,
+.accordion .accordionHeader h2,
+.accordion .accordionHeader h2 span {
+	color: #15428B;
+	background: url(images/accordion/accordion.png);
+}
+
+.accordion { border-color:#99bbe8; background:#fff;}
+.accordion .accordionHeader { background-color:#eaf4ff;}
+.accordion .accordionContent { border-color:#99bbe8;}
+
+/* Grid */
+.panelBar,
+.toolBar li.hover, .toolBar li.hover a, .toolBar li.hover span, .toolBar span, .toolBar .more,
+.pagination, .pagination li.hover, .pagination li.hover a, .pagination li span,
+.pagination li.disabled span span,
+.panelBar .line, .pagination li.jumpto, .pagination li.jumpto .goto {
+	background: url(images/grid/grid.png) no-repeat;
+}
+
+.toolBar span,
+.toolBar li.hover span {
+	background: url(images/grid/toolicon.png) no-repeat 0 3px;
+}
+
+.toolBar .disabled span,
+.toolBar li .disabled span {
+	background: url(images/grid/toolicondis.png) no-repeat 0 3px;
+	color: #666;
+}
+
+.treeleft .toolBar li:hover,
+.treeleft .toolBar li:hover a {
+	background: url(images/grid/grid.png) no-repeat;
+}
+
+.treeleft .toolBar li:hover span {
+	background: url(images/grid/toolicon.png);
+}
+
+.panelBar {background:#e0ecff;border-color:#99bbe8;}
+
+.grid .gridHeader { background:#eee;}
+.grid { background:#fff;}
+.grid table { border-color:#d0d0d0;}
+.grid .gridHeader,
+.grid .gridHeader th {
+	border-color: #ccc;
+	background: #e5e5e5;
+}
+.grid table th div { border-left-color:#eee; border-right-color:#d0d0d0;}
+.grid table td {
+	border-color: #fff;
+}
+
+.grid .resizeMarker, .grid .resizeProxy { background:url(images/grid/resizeCol.png) repeat-y;}
+
+.grid tr:nth-child(even){background:#f2f2f2;}
+.grid .gridTbody .gridRowBg { background:#f7f7f7;}
+.grid .gridTbody .gridRow { border-color:#ededed;}
+.grid .gridTbody .gridRow td.tdLast { border-color:#ededed;}
+.grid .gridTbody .hover { border-color:#ddd; background:#eaf2ff;}
+.grid .gridTbody .hover .tdSelected { background:#f5f5f5;}
+.grid .gridTbody .selected { border-color:#99bbe8; background:#fbec88;}
+.grid .gridTbody .selected .textInput{background:#fff;}
+.grid .gridTbody .selected .readonly{background:none;}
+.grid .gridTbody .selected .tdSelected { background:#e8edf3;}
+.grid .gridTbody .tdSelected { background:#f8f8f8;}
+.grid .error{background:#fb7e81;}
+
+/* ProgressBar */
+.progressBar { border:solid 1px #86a5ad; background:#d1e4ec;}
+.progressBarCon {
+	border: solid 1px #86a5ad;
+	background: #fff url(images/progressBar/progressBar_m.gif) no-repeat 10px 10px;
+}
+
+/* ----------------------------------------------------------------- Form */
+/* TextInput */
+.textInput, input.focus, input.required, input.error, input.readonly, input.disabled,
+textarea.focus, textarea.required, textarea.error, textarea.readonly, textarea.disabled {
+	background: url(images/form/input_bg.png) no-repeat scroll;
+}
+
+.textInput, .textArea { border-color:#a2bac0 #99bbe8 #99bbe8 #a2bac0; background-color:#FFF;}
+input.required, textarea.required { border-color:#a2bac0 #99bbe8 #99bbe8 #a2bac0; background-color:#FFF;}
+input.error, textarea.error { border-color:#F80C11 #FB7E81 #FB7E81 #F80C11;}
+input.focus, textarea.focus { border-color:#8db2e3 #99bbe8 #99bbe8 #8db2e3; background-color:#fff;}
+input.readonly, textarea.readonly { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3; background-color:#F6F6F6;}
+input.disabled, textarea.disabled { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3; background-color:#F6F6F6;}
+
+.xyInputWithUnit{display:inline-block;}
+.xyInputWithUnit .textInput{float:left;width:114px;}
+.xyInputWithUnitButton {
+	background: url(images/form/input_bt.png) no-repeat;
+	display: block;
+	float: left;
+	height: 18px;
+	margin-top: 1px;
+	overflow: hidden;
+	text-indent: -1000px;
+	width: 16px;
+}
+
+.xyInputWithUnit span.error{margin:2px 0 0 -18px;}
+.inputCheckForButton {background-position:0 -36px;}
+.inputCheckForButton:hover{background-position:0 -36px;}
+
+/* Button */
+.button, .button span,
+.buttonDisabled, .buttonDisabled span,
+.buttonActive, .buttonActive span,
+.button .buttonContent, .buttonHover, .buttonHover .buttonContent,
+.buttonActive .buttonContent, .buttonActiveHover, .buttonActiveHover .buttonContent,
+.buttonDisabled .buttonContent {
+	background: url(images/button/button_s.png) no-repeat;
+}
+
+.button span, .buttonDisabled span, .buttonActive span,
+.button .buttonContent, .buttonHover, .buttonHover .buttonContent,
+.buttonActive .buttonContent, .buttonDisabled .buttonContent,
+.button button, .buttonHover button,
+.buttonActive button, .buttonDisabled button { color:#15428B;}
+
+.buttonActive span, .buttonActive .buttonContent, .buttonActive .buttonContent a, .buttonActive button{color:#fff;}
+
+.buttonDisabled span, .buttonDisabled:hover span,
+.buttonDisabled button { color:#999;}
+/* Button */
+.button, .buttonActive, .buttonDisabled { float:left; display:block; overflow:hidden; height:25px; padding-left:5px;}
+
+.button span, .buttonDisabled span, .buttonActive span,
+.button .buttonContent, .buttonHover, .buttonHover .buttonContent,
+.buttonActive .buttonContent, .buttonDisabled .buttonContent { float:left; display:block; overflow:hidden; height:25px; line-height:25px; font-weight:bold;}
+
+.button { background-position:0 0;}
+.button .buttonContent { padding:0 5px 0 0; background-position:100% -50px;}
+.button span { padding:0 10px 0 5px; background-position:100% -50px; cursor:pointer;}
+.button:hover { text-decoration:none; background-position:0 -100px;}
+.button:hover .buttonContent{background-position:100% -150px;}
+.button:hover span { background-position:100% -150px;}
+.buttonHover { padding-left:5px; background-position:0 -100px;}
+.buttonHover .buttonContent { padding:0 5px 0 0; background-position:100% -150px;}
+
+.buttonActive { background-position:0 -200px;}
+.buttonActive .buttonContent { padding:0 5px 0 0; background-position:100% -250px;}
+.buttonActive span { padding:0 10px 0 5px; background-position:100% -250px; cursor:pointer;}
+.buttonActive:hover { text-decoration:none; background-position:0 -300px;}
+.buttonActive:hover span { background-position:100% -350px;}
+.buttonActiveHover { background-position:0 -300px;}
+.buttonActiveHover .buttonContent { padding:0 5px 0 0; background-position:100% -350px;}
+
+.buttonDisabled, .buttonDisabled:hover { text-decoration:none; background-position:0 -400px;}
+.buttonDisabled span, .buttonDisabled:hover span { padding:0 10px 0 5px; background-position:100% -450px; cursor:default;}
+.buttonDisabled .buttonContent { padding:0 5px 0 0; background-position:100% -450px;}
+
+.button button, .buttonHover button,
+.buttonActive button, .buttonDisabled button { width:auto; height:25px;line-height:25px; margin:0; padding:0 0 5px 0; border:0; font-size:12px; font-weight:bold; background:none; cursor:pointer;}
+.buttonDisabled button { cursor:default;}
+
+/* ----------------------------------------------------------------- Pages */
+/* Layout */
+body, #splitBar { background:#dfe8f6;}
+#splitBarProxy { border-color:#c0c0c0; background:#ccc;}
+
+#header {
+  background: url(i/bg-body-bar.jpg);
+  height: 50px;
+  position: relative;
+  z-index: 30;
+}
+
+#header .logo {
+	background: url(images/logo.png) no-repeat 5px 0;
+}
+
+#header .nav .nav_first {
+  color: #fff;
+  float: left;
+  margin: 8px 10px 0 0;
+}
+
+#header .nav .nav_first a {
+  color: #fc0;
+}
+#header .nav .navWelcome{float:left;}
+#header .nav .navList {
+  background-color: #262626;
+  border-radius: 50%;
+  @include box-shadow(0 1px 0 #4e4e4e);
+  color: #fff;
+  float: left;
+  margin: 0 20px 0 0;
+  padding: 6px;
+}
+
+#header .nav .navList a{background:url(images/icon/nav.png) no-repeat;display:block;float:left;height:16px;text-indent:-9999px;width:16px;}
+#header .nav .navList a.messages{background-position:0 -16px;}
+#header .nav .navList a.profile{background-position:0 -32px;}
+#header .nav .navList a.alerts{background-position:0 -48px;}
+#header .nav .navList a.navProcess{background-position:0 -64px;}
+#header .nav .navList a.navGuide{background-position:0 -80px;}
+#header .nav .navList a.navToolBox{background-position:0 -145px;}
+#header .nav .navList a.navClean{background-position:0 -96px;}
+#header .nav .navList a.navLogout{background-position:0 -112px;}
+#header .nav .navList a.navChat{background-position:0 -128px;}
+#header .nav .navList a .alert_num{background:#FF9000;border-radius:3px;color:#fff;display:block;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);font-size:11px;font-style:normal;height:14px;line-height:14px;overflow:hidden;position:absolute;right:-8px;text-align:center;text-indent: 0;text-shadow: 0 0 3px rgba(0, 0, 0, 0.15);top: -3px;width:14px;z-index:1;}
+#header .nav .navList .messageInfo{background:#ffffe1;border:1px solid #000;box-shadow:2px 2px 6px rgba(0,0,0,0.3);display:none;left:1px;padding:2px;position:absolute;text-indent:0;top:20px;width:88px;z-index:99;}
+#header .nav .navList .messageInfoArrow{background:url(images/message_info_arrow.gif) no-repeat;display:block;height:4px;left:8px;position:absolute;text-indent:0;top:-4px;width:8px;z-index:99;}
+#header .nav .navList .messageInfo h3{color:#383838;}
+#header .nav .navList .messageInfo li{float:none;}
+#header .nav .navList .messageInfo li a{background:none;color:#333;float:none;text-indent:1em;width:auto;}
+#header .nav .navList .messageInfo li a:hover{color:#39f;}
+#header .nav .navList .subpanel{color:#333;padding:1px;}
+#header .nav .navList .subpanel h3{font:16px/22px $base-headings-font;text-indent:4px;}
+#header .nav .navList .subpanel li{float:none;margin:0;}
+#header .nav .navList .subpanel li a{background:none;border:1px solid #fff;color:#333;float:none;padding:3px;text-indent:0;width:auto;}
+#header .nav .navList .subpanel li a:hover{background:#b6bdd2;border-color:#0a246a;}
+
+#header .themeList li div { background:url(images/themeButton.png) no-repeat;}
+.toggleCollapse, .toggleCollapse div { background:url(images/layout/toggleSidebar.png) no-repeat;}
+.toggleCollapse { border-style:solid; border-width:1px 1px 0 1px; border-color:#99BBE8; background-color:#e0ecff;}
+.toggleCollapse h2 { color:#15428B;}
+#sidebar_s .collapse { border:solid 1px #99bbe8; background:#eff5f6;}
+#sidebar_s .collapse:hover { background:#f5f9fa;}
+
+#taskbar, #taskbar li, #taskbar li .taskbutton { background:url(images/layout/taskbar.png) no-repeat;}
+#taskbar .close, #taskbar .restore, #taskbar .minimize { background:url(images/layout/taskbar_icon.png) no-repeat;}
+#taskbar li .taskbutton span { color:#FFF;}
+#taskbar .taskbarLeft, #taskbar .taskbarRight {
+	background: url(images/layout/taskbar_control.png) no-repeat;}
+
+/* Menu */
+#navMenu, #navMenu li, #navMenu li.selected a, #navMenu li.selected span {
+	background: url(images/menu/menu.png) no-repeat;
+}
+
+#navMenu { background-color:#1871dd; }
+#navMenu li a, #navMenu li span { color:#fff; }
+#navMenu li.selected span { color:#000; }
+
+/* Homepage */
+.sidebarContent { display:block; overflow:auto; height:500px; border:solid 1px #86B4EC; background:#FFF;}
+.accountInfo { display:block; overflow:hidden; height:30px; padding:0 10px; background:url(images/account_info_bg.png) repeat-x}
+.accountInfo p { padding:8px 0 0 0; line-height:19px;}
+.accountInfo p span { font-size:14px; font-weight:bold;}
+.accountInfo .right { float:right; padding-right:10px; text-align:right;}
+.accountInfo .alertInfo { float:right; width:300px; height:60px; padding-left:10px; border-left:solid 1px #accdf4;}
+.accountInfo .alertInfo h2 { padding:8px 0; line-height:17px;}
+.accountInfo .alertInfo a { padding:6px 0 0 0; line-height:21px;}
+
+/* Pages */
+.pageForm .inputInfo { color:#999;}
+
+/* Pages dialog */
+.dialog .pageHeader, .dialog .pageContent { border-color:#99bbe8;}
+.dialog .pageContent .pageFormContent { border-color:#99bbe8; background:#fff;}
+
+/* Pages default */
+.page .pageHeader, .formBar { border-color:#99bbe8; background:#ebf0f5 url(images/pageHeader_bg.png) repeat-x;}
+.page .searchBar label { color:#15428B;}
+/* Pages default */
+.page { display:block; overflow:hidden;float:left; width:100%;}
+.pageHeader { display:block; overflow:auto; margin-bottom:1px; padding:5px; border-style:solid; border-width:0 0 1px 0; position:relative;}
+.searchBar ul.searchContent { display:block; overflow:hidden; height:25px;}
+.searchBar ul.searchContent li { float:left; display:block; overflow:hidden; width:300px; height:21px; padding:2px 0;}
+.searchBar label { float:left; width:80px; padding:0 5px; line-height:23px;}
+.searchBar .searchContent td{white-space:nowrap;}
+.searchBar .subBar { height:25px;}
+.searchBar .subBar ul { float:right;}
+.searchBar .subBar li { float:left; margin-left:5px;}
+.pageContent { display:block;overflow:auto;position:relative;}
+
+.dateRange input {
+  width: 72px;
+}
+
+.dateRange .limit {
+  text-align: center;
+  width: 15px;
+  line-height: 21px;
+}
+
+/* Pages Form */
+.formBar {
+  border-color: #99bbe8;
+}
+
+.divider {
+  border-color: #99bbe8;
+}
+
+/* combox */
+.combox,
+.combox div,
+.combox div a {
+  background: url(images/search-bg.gif) no-repeat;
+}
+
+.combox {
+  float: left;
+  margin-right: 3px;
+  background-position: 100% -25px;
+}
+
+.combox select {
+  display: none;
+}
+
+.combox .select {
+  float: left;
+}
+
+.combox .select a {
+  color: #15428B;
+  float: left;
+  display: block;
+  overflow: hidden;
+  height: 23px;
+  padding: 0 22px 0 6px;
+  line-height: 23px;
+  text-decoration: none;
+  font-size: 12px;
+  background-position: 100% -50px;
+  max-width: 107px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+   _width: 107px;
+ }
+
+.comboxop {
+  background: #fff;
+  border:1px solid #99bbe8;
+  border-color: #999;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+  display: none;
+  left: 1px;
+  padding: 6px 0;
+  position: absolute;
+  top: 22px;
+  z-index: 1111;
+}
+
+.comboxop a { display:block; padding:0 10px; line-height:20px; text-align:left; color:#000; background:none;}
+.comboxop a:hover { background:#369bd7;color:#fff;}
+.comboxop .selected { background:#e0e0e0; }
+.comboxop li { text-align:left; }
+
+.panelBar .searchBar{background:#fff;border:1px solid #99bbe8;border-radius:12px;color:#333;float:right;height:24px;margin:3px 10px 0 0;padding:0 12px;}
+.panelBar .searchBar .searchContent{height:24px;}
+.panelBar .searchBar .textInput{background:none;border:none;height:15px;width:120px;}
+.panelBar .searchBar .searchContent .xyInputWithUnit{background:none;border:none;height:19px;width:92px;}
+.panelBar .searchBar .searchContent .xyInputWithUnit .textInput{background:none;height:15px;width:72px;}
+.panelBar .searchBar .xyInputTo{margin:0 4px;}
+.panelBar .searchBar .combox{background:none;border:none;height:19px;margin:0;padding:0 6px;}
+.panelBar .searchBar .combox .select{background:url(images/searchIco.png) no-repeat right;height:19px;}
+.panelBar .searchBar .combox .select a{background:none;color:#333;height:19px;line-height:19px;padding:0 10px 0 0;}
+.panelBar .searchBar .xySearch{background:url(images/icon/search.png) no-repeat 0 0;border:none;cursor:pointer;display:block;height:19px;line-height:19px;margin:0 0 0 6px;text-indent:-9999px;width:53px;}
+.panelBar .searchBar .xySearch:hover{background-position:0 -19px;}
+.panelBar .searchBar .xyAdvancedSearch{background:url(images/icon/search.png) no-repeat 0 -76px;cursor:pointer;color:#06c;display:block;height:19px;line-height:19px;margin:0 0 0 6px;text-align:center;text-shadow:0 1px 0 #fff;width:53px;}
+.panelBar .searchBar .xyAdvancedSearch:hover{background-position:0 -95px;}
+.panelBar .searchBar .xyOutput{background:url(images/icon/search.png) no-repeat 0 -38px;border:none;cursor:pointer;display:block;height:19px;line-height:19px;margin:0 0 0 6px;text-indent:-9999px;width:53px;}
+.panelBar .searchBar .xyOutput:hover{background-position:0 -57px;}
+.panelBar .searchBar .xyBack{background:url(images/icon/search.png) no-repeat 0 -114px;border:none;color:#06c;cursor:pointer;display:block;height:19px;line-height:19px;margin:0 0 0 6px;text-align:center;text-shadow:0 1px 0 #fff;width:53px;}
+.panelBar .searchBar .xyBack:hover{background-position:0 -133px;}
+
+.levelRed {
+	background: url(images/icon/record_red.png) no-repeat center center;}
+.levelYellow {
+	background: url(images/icon/record_yellow.png) no-repeat center center;}
+.levelGreen {
+	background: url(images/icon/record_green.png) no-repeat center center;}
+.levelOrange {
+	background: url(images/icon/record_orange.png) no-repeat center center;}
+.levelRed div,.levelYellow div,.levelGreen div,.levelOrange div {
+	text-indent: -9999px;}
+.taskisdelay {
+	background: url(images/icon/record_red.png) no-repeat center center;}
+.tasknotdelay {
+	background: url(images/icon/record_green.png) no-repeat center center;}
+
+/*按钮*/
+.xyEditFormIcon{left:0;position:absolute;top:0;}
+.xyicon{border:none;cursor:pointer;display:inline-block;height:16px;line-height:16px;margin:0 6px;padding:0 0 0 20px;}
+.xyIconSaveButton{background:url(images/grid/grid.png) no-repeat 0 -1240px;border:none;cursor:pointer;display:inline-block;height:16px;line-height:16px;margin:0 0 0 6px;padding:0 0 0 20px;}
+.xyIconStartButton{background:url(images/grid/grid.png) no-repeat 0 -1270px;border:none;cursor:pointer;display:inline-block;
+  font-size: 13px;
+  height: 16px;
+  line-height: 16px;
+  margin: 0 0 0 6px;
+  padding: 0 0 0 20px;
+}
+.xyIconSendButton{background:url(images/icon/mail.png) no-repeat 0 0;border:none;cursor:pointer;display:inline-block;height:16px;line-height:16px;margin:0 0 0 6px;padding:0 0 0 20px;}
+
+.xyIconSaveNewButton{background:url(images/icon/page_save.png) no-repeat;}
+.xyIconSubmitNewButton{background:url(images/icon/bullet_tick.png) no-repeat;}

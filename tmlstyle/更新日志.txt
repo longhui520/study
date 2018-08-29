@@ -1,0 +1,71 @@
+2014.06.25
+去掉 .rysq_d 以及相关样式
+去掉 .highauto 以及相关样式
+去掉 .xydiv 以及相关样式
+去掉 .tipclick 以及相关样式
+去掉 .inputsearchicon 及相关样式
+去掉 .tRight tCenter 及相关样式
+去掉 .pageHeader_pj 样式
+去掉 .unitfilter 样式
+去掉 .inputButton inputDateButton 样式
+去掉 .taskpaeraspan 样式
+去掉 .inputWithBtn 样式
+去掉 .xyminitooltip 样式
+替换 .xyDataTable 为 .data-table 暂时保留 .xyDataTable 样式
+去掉 .xyform 以及相关样式
+去掉 .ulist 及相关样式
+去掉 .round_shade_box 及相关样式 // 自适应圆角投影
+去掉 .xyBiConfiguration 及相关样式
+去掉 .radiofield 样式
+去掉 .paperStyle 及相关样式 // 纸制单样式表
+替换 .cls 为 .clear 同时去掉 .cls 样式
+去掉 .toolBar 前面的 .panelBar 前缀
+去掉 .xylogin 样式
+去掉 .xynotice 样式
+去掉 .performance 及相关样式
+修改 .alert 内部按钮样式
+替换 .alert .toolBar 为 .alert-bar // dwz.frag.xml
+去掉 .leftSearchBar 样式
+去掉 .tml-button 样式
+去掉 .inputAddButton 样式
+去掉 .inputYearButton 样式
+去掉 .inputSquareButton 样式
+去掉 .inputDayButton 样式
+去掉 .inputMillionButton 样式
+去掉 .inputDisDateButton 样式
+去掉 .inputCostButton 样式
+替换 .xyInputWithUnitButton.inputCostButton 为 .input-addon-unit
+去掉 .inputPercentButton 样式
+替换 .xyInputWithUnitButton.inputPercentButton 为 .input-addon-unit
+
+2014.06.26
+增加 IE 10 链接点击时的灰色背景兼容问题
+去掉 .iconStopSend 样式 暂时保留 images/icon/mail_sign.png
+去掉 .iconSend 样式 暂时保留 images/icon/mail_send.png
+去掉 .iconBack 样式 暂时保留 images/icon/back.png
+去掉 .iconDownload 样式 暂时保留 images/icon/download.png
+去掉 .iconAudit 样式 暂时保留 images/icon/text_signature.png
+去掉 .iconView 样式
+去掉 .iconEdit 样式
+去掉 .xyIconSaveButtonDis 样式 保留 images/icon/start_disabled.png
+去掉 .xyIconStartButtonDis 样式 保留 images/icon/start_disabled.png
+去掉 .xyIconStopButton 样式 保留 images/icon/stop.png
+去掉 .xyIconBackButton 样式 保留 images/icon/page_back.png
+去掉 .xyIconAuditButton 样式 保留 images/icon/text_signature.png
+去掉 p .combox .select a 样式
+去掉 .marquee-data 及相关样式
+去掉 .addapp 前缀 .xyuseapp
+去掉 .tml-form-header 样式
+去掉 .metro-link 及相关样式
+去掉 .budget-list 及相关样式
+去掉 .work-box .work-title .work-list 及相关样式
+
+2014.06.30
+去掉 .xyqanew 及相关样式
+
+2014.07.08
+去掉 .milestoneView 及相关样式
+去掉 .purDel 样式
+去掉 .purCancel 样式
+去掉 .dashboard 及相关样式
+去掉 .performance 及相关样式
