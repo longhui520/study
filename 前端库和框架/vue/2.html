@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .table-box {
+            height: 100%;
+            width: 100%;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        }
+
+        .table-head {
+            background-color: #F9FAFE;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            color: #777;
+            table-layout: fixed;
+            position: absolute;
+            top: 0;
+        }
+
+        .table-head th {
+            border-collapse: collapse;
+            height: 40px;
+        }
+
+        .table-body-box {
+            table-layout: fixed;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 50px;
+        }
+
+        .table-body {
+            table-layout: fixed;
+            width: 100%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .table-body tr:nth-child(even) {
+            background-color: #F9FAFE;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="height:500px">
+        <div class="table-box">
+            <table class="table-head" style="width: 900px">
+                <colgroup>
+                    <col width="150">
+                    <col width="100">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Provision</th>
+                        <th>Following in Point</th>
+                        <th>Customer Grade</th>
+                        <th>Allocated Time</th>
+                        <th>Follow up Person</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-body-box" style="width: 900px">
+                <table class="table-body">
+                    <colgroup>
+                        <col width="150">
+                        <col width="100">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                        <tr>
+                            <td>Shanghai Yinghuang</td>
+                            <td>FOB</td>
+                            <td>Dumped Cabinet</td>
+                            <td>Important</td>
+                            <td>2017-10-28</td>
+                            <td>Nathan</td>
+                            <td>Sales Department</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

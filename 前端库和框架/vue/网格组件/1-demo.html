@@ -22,7 +22,7 @@
         <table>
             <thead>
                 <tr>
-                    <th v-for="key in columns">{{key}}</th>
+                    <th v-for="key in columns" @click=sortBy(key)>{{key}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,15 +47,15 @@
                     sortOrders[key]=1
                 });
                 return {
-                    sortkey:'',
+                    sortKey:'',
                     sortOrders:sortOrders
                 }
             },
             computed:{
                 filteredData:function(){
-                    var sortkey=this.sortkey;
+                    var sortKey=this.sortKey;
                     var filterKey=this.filterKey && this.filterKey.toLowerCase()
-                    var order= this.sortOrders[sortkey]||1
+                    var order= this.sortOrders[sortKey]||1
                     var data=this.data
                     // 筛选展示
                     if(filterKey){
@@ -66,16 +66,23 @@
                         })
                     }
                     // 排序展示
-                    if(sortkey){
+                    if(sortKey){
                         data=data.slice().sort(function(a,b){
-                            a=a[sortkey]
-                            b=b[sortkey]
-                            return (a===b)?0:a<b?1:-1
+                            a=a[sortKey]
+                            b=b[sortKey]
+                            return ((a===b)?0:a<b?1:-1)*order
                         })
                     }    
                     return data;
                 },
         
+            },
+            methods:{
+                sortBy:function(key){
+                    console.log(this.sortKey)
+                    this.sortKey=key
+                    this.sortOrders[this.sortKey]= this.sortOrders[this.sortKey]*-1
+                }
             }
         })
         var gridData=[

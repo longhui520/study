@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        table{
+            table-layout: fixed;
+        }
+        /* table tr td:first-child,table tr th:first-child{
+            width:120px;
+        } */
+        .left{
+            position: absolute;
+            width:120px;
+            background-color: #fff;
+        }
+        td div{width:300px;}
+    </style>
+</head>
+<body>
+    <div class="left">
+        <table>
+            <thead>
+                <tr>
+                    <th>1</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="right">
+        <table>
+            <thead>
+                <tr>
+                    <th><div></div></th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </tr>
+            </thead>
+            <tr>
+                <td><div></div></td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

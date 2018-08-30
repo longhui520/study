@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #app .right{
+            overflow-x:scroll;
+        }
+        table{table-layout: fixed;
+            border-collapse: collapse;
+        }
+        td,th{
+            border-bottom:1px solid #ccc;
+        }
+        .left{
+           position: absolute;
+           left:0;
+           width:100px;
+           z-index:999999;
+           background-color: #fff;
+        }
+      td,th{
+          white-space: nowrap;
+      }
+       tr th>div,tr td>div{
+           padding: 10px 20px;
+           box-sizing: border-box;
+           height: 60px;
+           text-align: center;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+       tr th:first-child div,tr td:first-child div{
+           width:100px;
+           box-sizing: border-box;
+           padding:10px 20px;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           white-space: nowrap;
+       }
+        .right::-webkit-scrollbar {display:none}
+        .thead{
+            display: flex;
+            align-items: center;
+        }
+        .sort{ margin-left: 3px;}
+        .sort-up{
+            border:4px solid;
+            border-color: transparent transparent #D1D1D1 transparent;
+            margin-bottom:2px;
+        }
+        .sort-down{
+            border:4px solid;
+            border-color: #D1D1D1 transparent transparent transparent;
+            margin-top:2px;
+        }
+        .sort-up.active{
+            border-color:transparent transparent blue transparent;
+        }
+        .sort-down.active{
+            border-color: blue transparent transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="left">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                           <div>第一列</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <div>1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>2</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="right">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <div>第1列</div>
+                        </th>
+                        <th>
+                            <div class="thead">
+                                <div class="th-left">第2列</div>
+                                <div class="sort">
+                                    <div class="sort-up"></div>
+                                    <div class="sort-down"></div>
+                                 </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div>第3列</div>
+                        </th>
+                        <th>
+                            <div>第4列</div>
+                        </th>
+                        <th>
+                            <div>第5列</div>
+                        </th>
+                        <th>
+                            <div>第6列</div>
+                        </th>
+                        <th>
+                            <div>第7列</div>
+                        </th>
+                        <th>
+                            <div>第8列</div>
+                        </th>
+                        <th>
+                            <div>第9列</div>
+                        </th>
+                        <th>
+                            <div>第10列</div>
+                        </th>
+                    </tr>
+                </thead>
+              <tr>
+                  <td>
+                      <div>1</div>
+                  </td>
+                  <td>
+                      <div>2</div>
+                  </td>
+                  <td>
+                      <div>3</div>
+                  </td>
+                  <td>
+                      <div>4</div>
+                  </td>
+                  <td>
+                      <div>5</div>
+                  </td>
+                  <td>
+                      <div>6</div>
+                  </td>
+                  <td>
+                      <div>7</div>
+                  </td>
+                  <td>
+                      <div>8</div>
+                  </td>
+                  <td>
+                      <div>9</div>
+                  </td>
+                  <td>
+                      <div>10</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <div>1</div>
+                  </td>
+                  <td>
+                      <div>2</div>
+                  </td>
+                  <td>
+                      <div>3</div>
+                  </td>
+                  <td>
+                      <div>4</div>
+                  </td>
+                  <td>
+                      <div>5</div>
+                  </td>
+                  <td>
+                      <div>6</div>
+                  </td>
+                  <td>
+                      <div>7</div>
+                  </td>
+                  <td>
+                      <div>8</div>
+                  </td>
+                  <td>
+                      <div>9</div>
+                  </td>
+                  <td>
+                      <div>10</div>
+                  </td>
+              </tr>
+            </table>
+        </div>
+    </div>
+   <script>
+   
+   </script>
+</body>
+</html>

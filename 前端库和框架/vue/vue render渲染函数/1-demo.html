@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渲染函数</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <yj-list :list="list"></yj-list>
+    </div>
+    <script>
+        Vue.component('yj-list',{
+            props:{
+                list:Array,
+                default:()=>{return this.list || []}
+            },
+            render:function(h){
+                const _this=this
+                // const menu_items=['首页','搜索','分类','系统']
+                return h('ul',{},this.list.map(item=>h('li',item)))
+            }
+        })
+        var vm =new Vue({
+            el:'#app',
+            data:{
+                list:['首页','搜索','分类','系统']
+            }
+         
+        })
+    </script>
+</body>
+</html>
