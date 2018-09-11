@@ -11,16 +11,10 @@
     <script>
         $(function(){
             $.ajax({
-                type:'POST',
-                url:'http://wlw.xedth.cn/api/Index/index',
-                dataType:'json',
+                url:'http://192.168.3.20//Admin/index.php/Test/index',
+                dataType:'jsonp',
                 contentType:'application/json',
-                data:{
-                    values:{
-                        lat:'29.579949',
-                        lng:'106.452391'
-                    }
-                },
+                jsonpCallback:"callback",
                 success:function(data){
                     console.log(data)
                 }
