@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <style>
+    body{
+        margin:0;
+    }
+        .warper{
+            height:100%;
+            display: flex;
+            flex-direction:column;
+            align-content:stretch;
+        }
+        .header{
+            height:5rem;
+            background-color: red;
+            order: 0;
+            flex-shrink: 0;
+        }
+        .footer{
+            height:3rem;
+            background-color: blue;
+            order: 2;
+            flex-shrink: 0;
+        }
+        .container{
+            flex-grow:999;
+            order: 1;
+            overflow:hidden;
+            position: relative;
+        }
+        .container .baseline{
+            min-height:100%;
+            height:100%;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="warper">
+        <div class="header">header</div>
+        <section class="container">
+            <div class="baseline">
+                <p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p><p>container</p>
+            </div>
+        </section>
+        <div class="footer">footer</div>
+    </div>
+</body>
+</html>
