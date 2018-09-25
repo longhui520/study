@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue指令</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-styles="{backgroundColor:'red'}">1111111</div>
+	</div>
+	<script>
+		Vue.directive('styles',{
+			bind:function(el,binding){
+				for(var k in binding.value){
+					el.style[k]=binding.value[k];
+				}
+			}
+		})
+	    new Vue({
+	    	el:'#app',
+	   		directives:{
+	   			colorSwatch:function(el,binding){
+	   				el.style.backgroundColor=binding.value;
+	   			}
+	   		}
+	    })
+	</script>
+</body>
+</html>

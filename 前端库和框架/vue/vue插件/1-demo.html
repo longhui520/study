@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue指令</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-styles="{backgroundColor:'red'}">1111111</div>
+	</div>
+	<script>
+	   var myPlugin={}
+	   myPlugin.install=function(Vue,option){
+
+	   		//1.vue自定义指令
+		   	Vue.directive('styles',{
+				bind:function(el,binding){
+					for(var k in binding.value){
+						el.style[k]=binding.value[k];
+					}
+				}
+			});
+			//2.vue添加全局方法或属性
+			Vue.myGlobalMethod=function(){
+
+			};
+			//3.vue注入组件
+			Vue.mixin({
+				created:function(){
+					console.log('注入组件成功');
+				}
+			});
+			//4.添加实例方法
+			Vue.prototype.$mythod=function(){
+				console.log('调用了实例属性');
+				console.log(Object.keys(option))
+			}
+	   }; 
+	   Vue.use(myPlugin,{value:5});
+	    var vm= new Vue({
+	    	el:'#app',
+	   		directives:{
+	   			colorSwatch:function(el,binding){
+	   				el.style.backgroundColor=binding.value;
+	   			}
+	   		},
+	   		mounted:function(){
+	   			this.$mythod();
+	   		}
+	    })
+	</script>
+</body>
+</html>
