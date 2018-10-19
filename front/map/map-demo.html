@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pc端地图</title>
+    <link rel="stylesheet" href="map.css">
+    <script src="map.js"></script>
+</head>
+<body>
+    <button class="btn" id="showModel">模态框展示</button>
+    <script src="map.js"></script>
+    <script>
+        function createModal(){
+            var modal = document.createElement('div');
+            modal.setAttribute('class','modal');
+            var html=`<div class="modal-content">
+                        <header class="modal-header">
+                            <h4 class="title">地址选择</h4>
+                            <span class="close">×</span>
+                        </header>
+                        <div class="modal-body" style="display:none;">
+                            <div id="maps">
+                                <input id="autoInput" type="text" placeholder="请依次输入省市区搜索">
+                                <div id="gddt"></div>
+                            </div>
+                        </div>
+                        <div class="loading" style="display:flex;">加载中</div>
+                        <footer class="modal-footer">
+                            <button class="cancel">取消</button>
+                            <button class="sure">确定</button>
+                        </footer>
+                    </div>`
+            modal.innerHTML=html;
+            document.body.appendChild(modal); 
+        }
+        function registerEvent(){
+            var modal= document.querySelector('.modal');
+            var close = document.querySelector('.modal .close');
+            var cancel = document.querySelector('.modal .cancel');
+            close.addEventListener('click', function(){
+                var amapsugresult=document.querySelectorAll('.amap-sug-result');
+                Array.from(amapsugresult).forEach(function(ele){
+                    ele.parentNode.removeChild(ele);
+                });
+                modal.parentNode.removeChild(modal);
+            });
+            cancel.addEventListener('click', function(){
+                var amapsugresult=document.querySelectorAll('.amap-sug-result');
+                Array.from(amapsugresult).forEach(function(ele){
+                    ele.parentNode.removeChild(ele);
+                });
+                modal.parentNode.removeChild(modal);
+            });
+        }
+
+
+
+        var btn = document.getElementById('showModel');
+        btn.addEventListener('click', function(){
+            createModal();
+            registerEvent();
+            var plugins=['AMap.Geolocation','AMap.Autocomplete','AMap.PlaceSearch','AMap.Geocoder','AMap.Scale','AMap.ToolBar'];
+            if(window.AMap){
+                mapInit(window.AMap,'gddt','autoInput') 
+            }else{
+                loadMap().then(map=>{return loadMapPlugin(map,plugins);})
+                .then(map=>{mapInit(map,'gddt','autoInput')});  
+            }
+        });
+    </script>
+</body>
+</html>

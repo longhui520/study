@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery Mobile</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <h1>欢迎来到我的首页</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>我现在是移动端开发者</p>
+            <a href="#pagetwo" data-transition="flip" data-role="button">跳转到第2页</a>
+        </div>
+        <div data-role="footer">
+            <h1>底部文本</h1>
+        </div>
+    </div>
+    <div data-role="page" id="pagetwo" data-dialog="true">
+        <div data-role="header">
+            <h1>这是第2页</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <a href="#pageone" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">跳转到首页</a>
+            <a href="#myPopup" data-rel="popup" >弹窗</a>
+            <div data-role="popup" id="myPopup">
+                <p>这是简单的弹窗</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

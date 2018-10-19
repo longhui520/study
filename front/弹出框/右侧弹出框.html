@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>右侧弹出框</title>
+    <style>
+        .popup-right{
+            position: fixed;
+            width:100%;
+            height: 100%;
+            top:0;
+            left:0;
+            transform: translate(100%,0);
+            transition: all .5s;
+            background-color: #f00;  
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">
+        右侧弹出
+    </button>
+    <div class="popup-right" style="display: none">
+        <button id="btn2">关闭弹出框</button>
+    </div>
+    <script>
+        let btn1=document.querySelector('#btn1');
+        let btn2=document.querySelector('#btn2');
+        let pop=document.querySelector(".popup-right")
+        btn1.onclick=function(){
+            pop.style.display='block';
+            setTimeout(() => {
+                pop.style.transform='translate(0,0)'  
+            }, 1);
+          
+        }
+        btn2.onclick=function(){
+            pop.style.transform='translate(100%,0)'
+            setTimeout(() => {
+                pop.style.display='none';
+            }, 500);
+         
+        }
+    </script>
+</body>
+</html>

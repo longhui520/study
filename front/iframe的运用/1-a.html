@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iframe+postMessage 跨域通信 主页面</title>
+</head>
+<body>
+    <h1>主页面</h1>
+    <iframe id="child" src="1-b.html"></iframe>
+    <div>
+        <h2>主页面接收消息区域</h2>
+        <span id="message"></span>
+    </div>
+</body> 
+<script>
+    window.onload = function(){
+        document.getElementById('child').contentWindow.postMessage("主页面消息", "1-b.html")
+    }
+    window.addEventListener('message', function(event){document.getElementById('message').innerHTML = "收到"
+    + event.origin + "消息：" + event.data;
+    }, false);
+</script>
+</html>

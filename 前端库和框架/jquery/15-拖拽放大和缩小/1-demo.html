@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽放大和缩小</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .widget{
+            width: 300px;
+            height: 300px;
+            border:1px solid #ccc;
+            margin:50px 50px;
+            position: relative;
+        }
+        .resizable-e{
+            position: absolute;
+            top:0;
+            right:-5px;
+            width:7px;
+            height: 100%;
+            cursor: e-resize;
+        }
+        .resizable-s{
+            position: absolute;
+            left:0;
+            bottom: -5px;
+            width:100%;
+            height: 7px;
+            cursor: s-resize;
+        }
+    </style>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div id="resizable" class="widget">
+       <div class="resizable-handle resizable-e"></div>
+       <div class="resizable-handle resizable-s"></div>
+    </div>
+    <script>
+        $(function(){
+            $('.resizable').mousedown(function(e){
+               this.posix={x:e.pageX,y:e.pageY}
+        })
+    </script>
+</body>
+</html>

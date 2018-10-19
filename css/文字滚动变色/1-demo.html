@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .colorful {
+        -webkit-mask-image: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
+        background-image: linear-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-size: 200% 100%;
+        animation: bgp 5s infinite linear;
+    }
+    @keyframes bgp{
+     0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+    }
+    </style>
+</head>
+<body>
+    <p class="colorful">
+        jfajsdfjsjdfjjdsjsajfjajdjsjfjadsjfsjafjjdsfjdasjfjjsdjf;afjsadjfsdjfjadj
+    </p>
+</body>
+</html>

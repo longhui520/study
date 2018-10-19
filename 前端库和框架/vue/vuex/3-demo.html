@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vuex</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{count}}</h1>
+    </div>
+    <script>
+        const store=new Vuex.Store({
+            state:{
+                todos:[
+                    {id:1,text:'...',done:true},
+                    {id:2,text:'---',done:false}
+                     
+                ]
+            },
+            getters:{
+                doneTodos:state=>state.todos.filter(todo=>todo.done),
+                donetodosCount:(state,getters)=>getters.doneTodos.length,
+                getTodoById:state=>id=>state.todos.find(todo=>todo.id==id)
+            },
+            mutations:{
+                increment(state){
+                    state.count++
+                }
+            }
+        });
+        new Vue({
+            el:"#app",
+            store,
+            computed:{
+                   count(){
+                       console.log(this.$store.getters.getTodoById(2));
+                       return this.$store.getters.donetodosCount;
+                   }
+            }
+            
+        })
+    </script>
+</body>
+</html>

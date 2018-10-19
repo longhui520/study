@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地理编码解析</title>
+<body>
+    <input type="text" id="address">
+    <button id="geo">获取经纬度</button>
+    <div id="container">
+
+    </div>
+    <script>
+    function geoCode() {
+        new Promise((resolve,reject)=>{
+            if(window.amap){
+                console.log(1111111);
+                resolve(window.amap);
+
+            }else{
+                window.init=function(){
+                    resolve(AMap)
+                }  
+                console.log('加载资源')
+                let script=document.createElement("script");
+                script.type="text/javascript";
+                script.src="https://webapi.amap.com/maps?v=1.4.10&key=d5d7def68a6b8bd20e5575ffa8570319&plugin=AMap.Geocoder&callback=init";
+                document.head.appendChild(script); 
+            }
+          
+           
+        }).then((AMap)=>{
+            window.amap=AMap;
+            var geocoder = new AMap.Geocoder({
+                city: "重庆", 
+            });
+            var address  = document.getElementById('address').value;
+            geocoder.getLocation(address, function(status, result) {
+                if (status === 'complete'&&result.geocodes.length) {
+                    var lnglat = result.geocodes[0].location
+                    alert(lnglat.N+'   '+lnglat.O);
+                }else{alert(JSON.stringify(result))}
+            });
+        })
+
+
+
+      
+    }
+    document.getElementById("geo").onclick = geoCode;
+    </script>
+</body>
+</html>

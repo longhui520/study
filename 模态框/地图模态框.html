@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pc端地图</title>
+    <style>
+        input{width: 300px;}
+        #maps{
+            width:100%;
+        }
+        #gddt{
+            width:100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="maps">
+        <input id="autoInput" type="text" placeholder="请依次输入省市区搜索">
+        <div id="gddt"></div>
+        <div id="address2"><label>你选择的地址:<input type="text"></label></div>
+        <div id="address3" style="display: none;"><span></span><span></span></div>
+    </div>
+    <script>
+        //加载地图资源
+        function loadMap(delay=1000,ak='d5d7def68a6b8bd20e5575ffa8570319'){
+            return new Promise((resolve,reject)=>{
+                window.init=function(){
+                    resolve(AMap)
+                }
+                let oldMap=document.querySelector('#map')
+                if(oldMap){
+                    document.querySelector('#map+style').parentNode.removeChild(document.querySelector('#map+style'));
+                    document.querySelector('#map+style').parentNode.removeChild(document.querySelector('#map+style'));
+                    oldMap.parentNode.removeChild(oldMap);
+                }
+                let script=document.createElement("script");
+                script.setAttribute('id','map');
+                script.type="text/javascript";
+                script.src="https://webapi.amap.com/maps?v=1.4.10&key="+ak+"&callback=init";
+                document.head.appendChild(script);
+            });
+        }
+        //加载地图插件
+        function loadMapPlugin(map,plugins){
+            return new Promise((resolve,reject)=>{
+                map.plugin(plugins,function(){
+                    resolve(map)
+                });
+            });   
+        }
+        // 地图初始化 
+        function mapInit(AMap,mapId,inputId){
+            // 地图实例化
+            var map = new AMap.Map(mapId, {resizeEnable: true});
+            
+            map.setZoom(13); 
+            var geocoder,marker,address,lnglat,autoInput,placeSearch;
+            //自动定位
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: false,
+                timeout: 10000,         
+                buttonPosition:'RB',    
+                buttonOffset: new AMap.Pixel(10, 20),
+                zoomToAccuracy: true, 
+            });
+            // 添加自动定位控件
+            map.addControl(geolocation);
+            map.addControl(new AMap.Scale());
+            map.addControl(new AMap.ToolBar());
+            geolocation.getCurrentPosition(function(status,result){
+                if(status=='complete'){
+                    console.log('定位成功');
+                }else{
+                    console.log('定位失败'); 
+                }
+            }); 
+            //点击地图选址
+            map.on('click',function(e){regeoCode(e.lnglat).then((result)=>{alert(result.regeocode.formattedAddress)});});
+            autoInput = new AMap.Autocomplete({input:inputId});
+            placeSearch = new AMap.PlaceSearch({map: map});
+            AMap.event.addListener(autoInput, "select", function(e){
+               placeSearch.setCity(e.poi.adcode);
+               placeSearch.search(e.poi.name); 
+            });
+            AMap.event.addListener(placeSearch, "markerClick", function(e){
+                regeoCode(e.data.location)
+                console.log(e.data.location) 
+            })
+            // 根据纬度在地图上标注位置和返回地理编码地址
+            function regeoCode(lnglat) {
+                return new Promise((resolve,reject)=>{
+                    if(!geocoder){
+                        geocoder = new AMap.Geocoder({
+                            city: "010", 
+                            radius: 1000 
+                        });
+                    }
+                    if(!marker){
+                        marker = new AMap.Marker();
+                        map.add(marker);
+                    }
+                    marker.setPosition(lnglat);
+                    geocoder.getAddress(lnglat, function(status, result) {
+                        if (status === 'complete'&&result.regeocode) {
+                            var address=result.regeocode.addressComponent;
+                            var province=address.province;
+                            var city=address.city;
+                            var district=address.district;
+                            var street=address.township+address.street+address.streetNumber;
+                            var input=document.querySelector('#address2 input');
+                            var nspan=document.querySelectorAll("#address3 span");
+                            nspan[0].innerHTML=lnglat.lng;
+                            nspan[1].innerHTML=lnglat.lat;
+                            input.value=province+city+district+street;
+                            resolve(result)
+                        }else{alert(JSON.stringify(result))}
+                    });
+                })
+               
+            } 
+        }  
+        
+        let plugins=['AMap.Geolocation','AMap.Autocomplete','AMap.PlaceSearch','AMap.Geocoder','AMap.Scale','AMap.ToolBar'];
+        //地图启动
+        loadMap().then(map=>{return loadMapPlugin(map,plugins);})
+            .then(map=>{mapInit(map,'gddt','autoInput')});
+    </script>
+</body>
+</html>

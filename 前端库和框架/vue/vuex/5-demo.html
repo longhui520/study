@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vuex</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 @click="increment({n:2})">{{count}}</h1>
+        <h4 @click="add({n:2})">{{count}}</h4>
+        <p @click="addAsync({n:2})">{{count}}</p>
+    </div>
+    <script>
+        const store=new Vuex.Store({
+            state:{
+                count:0,
+                todos:[
+                    {id:1,text:'...',done:true},
+                    {id:2,text:'---',done:false}
+                     
+                ]
+            },
+            getters:{
+                doneTodos:state=>state.todos.filter(todo=>todo.done),
+                donetodosCount:(state,getters)=>getters.doneTodos.length,
+                getTodoById:state=>id=>state.todos.find(todo=>todo.id==id)
+            },
+            mutations:{
+                increment(state,playLoad){
+                    state.count+=playLoad.n
+                }
+            },
+            actions:{
+                increment(context,playLoad){
+                    context.commit('increment',playLoad);
+                },
+                incrementAsync({commit},playLoad){
+                    setTimeout(()=>{
+                        commit('increment',playLoad)
+                    },1000)
+                }
+            }
+        });
+        new Vue({
+            el:"#app",
+            store,
+            computed:{
+                   count(){
+                       console.log(this.$store.getters.getTodoById(2));
+                    //    return this.$store.getters.donetodosCount;
+                    return this.$store.state.count
+                   }
+            },
+            methods:{
+                ...Vuex.mapMutations([
+                    'increment'
+                ]),
+                ...Vuex.mapActions({
+                    add:'increment',
+                    addAsync:'incrementAsync'
+                })
+            }
+            
+        })
+    </script>
+</body>
+</html>
