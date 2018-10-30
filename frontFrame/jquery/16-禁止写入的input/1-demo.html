@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+    <input class="demo" type="text" readonly="readonly">
+    <button class="btn">点击改变值</button>
+    <script>
+        $(".demo").change(function(){
+            console.log($(this).val())
+        })    
+        $(".btn").click(function(){
+            $(".demo").val(1111111);
+            console.log($(".demo").val());
+        })
+    </script>
+</body>
+</html>

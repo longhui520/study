@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn{
+            display: inline-block;
+            line-height: 1.5;
+            font-size: 1rem;
+            padding:0.375rem 0.75rem;
+            box-sizing: border-box;
+            border:1px solid transparent;
+            border-radius: .25rem;
+            background-color: #ccc;
+            user-select: none;
+            color: #fff;
+            position: relative;
+        }
+        .btn:hover,.btn:focus{
+            text-decoration: none;
+            outline: 0;
+        }
+        .btn:not(:disabled):not(.disabled){
+            cursor: pointer;
+        }
+        .btn.bubble::after{
+            content:'';
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom: 0;
+            opacity: 0;
+            transform: scale(1);
+            border-radius: 50%;
+            transition: all .75s ease-in-out;
+        }
+        .btn.bubble:active::after{
+            transform: scale(0);
+            opacity: 1;
+            transition: 0s;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn bubble">你好</button>
+</body>
+</html>

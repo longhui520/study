@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery 插件</title>
+    <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        ;(function($){
+            $.fn.extend({
+                table:function(){
+                    $(this).each(function(){
+                        console.log(this);
+                    })
+                }
+            })
+        })(jQuery)
+        $('ul>li').table();
+    </script>
+</body>
+</html>

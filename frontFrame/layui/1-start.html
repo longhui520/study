@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layui 开始</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+</head>
+<body>
+    <script>
+        // layui.use(['layer','form'],function(){
+        //     var layer=layui.layer
+        //     ,form=layui.form;
+        //     layer.msg('Hello World');
+        //     console.log(layui.device())
+        // })
+    //     console.log(document.scripts);
+    //    layui.extend({
+    //        mod:'{/}file:///E:/GitHub/study/前端库和框架/layui/mod'
+    //    });
+    //    layui.use('mod',function(){
+    //        var mod=layui.mod;p
+    //        mod.hello('111111');
+    //        console.log
+    //    })    
+        layui.use('layer',function(){
+            var layer=layui.layer;
+            layer.open({
+                type:2,
+                content:'http://www.baidu.com',
+                maxmin: true
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ;!function(win){
+            "use strict";
+            var Layui=function(){
+                this.v='1.2.3'
+            }
+            var b=1;
+            Layui.prototype.define=function(){
+                console.log(b)
+                console.log(layui===this);
+            }
+            var b=2;
+            window.layui=new Layui;
+        }(window)    
+        console.log(window.layui.define());   
+    </script>
+</body>
+</html>
