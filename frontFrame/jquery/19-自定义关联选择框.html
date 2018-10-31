@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义关联下拉选择</title>
+    <!-- <script src="jquery-3.0.0.js"></script> -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <h1 style="text-align: center;">自定义关联下拉选择</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <select id="select1" class="form-control bindSelect" name="sex" data-target="age" 
+                data-params='{"rel":[{"value":1,"action":{"type":5,"comparValue":5,"isShow":true,"maxValue":10,"minValue":3,"interval":true}},{"value":2,"action":{"type":0,"comparValue":[2,5,8],"isShow":true}},{"value":0,"targetHidden":true,"action":{}}]}'>
+                    <option value="0" selected="selected">请选择性别</option>
+                    <option value ="1">男</option>
+                    <option value ="2" >女</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select id="select2" name="age" class="form-control" style="display:none;">
+                        <option value="0" selected="selected">请选择分组号</option>
+                        <option value ="1">1</option>
+                        <option value ="2" >2</option>
+                        <option value ="3" >3</option>
+                        <option value ="4" >4</option>
+                        <option value ="5" >5</option>
+                        <option value ="6" >6</option>
+                        <option value ="7" >7</option>
+                        <option value ="8" >8</option>
+                        <option value ="9" >9</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script>
+        //生成条件判断函数;
+        function getConditionFn(condition) {
+            if(typeof condition === 'number'){
+                if(condition<13){
+                    condition=['==','<','<=','>','>=','<<','<=<','<<=','<=<=','>>','>=>','>>=','>=>='][condition];  
+                }else{
+                    condition='==';
+                }
+            }
+            switch (condition) {
+                case '==':
+                    return function (value1, value2) {
+                        return value1 == value2;
+                    }
+                case '<':
+                    return function (value1, value2) {
+                        return value1 < value2;
+                    }
+                case '<=':
+                    return function (value1, value2) {
+                        return value1 <= value2;
+                    }
+                case '>':
+                    return function (value1, value2) {
+                        return value1 > value2;
+                    }
+                case '>=':
+                    return function (value1, value2) {
+                        return value1 >= value2;
+                    }
+                case '<<':
+                    return function (value1, value2, value3) {
+                        return value2 < value1 && value1 < value3;
+                    }
+                case '<=<':
+                    return function (value1, value2, value3) {
+                        return value2 <= value1 && value1 < value3;
+                    }
+                case '<<=':
+                    return function (value1, value2, value3) {
+                        return value2 < value1 && value1 <= value3;
+                    }
+                case '<=<=':
+                    return function (value1, value2, value3) {
+                        return value2 <= value1 && value1 <= value3;
+                    }
+                case '>>':
+                    return function (value1, value2, value3) {
+                        return value3 > value1 && value1 > value2;
+                    }
+                case '>=>':
+                    return function (value1, value2, value3) {
+                        return value3 >= value1 && value1 > value2;
+                    }
+                case '>>=':
+                    return function (value1, value2, value3) {
+                        return value3 > value1 && value1 >= value2;
+                    }
+                case '>=>=':
+                    return function (value1, value2, value3) {
+                        return value3 >= value1 && value1 >= value2;
+                    }
+                default:
+                    console.log('只支持等于，小于，大于，小于等于，大于等于13种条件规则,取默认值相等判断');
+                    return function (value1, value2) {
+                        return value1 == value2;
+                    }
+            }
+        }
+        //绑定选择器变动
+        function bindChange(target,currentValue,params){
+            params.rel.forEach(function(item){
+                if(item.value==currentValue){
+                    if(item.targetHidden===true){
+                        target.css('display','none');
+                    }else{
+                        target.css('display','block');
+                    }
+                    var options=$('option',target);
+                    if(item.action.type>=0){
+                        var conditionFn=getConditionFn(item.action.type);
+                        options.each(function(){
+                            var _this=this;
+                            if(!item.action.interval===true){
+                                if(Array.isArray(item.action.comparValue)){
+                                    var calc=item.action.comparValue.some(function(value){
+                                        return _this.value==value;
+                                    });
+                                }else{
+                                    var calc=conditionFn(this.value,item.action.comparValue);
+                                }
+                            }else{
+                                var calc=conditionFn(this.value,item.action.minValue,item.action.maxValue);
+                            }
+                            if(calc){
+                                if(item.action.isShow){
+                                    this.style.display='block'; 
+                                }else{
+                                    this.style.display='none';  
+                                } 
+                            }else{
+                                if(item.action.isShow){
+                                    this.style.display='none';  
+                                }else{
+                                    this.style.display='block'; 
+                                } 
+                            }
+                            if(this.value==0){
+                                this.style.display='block';
+                            }
+                        });
+                    } 
+                }
+            });
+        }
+        $('#select1').on('change',function(){
+           var currentValue=$(this).val();
+           var target=$('[name='+$(this).data('target')+']').eq(0);//绑定的目标选择器
+           if(target.length>0){
+                target.val(0);
+               var params=$(this).data('params'); 
+               bindChange(target,currentValue,params);
+           }
+        });
+       var type=['==','<','<=','>','>=','<<','<=<','<<=','<=<=','>>','>=>','>>=','>=>='];//条件运算类型;
+        var params = {
+                "rel": [{
+                    "value": 1,//当前选择器匹配的值，触发相应的action;
+                    "action": { 
+                        "type": 5,//筛选目标选择器的选项，5代表 minValue<value<maValue;
+                        "comparValue": 5,//type为0到4时比较的值,可以为数组;
+                        "isShow": true,//筛选的元素显示，其他隐藏，默认 value=0时永久显示;
+                        "maxValue": 10, //区间的最小值；
+                        "minValue": 3,//区间的最大值
+                        "interval": true//是否开启区间条件，开启区间的时候type值要大于等于5
+                    }
+                }, {
+                    "value": 2,
+                    "action": {
+                        "type": 0,
+                        "comparValue": [2, 5, 8],//此时type必须为0;
+                        "isShow": true
+                    }
+                }, {
+                    "value": 0,
+                    "targetHidden": true,//隐藏目标选择器
+                    "action": {}
+                }]
+            }
+
+    </script>
+</body>
+</html>

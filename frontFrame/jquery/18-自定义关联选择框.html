@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义关联下拉选择</title>
+    <!-- <script src="jquery-3.0.0.js"></script> -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <h1 style="text-align: center;">自定义关联下拉选择</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <select id="select1" class="form-control">
+                    <option value="0" selected="selected">请选择性别</option>
+                    <option value ="1">男</option>
+                    <option value ="2" >女</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select id="select2" class="form-control" style="display:none;">
+                        <option value="0" selected="selected">请选择分组号</option>
+                        <option value ="1">1</option>
+                        <option value ="2" >2</option>
+                        <option value ="3" >3</option>
+                        <option value ="4" >4</option>
+                        <option value ="5" >5</option>
+                        <option value ="6" >6</option>
+                        <option value ="7" >7</option>
+                        <option value ="8" >8</option>
+                        <option value ="9" >9</option>
+                </select>
+            </div>
+        </div>
+    </div>
+   
+   <labe></labe>
+    
+    <script>
+        // jquery插件代码
+        ;(function(){
+            $.fn.extend({
+                relSelect:function(option){
+                    var options=$.extend({}, $.fn.relSelect.defaults, option);
+                    var rel=options.rel;
+                    var elements=options.elements;
+                    var condition=options.condition;
+                    var type=options.type;
+                    function getFn(condition){
+                        switch(condition){
+                            case '==':
+                                return function(value1,value2){
+                                    return value1==value2;
+                                }
+                            case '<':
+                                return function(value1,value2){
+                                    return value1<value2;
+                                }
+                            case '<=':
+                                 return function(value1,value2){
+                                    return value1<=value2;
+                                }
+                            case '>':
+                                return function(value1,value2){
+                                    return value1>value2;
+                                }   
+                            case '>=':
+                                return function(value1,value2){
+                                    return value1>=value2;
+                                }
+                            default:
+                                console.log('只支持等于，小于，大于，小于等于，大于等于5种条件规则,取默认值相等判断');
+                                return function(value1,value2){
+                                    return value1==value2;
+                                }  
+                        } 
+                    }
+                    var conditionFn=getFn(condition);
+                    this.each(function(){
+                        if(type==='number')
+                            var currentValue=Number($(this).val());
+                        else{ 
+                            var currentValue=$(this).val();
+                        }
+                        if($.isFunction(options.commonFn)){
+                            options.commonFn(elements);
+                        }
+                        rel.forEach(function(item){
+                            elements=item.target!==undefined?item.target:elements;
+                            conditionFn(currentValue,item.value)?item.fn(elements):'';
+                        });    
+                    });    
+                }
+            });
+        })(jQuery);
+        //默认比较规则为相等判断,比较类型为数值型;
+        $.fn.relSelect.defaults={condition:'==',type:'number'};
+
+        //elements为公用作用目标
+        //可为每个关系设置单独的作用目标target(jquery对象);
+        // 实例代码
+        $('#select1').on('change',function(){
+           $(this).relSelect({
+                elements: $('option[value!="0"]',$('#select2')),
+                rel:[
+                    {   value:0,
+                        fn:function($elements){
+                            $elements.closest('select').css('display','none');
+                        }
+                    },
+                    {   value:1,
+                        fn:function($elements){
+                            $elements.closest('select').css('display','block');
+                            $elements.each(function(){
+                                this.value>5?this.style.display='none':this.style.display='block';
+                            });
+                        }
+                    },
+                    {   value:2,
+                        fn:function($elements){
+                            $elements.closest('select').css('display','block');
+                            $elements.each(function(){
+                                this.value<=5?this.style.display='none':this.style.display='block';
+                            });
+                        }
+                    }, 
+                    ],
+                commonFn:function($elements){
+                    $elements.closest('select').val(0);
+                }    
+            });
+        });
+    </script>
+</body>
+</html>
