@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.0.0.js"></script>
+    <script src="jquery.waypoints.js"></script>
+</head>
+<body>
+    <div class="red"  style="height: 500px;background-color:red">测试1</div>
+    <div class="blue" style="height: 500px;background-color:blue">测试2</div>
+    <div class="green"style="height: 500px;background-color:green">测试3</div>
+    <script>
+        $('.red').waypoint(function(direction){
+            console.log('我滚动到红色区域了');
+        },{offset:'0%'});
+        $('.blue').waypoint(function(direction){
+            console.log('我滚动到蓝色色区域了');
+        },{offset:'50%'});
+        $('.green').waypoint(function(direction){
+            console.log('我滚动到绿色色区域了');
+        },{offset:'50%'});
+    </script>
+</body>
+</html>

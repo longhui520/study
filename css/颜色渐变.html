@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>颜色渐变</title>
+</head>
+<body>
+    <div class="box">111111111111111111111111111111111111111</div>
+    <script>
+        function color2rgb(color){
+            if(color.length==7){
+                var r=parseInt(color.substr(1,2),16);
+                var g=parseInt(color.substr(3,2),16);
+                var b=parseInt(color.substr(5,2),16);
+            }else if(color.length==4){
+                var r=parseInt(color.substr(1,1)+color.substr(1,1),16);
+                var g=parseInt(color.substr(2,1)+color.substr(1,1),16);
+                var b=parseInt(color.substr(3,1)+color.substr(1,1),16);
+            }
+           
+            return [r,g,b];
+        }
+        function rgb2color(rgb){
+            var s="#"
+            rgb.forEach(item => {
+                item=item>=255?255:item;
+                var item_string=Math.round(item).toString(16);
+                s+= item_string.length<2? +'0'+item_string: item_string;
+            });
+            return s;
+        }
+        
+        var s=rgb2color(color2rgb('#ff0000').map(function(item){
+            console.log(item+10);
+            return item+10;
+        }));
+        console.log(s);
+       
+        document.getElementsByClassName('box')[0].style.backgroundColor=s;
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js正则</title>
+</head>
+<body>
+    <script>
+        var reg=/\w*(?!=)/;
+        var str="a:33,b==400";
+        console.log(str.match(reg));
+        console.log(/_(x)/g.exec('_x_x'));
+        var obj={a:10,b:20};
+        var str='a<b';
+        var reg=/a|b/g;
+        var str2=str.replace(reg,function(match){
+            return obj[match];
+        })
+        // console.log(eval(str2));
+        function fn(data,str,reg){
+            return eval(str.replace(reg,function(match){return data[match]}));     
+        }
+        console.log(fn(obj,'a<b',/a|b/g));
+        console.log(9<5<6);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="color">
+    <script>
+        // getpath = function(){
+        //     var doc=document;
+        //     var jsPath = doc.currentScript?doc.currentScript.src:function(){
+        //         var js = doc.scripts
+        //           , last = js.length -1
+        //           , src;
+        //         console.log(1);
+        //         for(var i=last;i>0;i--){
+        //             if(js[i].readyState === 'interactive'){
+        //                 src = js[i].src;
+        //                 break;
+        //             }
+        //         }
+        //         return src || js[last].src;
+        //     }
+        //     return jsPath.substring(0,jsPath.lastIndexOf('/')+1);
+        // } 
+        // console.log(getpath());
+        function Layui(){}
+        Layui.prototype.define = function(deps,factory){
+            var that = this;
+            var type = typeof deps === 'function'
+            var callback = function(){
+               var setApp = function(app,exports){
+                   layui[app] = exports;
+
+               }
+               factory(function(app,exports){
+                   setApp(app,exports);
+                })
+                return this;
+            }
+            type &&(factory = deps, deps=[]);
+            return callback.call(that);
+        }
+        var layui = new Layui();
+        var f1=function(name){
+            console.log(name)
+        }
+        layui.define(function(exports){
+            exports('fn',f1);
+            console.log(layui.fn);
+        })
+      
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            background-color: rgba(255, 255, 0, 1);
+        }
+
+        .right {
+            float: right;
+            width: 68%;
+            margin-left: 2%;
+            background-color: rgba(0, 0, 255, 0.6);
+        }
+
+        /* 把元素都设置成了右浮动，因为需要绝对定位的元素在左侧 */
+        .left-wrapper {
+            float: right;
+            width: 30%;
+        }
+
+        .left {
+            position: absolute;
+            width: 30%;
+            height: 100%;
+            background-color: rgba(0, 127, 0, 0.6);
+        }
+
+        /* 一定要设置left的宽度 */
+        .clearfix:after {
+            content: ".";
+            display: block;
+            clear: both;
+            height: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="right">右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。右侧有很多内容，高度大于left。</div>
+        <div class="left-wrapper">
+            <div class="left">左侧内容，没有右侧多。左侧内容，没有右侧多。左侧内容，没有右侧多。左侧内容，没有右侧多。</div>
+        </div>
+    </div>
+</body>
+
+</html>
