@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="mui.css">
+    <script src="frontFrame/jquery/jquery-3.0.0.js"></script>
+</head>
+<body>
+    <nav class="mui-bar mui-bar-tab">
+        <a class="mui-tab-item mui-active" href="javascript:void(0)">
+            <span class="mui-icon mui-icon-home"></span>
+            <span class="mui-tab-label">首页</span>
+        </a>
+        <a class="mui-tab-item" href="#application_choose">
+            <span class="mui-icon iconfont icon-yingyong"></span>
+            <span class="mui-tab-label">应用中心</span>
+        </a>
+        <a id="personnel_center" class="mui-tab-item" href="javascript:void(0)">
+            <span class="mui-icon mui-icon mui-icon-person"></span>
+            <span class="mui-tab-label">个人中心</span>
+        </a>
+    </nav>
+    <div id="application_choose" class="mui-popover mui-bar-popover">
+        <div class="mui-popover-arrow"></div>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="javascript:void(0);">消息</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">配置</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">预览</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        function index() {
+            $("#application_choose").removeClass('mui-active');
+        }
+
+        function application() {
+            if($("#application_choose").hasClass("mui-active")) {
+                $("#application_choose").removeClass('mui-active');
+            } else {
+                $("#application_choose").addClass('mui-active');
+            }
+        }
+
+
+    </script>
+</body>
+</html>

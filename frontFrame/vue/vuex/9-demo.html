@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9-demo</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="vuex.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <child1 v-bind="$store.state.child1" @valuechange="valueChange"></child1>
+        <child1 v-bind="$store.state.child2" @valuechange="valueChange"></child1>
+    </div>
+    <div id="app2">
+        <child1 v-bind="child1" @valuechange="alertt"></child1>
+        <child1 v-bind="child2" @valuechange="alertt"></child1>
+    </div>
+    <script>
+        function alertt(e){
+            alert(e);
+        }
+        Vue.component('child1',{
+            props:['base'],
+            methods:{
+                //注册组件自定义事件valuechange
+                commit:function(){
+                    this.$emit('valuechange',{self:this.base.fieldName,value:this.base.msg})
+                }
+            },
+            template:'<input type="text" v-model="base.msg" @change="commit" />'
+        })
+        var store=new Vuex.Store({
+            state:{
+                child1:{
+                    base:{
+                        fieldName:'child1',
+                        msg:'111111'
+                    }
+                },
+                child2:{
+                    base:{
+                        fieldName:'child2',
+                        msg:'22222'
+                    }
+                },
+            },
+            mutations:{
+                valueChange:function(state,playload){
+                    alert(JSON.stringify(playload));
+                }
+            }
+        })
+        var app1=new Vue({
+            el:'#app1',
+            store,
+            methods:{
+                ...Vuex.mapMutations(['valueChange'])
+            }
+
+        })
+        var app2=new Vue({
+            el:"#app2",
+            data:{
+                child1:{
+                    base:{
+                        fieldName:'child1',
+                        msg:'111111'
+                    }
+                },
+                child2:{
+                    base:{
+                        fieldName:'child2',
+                        msg:'22222'
+                    }
+                },
+            },
+            methods:{
+                alertt:function(e){
+                    alert(JSON.stringify(e))
+                }
+            }
+        })
+    </script>
+</body>
+</html>

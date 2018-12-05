@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../vuex/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <fn :items="$store.state.forms" url="www.baidu.com"></fn>
+    </div>
+    <script>
+        Vue.component('childPr',{
+            props:['msg'],
+            template:`<h1>{{msg}}</h1>`
+        });
+        Vue.component('child2',{
+            props:['msg'],
+            template:`<h2>{{msg}}</h2>`
+        });
+        Vue.component('child3',{
+            props:['msg'],
+            template:`<h3>{{msg}}</h3>`
+        });
+        Vue.component('child4',{
+            props:['msg'],
+            template:`<h4>{{msg}}</h4>`
+        });
+        Vue.component('fn',{
+            functional:true,
+            props:{
+                items:Array,
+            },
+            render:function(h,c){
+                return h(
+                    'form',
+                    Array.apply(null,{length:c.props.items.length}).map(function(value,index){
+                        return h(
+                            c.props.items[index].compType,
+                            {
+                                props:c.props.items[index].props ,
+                            }
+                        );
+                    })
+                );
+            }
+        });
+        var store = new Vuex.Store({
+            state:{
+                forms:[
+                    {
+                        compType:'childPr',
+                        props:{
+                            msg:'我是子组件1'
+                        }
+                    },
+                    {
+                        compType:'child2',
+                        props:{
+                            msg:'我是子组件2'
+                        }
+                    },
+                    {
+                        compType:'child3',
+                        props:{
+                            msg:'我是子组件3'
+                        }
+                    },
+                    {
+                        compType:'child4',
+                        props:{
+                            msg:'我是子组件4'
+                        }
+                    },
+                    {
+                        compType:'child1',
+                        props:{
+                            msg:'我是子组件5'
+                        }
+                    },
+                    
+                ]
+            }
+        });
+
+
+        new Vue({
+            el:'#app',
+            store,
+            data:{
+                items:[
+                    {name:'child1'},
+                    {name:'child2'},
+                    {name:'child3'},
+                    {name:'child4'},
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

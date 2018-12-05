@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ajax获取数据</title>
     <script src="jquery-3.0.0.js"></script>
+    <!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
     <style>
         .mask{
             position: fixed;
@@ -40,35 +41,84 @@
             <div class="container">加载中</div>
         </div>
     </div>
-    <script>
+    <!-- <script>
         $(function(){
             $("#ajax").on('click',function(){
                 $("#loading").css('display','table');
+                $.ajax({
+                    url:'http:/192.168.3.194/Admin/index.php/add',
+                    data:{
+                        // text2:'我是中文',
+                        // id:'23',
+                        // fields:'select7',
+                        // masid:'23',
+                        // orderno:'1111',
+                        // createid:11,
+                        __hash__:'470a827cc6693a8dc30b70f44f417703_b7db6b663872834377bb1ce4ed7a122d',
+                        actionname:'MisAutoOam',
+                        mobile:true
+                        },
+                    method:'POST',
+                    // contentType:'application/x-www-form-urlencoded',
+                    // dataType:'jsonp',
+                    // contentType:'application/json',
+                    // jsonpCallback:"callback",
+                    success:function(data){
+                        console.log(data)
+                        alert(JSON.stringify(data))
+                        $("#loading").css('display','none');
+                    }
+                })
                 // $.ajax({
                 //     url:'http://api.douban.com/v2/movie/top250',
                 //     dataType:'jsonp',
+                //     jsonCallback:'callback',
                 //     contentType:'application/json',
-                //     jsonpCallback:"callback",
                 //     success:function(data){
-                //         console.log(data)
-                //         $("#loading").css('display','none');
+                //         console.log('返回成功');
+                //     },
+                //     fail:function(data){
+                //         console.log('返回失败')
                 //     }
                 // })
-                $.ajax({
-                    url:'http://www.pp.com/index/get',
-                    dataType:'jsonp',
-                    jsonCallback:'callback',
-                    contentType:'application/json',
-                    success:function(data){
-                        console.log('返回成功');
-                    },
-                    fail:function(data){
-                        console.log('返回失败')
-                    }
-                })
             })
            
         })
+    </script> -->
+    <script>
+        // function getOption(url){
+        //     var _this =this;
+        //     $(function(){
+        //         $.ajax({
+        //             "url":url,
+        //             success:function(response){
+		// 				if(response.code == 200){
+		// 				    _this.options = response.data;
+		// 				}
+        //             },
+        //             error:function(error){
+        //                 console.log("error"+JSON.stringify(err))
+        //             }
+        //         });
+        // });
+        // }
+        // var obj={
+        //     options:[]
+        // }
+        // getOption.call(obj,"http://192.168.3.125/admin/index.php/selectdata/actionname/MisAutoJqt/fields/kaifarenyuan/mobile/true");
+        $.ajax({
+                url: 'http://47.92.49.16:8081/svnmodelSys/modelSys/Admin/index.php/MisAutoMobileSvf/getAppJson',//绝对路径的json文件
+                dataType:'json',
+                success: function (data) {
+                    console.log(data)
+                },
+                error:function(error){
+                    console.error('属性配置获取异常');
+            }
+        });
+    
+    
+    
     </script>
 </body>
 </html>

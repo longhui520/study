@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7-demo.html</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <script src="vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child1 v-bind="$store.state.field1"></child1>
+        <child1 v-bind="$store.state.field2"></child1>
+        <child1 v-bind="$store.state.field3"></child1>
+        <child1 v-bind="$store.state.field4"></child1>
+        <child1 v-bind="$store.state.field5"></child1>
+    </div>
+    <script>
+        function inputChange(action,fieldName){
+             store.commit(action,fieldName);
+        }
+        function evil(expr){
+            var Fn = Function;
+            return new Function('self','return '+expr);
+        }
+        Vue.component('child1',{
+            props:['fieldName','event','target','showFlag','initial','id','hiddenTarget','showTarget','hiddenCondition','showCondition'],
+            data:function(){
+                return {minitial:this.initial}
+            },
+            template:`
+            <p v-show="showFlag">我是子组件{{id}}
+                <input type="text" v-model="minitial" @input="inputChange"/>
+            </p>
+            `,
+            methods:{
+                inputChange(){
+                //    store.commit('inputChange',this.fieldName);
+                   eval(this.event)('inputChange',
+                   { self:this.fieldName,
+                    selfValue:this.minitial,
+                   hidden:{target:this.hiddenTarget,condition:this.hiddenCondition},
+                   show:{target:this.showTarget,condition:this.showCondition}
+                   });
+                }
+            }
+            
+        });
+        var store = new Vuex.Store({
+            state:{
+                field1:{
+                    fieldName:'field1',
+                    initial:'',
+                    event:'inputChange',
+                    hiddenTarget:['field2'],
+                    showTarget:[],
+                    hiddenCondition:'["1","2","3","4"].indexOf(self)>-1',
+                    hiddenCondition:'["1","2","3","4"].indexOf(self)===-1',
+                    hiddenCondition:'self==1',
+                    hiddenCondition:'self!==1',
+                    hiddenCondition:'self>=1',
+                    hiddenCondition:'self<=1',
+                    hiddenCondition:'self<=1&&self>-5',
+                    hiddenCondition:'self==1||self==1',
+
+                    showCondition:'',
+                    showFlag:true,
+                    id:1,
+                },
+                field2:{
+                    fieldName:'field2',
+                    initial:'',
+                    event:'inputChange',
+                    hiddenTarget:[],
+                    showTarget:[],
+                    showFlag:true,
+                    id:2,
+                },
+                field3:{
+                    fieldName:'field3',
+                    initial:'',
+                    event:'inputChange',
+                    hiddenTarget:['field4'],
+                    showTarget:[],
+                    showFlag:true,
+                    id:3,
+                },
+                field4:{
+                    fieldName:'field4',
+                    initial:'',
+                    event:'inputChange',
+                    hiddenTarget:[],
+                    showTarget:[],
+                    showFlag:true,
+                    id:4,
+                },
+                field5:{
+                    fieldName:'field5',
+                    initial:'',
+                    event:'inputChange',
+                    hiddenTarget:[],
+                    showTarget:[],
+                    showFlag:true,
+                    id:5,
+                },
+               
+            },
+            mutations:{
+                inputChange(state,playLoad){
+                    console.log(playLoad);
+                    var self=playLoad.selfValue;
+                    var hiddenCondition=playLoad.hidden.condition;
+                    playLoad.hidden.target.forEach(element => {
+                        console.log(evil(hiddenCondition))
+                        if(evil(hiddenCondition)(self)){
+                            state[element].showFlag=false;
+                        }else{
+                            state[element].showFlag=true;
+                        }
+                        
+                    });
+                }
+            }
+        });
+        new Vue({
+            el:'#app',
+            store
+        })
+    </script>
+</body>
+</html>

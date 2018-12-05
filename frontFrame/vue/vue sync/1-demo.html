@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sync语法糖</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child :show.sync="show"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            props:['show'],
+            template:`<div v-if="show">
+                        <p>默认值是{{show}},所以显示</p>
+                        <button @click.stop="closeDiv">关闭</button>
+                     </div>`,
+            methods:{
+                closeDiv (){
+                    this.$emit('update:show',false);
+                }
+            }         
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                show:true
+            }
+        })
+    </script>
+</body>
+</html>

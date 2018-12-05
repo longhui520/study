@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src=" https://unpkg.com/@reactivex/rxjs@5.0.0-beta.12/dist/global/Rx.js"></script>
+</head>
+<body>
+    <button>点我</button>
+    <script>
+        // var count = 0;
+        // var rate = 1000;
+        // var lastClick = Date.now() -rate;
+        // var button = document.querySelector('button');
+        // button.addEventListener('click',()=>{
+        //     if(Date.now() - lastClick >=rate){
+        //         console.log(`Clicked ${++count} times`);
+        //         lastClick = Date.now();
+        //     }
+        // })
+        var button = document.querySelector('button');
+        Rx.Observable.fromEvent(button,'click')
+            .throttleTime(1000)
+            .scan(count=>count+1,0)
+            .subscribe(count=>console.log(`Clicked ${count} times`));
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <child :pmsg="msg"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            data:function(){
+                return {
+                    msg:this.pmsg||''
+                }
+            },
+            // computed:{
+            //     msg:function(){
+            //         return this.pmsg||'';
+            //     }
+            // },
+            props:['pmsg'],
+            watch:{
+                pmsg(val){
+                    this.msg=val;
+                }
+            },
+            template:`
+                <input type="text" v-model="msg" />
+            `
+        });
+        new Vue({
+            el:'#app',
+            data:{
+                msg:''
+            }
+        })
+    </script>
+</body>
+</html>

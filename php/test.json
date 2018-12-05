@@ -1,0 +1,19 @@
+{
+    "name": {
+        "base": {
+            "fieldName": "name",
+            "showFlag": false,
+            "readonlyFlag": false,
+            "disabledFlag": false,
+            "requiredFlag": true,
+            "clearableFlag": true
+        },
+        "events": "valuechange",
+        "placeholder": "\u8bf7\u8f93\u51fa",
+        "minlen": 0,
+        "maxlen": 100,
+        "regeMsg": "",
+        "regexRule": "",
+        "comType": "compInput"
+    }
+}

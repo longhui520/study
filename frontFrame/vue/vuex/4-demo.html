@@ -13,25 +13,33 @@
         <h1 @click="increment({n:2})">{{count}}</h1>
     </div>
     <script>
-        const store=new Vuex.Store({
-            state:{
+        var increment = (state,playLoad)=>{
+            console.log(state);
+            state.count+=playLoad.n;
+        }
+        var state ={
                 count:0,
                 todos:[
                     {id:1,text:'...',done:true},
-                    {id:2,text:'---',done:false}
-                     
+                    {id:2,text:'---',done:false}   
                 ]
-            },
+            };
+        var mutations={increment};
+        const store=new Vuex.Store({
+            state,
             getters:{
                 doneTodos:state=>state.todos.filter(todo=>todo.done),
                 donetodosCount:(state,getters)=>getters.doneTodos.length,
                 getTodoById:state=>id=>state.todos.find(todo=>todo.id==id)
             },
-            mutations:{
-                increment(state,playLoad){
-                    state.count+=playLoad.n
-                }
-            }
+            // mutations:{
+            //     // increment(state,playLoad){
+            //     //     console.log(playLoad);
+            //     //     state.count+=playLoad.n
+            //     // }
+            //     increment
+            // }
+            mutations
         });
         new Vue({
             el:"#app",
@@ -46,7 +54,8 @@
             methods:{
                 ...Vuex.mapMutations([
                     'increment'
-                ])
+                ]),
+                
             }
             
         })

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数节流和防抖</title>
+</head>
+<body>
+    <button id="bt1">函数节流</button>
+    <button id="bt2">函数防抖</button>
+    <script>
+        var bt1 = document.getElementById('bt1');
+        var bt2 = document.getElementById('bt2');
+        bt1.addEventListener('click',throttle(function(){
+            console.log('函数节流触发');
+        },1000));
+        bt2.addEventListener('click',debounce(function(){
+            console.log('函数防抖触发');
+        },1000));
+        function throttle(fn,delay){
+            var lastTime =0;
+            return function(){
+                var firstTime = new Date();
+                if(firstTime - lastTime>delay){
+                    fn.call(this);
+                }
+            }
+        }
+        function debounce(fn,delay){
+            var timer = null;
+            return function(){
+                clearTimeout(timer);
+                timer = setTimeout(function(){
+                    fn.apply(this);
+                },delay)
+            }
+        }
+        
+    </script>
+</body>
+</html>

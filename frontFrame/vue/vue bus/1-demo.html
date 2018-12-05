@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue bus</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <main-com></main-com>
+    </div>
+    <script>
+        Vue.component('main-com',{
+            data:function(){
+                return {
+                    count:0,
+                    isDisabled:true
+                }
+            },
+            methods:{
+                countAdd:function(){
+                    this.count++;
+                    // this.$emit('countAdd',this.count)
+                }
+            },
+            template:`
+                <div>
+                    <button @click="countAdd" :disabled="!isDisabled">点我</button>
+                    <son-com :myCount="count"></son-com>
+                </div>
+            `
+
+        })
+        Vue.component('son-com',{
+            props:["myCount"],
+            template:`
+                <div>
+                    <p>{{myCount}}</p>
+                </div>
+            `,
+            updated:function(){
+                if(this.myCount>10){
+                    this.$parent.isDisabled=false;
+                }
+            }
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"Hello VueJs"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../vue-resource.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="getData">获取数据</button>
+    </div>
+    <script>
+         Vue.use(VueResource);
+        //  Vue.http.options.emulateJSON = true
+        // Vue.http.options.xhr = { withCredentials: true }
+        // Vue.http.options.crossOrigin = true
+        new Vue({
+            el:"#app",
+            methods:{
+                getData:function(){
+                    this.$http.get(
+                        "http://192.168.3.125/Admin/index.php/selectData/id/23/fields/select7/actionname/MisAutoFfj/mobile/true",{
+                        // id:'23',
+                        // fields:'select7',
+                        // __hash__:'dee8e91bbaa0025a852a89581dc86070_b78d635cb430a43823f70ddee0573d3b',
+                        // actionname:'MisAutoFfj',
+                        // mobile:true
+                    },{emulateJSON:true}
+                    ).then(function(r){
+                        alert(JSON.stringify(r))
+                        console.log(r)
+                    }).catch(function(r){
+                        alert(JSON.stringify(r))
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

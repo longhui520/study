@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-header>龙辉的学习记录</el-header>
+    <el-main>
+        <el-button @click="addRow">新增一行</el-button>
+        <el-table :data="learning" border style="width:100%">
+            <el-table-column label="日期" >
+                <template slot-scope="scope">
+                        <el-date-picker
+                            v-model="scope.row.date"
+                            align="right"
+                            type="date"
+                            placeholder="选择日期"
+                           >
+                      </el-date-picker>   
+                </template>
+            </el-table-column>
+            <el-table-column prop="startTime" label="开始时间" >
+                <template slot-scope="scope">
+                    <el-time-select
+                        v-model="scope.row.startTime"
+                        :picker-options="{
+                        start: '08:30',
+                        step: '00:15',
+                        end: '18:30'
+                        }"
+                        placeholder="选择时间">
+                    </el-time-select>
+                </template>
+            </el-table-column>
+            <el-table-column prop="endTime" label="结束时间" >
+                <template slot-scope="scope">
+                    <el-time-select
+                        v-model="scope.row.endTime"
+                        :picker-options="{
+                        start: '08:30',
+                        step: '00:15',
+                        end: '18:30'
+                        }"
+                        placeholder="选择时间">
+                    </el-time-select>
+                </template>
+            </el-table-column>
+            <el-table-column prop="content" label="内容" width="500">
+                <template slot-scope="scope">
+                        <el-input type="textarea" v-model="scope.row.content"  placeholder="请输入内容"></el-input>
+                </template>
+            </el-table-column>
+        </el-table>
+        <button @click="submit">提交</button>
+    </el-main>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+      new Vue({
+          el:'#app',
+          data:{
+              learning:[
+              ]
+          },
+          methods:{
+              addRow:function(){
+                  var target=this.learning;
+                  var itemIndex=target.length;
+                  Vue.set(this.learning,itemIndex,{data:'',startTime:'',endTime:'',content:''});
+              },
+              submit:function(){
+                  console.log(this.learning);
+              }
+          }
+      })
+  </script>
+</html>

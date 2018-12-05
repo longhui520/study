@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>混入对象</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child></child>
+    </div>
+    <script>
+        // 使用混入共有的组件配置项来注册全局组件,以便后续开发
+        ;(function(){
+            var mixin={
+                props:{
+                    msg2:{
+                        type:String,
+                        default:'我是混入属性'
+                    }
+                }
+             };
+            Vue.component('child',{
+                mixins:[mixin],
+                props:{
+                    msg:{
+                        type:String,
+                        default:'我是组件属性'
+                    }
+                },
+                template:`<div>{{msg}}-{{msg2}}-{{msg3}}</div>`
+            });
+        })();
+        Vue.mixin({
+            props:{
+                msg3:{
+                    type:String,
+                    default:'我是全局混入属性'
+                }
+            }
+        });
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

@@ -10,9 +10,24 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{count}}</h1>
+        <h1 @click="$store.commit('increment')">{{count}}</h1>
+        <Counter></Counter>
     </div>
     <script>
+        const Counter = {
+                template: `<div @click="valueChange" style="line-height:100px;">{{ count }}</div>`,
+                computed: {
+                    count() {
+                        return this.$store.state.count
+                    }
+                },
+                methods:{
+                    valueChange(){
+                        this.$store.commit('increment');
+                    }
+                }
+            }
+       
         const store=new Vuex.Store({
             state:{
                 count:0,
@@ -23,6 +38,7 @@
                 }
             }
         });
+        Vue.component('counter',Counter)    
         new Vue({
             el:"#app",
             store,
@@ -30,7 +46,7 @@
                    count(){
                        return this.$store.state.count;
                    }
-            }
+            },
             
         })
     </script>

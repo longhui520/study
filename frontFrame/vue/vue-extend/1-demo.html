@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-extend</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="app"></div>
+    <author></author>
+    <script>
+        var author=Vue.extend({
+            template:"<p><a :href='url'>{{author}}&{{name}}</a></p>",
+            data:function(){
+                return {
+                    author:'vamous',
+                    url:'http://blog.csdn.net/Dear_Mr/article/details/72614370'
+                }
+            },
+            props:['name']
+        });
+        // new author({propsData:{name:'dear_mr'}}).$mount('#app');
+        // new author({propsData:{name:'dear_mr'}}).$mount('div');
+        new author({propsData:{name:'dear_mr'}}).$mount('.app');
+    </script>
+</body>
+</html>

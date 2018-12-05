@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <parent formname="mssm">
+            <Child></Child>
+            <Child></Child>
+            <Child></Child>
+            <Child></Child>
+        </parent>
+
+
+    </div>
+    <script>
+        Vue.component('Parent',{
+            template:'<div><slot></slot></div>',
+            props:['formname']
+        });
+        Vue.component('Child',{
+            template:'<div @click="gets">fjasdjfafdasf</div>',
+            methods:{
+                gets(){
+                    console.log(this.$parent.formname);
+                }
+            }
+        });
+        new Vue({
+            el:"#app"
+        })    
+    </script>
+</body>
+</html>

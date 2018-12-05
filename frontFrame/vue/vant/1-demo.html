@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="vant.css">
+    <script src="vue.min.js"></script>
+    <script src="vant.min.js"></script>
+    <style>
+        .checkbox-collapse .van-collapse-item__title{
+            align-items: center;
+            padding:0;
+        }
+        .checkbox-collapse .van-collapse-item__title>.van-icon-arrow{
+            padding-right: 15px;
+        }
+        .checkbox-collapse .van-cell--clickable:active {
+             background-color: #fff;
+        }
+        .checkbox-collapse>.van-collapse-item__title--disabled  input{
+            color: #000!important;
+        }
+        .checkbox-collapse>.van-collapse-item__title--disabled  input{
+            color: #ccc!important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <comp-checkbox v-bind="check1"></comp-checkbox>        
+    </div>
+    <script>
+Vue.component('CompCheckbox', {
+	name: 'CompCheckbox',
+	props: {
+		base: {
+			label: String,
+			fieldName: String,
+			showFlag: {
+				type: Boolean,
+				default: true
+			},
+			disabledFlag: {
+				type: Boolean,
+				default: false
+			},
+			requiredFlag: {
+				type: Boolean,
+				default: false
+			},
+            initialVal:{
+                type:Array,
+                default:[]
+            }
+		},
+		events:{
+			change: String
+		},
+		maxNum: Number,
+		dataUrl: {
+			type: String,
+			default: ''
+		},
+		options: Array
+	},
+	data: function() {
+		return {
+            activeNames:[],
+            showString:''
+		}
+	},
+    watch:{
+        'base.initialVal':{
+            immediate:true,
+            handler:function(val){
+                console.log(this.base.initialVal)
+                this.showString=this.base.initialVal.map(function(item){ return this.options[item-1].text;},this).join(',');
+            }
+        }
+    },
+	created: function() {
+		if(this.dataUrl.trim().length > 0) {
+			this.$http.get(this.dataUrl.trim(), {}, {
+				emulateJSON: true
+			}).then(function(response) {
+				var res = response.body;
+				if(res.code == 200){
+					this.options = res.data;
+				}
+			}, function(response) {
+				// 发生错误 
+			});
+		}
+	},
+	methods: {
+		checkboxChange: function(value) {
+            this.activeNames=[];
+		},
+        show:function(){
+            this.$refs.self.blur();
+            // this.$set(this.activeNames,0,1);
+            console.log(this.activeNames)
+        }
+	},
+	template: `
+        <van-collapse v-model="activeNames" v-show="base.showFlag">
+            <van-collapse-item name="1" class="checkbox-collapse" disabled >
+                <van-field ref="self" :value="showString"  placeholder="请选择" :title="base.label" label="复选框"  @focus="show" slot="title"/>
+                <van-checkbox-group v-model="base.initialVal" :disabled="base.disabledFlag" @change="checkboxChange" :max="maxNum">
+                        <van-row type="flex" justify="end" v-for="(item,index) in options" @click="checkboxToggle(index)">
+                            <van-col span="20">
+                                <van-cell :title="item.text" clickable>
+                                    <van-checkbox :name="item.code" ref="checkboxes" shape="square"></van-checkbox>
+                                </van-cell>
+                            </van-col>
+                        </van-row>
+                </van-checkbox-group>
+            </van-collaspe-item>
+		 </van-collapse>
+	`
+});
+        new Vue({
+            el:"#app",
+            data:{
+                check1:{
+                    base: {
+                        label: '水果',
+                        fieldName: 'checkbox4',
+                        showFlag: true,
+                        readonlyFlag: false,
+                        initialVal:[1]
+                        },
+                    chooseData:[],
+                    maxNum:2,
+                    options:[
+                        {
+                            code:1,
+                            text:'苹果'
+                        },
+                        {
+                            code:2,
+                            text:'梨'
+                        },
+                    ]   
+                }
+            }
+        })
+    </script>
+</body>
+</html>

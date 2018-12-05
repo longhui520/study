@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child @childchange="getChange" :target="{field:'form1',}"></child>
+        <child @childchange="getChange" :target="{field:'form2',}"></child>
+        <child2 v-bind="form1"></child2>
+        <child2 v-bind="form2"></child2>
+        <child2 v-bind="form3"></child2>
+        <child2 v-bind="form4"></child2>
+    </div>
+    <script>
+        
+       Vue.component('child',{
+           name:'child',
+           props:['target'],
+           data:function(){
+               return {username:''}
+           },
+           methods:{
+                childChange:function(){
+                   this.$emit('childchange',{fieldName:this.target.field,value:this.username})
+               }
+           },
+           template:`
+                <section>
+                    <div class="login">
+                        <label>
+                            <span>用户名:</span>
+                            <input v-model="username" @input="childChange">
+                        </label>
+                    </div>
+                </section>
+           `
+       })
+       Vue.component('child2',{
+           name:'child2',
+           props:['username','fieldName'],
+           template:`<h1>字段的值为{{username}}</h1>`
+       })
+       Vue.compo
+       new Vue({
+           el:"#app",
+           data:{
+                form1:{
+                    username:'',
+                    fieldName:'',
+                },
+                form2:{
+                    username:'',
+                    fieldName:'',
+                },
+                form3:{
+                    username:'',
+                    fieldName:'',
+                },
+                form4:{
+                    username:'',
+                    fieldName:'',
+                }
+
+           },
+           methods:{
+                getChange(msg){
+                   console.log(msg)
+                   this[msg.fieldName].username=msg.value;    
+               }
+           }
+        })
+    </script>
+</body>
+</html>

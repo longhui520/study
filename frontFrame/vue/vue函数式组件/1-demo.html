@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <smart-list :items="items"></smart-list>
+    </div>
+    <script>
+        var EmptyList = {template:`<p>Empty list</p>`};
+        var TableList = 'ul';
+        var UnorderedList = 'ul';
+        Vue.component('smart-list',{
+            functional:true,
+            render:function(createElement,context){
+                function appropriateListComp(){
+                    var items = context.props.items;
+                    if(items.length ===0) return EmptyList;
+                    if(typeof items[0] ==='object') return TableList;
+                    return UnoderedList;
+                }
+                return createElement(
+                    appropriateListComp(),
+                    Array.apply(null, {length: context.props.items.length}).map(function (value, index) {
+                    return createElement('li',context.props.items[index].name)
+                })
+                );
+            },
+            props:{
+                items:{
+                    type:Array,
+                    required:true
+                },
+                isOrdered:Boolean
+            }
+        });
+        new Vue({
+            el:'#app',
+            data:{
+                items:[
+                    // {
+                    //     name:'a',
+                    //     id:0
+                    // },
+                    // {
+                    //     name:'b',
+                    //     id:1
+                    // },
+                    // {
+                    //     name:'c',
+                    //     id:2
+                    // }
+                ]
+            }
+        })
+    
+    
+    
+    </script>
+</body>
+</html>
