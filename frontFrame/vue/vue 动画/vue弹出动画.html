@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        *{margin: 0;padding:0;}
+         .sub-page{
+            position: fixed;
+            width:100%;
+            height: 100%;
+            top:0;
+            left:0;
+            background-color: #efeff4;  
+        }
+        .popup-right-enter-active,.popup-right-leave-active{
+            transition: all 0.5s;
+        }
+        .popup-right-enter,.popup-right-leave-to{
+            transform: translate(100%,0);
+        }
+        .popup-right-enter-to,.popup-right-leave{
+            transform: translate(0,0);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show=true">打开</button>
+        <pop-right ref="popright" v-model="show" style="background:#f00"> 
+            <button @click="show=false">关闭</button>
+        </pop-right>
+    </div>
+
+    <script>
+        Vue.component("popRight",{
+          props:["value"],
+          data:function(){
+              return {currentValue:false};
+          },
+          watch:{
+              currentValue:function(val){
+                  this.$emit("input",val);
+              },
+              value:function(val){
+                  this.currentValue = val;
+              }
+          },
+          methods:{
+              open:function(){
+                  this.currentValue = true;
+              },
+              close:function(){
+                  this.currentValue = false;
+              }
+          },
+          template:
+          `
+          <transition name="popup-right">
+            <div v-show="currentValue" class="sub-page" :class="{'sub-page-active':currentValue}">
+                <slot></slot>
+            </div>
+          </transition>
+          `
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                show:false
+            }
+        });
+    </script>
+</body>
+</html>

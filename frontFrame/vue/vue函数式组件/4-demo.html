@@ -60,10 +60,31 @@
                         }
                     },
                     {
-                        compType:'child2',
+                        compType:'fn',
                         props:{
-                            msg:'我是子组件2',
-                            fieldName:"child2"
+                            items:[ 
+                                    {
+                                        compType:'childPr',
+                                        props:{
+                                            msg:'我是子组件1-1',
+                                            fieldName:"child1"
+                                        }
+                                    },
+                                    {
+                                        compType:'fn',
+                                        props:{
+                                          items:[
+                                                {
+                                                compType:'childPr',
+                                                props:{
+                                                    msg:'我是子组件1-1-1',
+                                                    fieldName:"child1"
+                                                }
+                                            },
+                                          ]
+                                        }
+                                    },
+                                ],
                         }
                     },
                     {

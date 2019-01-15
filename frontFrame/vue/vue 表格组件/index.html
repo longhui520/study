@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css"/>
+	<style>
+	table{
+		table-layout:fixed;
+	}
+		td{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			width: 50px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="data-table">
+    <div class="t_l">
+        <table>
+            <tbody>
+                <tr>
+                    <th>员工</th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="t_l_freeze">
+            <table>
+                <tr v-for="item in list">
+                    <td>{{item.user_name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="t_r">
+        <div class="t_r_t">
+            <table>
+                <tbody>
+                <tr>
+				    <th style="width:50px">部门</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>籍贯</th>
+                    <th>婚否</th>
+                    <th>备注</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="t_r_content">
+            <table>
+                <tbody>
+                   <tr v-for="item in list">
+                        <td style="width:50px">{{item.depart_name}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.sex}}</td>
+                        <td>{{item.birth_place}}</td>
+                        <td>11</td>
+                        <td>{{item.remark}}</td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/iscroll-probe.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+    	list:[
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部们技术部们技术部们技术部们技术部们",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		},
+		{
+		     "user_name":"李天水",
+			 "depart_name":"技术部",
+			 "age":"25",
+			 "birth_place":"浙江省杭州市",
+			 "remark":"无"
+		}
+		]
+    },
+    mounted : function(){
+    	var self = this;
+    	//self.loadData();    	
+    	self.tableScroll();
+    },
+    methods:{
+    	//请求后台数据加载
+    	/*
+		loadData : function(){
+    		var self = this;
+    		var dataParams = JSON.stringify({"id":""});
+        	$.ajax({
+    			url: "xxxController/xxxService", 
+    			type: "post",
+    			dataType:"json",
+    			data: dataParams,
+    			contentType:"application/json;charset=UTF-8",
+    			beforeSend: function (XMLHttpRequest) {  
+    	            XMLHttpRequest.setRequestHeader("user_id", "");  
+    	        }, 
+    			success:function (ret) {
+    				self.list = ret.list;
+    				self.tableScroll();
+    			},
+    			error:function(XMLHttpRequest, textStatus, errorThrown){
+    				alert(textStatus);
+    			}
+    		});
+    	},
+		*/
+    	//表格滑动
+    	tableScroll : function(){
+    		var win = $(window),
+    	    scrollAreaEl = $('.t_r_content'),
+    	    leftFreezeEl = $('.t_l_freeze'),
+    	    leftTableEl = leftFreezeEl.find('table'),
+    	    rightTableEl = $('.t_r_t table');
+
+    		//动态计算容器最大高度
+        	function adjustHeight() {
+        	    var winHeight = win.height();
+				console.log(height)
+        	        tableHeight = winHeight;
+        	    leftFreezeEl.height(tableHeight);
+        	    scrollAreaEl.height(tableHeight);
+        	}
+        	adjustHeight();
+        	win.resize(function(){
+        		adjustHeight();
+        	}); 
+
+        	//设置iscroll
+        	var myScroll = new IScroll('.t_r_content', {
+        	    scrollX: true,
+        		scrollY: true,
+        	    probeType: 3
+        	});
+
+        	//阻止默认滚动
+        	scrollAreaEl.on('touchmove mousewheel', function(e) {
+        	    e.preventDefault();
+        	});
+
+        	//固定上左表头的滚动
+        	myScroll.on('scroll', updatePosition);
+        	myScroll.on('scrollEnd', updatePosition); 
+        	
+        	function updatePosition() {
+        		myScroll.refresh();
+        	    var y = this.y;
+        	    var x = this.x;
+        	    leftTableEl.css('transform', 'translate(0px, ' + y + 'px) translateZ(0px)');
+        	    rightTableEl.css('transform', 'translate(' + x + 'px, 0px) translateZ(0px)');
+        	}
+    	}
+    }
+  });
+</script>
+</body>
+</html>

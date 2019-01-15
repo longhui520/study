@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单向数据流</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="initialval">
+        <child :initialval="initialval"></child>
+    </div>
+    <script>
+        Vue.component("child",{
+            props:{
+                initialval:{
+                    type:String,
+                    default:"100"
+                }
+            },
+            data:function(){
+                return {value:this.initialval}
+            },
+            watch:{
+                initialval:function(newVal){
+                    this.value  = newVal;
+                } 
+            },
+            template:
+            `   <div>
+                <div>{{value}}</div>
+                <div>{{initialval}}</div>
+                </div>
+            `
+        });
+        var app  = new Vue({
+            el:"#app",
+            data:{
+                initialval:"1111"
+            },
+        });
+    </script>
+</body>
+</html>

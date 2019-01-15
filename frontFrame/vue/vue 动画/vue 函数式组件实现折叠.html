@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="config-item">
+            <div class="title-wrapper" @click="show=!show">
+                我是标题
+            </div>
+            <Vertical-toggle>
+                <p v-show="show">我是内容</p>
+            </Vertical-toggle>
+        </div>
+    </div>
+
+
+
+    <script>
+
+    const elTransition = '0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out'
+    const Transition = {
+        'before-enter'(el) {
+            el.style.transition = elTransition
+            if (!el.dataset) el.dataset = {}
+            el.dataset.oldPaddingTop = el.style.paddingTop
+            el.dataset.oldPaddingBottom = el.style.paddingBottom
+            el.style.height = 0
+            el.style.paddingTop = 0
+            el.style.paddingBottom = 0
+        },
+        'enter'(el) {
+            el.dataset.oldOverflow = el.style.overflow
+            if (el.scrollHeight !== 0) {
+                el.style.height = el.scrollHeight + 'px'
+                el.style.paddingTop = el.dataset.oldPaddingTop
+                el.style.paddingBottom = el.dataset.oldPaddingBottom
+            } else {
+                el.style.height = ''
+                el.style.paddingTop = el.dataset.oldPaddingTop
+                el.style.paddingBottom = el.dataset.oldPaddingBottom
+            }
+            el.style.overflow = 'hidden'
+        },
+        'after-enter'(el) {
+            el.style.transition = ''
+            el.style.height = ''
+            el.style.overflow = el.dataset.oldOverflow
+        },
+        'before-leave'(el) {
+            if (!el.dataset) el.dataset = {}
+            el.dataset.oldPaddingTop = el.style.paddingTop
+            el.dataset.oldPaddingBottom = el.style.paddingBottom
+            el.dataset.oldOverflow = el.style.overflow
+            el.style.height = el.scrollHeight + 'px'
+            el.style.overflow = 'hidden'
+        },
+        'leave'(el) {
+            if (el.scrollHeight !== 0) {
+                el.style.transition = elTransition
+                el.style.height = 0
+                el.style.paddingTop = 0
+                el.style.paddingBottom = 0
+            }
+        },
+        'after-leave'(el) {
+            el.style.transition = ''
+            el.style.height = ''
+            el.style.overflow = el.dataset.oldOverflow
+            el.style.paddingTop = el.dataset.oldPaddingTop
+            el.style.paddingBottom = el.dataset.oldPaddingBottom
+        }
+    }
+    Vue.component("VerticalToggle",{
+        functional: true,
+        render(h, { children }) {
+            const data = {
+                on: Transition
+            }
+            return h('transition', data, children)
+        }
+    });
+        new Vue({
+            el:"#app",
+            data:{
+                show:true
+            }
+        })
+    </script>
+</body>
+</html>

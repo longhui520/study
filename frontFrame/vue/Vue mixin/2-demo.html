@@ -15,9 +15,16 @@
         ;(function(){
             var mixin={
                 props:{
-                    msg2:{
-                        type:String,
-                        default:'我是混入属性'
+                    msg2:
+                    {
+                        type:Object,
+                        default:function(){
+                            return {msg3:"我是嵌套属性"}
+                        },
+                        msg3:{
+                            type:String,
+                            default:"我是嵌套属性"
+                        }
                     }
                 }
              };
@@ -28,6 +35,9 @@
                         type:String,
                         default:'我是组件属性'
                     }
+                },
+                mounted:function(){
+                    console.log(this.msg2.msg3)
                 },
                 template:`<div>{{msg}}{{msg2}}</div>`
             });

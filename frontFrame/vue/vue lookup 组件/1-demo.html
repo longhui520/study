@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .flex{
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .flex>input{
+            flex-basis: 50px;
+        }
+        .flex>div{
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <checkbox-group v-model="result" @change="commit">
+            <checkbox v-for="(item,index) in list" :name="item" :key="index">
+                <template slot-scope="item">
+                    <div  v-for="key of item.data">{{key}}</div>
+                </template>   
+            </checkbox>
+        </checkbox-group>
+    </div>
+    <script>
+        var findParent = {
+            data:function(){
+                return {parent:null}
+            },
+            methods:{
+                findParent:function(name){
+                    var parent = this.$parent;
+                    while(parent){
+                        if(parent.$options.name === name){
+                            this.parent = parent;
+                            break;
+                        }
+                        parent = parent.$parent;
+                    }
+                }
+            }
+        };
+        Vue.component("checkbox",{
+            name:"checkbox",
+            mixins:[findParent],
+            props:{
+                name:{
+                    type:[String,Object,Array],
+                    default:null
+                },
+                value:null
+            },
+            created:function(){
+                this.findParent('checkbox-group');
+            },
+            computed:{
+                checked:{
+                    get(){
+                        return this.parent.value.indexOf(this.name) !==-1;
+                    },
+                    set(val){
+                        this.setParentValue(val);
+                    }
+                }
+            },
+            methods:{
+                toggle:function(){
+                    this.checked = !this.checked;
+                },
+                setParentValue:function(val){
+                    var parent = this.parent;
+                    var value = parent.value.slice();
+                    if (val) {
+                        if (parent.max && value.length >= parent.max) {
+                            return;
+                        }
+                        if (value.indexOf(this.name) === -1) {
+                            value.push(this.name);
+                            parent.$emit('input', value);
+                        }
+                    } else {
+                        var index = value.indexOf(this.name);
+                        if (index !== -1) {
+                            value.splice(index, 1);
+          是                  parent.$emit('input', value);
+                        }
+                    }
+                }
+            },
+            template:
+                `
+                <div  class="flex" @click="toggle">
+                    <input type = "checkbox" :checked="checked"/>
+                    <div>
+                        <slot :data="name">{{name}}</slot>
+                    </div>
+                </div> 
+                `
+
+        });
+
+        Vue.component("checkboxGroup",{
+            name:"checkbox-group",
+            props:{
+                max: Number,
+                value: Array,
+                disabled: Boolean
+            },
+            watch:{
+                value:function(val){
+                    this.$emit('change', val);
+                }
+            },
+            template:
+            `
+                <div>
+                   <slot></slot>
+                </div>
+            `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[{code:1,text:"我是值1",name:"张三"},{code:2,text:"我是值2",name:"李四"}],
+                result:[{code:1,text:"我是值1"}]
+            },
+            created:function(){
+                var obj = [];
+                var _this = this;
+                this.result.forEach(function(e){
+                    _this.list.forEach(function(ee,index){
+                        if(e.code === ee.code){
+                            obj.push(index);
+                        }
+                    });
+                });
+               this.result = obj.map(function(index){
+                   return _this.list[index];
+               });
+            },
+            methods:{
+                commit:function(e){
+                    console.log(e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

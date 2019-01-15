@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>折叠动画</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .show-enter-active,.show-leave-active{
+            margin-left: 100px;
+            transition: all 2s;
+        }
+        .show-enter .show-leave-to{
+            margin-left: 100px;
+        }
+        .show-enter-to,.show-leave{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggle">动画</button>
+        <transition name="show">
+            <p class="show" v-show="isshow">我是过渡动画</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                isshow:false
+            },
+            methods:{
+                toggle:function(){
+                    this.isshow =!this.isshow;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

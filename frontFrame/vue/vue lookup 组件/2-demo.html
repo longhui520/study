@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$attrs $listen</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <base-input v-model="value" :label="label" maxlength="5"></base-input>
+    </div>
+    <script>
+        Vue.component("base-input",{
+            inheritArrs:false,
+            props:["label","value"],
+            computed:{
+                inputListeners:function(){
+                    var vm = this;
+                    return Object.assign({},
+                        this.$listeners,
+                        {
+                            input:function(event){
+                                vm.$emit('input',event.target.value)
+                            }
+                        }
+                    );
+                }
+            },
+            template:
+            `
+                <label>
+                {{label}}
+                <input
+                    v-bind = "$attrs"
+                    v-bind:value = "value"
+                    v-on = "inputListeners"
+                />
+                </label>
+            `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                label:"表单",
+                value:10
+            }
+        })
+    </script>
+</body>
+</html>

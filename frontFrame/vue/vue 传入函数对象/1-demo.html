@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child :fn="fn1"></child>
+    </div>
+    <script>
+        Vue.component("child",{
+            props:{
+                fn:{
+                    type:Function,
+                }
+            },
+            data:function(){
+                return {msg:"我是子组件"}
+            }, 
+            methods:{   
+                fnn:function(e){
+                    this.fn.call(this);
+                }
+            },
+            template:
+            `
+                <div @click="fnn">点击</div>
+            `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                fn1:function(){
+                    console.log(obj)
+                    console.log($event);
+                    console.log(this.msg);
+                }
+            },
+            methods:{
+                con:function(){
+                    console.log(1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue无渲染组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <theme v-bind="{base:{msg:100}}">
+            <hello :base="{msg:14}"></hello>
+            <hello :base="{msg:15}"></hello>
+            <hello></hello>
+            <hello></hello>
+        </theme>
+        <s-axios url="www.baidu.com">
+            <div slot-scope="slotScope">
+                {{slotScope.loading}}-{{slotScope.response}}
+            </div>
+        </s-axios>
+        <tt>
+            <div slot-scope="slot">{{slot.test}}&times;</div>
+        </tt>
+    </div>
+    <script>
+        Vue.component("theme",{
+            name:"theme",
+            render:function(h){
+                var theme = this.$attrs;
+                var merge = function(vNode){
+                    if(!vNode){
+                        return;
+                    }
+                    if(vNode.componentOptions){
+                        var props = vNode.componentOptions.propsData;
+                        console.log(props);
+                        props  = Object.assign({},theme,props);
+                        vNode.componentOptions.propsData = props;
+                    }else{
+                        if(!vNode.data){
+                            return;
+                        }
+                        var attrs = vNode.data.attrs || {};
+                        attrs = Object.assign({},theme,attrs);
+                        vnode.data.attrs = attrs;
+                    }
+                };
+                this.$slots.default.map(function(vNode){return merge(vNode);});
+                var _this = this;
+                Object.keys(this.$attrs).forEach(function(key){_this.$attrs[key] = null});
+                return h("div",this.$slots.default.map(function(vNode){return vNode}));
+            }
+        });
+        Vue.component("hello",{
+            props:{
+                base:{
+                    msg:{
+                        type:String,
+                        default:"10088"
+                    }
+                }
+            },
+            template:
+            `
+                <h1>{{base.msg}}</h1>
+            `
+        });
+
+        Vue.component("sAxios",{
+            props:["url"],
+            data:function(){
+                return {loading:true,response:null};
+            },
+            created:function(){
+
+            },
+            render:function(){
+                return this.$scopedSlots.default({
+                    loading:this.loading,
+                    response:this.response
+                });
+            }
+        });
+        Vue.component("tt",{
+            
+            render:function(){
+                return this.$scopedSlots.default({
+                    test:"这是测试"
+                });
+            }
+        }); 
+        var app = new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>

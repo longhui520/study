@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../vuex/vuex.js"></script>
+</head>
+<body>
+    <script>
+        var json ={ 
+            "orderno":{
+                "base":{
+                "label":"编号",
+                "fieldName":"orderno",
+                "showFlag":true,
+                "readonlyFlag":true,
+                "disabledFlag":false,
+                "requiredFlag":true,
+                "clearableFlag":true,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "minLen":0,
+                "maxLen":12,
+                "regexRule":"",
+                "compType":"compInput"
+            },
+            
+            "mingchen":{
+                "base":{
+                "label":"名称",
+                "fieldName":"mingchen",
+                "showFlag":true,
+                "readonlyFlag":false,
+                "disabledFlag":true,
+                "requiredFlag":true,
+                "clearableFlag":true,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "placeholder":"请输入",
+                "minLen":0,
+                "maxLen":12,
+                "regexRule":"",
+                "compType":"compInput"
+            },
+            
+            "zhuceziben":{
+                "base":{
+                "label":"注册资本",
+                "fieldName":"zhuceziben",
+                "showFlag":true,
+                "readonlyFlag":false,
+                "disabledFlag":false,
+                "requiredFlag":true,
+                "clearableFlag":true,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "placeholder":"请输入",
+                "minLen":0,
+                "maxLen":12,
+                "regexRule":"",
+                "compType":"compInput"
+            },
+            
+            "suoshufenlei":{
+                "base":{
+                "label":"所属分类",
+                "fieldName":"suoshufenlei",
+                "showFlag":true,
+                "readonlyFlag":false,
+                "disabledFlag":false,
+                "requiredFlag":false,
+                "dialogFlag":false,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "placeholder":"请选择",
+                "clearFlag":true,
+                "dataUrl":" ",
+                "options":[{"code":"1","text":"\u76d1\u7ba1"},{"code":"2","text":"\u5b88\u62a4"},{"code":"3","text":"\u62bc\u8fd0"},{"code":"4","text":"\u884c\u653f"},{"code":"5","text":"\u9a7e\u9a76\u5458"},{"code":"6","text":"\u666e\u901a\u961f\u5458"},{"code":"7","text":"\u6280\u672f\u4eba\u5458"}],
+                "compType":"compSelect"
+            },
+            
+            "zhucedizhi":{
+                "base":{
+                "label":"状态",
+                "fieldName":"zhucedizhi",
+                "showFlag":true,
+                "disabledFlag":false,
+                "requiredFlag":false,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "dataUrl":" ",
+                "options":[{"code":"-1","text":"\u7981\u7528"},{"code":"0","text":"\u9501\u5b9a"},{"code":"1","text":"\u6b63\u5e38"}],
+                "compType":"compRadio"
+            },
+            
+            "zhuceshijian":{
+                "base":{
+                "label":"注册时间",
+                "fieldName":"zhuceshijian",
+                "showFlag":true,
+                "readonlyFlag":false,
+                "disabledFlag":false,
+                "requiredFlag":false,
+                "dialogFlag":false,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "placeholder":"请选择",
+                "format":"yyyy-MM-dd",
+                "clearFlag":true,
+                "type":"date",
+                "compType":"compDatetime"
+            },
+            "kehuleixing":{
+                "base":{
+                "label":"客户类型",
+                "fieldName":"kehuleixing",
+                "showFlag":true,
+                "readonlyFlag":false,
+                "disabledFlag":false,
+                "requiredFlag":false,
+                "initialVal":""
+                },
+                "events":"valueChange",
+                "maxNum":3,
+                "dataUrl":" ",
+                "options":[{"code":"1","text":"\u7f51\u7edc\u9762\u8bd5"},{"code":"2","text":"\u73b0\u573a\u62db\u8058"},{"code":"3","text":"\u5185\u90e8\u4ecb\u7ecd"},{"code":"4","text":"\u6821\u56ed\u62db\u8058"},{"code":"5","text":"\u730e\u5934\u62db\u8058"},{"code":"6","text":"\u5176\u4ed6\u65b9\u5f0f"}],
+                "compType":"compCheckbox"
+            },
+                "address":{
+                    "base":{
+                        "label":"地图选址",
+                        "fieldName":"address",
+                        "showFlag":true,
+                        "initialVal":{
+                            "latitude":"",
+                            "longitude":"",
+                            "formattedAddress":"",
+                            "province":"",
+                            "city":"",
+                            "area":"",
+                            "town":"",
+                            "street":""
+                        }
+                    },
+                    "compType":"compMap",
+                    "zoom":15,
+                    "scrollWheel":false,
+                    "searchRange":"全国"
+                },
+                "upload":{
+                    "base":{
+                        "name":"archives",
+                        "label":"档案图片上传",
+                        "showFlag":true,
+                        "requiredFlag":false,
+                        "disabledFlad":false
+                    },
+                    "compType":"compFileupload",
+                    "fileType":"image",
+                    "fileSize":1048576000,
+                    "maximum":6,
+                    "url":""
+                }
+
+        };
+        var data = [];
+        for(var key in json){
+            data.push({props:json[key],ref:key,compType:json[key].compType});
+        }
+        console.log(data);
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件作用域</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child :list = "list">
+            <span slot-scope="slotProps">{{slotProps.ele.text}}</span>
+        </child>
+
+    </div>
+    <script>
+        Vue.component("child",{
+            props:["list"],
+            template:
+            `
+                <div>
+                    <li v-for="ele in list">
+                        <span>{{ele.code}}</span>
+                        <slot :ele = "ele">{{ele.text}}</slot>
+                    </li>
+                
+                </div>
+            `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[{code:1,text:"重庆"},{code:2,text:"北京"}]
+            }
+        })
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+    <div id="app">
+        <comp-input v-bind="$store.state.forms.xiaoming" ></comp-input>
+        <comp-input v-bind="$store.state.forms.xiaohong" ></comp-input>
+        <button @click="save">保存</button>
+    </div>
+    <script>
+        Vue.component("compInput",{
+            props:{
+                outerVal:{
+                    type:Object,
+                    default:{code:"",text:""}
+                },
+                fieldName:{
+                    type:String,
+                    default:""
+                },
+                transform:{
+                    type:String,
+                    default:""
+                }
+            },
+            data:function(){
+                return {
+                    innerVal:{code:this.outerVal.code,text:this.outerVal.text},
+                    validateFlag:true
+                };
+            },
+            watch:{
+               "outerVal":{
+                    handler:function(val){
+                        this.innerVal.code = val.code;
+                        this.innerVal.text = val.text;
+                    },
+                    deep:true
+                },
+                "innerVal.text":{
+                    handler:function(val){
+                        //如果有单位转换，需转换
+                        if(this.transform){
+                            this.innerVal.code =val+this.transform;//模拟是这样的转换关系
+                        }else{
+                            this.innerVal.code =val;
+                        }
+                        this.validate(this.innerVal.code);
+                        if(this.validateFlag){
+                            var value ={};
+                            value.code = this.innerVal.code;
+                            value.text = this.innerVal.text;
+                            this.$store.commit("returnVal",{self:this.fieldName,value:value});
+                        } 
+                    },
+                    deep:true,
+                    immediate: true
+                }
+            },
+            methods:{
+                validate:function(value){
+                   var val=value||this.innerVal.code;//判断是否传了value
+                   if(!val){
+                      this.validateFlag = false;
+                      return false;
+                   }else{
+                      this.validateFlag = true;
+                      return true;
+                   }     
+                }
+            },
+            
+            template:
+            `
+            <div>
+                <input :value="innerVal.text" @change="innerVal.code=$event.target.value" placeholder="请输入" />
+            </div>
+            `
+        });
+        var store = new Vuex.Store({
+            state:{
+                forms:{
+                    xiaoming:{
+                        fieldName:"xiaoming",
+                        outerVal:{code:"小明",text:"小明"},
+                        ref:"xiaoming"
+                    },
+                    xiaohong:{
+                        fieldName:"xiaohong",
+                        outerVal:{code:"小明",text:"小明"},
+                        ref:"xiaohong",
+                    }
+                }
+            },
+            getters:{
+                fields:function(state){
+                    var obj = {};
+                    for (var key in state.forms){
+                        obj[key] = state.forms[key].returnVal||{};
+                    }
+                    return obj;
+                }
+            
+            },
+            mutations:{
+                returnVal:function(state,playLoad){
+                   var self = playLoad.self;
+                   var value = playLoad.value;
+                   if(state.forms[self].returnVal){
+                      state.forms[self].returnVal.code = value.code;  
+                      state.forms[self].returnVal.text = value.text;  
+                   }else{
+                      state.forms[self].returnVal = {};
+                      state.forms[self].returnVal.code = value.code;  
+                      state.forms[self].returnVal.text = value.text;  
+                   }
+                 
+                }
+            }
+        });
+        var app = new Vue({
+            el:"#app",
+            store,
+            methods:{
+                save:function(){
+                    var count = 0;
+                    for(var key in this.$refs){
+                        this.$refs[key].validate();
+                        if(!this.$refs[key].validateFlag){
+                            count++;
+                        };
+                    }
+                    if(count){
+                        alert(count+"个验证不通过");
+                        console.log( this.$store.state.forms);
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
