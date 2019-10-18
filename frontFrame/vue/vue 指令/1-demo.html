@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.0.0.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <p v-test="{msg:msg}">sdfasda</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:""
+            },
+            directives:{
+                test:function(el,binding){
+                    // $(el).off('click').off('change');
+                    $(el).off('click,change');
+                    $(el).on('click',function(){
+                        console.log(binding);
+                    });
+                }
+            }  
+        })
+    </script>
+</body>
+</html>

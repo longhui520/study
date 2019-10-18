@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue代码生成</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const list =  [
+                    {
+                        type: 'child',
+                        key:"1",
+                        options: {
+                            msg: '1111'
+                        }
+                    },
+                    {
+                        key:"2",
+                        type: 'form-item',
+                        list: [
+                            {
+                                key:"4",
+                                type: 'child',
+                                options: {
+                                    msg: '222'
+                                }
+                            },
+                            {
+                                key:'5',
+                                type: 'child',
+                                options: {
+                                    msg: '222'
+                                }
+                            }
+                        ]
+                    }
+                ];
+          function genneration(obj){
+              var arr = obj.map(function(e){
+                  var startTag = '<'+e.type+'>';
+                  var endTag =  '</'+e.type+'>';
+                  var children = "";
+                  if(e.list&&e.list.length>0){
+                    children = genneration(e.list);
+                  }
+                  return startTag+children+endTag;
+              });
+              return arr.join('');
+          }   
+          console.log(genneration(list));  
+    </script>
+</body>
+</html>

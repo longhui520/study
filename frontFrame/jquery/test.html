@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label for="file">文件上传</label>
+    <input type="file" id="file" style="display: none">
+    <script>
+        var arr =[
+            {id:1,parentid:0},
+            {id:2,parentid:0},
+            {id:11,parentid:1},
+            {id:22,parentid:2},
+            {id:111,parentid:11},
+            {id:221,parentid:22}
+        ]
+        var obj = arr.reduce(function(obj,e){
+            return {...obj,[e.id]:e};
+        },{});
+        var arr1 = [{id:1,parentid:0},{id:2,parentid:0}];
+         function tt(obj1,obj){
+            obj1.child = [];
+            for(var k in obj){
+                if(obj[k].id!=obj1.id && obj[k].parentid == obj1.id){
+                    obj1.child.push(tt(obj[k],obj));
+                }
+            }
+            return obj1;
+         }   
+         var arr2 = arr1.map(function(e){return tt(e,obj)});
+         console.log(arr2);
+    </script>
+</body>
+</html>

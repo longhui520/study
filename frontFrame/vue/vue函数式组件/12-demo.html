@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <script src="../vuex/vuex.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+
+            <el-main style="background: #aaa">
+                <button @click="add">增加</button>
+                <fn :children="list"></fn>
+                <button @click="submit">提交</button>
+            </el-main>
+            <el-aside width="500px" style="border:1px solid #eee;">
+                    <el-form ref="form" :model="form" label-width="80px">
+                        <el-form-item label="活动名称">
+                            <el-input v-model="form.name"></el-input>
+                        </el-form-item>
+                    </el-form>
+                <el-row type="flex">
+                    <el-col>
+                        <el-input v-if="notUndefined(current,'data.style.background')" v-model="current.data.style.background" />
+                    </el-col>
+                </el-row>
+                <el-row type="flex">
+                    <el-col>
+                        <el-checkbox v-if="notUndefined(current,'data.props.disabled')" v-model="current.data.props.disabled">只读</el-checkbox>
+                        <!-- <el-radio v-if="notUndefined(current,'data.props.disabled')" v-model="current.data.props.disabled" :label="false">禁用</el-radio>
+                        <el-radio v-if="notUndefined(current,'data.props.disabled')" v-model="current.data.props.disabled" :label="true">备选项</el-radio> -->
+                    </el-col>
+                </el-row>
+            </el-aside>
+        </el-container>
+    </div>
+    <script>
+        function getSafe(data, keys, defaultValue) {
+            function isExist(data) {
+                return data !== undefined && data !== null;
+            }
+            function isNothing(data) {
+                return !isExist(data);
+            }
+            function isVaild(data) {
+                return typeof data === 'string' || typeof data === 'number';
+            }
+            if (isNothing(data)) {
+                return defaultValue || "";
+            }
+            data = isExist(data) ? data : {};
+            return isVaild(keys) && String(keys).split(".").reduce(function (item, key, i, arr) {
+                var result = item[key.trim()];
+                result = isExist(result) ? result : ((i === arr.length - 1) ? defaultValue : {});
+                return result;
+            }, data);
+        }
+        Vue.component('fn', {
+            functional: true,
+            props: {
+                children: Array,
+            },
+            render: function (h, c) {
+                function hh(config, index) {
+                    var type = config.type;
+                    function deepCopy(obj) {
+                        var result = Array.isArray(obj) ? [] : {};
+                        for (var key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                if (typeof obj[key] === 'object') {
+                                    result[key] = deepCopy(obj[key]);
+                                } else {
+                                    result[key] = obj[key];
+                                }
+                            }
+                        }
+                        return result;
+                    }
+                    var data = deepCopy(config.data);
+                    if (type == 'el-input') {
+                        data.on = {};
+                        data.nativeOn = {};
+                        data.props.value = c.parent.form[config.modelValue]
+                        data.on.input = function (e) {
+                            c.parent.form[config.modelValue] = e;
+                        }
+                        //点击回传配置
+                        data.nativeOn.click = function (e) {
+                            var i = [...index];
+                            var config = c.props;
+                            for (var ii = 0; ii < i.length; ii++) {
+                                config = config.children[i[ii]];
+                            }
+                            c.parent.current = config;
+                            console.log(config);
+                            config.data.attrs.placeholder = "请填写";
+                        }
+                    }
+                    if (typeof config.children == 'string') {
+                        return h(type, data, config.children)
+                    }
+                    var children = [];
+                    if (config.children) {
+                        children = config.children.map(function (config, index_2) {
+                            return hh(config, [...index, index_2]);
+                        });
+                    }
+                    return h(type, data, children);
+                }
+                return h(
+                    'div',
+                    Array.apply(null, { length: c.props.children.length }).map(function (value, index) {
+                        return hh(c.props.children[index], [index]);
+                    })
+                );
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                form: {
+                    bb: '222'
+                },
+                current: { data: { style: {}, props: {} } },
+                keys: 1,
+                list: [
+                    {
+                        type: 'el-row',
+                        data: {},
+                        children: [
+                            {
+                                type: 'el-col',
+                                data: {
+                                    props: {
+                                        span: 12
+                                    },
+                                    style: {
+                                        color: 'blue'
+                                    }
+                                },
+                                children: [
+                                    {
+                                        type: 'el-input',
+                                        modelValue: 'bb',
+                                        data: {
+                                            style: {
+                                                background: 'red'
+                                            },
+                                            attrs: { placeholder: '请选择' },
+                                            props: {
+                                                disabled: true
+                                            },
+                                            ref: 'input'
+                                        },
+                                        children: []
+                                    }
+                                ]
+                            }
+                        ]
+
+                    }
+                ]
+            },
+            methods: {
+                add: function () {
+                    this.keys += 1;
+                    var key = 'aa' + this.keys;
+                    this.$set(this.form, 'aa' + this.keys, key);
+                    this.list[0].children[0].children.push({
+                        type: 'el-input',
+                        modelValue: key,
+                        data: {
+                            style: {
+                                background: 'red'
+                            },
+                            attrs: { placeholder: '请选择' },
+                            props: {
+                            },
+                            ref: key
+                        },
+                        children: []
+                    });
+
+                },
+                submit: function () {
+                    alert(JSON.stringify(this.form));
+                },
+                getSafe: function (data, keys, defaultValue) {
+                    function isExist(data) {
+                        return data !== undefined && data !== null;
+                    }
+                    function isNothing(data) {
+                        return !isExist(data);
+                    }
+                    function isVaild(data) {
+                        return typeof data === 'string' || typeof data === 'number';
+                    }
+                    if (isNothing(data)) {
+                        return defaultValue || "";
+                    }
+                    data = isExist(data) ? data : {};
+                    return isVaild(keys) && String(keys).split(".").reduce(function (item, key, i, arr) {
+                        var result = item[key.trim()];
+                        result = isExist(result) ? result : ((i === arr.length - 1) ? defaultValue : {});
+                        return result;
+                    }, data);
+                },
+                notUndefined:function(data, keys){
+                    this.getSafe(data,keys,undefined);
+                    if(this.getSafe(data,keys,undefined)==undefined){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

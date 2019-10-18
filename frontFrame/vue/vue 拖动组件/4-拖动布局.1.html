@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动布局</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .el-header,
+        .el-footer {
+            background-color: #B3C0D1;
+            color: #333;
+            text-align: center;
+            line-height: 60px;
+        }
+    
+        .el-aside {
+            background-color: #D3DCE6;
+            color: #333;
+            text-align: center;
+            height: 1000px;
+        }
+        .el-main {
+            background-color: #E9EEF3;
+            color: #333;
+            text-align: center;
+            height: 1000px;
+            padding:0;
+        }
+        *{padding:0;margin: 0;}
+        ul,li{list-style: none;}
+       
+        .el-side .form-edit-widget-label{
+            padding:10px;
+            height: 40px;
+            box-sizing: border-box;
+        }
+        .form-edit-widget-label:hover{
+            border:1px dashed blue;
+            cursor: cell;
+        }
+        .el-main .form-edit-widget-label{
+            border:1px dashed blue;
+            padding:10px;
+           
+        }
+
+        .form-edit-widget-label span{
+            background: green;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>拖动布局</el-header>
+            <el-container>
+                    <el-aside width="200px">
+                            <draggable
+                            tag="ul"
+                            :list = layoutComponents
+                            :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                            >
+                                <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
+                                    
+                                    <a>
+                                        <span>{{item.name}}</span>
+                                    </a>
+                                </li>
+                            </draggable>
+                    </el-aside>
+                    <el-main>
+                            <draggable
+                            style="padding-bottom:20px;"
+                            tag="ul"
+                            :list = list
+                            :options="{group:{ name:'people'},sort:false, ghostClass: 'ghost'}"
+                            >
+                                <li class="form-edit-widget-label data-grid" v-for="(item, index) in list" :key="index">
+                                        <a>
+                                            <span>{{item.name}}</span>
+                                        </a>
+                                </li> 
+                                <!-- <nested-draggable :list="list">
+
+                                </nested-draggable> -->
+                            </draggable> 
+
+                    </el-main>
+                    <el-aside  width="200px">右侧</el-aside>
+            </el-container>
+            <el-footer>底部</el-footer>
+        </el-container>
+    </div>
+    <script>
+         Vue.component('nested-draggable', {
+            name: "nested-draggable",
+            props: {
+                list: {
+                    required: true,
+                    type: Array
+                }
+            },
+            template: `
+                <draggable  tag="ul"  style="padding-bottom:20px;" :options="{group:{ name:'people'},sort:false, ghostClass: 'ghost'}">
+                    <li v-for="el in list" :key="el.name"  class="form-edit-widget-label data-grid">
+                        <nested-draggable :list="el.list" />
+                    </li>
+                </draggable>
+            `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                layoutComponents:[
+                    {
+                        name:'栅格布局',
+                        list:[]
+                    }
+                ],
+                list:[
+                    
+                ]
+            }
+        });
+        
+    </script>
+</body>
+</html>

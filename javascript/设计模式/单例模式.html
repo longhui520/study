@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例模式</title>
+</head>
+<body>
+    <script>
+        class CreateUser {
+            constructor(name){
+                this.name = name;
+            }
+        }
+        //代理实现单例模式
+        var ProxyCreateUser  = (function(){
+            var instance = null;
+            return function(name){
+                if(!instance){
+                    instance = new CreateUser(name);
+                }
+                return instance;
+            }
+        })();
+    </script>
+</body>
+</html>

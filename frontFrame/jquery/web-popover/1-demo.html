@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
+    <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+    <style>
+        /* .webui-popover-custom {
+            background-color:#000;
+        }
+        .webui-popover-custom.bottom>.arrow:after,
+         .webui-popover-custom.bottom-right>.arrow:after, 
+         .webui-popover-custom.bottom-left>.arrow:after{
+            border-bottom-color:#000;
+         } */
+    </style>
+</head>
+<body>
+    <header style="text-align:right">
+        <a href="#">shop pop</a>
+    </header>
+    
+    <div class="webui-popover-content">
+        <ul>
+            <li><a href="mailto:">1</a></li>
+            <li><a href="mailto:">2</a></li>
+            <li><a href="mailto:">3</a></li>
+        </ul>
+    </div>
+    <script>
+        $('a').webuiPopover({content:"<h1>1111</h1>",style:"custom"});
+        $('body').on("click",'h1',function(e){
+            console.log('点击了');
+        });
+    </script>
+</body>
+</html>

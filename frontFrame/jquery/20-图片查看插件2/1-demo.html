@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.0.0.js"></script>
+    <style>
+        .preview_box {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 99999;
+            display: none;
+            background: #000;
+        }
+        .preview_box .close_preview_box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0.3em;
+            height: 1.5em;
+            background: #fff;
+            transform: rotate(270deg);
+            cursor: pointer;
+        }
+        .preview_box .close_preview_box {
+            position: absolute;
+            right:20px;
+            width: 0.3em;
+            height: 1.5em;
+            background: #fff;
+            transform: rotate(45deg);
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .preview_box .imgbox {
+            text-align: center;
+            height: 100%;
+        }
+
+        .preview_box .imgbox img {
+            vertical-align: middle;
+            max-width: 90%;
+            object-fit: cover;
+        }
+
+        .preview_box .visible {
+            height: 100%;
+            vertical-align: middle;
+            width: 0;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preview_box">
+        <p class="close_preview_box"></p>
+        <div class="imgbox">
+            <i class="visible"></i>
+        </div>
+    </div>
+    <div class="bg">
+        <a href="image/logo.png" data-gallery class="preview">预览图片1</a>
+        <a href="image/logo.png" data-gallery class="preview">预览图片1</a>
+        <a href="image/logo-2.png" data-gallery class="preview">预览图片2</a>
+        <a href="image/test1.png" data-gallery class="preview">预览图片2</a>
+    </div>
+    </style>
+
+
+    <script>
+        // var t1=$(window).height(); //获取屏幕高度
+        // var t2=$(window).width();  //获取屏幕宽度
+        // $('ul>li>img').click(function () {  //img设置点击事件
+        //     $('.bgImg').attr('src',this.src)  //修改预览img的Src
+        //     var t3=$('.bgImg').height(); 　   //获得当前img高度
+        //     var t4=$('.bgImg').width();　　　　//获取当前img宽度
+        //     if(t3<t1){　　　　　　　　　　　　　　//如果屏幕高度大于img高度，设置图片margin-top
+        //         $('.bgImg').css('marginTop',(t1-t3)/2);
+        //     }
+        //     if(t4<t2){ 　　　　　　　　　　　　　　//如果屏幕宽度大于img宽度，设置图片margin-left　　
+        //         $('.bgImg').css('marginLeft',(t2-t4)/2);
+        //     }
+        // })
+    </script>
+    <script>
+        $(document).on('click', '.close_preview_box', function () {
+            $('.preview_box').hide();
+        });
+        $(document).on('click', '[data-gallery]', function (e) {
+            e.preventDefault();
+            var src = $(this).attr('href');
+            var flag = true;
+            var first = 1;
+            $(".imgbox img").each(function () {
+                if ($(this).attr('src') != src) {
+                    $(this).hide();
+                } else {
+                    flag = false;
+                    if (first == 1) {
+                        $(this).show();
+                        first = 2;
+                    }
+                }
+            });
+            if (flag) {
+                var img = $(`<img src = ${src} />`);
+                $('.imgbox').append(img);
+            }
+            $('.preview_box').show();
+        }); 
+    </script>
+</body>
+
+</html>

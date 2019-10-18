@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createNameSpace(obj,name,separator = "."){
+            var current,parts;
+            current = obj;
+            parts = name.split(separator);
+            parts.forEach(function(e){
+                if(!current[e]){
+                    current[e] = {};
+                }
+                current = current[e];
+            });
+            return obj;
+        }
+        a = {};
+        console.log(createNameSpace(a,'a.b.c.e.f'));
+    
+    </script>
+</body>
+</html>

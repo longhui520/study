@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var  b = {
+            "rules": "(【h1555379593】==\"1\" || 【h1555379593】==\"2\"||【h1555379593】==\"4\") &&【s1555379836】==\"\"",
+            "rules_refer": {
+              "【h1555379593】": {
+                "type": "control",
+                "actionname": "MisAutoCpf",
+                "rules": [
+                  "select",
+                  "mis_auto_levnz.zhutileixing",
+                  "【项目主体信息】主体类型",
+                  "MisAutoCpf"
+                ]
+              },
+              "【r1555379813】": {
+                "type": "control",
+                "actionname": "MisAutoCpf",
+                "rules": [
+                  "text",
+                  "mis_auto_levnz.orderno",
+                  "【项目主体信息】编号",
+                  "MisAutoCpf"
+                ]
+              },
+              "【s1555379836】": {
+                "type": "tables",
+                "sql_str": "select zhengjianleixing from mis_auto_levnz where orderno=&quot;【r1555379813】&quot;"
+              }
+            }
+        };
+         var reg = /\【\w+\】/g;//规则的正则表达式
+         var rules_refer= b.rules_refer;
+         var rules = b.rules;
+         var new_refer = {};
+         var key;
+         for(let i in rules_refer){
+            switch(rules_refer[i].type){
+                case "control":
+                    var fieldName = rules_refer[i].rules[1].split(".")[1];
+                    new_refer[i] = {type:rules_refer[i].type,actionname:rules_refer[i].actionname,fieldName:fieldName}
+                    break;
+                case "tables":
+                    new_refer[i] = {sql_str:rules_refer[i].sql_str,type:rules_refer[i].type}
+            }
+         }
+      
+        //  console.log(new_rules);
+         console.log(new_refer);
+        var c = {
+            "rules":"(##MisAutoCpf.zhutileixing##==\"1\" || ##MisAutoCpf.zhutileixing##==\"2\"||##MisAutoCpf.zhutileixing##==\"4\") &&【s1555379836】==\"\"",
+            "rules_refer":{
+                "【s1555379836】":{
+                "sql_str": "select zhengjianleixing from mis_auto_levnz where orderno=&quot;【MisAutoCpf.orderno】&quot;",
+                "type": "tables" 
+                }
+            }
+        }
+        var a  = [111,22,33];
+        var bb = a.map(function(e){return new Promise(function(resolve){
+            resolve(e);
+        })});
+        Promise.all(bb).then(function(aa){
+           console.log(aa)
+        })
+
+
+
+
+
+    </script>
+</body>
+</html>

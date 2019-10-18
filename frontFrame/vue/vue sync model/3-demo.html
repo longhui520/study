@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model原理</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <base-input :title.sync="value"></base-input>
+        <base-input :title="value" @update:title="value = $event"></base-input>
+        <p>{{value}}</p>
+    </div>
+    <script>
+       Vue.component('base-input',{
+           props:['title'],
+           data:function(){
+               return {
+                   title_input:this.title
+               }
+           },
+           methods:{
+               changeValue:function(e){
+                   this.title_input = e.target.value;
+                   //内部抛出一个updata:属性，内部需要双向通信的属性
+                   this.$emit('update:title',this.title_input);
+               }
+           },
+           template:`
+           <div>
+                <input :value="title_input" @input="changeValue" />
+           </div>`
+       });
+       new Vue({
+           el:"#app",
+           data:{
+               value:'11111'
+           }
+       });
+    </script>
+</body>
+</html>

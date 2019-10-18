@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件阻止</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .mask{
+            position: relative;
+        }
+        .mask::after{
+            content:"";
+            position: absolute;
+            top:0;
+            bottom: 0;
+            right:0;
+            left:0;
+            display: block;
+            z-index:1001;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <child ></child>
+    </div>
+    <script>
+        Vue.component('child',{
+                methods:{
+                stop:function(){
+                    console.log('阻止了');
+                }
+            },
+            template:`
+                <div @click.native.stop="stop" class="mask">
+                    <p>1111</p>
+                    <input type="text" />    
+                </div>
+            `
+        });
+    new Vue({
+        el:"#app",
+       
+    })
+    </script>
+</body>
+</html>

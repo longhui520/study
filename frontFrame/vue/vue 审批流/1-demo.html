@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+                *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            position: relative;
+            width: 1260px;
+            margin:100px auto;
+        }
+        .box,.box2{
+            width: 1260px;
+            height: 70px;
+            overflow: hidden;
+        }
+        .state{
+            position: relative;
+            width: 1200px;
+            background-color: #eee;
+            height: 20px;
+            margin-left: 30px;
+            margin-top: 25px;
+        }
+        .cirl,.fraud{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            background-color: #eee;
+            border-radius: 30px;
+            top:-20px;
+            text-align: center;
+            font-size: 26px;
+            line-height: 60px;
+            font-weight: 800;
+            text-shadow: 0px 0px 4px #f25255; 
+            color: #fbf9fb;
+        }
+        .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1200px;
+        }
+        .box2{
+            width: 0px;
+            position: absolute;
+            top: 0;
+            transition: all 0.6s;
+            max-width: 1260px;
+        }
+        .box2 .cirl{
+            background-color: #f25255;
+            box-shadow: 0px 0px 10px #f25255;
+        }
+        .box2 .state{
+            background-color: #f25255;
+        }
+        h4{
+            width: 1280px;
+            margin:0 auto;
+            text-align: center;
+            color: #666;
+            font-size: 20px;
+        }
+        h4 input{
+            border:1px solid hsla(55, 18%, 35%, 0.64);
+            outline: 0 none;
+            line-height: 25px;
+            width: 300px;
+            box-sizing: border-box;
+            padding-left: 16px;
+            border-radius: 6px;
+            color: #666;
+        }
+
+        .fraud{
+            background-color: #f25255;
+            box-shadow: 0px 0px 10px #f25255;
+            left: -30px;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vant/packages/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <send v-model="nums" :step="step"></send>
+    </div>
+            
+    <script>
+        Vue.component("send",{
+            props:["value","step"],
+            data:function(){
+                return {
+                    flag : false,
+                    sites:this.value,//站点个数
+                    status:this.step
+                }
+            },
+            watch:{
+                sites:function(val){
+                    if(!val){
+                        this.flag = true;
+                        this.status = 1;
+                    }else{
+                        this.sites = Number(val);
+                        this.flag = false
+                    }
+                }
+            },
+            computed:{
+                place:function(){//站点距离
+                        if(this.sites==1){
+                            return 0;
+                        }else{
+                            return 1200/(this.sites-1)
+                        }
+                },
+                distance:function(){//到达距离
+                    var s=this.place==0?600:this.status*this.place - this.place/2
+                    return s+30
+                }
+            },
+            template:'<div><div class="content"><div class="box"><div class="state"><div class="cirl" v-for="item in sites" :style="{left:(item-1)*place-30+\'px\'}"></div></div></div><div class="box2" :style="{width:distance+\'px\'}"><div class="state"><div class="cirl" v-for="item in sites" :style="{left:(item-1)*place-30+\'px\'}">√</div><div class="fraud" v-show="flag">√</div></div></div></div><h4><p>站点个数:</p><input type="text" v-model="sites" value=\'3\'></h4><h4><p>请输入要到达的站点:</p><input type="text" v-model="status"></h4></div>'
+
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                nums:3,//站点个数
+                step:1
+            }
+        })
+    </script>
+</body>
+</html>

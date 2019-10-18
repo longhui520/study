@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树型选择</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .tree-item{
+            padding-left:10px;
+        }
+        .ellipsis {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <comp-tree-select :list = "list" @click2="listen"></comp-tree-select>
+    </div>
+    <script>
+        Vue.component('comp-tree-select',{
+            name:'comp-tree-select',
+            props:['list'],
+            methods:{
+                clickHandler:function(item){
+                    this.$emit('click2',item);
+                },
+                clickHandler2:function(item){
+                    this.$emit('click2',item);
+                }
+            },
+            template:
+                `
+                    <div class="comp-tree-select">
+                        <div v-for="item in list" class="tree-item">
+                            <div @click="clickHandler(item)">{{item.name}}</div>
+                            <comp-tree-select v-if="item.child" :list ="item.child" @click2="clickHandler2"></comp-tree-select>
+                        </div>
+                    </div>
+                `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {
+                        name:'一级-1',
+                        options:{isOpen:true},
+                        child:[
+                            {name:'二级2'}
+                        ]
+                    },
+                    {
+                        name:'一级-2',
+                        options:{isOpen:true},
+                        child:[
+                            {name:'二级2'} 
+                        ]
+                    },
+                    {
+                        name:'一级-3',
+                        options:{isOpen:true},
+                        child:[
+                            {name:'二级2'}
+                        ]
+                    }
+                ]
+            },
+            methods:{
+                listen:function(msg){
+                    console.log(msg);
+                }
+            }
+        });  
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.step-container {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+div.step-container div.step,
+div.step-container div.step2 {
+  background-color: #69C795;
+  position: relative;
+  display: inline-block;
+  flex-basis: 50px;
+  height: 20px;
+}
+div.step-container div.step:after,
+div.step-container div.step2:after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  background: #69C795;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  z-index: 1;
+  box-shadow: 3px 3px 0px 0px white;
+}
+div.step-container div.step2 {
+  background-color: #ccc;
+}
+div.step-container div.step2:after {
+  background: #ccc;
+}
+div.step-container div.step1:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  background: white;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  z-index: 1;
+  box-shadow: 3px 3px 0px 0px white;
+}
+    </style>
+</head>
+<body>
+    <div class="step-container" style="margin-top: 25px;">
+        <div class="step step1"></div>
+        <div class="step2"></div>
+        <div class="step2"></div>
+        <div class="step2"></div>
+        <div class="step2"></div>
+        <div class="step2"></div>
+    </div>
+</body>
+</html>

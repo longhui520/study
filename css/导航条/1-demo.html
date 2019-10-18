@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航条</title>
+    <style>
+        html,body{
+            background: #eee;
+            height: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin-top:20px;
+            padding-top:10px;
+         
+            background: #f00;
+        }
+        ul,li{
+            list-style: none;
+        }
+        li{
+            float: left;
+            background: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+        li div {
+            background: #f00;
+            padding:10px;
+        }
+        li.active div{
+            background: #fff;
+            position: relative;
+        }
+        .pre{
+            border-radius:  0 0 10px 0;
+        }
+        .next {
+            border-radius: 0 0 0 10px;
+        }
+        .bottom{
+            background: #fff;
+            height: 5px;
+        }
+        .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="clearfloat">
+            <li class="pre"><div>1111</div></li>
+            <li class="active"><div>1111</div></li>
+            <li class="next"><div>1111</div></li>
+            <li><div>1111</div></li>
+        </ul>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

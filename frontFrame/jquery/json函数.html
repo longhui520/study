@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div id="btn" data-funcname="get" data-js='{"fn":"function(){console.log(11111111)}"}' data-url="www.baidu.com" data-urlparam=""></div>
+    <script>
+        function  get() {
+            console.log(1);
+        }
+        function funReviver(key,value){
+            if("string" == typeof  value && value.indexOf('function')== 0 ){
+                return Function('return ' + value)();
+            }
+            return value;
+        }
+        var obj = $('#btn');
+
+        //执行全局函数
+        var funcname = obj.data('funcname');
+        try{
+            eval(funcname+"()");
+        }catch(e){
+            console.log(e);
+        }
+        //执行远程js文件
+        var jsobj = obj.data('js');
+        if(jsobj){
+            if(typeof jsobj == "object" && jsobj){
+                var jsstr = JSON.stringify(jsobj);
+                jsobj = JSON.parse(jsstr,funReviver);
+                try{
+                    jsobj.fn();
+                }catch(e){
+                    console.error(e);
+                }
+            }
+        }
+
+        var url = obj.data('url');
+        if(url){
+            $.ajax({
+                url:url
+            });
+        }
+        var dialog =  obj.data('dialog');
+        if(dialog){
+            try{
+                $.pdialog.open(dialog.url,dialog.tabid,dialog.title);
+            }catch(e){
+                console.error(e);
+            }
+        }
+        var navtab = obj.data('navtab');
+        if(navtab){
+            try{
+                $.navTab.openTab(navtab.tabid, navtab.url, { title: navtab.title, fresh: true});
+            }catch(e){
+                console.error(e);
+            }
+        }
+
+    </script>
+</body>
+</html>

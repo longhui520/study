@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <form action="file.php" enctype="multipart/form-data" method="post">
+        <input type="file" name="img" multiple />
+        <input type="submit" name="submit" value="提交" />
+    </form>
+    <script>
+        $("[name=img").on('change', function (e) {
+            postData(this);
+        });
+        function postData(el) {
+            var formData = new FormData(el);
+            formData.append("photo", $(el)[0].files[0]);
+			 formData.append("name", 'photo');
+            $.ajax({
+                url: 'http://www.php.com/file4.php', /*接口域名地址*/
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+				xhr: function () {
+                    var xhr = new XMLHttpRequest();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        var progressRate = (e.loaded / e.total) * 100 + '%';
+                        console.log(progressRate);
+                    });
+                    return xhr;
+                },
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

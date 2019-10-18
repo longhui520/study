@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 折叠动画</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        @keyframes fold{
+            from{
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0%);
+            }
+        }
+        @keyframes unfold{
+            from{
+                transform: translateY(0%);
+            }
+            to{
+                transform: translateY(100%);
+            }
+        }
+        .box{
+            width:100px;
+            background: red;
+        }
+        .up-enter-active{
+            animation: fold .4s;
+        }
+        .up-leave-active{
+            animation: unfold .4s;
+        }
+        p{
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p @click="show =!show">点开折叠</p>
+        <vertical-toggle>
+            <div class="box" v-show="show">
+                <p>测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画测试折叠动画</p>
+            </div>
+        </vertical-toggle>
+    </div>
+    <script>
+        Vue.component("VerticalToggle", {
+                functional: true,
+                render(h, { children }) {
+                    var elTransition = '0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out'
+                    var data = {
+                        on: {
+                            'before-enter'(el) {
+                                el.style.transition = elTransition
+                                if (!el.dataset) el.dataset = {}
+                                el.dataset.oldPaddingTop = el.style.paddingTop
+                                el.dataset.oldPaddingBottom = el.style.paddingBottom
+                                el.style.height = 0
+                                el.style.paddingTop = 0
+                                el.style.paddingBottom = 0
+                            },
+                            'enter'(el) {
+                                el.dataset.oldOverflow = el.style.overflow
+                                if (el.scrollHeight !== 0) {
+                                    el.style.height = el.scrollHeight + 'px'
+                                    el.style.paddingTop = el.dataset.oldPaddingTop
+                                    el.style.paddingBottom = el.dataset.oldPaddingBottom
+                                } else {
+                                    el.style.height = ''
+                                    el.style.paddingTop = el.dataset.oldPaddingTop
+                                    el.style.paddingBottom = el.dataset.oldPaddingBottom
+                                }
+                                el.style.overflow = 'hidden'
+                            },
+                            'after-enter'(el) {
+                                el.style.transition = ''
+                                el.style.height = ''
+                                el.style.overflow = el.dataset.oldOverflow
+                            },
+                            'before-leave'(el) {
+                                if (!el.dataset) el.dataset = {}
+                                el.dataset.oldPaddingTop = el.style.paddingTop
+                                el.dataset.oldPaddingBottom = el.style.paddingBottom
+                                el.dataset.oldOverflow = el.style.overflow
+                                el.style.height = el.scrollHeight + 'px'
+                                el.style.overflow = 'hidden'
+                            },
+                            'leave'(el) {
+                                if (el.scrollHeight !== 0) {
+                                    el.style.transition = elTransition
+                                    el.style.height = 0
+                                    el.style.paddingTop = 0
+                                    el.style.paddingBottom = 0
+                                }
+                            },
+                            'after-leave'(el) {
+                                el.style.transition = ''
+                                el.style.height = ''
+                                el.style.overflow = el.dataset.oldOverflow
+                                el.style.paddingTop = el.dataset.oldPaddingTop
+                                el.style.paddingBottom = el.dataset.oldPaddingBottom
+                            }
+                        }
+                    }
+                    return h('transition', data, children)
+                }
+            });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                show:false
+            }
+        });
+    </script>
+</body>
+</html>

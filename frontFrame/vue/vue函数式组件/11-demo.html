@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <script src="../vuex/vuex.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">增加</button>
+        <fn :children="list"></fn>
+        <!-- <el-input v-model="form[current.modelValue]" /> -->
+        <el-input v-model="current.data.style.background" />
+        <button @click="submit">提交</button>
+    </div>
+    <script>
+        Vue.component('fn', {
+            functional: true,
+            props: {
+                children: Array,
+            },
+            render: function (h, c) {
+                function hh(config,index){
+                    var type = config.type;
+                    function deepCopy(obj) {
+                        var result = Array.isArray(obj) ? [] : {};
+                        for (var key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                if (typeof obj[key] === 'object') {
+                                    result[key] = deepCopy(obj[key]);  
+                                } else {
+                                    result[key] = obj[key];
+                                }
+                            }
+                        }
+                        return result;
+                    }
+                    var data = deepCopy(config.data);
+                    if(type =='el-input'){
+                        data.on = {};
+                        data.nativeOn={};
+                        data.props.value = c.parent.form[config.modelValue]
+                        data.on.input = function(e){
+                            c.parent.form[config.modelValue] = e;
+                        }
+                        //点击回传配置
+                        data.nativeOn.click = function(e){
+                            var i = [...index];
+                            var config =c.props;
+                            for(var ii = 0;ii<i.length;ii++){
+                                config = config.children[i[ii]];
+                            }
+                            c.parent.current = config;
+                            console.log(config);
+                            config.data.attrs.placeholder = "请填写";
+                        }    
+                   }
+                    if(typeof config.children =='string'){
+                        return h(type,data,config.children)
+                    }
+                    var children =  [];
+                    if(config.children){
+                        children = config.children.map(function(config,index_2){
+                            return hh(config,[...index,index_2]);
+                        });
+                    }
+                    return h(type,data,children);  
+                }
+                return h(
+                    'div',
+                    Array.apply(null, { length: c.props.children.length }).map(function (value, index) {
+                        return hh(c.props.children[index],[index]);
+                    })
+                );
+            }
+        });
+        var app =  new Vue({
+            el: "#app",
+            data: {
+                form:{
+                  bb:'222'  
+                },
+                current:{data:{style:{background:'red'}}},
+                keys:1,
+                list: [
+                    {
+                        type: 'el-row',
+                        data: {},
+                        children:[
+                            {
+                                type:'el-col',
+                                data:{
+                                    props:{
+                                        span: 12
+                                    },
+                                    style:{
+                                        color:'blue'
+                                    }    
+                                },
+                                children:[
+                                    {
+                                        type:'el-input',
+                                        modelValue:'bb',
+                                        data:{
+                                            style:{
+                                                background:'red'
+                                             } ,
+                                            attrs: { placeholder:'请选择'},
+                                            props:{
+                                            },
+                                            ref:'input'
+                                        },
+                                        children:[]
+                                    }
+                                ]
+                            }
+                        ]
+
+                    }  
+                ]     
+            },
+            methods:{
+                add:function(){
+                    this.keys+=1;
+                    var key  ='aa'+this.keys;
+                    this.$set(this.form,'aa'+this.keys,key);
+                    this.list[0].children[0].children.push({
+                                        type:'el-input',
+                                        modelValue:key,
+                                        data:{
+                                            style:{
+                                                background:'red'
+                                             } ,
+                                            attrs: { placeholder:'请选择'},
+                                            props:{
+                                            },
+                                            ref:key
+                                        },
+                                        children:[]
+                                    });
+
+                },
+                submit:function(){
+                    alert(JSON.stringify(this.form));
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

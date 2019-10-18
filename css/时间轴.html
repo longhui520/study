@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间轴</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .step{
+            padding-left: 30px;
+            position: relative;
+        
+        }
+        .step-line{
+            position: absolute;
+            width:1px;
+            height: 100%;
+            background: red;
+            top:0;
+            left: 15px;
+        }
+        .step-circle{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: green;
+            top:5px;
+            left:12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="step">
+        <div class="step-content">
+            <p>我是内容</p>
+            <p>我是内容</p>
+            <p>我是内容</p>
+            <p>我是内容</p>
+            <p>我是内容</p>
+            <p>我是内容</p>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-circle"></div>
+    </div>
+</body>
+</html>

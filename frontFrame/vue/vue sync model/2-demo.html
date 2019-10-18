@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model原理</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <base-input :checked="value" @change="value=$event"></base-input>
+        <base-input v-model="value"></base-input>
+        <p>{{value}}</p>
+    </div>
+    <script>
+      Vue.component('base-input',{
+          model:{
+              prop:"checked",
+              event:"change"
+          },
+          props:{
+              checked:Boolean
+          },
+          template:
+          `
+            <input 
+                type="checkbox"
+                v-bind:checked = "checked"
+                v-on:change = "$emit('change',$event.target.checked)"
+            />
+          `
+      });
+      var app = new Vue({
+          el:"#app",
+          data:{
+              value:true
+          }
+      })
+    </script>
+</body>
+</html>

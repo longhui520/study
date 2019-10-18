@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数防抖</title>
+</head>
+<body>
+    <button>函数防抖</button>
+    <script>
+        var btn = document.getElementsByTagName('button')[0];
+        function debouce(method,delay,context){
+            context = context ?context:null;
+            return function () {
+                clearTimeout(method.id);
+                method.id = setTimeout(function(){
+                    method.call(context)
+                },delay);
+            }
+        }
+        btn.onclick=debouce(function () {
+            console.log(1);
+        },1000)
+    </script>
+</body>
+</html>

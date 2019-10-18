@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="../vant/vant.css">
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+       <comp-steps v-bind:steps="data"></comp-steps>
+    </div>
+    <template id="tpl">
+        <van-steps direction="vertical">
+                <van-step v-for="(step,index) in steps" >
+                    <!-- 单串 -->
+                    <template v-if="step.parallel==null">   
+                        <span>{{step.name}}</span>
+                        <template v-if="step.audituser">
+                            <div>
+                                <van-row v-for="(user,index) in step.audituser" style="color:red;">
+                                    <p>审批人-{{user.name}}</p>
+                                    <template v-if="user.content">
+                                        <p v-for="item in user.content" style="padding-left: 5px;">
+                                            <span>{{item.doinfo}}</span>
+                                            <span>{{item.dotime |format}}</span>
+                                        </p>
+                                    </template>
+                                </van-row>
+                            </div>
+                        </template>  
+                    </template>
+                    <!-- 单批次多人串行 -->
+                    <template v-if="step.parallel=='0'">
+                        <span>{{step.name}}</span>
+                        <template v-if="step.audituser">
+                            <div>
+                                <van-row v-for="(user,index) in step.audituser" style="color:red;">
+                                    <p>审批人-{{user.name}}</p>
+                                    <template v-if="user.content">
+                                        <p v-for="item in user.content" style="padding-left: 5px;">
+                                            <span>{{item.doinfo}}</span>
+                                            <span>{{item.dotime |format}}</span>
+                                        </p>
+                                    </template>
+                                    <template v-if="step.audituser.length-1>index">
+                                        <div>↓</div>
+                                    </template>
+                                </van-row>
+                            </div>
+                        </template>  
+                    </template>
+
+                    <!-- 单批次多人并行 -->
+                    <template v-if="step.parallel=='1'">
+                            <span>{{step.name}}</span>
+                            <template v-if="step.audituser">
+                                <div>
+                                    <van-row v-for="(user,index) in step.audituser" style="color:red;">
+                                        <p>审批人-{{user.name}}</p>
+                                        <template v-if="user.content">
+                                            <p v-for="item in user.content" style="padding-left: 5px;">
+                                                <span>{{item.doinfo}}</span>
+                                                <span>{{item.dotime |format}}</span>
+                                            </p>
+                                        </template>
+                                        <template v-if="step.audituser.length-1>index">
+                                            <div>+</div>
+                                        </template>
+                                    </van-row>
+                                </div>
+                            </template>  
+                    </template>
+
+                    <!-- 多批次 -->
+                    <template v-if="step.parallel=='2'">
+                        <span>{{step.name}}</span>
+
+                    </template>
+                    
+                </van-step>
+            </van-steps>
+    </template>
+    <script>
+        Vue.component("comp-steps",{
+            template:"#tpl",
+            props:{
+                steps:{
+                    type:Array,
+                    default:function(){return []}
+                }
+            },
+            filters:{
+                format:function(tamp){
+                    function add0(m){return m<10?'0'+m:m }
+                    var time = new Date(parseInt(tamp+"000"));
+                    var y = time.getFullYear();
+                    var m = time.getMonth()+1;
+                    var d = time.getDate();
+                    var h = time.getHours();
+                    var mm = time.getMinutes();
+                    var s = time.getSeconds();
+                    return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+                }
+            },
+            methods:{
+                getType(o){
+                    var _toString = Object.prototype.toString;
+                    var _type = {
+                        'undefined'         : 'undefined',
+                        'number'            : 'number',
+                        'boolean'           : 'boolean',
+                        'string'            : 'string',
+                        '[object Function]' : 'function', 
+                        '[object Array]'    : 'array', 
+                        '[object Date]'     : 'date', 
+                        '[object RegExp]'   : 'regExp', 
+                        '[object Object]'   : 'object',
+                        '[object Error]'    : 'error'
+                    }
+                    return _type[typeof o] || _type[_toString.call(o)] || (o ?"object":"null");
+                }
+            }
+
+        });
+        var json = [{
+                "isaudittableid": null,
+                "name": "开始",
+                "isauditmodel": null,
+                "parallel": null,
+                "nodeid": null,
+                "flowtype": null,
+                "auditStatus": 1,
+                "classval": "check_current_ed",
+                "audituser": [{
+                    "id": "1204",
+                    "name": "李锐",
+                    "content": [{
+                        "doinfo": "同意",
+                        "dotime": "1547620612",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "流程新建",
+                        "dotime": "1547620612",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "流程取回",
+                        "dotime": "1547620605",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "同意",
+                        "dotime": "1547620324",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "流程新建",
+                        "dotime": "1547620324",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "流程取回",
+                        "dotime": "1547620312",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "同意",
+                        "dotime": "1547620149",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "流程新建",
+                        "dotime": "1547620149",
+                        "userid": "1204"
+                    }]
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "审批节点1人",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2918019",
+                "flowtype": "2",
+                "auditStatus": 1,
+                "classval": "check_current_ed",
+                "audituser": [{
+                    "id": "4",
+                    "name": "汪勇",
+                    "content": [{
+                        "doinfo": "同意",
+                        "dotime": "1547621535",
+                        "userid": "4"
+                    }]
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "加签节点",
+                "isauditmodel": null,
+                "parallel": "1",
+                "nodeid": "2918027",
+                "flowtype": "2",
+                "auditStatus": 1,
+                "classval": "check_current_ed",
+                "audituser": [{
+                    "id": "1409",
+                    "name": "熊爽",
+                    "content": [{
+                        "doinfo": "同意",
+                        "dotime": "1547621923",
+                        "userid": "1409"
+                    }]
+                }, {
+                    "id": "1410",
+                    "name": "王涛",
+                    "content": [{
+                        "doinfo": "同意",
+                        "dotime": "1547621637",
+                        "userid": "1410"
+                    }]
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "审批节点多人",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2918020",
+                "flowtype": "2",
+                "auditStatus": 2,
+                "classval": "check_current",
+                "audituser": [{
+                    "id": "11",
+                    "name": "杨君",
+                    "content": null
+                }, {
+                    "id": "13",
+                    "name": "付娟",
+                    "content": null
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "为企业的",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2918022",
+                "flowtype": "2",
+                "auditStatus": 0,
+                "classval": "",
+                "audituser": [{
+                    "id": "4",
+                    "name": "汪勇",
+                    "content": null
+                }, {
+                    "id": "11",
+                    "name": "杨君",
+                    "content": null
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "并串混审节点-单批次并行",
+                "isauditmodel": "",
+                "parallel": "1",
+                "nodeid": "2918024",
+                "flowtype": "2",
+                "auditStatus": 0,
+                "classval": "",
+                "audituser": [{
+                    "id": "22",
+                    "name": "邓旭东",
+                    "content": null
+                }, {
+                    "id": "24",
+                    "name": "庹真",
+                    "content": null
+                }]
+            }];
+        var json1 = [{
+                "isaudittableid": null,
+                "name": "\u5f00\u59cb",
+                "isauditmodel": null,
+                "parallel": null,
+                "nodeid": null,
+                "flowtype": null,
+                "auditStatus": 1,
+                "audituser": [{
+                    "id": "1204",
+                    "name": "\u674e\u9510",
+                    "content": [{
+                        "doinfo": "\u540c\u610f",
+                        "dotime": "1547620085",
+                        "userid": "1204"
+                    }, {
+                        "doinfo": "\u6d41\u7a0b\u65b0\u5efa",
+                        "dotime": "1547620085",
+                        "userid": "1204"
+                    }]
+                }
+                ]
+            }, {
+                "isaudittableid": "0",
+                "name": "\u5ba1\u6279\u8282\u70b91\u4eba",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2917995",
+                "flowtype": "2",
+                "auditStatus": 2,
+                "audituser": [{
+                    "id": "13",
+                    "name": "\u4ed8\u5a1f",
+                    "content": null
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "\u5ba1\u6279\u8282\u70b9\u591a\u4eba",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2917996",
+                "flowtype": "2",
+                "auditStatus": 0,
+                "audituser": [{
+                    "id": "11",
+                    "name": "\u6768\u541b",
+                    "content": null
+                }, {
+                    "id": "13",
+                    "name": "\u4ed8\u5a1f",
+                    "content": null
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "\u4e3a\u5408\u4f5c\u793e",
+                "isauditmodel": "",
+                "parallel": "0",
+                "nodeid": "2917999",
+                "flowtype": "2",
+                "auditStatus": 0,
+                "audituser": [{
+                    "id": "3",
+                    "name": "\u5f20\u654f",
+                    "content": null
+                }, {
+                    "id": "4",
+                    "name": "\u6c6a\u52c7",
+                    "content": null
+                }, {
+                    "id": "8",
+                    "name": "\u5f90\u6da6\u7434",
+                    "content": null
+                }]
+            }, {
+                "isaudittableid": "0",
+                "name": "\u5e76\u4e32\u6df7\u5ba1\u8282\u70b9-\u591a\u6279\u6b21\u5e76\u884c",
+                "isauditmodel": "",
+                "parallel": "2",
+                "nodeid": "2918001",
+                "flowtype": "2",
+                "auditStatus": 0,
+                "audituser": {
+                    "1": [
+                        [{
+                            "id": "11",
+                            "name": "\u6768\u541b",
+                            "content": null
+                        }, {
+                            "id": "13",
+                            "name": "\u4ed8\u5a1f",
+                            "content": null
+                        }],
+                        [{
+                            "id": "16",
+                            "name": "\u674e\u73b2\u4e3d",
+                            "content": null
+                        }, {
+                            "id": "18",
+                            "name": "\u7518\u4fe1\u5efa",
+                            "content": null
+                        }, {
+                            "id": "19",
+                            "name": "\u738b\u94ed\u53cc",
+                            "content": null
+                        }]
+                    ],
+                    "2": [
+                        [{
+                            "id": "35",
+                            "name": "\u6556\u4fca",
+                            "content": null
+                        }, {
+                            "id": "36",
+                            "name": "\u91d1\u4e88\u946b",
+                            "content": null
+                        }],
+                        [{
+                            "id": "28",
+                            "name": "\u5218\u5764",
+                            "content": null
+                        }]
+                    ]
+                }
+            }, {
+                "isaudittableid": "0",
+                "name": "\u8f6c\u6279\u590d",
+                "isauditmodel": "MisAutoDap",
+                "parallel": "0",
+                "nodeid": "2918002",
+                "flowtype": "3",
+                "auditStatus": 0,
+                "audituser": [{
+                    "id": "19",
+                    "name": "\u738b\u94ed\u53cc",
+                    "content": null
+                }]
+            }]
+        
+            var app = new Vue({
+            el:"#app",
+            data:{
+                data:json1
+            }
+          
+        });
+        console.log(json1);
+        function  format(shijianchuo) {
+        function add0(m){return m<10?'0'+m:m;}
+            var time = new Date(shijianchuo);
+            var y = time.getFullYear();
+            var m = time.getMonth()+1;
+            var d = time.getDate();
+            var h = time.getHours();
+            var mm = time.getMinutes();
+            var s = time.getSeconds();
+            return y+'-'+add0(m)+'-'+add0(d);
+        } 
+        console.log(format(1547621535000));
+
+
+    </script>
+</body>
+</html>

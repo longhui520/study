@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <my-function-button @click="aa" :v="111">
+       <span>1111</span>
+   </my-function-button>
+</div>
+<script>
+   Vue.component('my-function-button',{
+       functional:true,
+       render:function(h,c){
+           console.log(c);
+           return h('button',c.data,c.children);
+       }
+   });
+    var app = new Vue({
+        el:"#app",
+        data:{
+            item:1
+        },
+        methods:{
+            aa:function(){
+                console.log('aa');
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

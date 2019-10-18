@@ -19,9 +19,15 @@
                 message:'Hello world!'
             },
             computed:{
-                reversedMessage:function(){
-                    return this.message.split('').reverse().join('')
+                totalCunt: function() {
+                    // let totalC = this.mi_title_stitle_img.dataList.filter((item)=>{
+                    //   return item.count+=item.count
+                    // })
+                    return "1"
                 }
+            },
+            created() {
+                alert(this.totalCunt) // 为什么打印结果为： undefined
             }
         })
     </script>

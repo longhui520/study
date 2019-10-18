@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="../vant/vant.css">
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+       <comp-steps v-bind:content="content"></comp-steps>
+    </div>
+    <template id="tpl">
+        <van-steps direction="vertical">
+                <van-step v-for="(item,index) in content.steps" >
+                    <span :style="{color:index==content.active?'#f00':(index<content.active?'#000':'#eee')}" @click="item.show=!item.show">{{item.text}}</span>
+                    <template v-if="item.substeps">
+                            <van-row type="flex" align="center" v-for="(subitem,index) in item.substeps" v-show="item.show"> 
+                                <van-col span="1" >
+                                    1
+                                </van-col>
+                                <van-col span="23">
+                                    <van-steps  direction="vertical">
+                                        <van-step v-for="(subitem2,index) in subitem.steps">
+                                            <span :style="{color:index==subitem.active?'#f00':(index<subitem.active?'#000':'#eee')}">{{subitem2.text}}</span>
+                                        </van-step>
+                                    </van-steps>     
+                                </van-col>
+                            </van-row>
+                    </template>
+                
+                </van-step>
+            </van-steps>
+    </template>
+    <script>
+        Vue.component("comp-steps",{
+            template:"#tpl",
+            props:{
+                content:{
+                    type:Object,
+                    default:function(){return {}}
+                }
+            }
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                content:{
+                    active:1,
+                    direction:"vertical",
+                    steps:[
+                        {text:"步骤1"},
+                        {text:"步骤2",
+                            show:true,
+                            substeps:[
+                                {
+                                active:1,
+                                direction:"vertical",
+                                steps:[
+                                    {text:"步骤2-1-1"},
+                                    {text:"步骤2-1-2"},
+                                    ]
+                                },
+                                {
+                                active:1,
+                                direction:"vertical",
+                                steps:[
+                                    {text:"步骤2-2-1"},
+                                    {text:"步骤2-2-2"},
+                                    ]
+                                },
+                            ],
+                        },    
+                        {text:"步骤3"},
+                        {text:"步骤4"}
+                    ]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

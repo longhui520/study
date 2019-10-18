@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>装饰者模式</title>
+</head>
+<body>
+    <script>
+        function func(){
+            for(let i=0;i<100;i++){
+                console.log('我是测试');
+            }
+        }    
+        function timeProfileDecorator(func){
+            return function(...args){
+                const startTime = new Date();
+                func.apply(this,args);
+                const elasperdTime = (new Date()).getTime() - startTime.getTime();
+                console.log(`该函数消耗了${elasperdTime}毫秒`);
+            }
+        }
+        const newFunc = timeProfileDecorator(func);
+        newFunc();
+    </script>
+</body>
+</html>

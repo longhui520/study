@@ -23,6 +23,7 @@
             return function(){
                 var firstTime = new Date();
                 if(firstTime - lastTime>delay){
+					lastTime = new Date();
                     fn.call(this);
                 }
             }

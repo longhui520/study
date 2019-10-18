@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>容器组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fn :list="list"></fn>
+    </div>
+    <script>
+        Vue.component('child', {
+            name: 'child',
+            props: ['value'],
+            template: '<div>{{value}}</div>'
+        });
+        Vue.component('fn', {
+            functional: true,
+            props: ['list'],
+            render: function (h, c) {
+                function getData(data) {
+                    return JSON.parse(JSON.stringify(data));
+                }
+                function hh(props) {
+                    var type = props.type;
+                    var data = JSON.parse(JSON.stringify(props.data));
+                    if (props.children) {
+                        var children = Array.apply(null, { length: props.children.length }).map(function (v, i) {
+                            return hh(props.children[i]);
+                        });
+                    }
+                    return h(type, data, children);
+                }
+                return h('div',
+                    Array.apply(null, { length: c.props.list.length }).map(function (v, i) {
+                        return hh(c.props.list[i]);
+                    }));
+            }
+        });
+        new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    {
+                        type: 'div',
+                        data: {},
+                        children: [
+                            {
+                                type: 'child',
+                                data: {
+                                    props: {
+                                        value: 2
+                                    }
+                                },
+                                children: [
+                                    {
+                                        type: 'child',
+                                        data: {
+                                            props: {
+                                                value: 2222
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

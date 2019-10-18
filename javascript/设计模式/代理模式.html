@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理模式</title>
+</head>
+<body>
+    <script>
+        var imgFunc = (function(){
+            var img = document.createElement('img');
+            document.body.appendChild(img);
+            return {
+                setSrc:function(src){
+                    img.src = src;
+                }
+            }
+        })();
+        var proxyImg = (function(){
+            var img = new Image();
+            img.onload = function(){
+                imgFunc.setSrc(this.src);
+            }
+            return function(src){
+                imgFunc.setSrc('../loading.gif');
+                img.src = src;
+            }
+        })();
+    </script>
+</body>
+</html>

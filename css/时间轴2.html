@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程图</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul>li{
+            width:100px;
+            height: 30px;
+            position: relative;
+        }
+        ul>li>a{
+            padding:5px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        ul>li>span{
+            position: absolute;
+            right:0;
+            top:15px;
+            width: 5px;
+            height: 5px;
+            background: #f00;
+
+        }
+        ul>li.active:not(:first-child)::before{
+            content: "";
+            position: absolute;
+            right:0;
+            top:0;
+            width:5px;
+            height: 100px;
+            background: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <span></span>
+            <a href="#">流程1</a>
+        </li>
+        <li class="active">
+            <span></span>
+            <a href="#">流程2</a>
+        </li>
+        <li>
+            <span></span>
+            <a href="#">流程3</a>
+        </li>
+    </ul>
+</body>
+</html>

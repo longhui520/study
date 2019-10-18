@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+    class NameFrom extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={value:""};
+            this.changeValue = this.changeValue.bind(this);
+        }
+        changeValue(event){
+            this.setState({value:event.target.value});
+        }
+        render(){
+            return (
+                <div>
+                    <label>
+                        <input type="text" value={this.state.value} onChange={this.changeValue} />
+                    </label>
+                    <p>{this.state.value}</p>
+                </div>
+
+            )
+        }
+    }
+    class FlavorForm extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {
+                value:""
+            };
+            this.changeValue = this.changeValue.bind(this);
+        }
+        changeValue(event){
+            this.setState({value:event.target.value});
+        }
+        render(){
+            return (
+                <select value={this.state.value} onChange={this.changeValue}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            )
+        }
+    }
+    //多个input控件
+    class MyFrom extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={
+                name:'小龙',
+                fruit:true
+            };
+            this.changeValue = this.changeValue.bind(this);
+        }
+        changeValue(event){
+            const target = event.target;
+            const name = target.name;
+            const value = target.type == "checkbox"?target.checked:target.value;
+            this.setState({[name]:value});
+        }
+        render(){
+            return (
+                <div>
+                    <input type="text" name="name" value={this.state.name} onChange={this.changeValue} />
+                    <br />
+                    <input type="checkbox" name="fruit" value={this.state.fruit} onChange={this.changeValue} />
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <MyFrom />,
+        document.getElementById('example1')
+    )
+</script>
+</body>
+</html>

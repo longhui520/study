@@ -2,8 +2,9 @@
 
 import { isDef, isUndef } from 'shared/util'
 import { updateListeners } from 'core/vdom/helpers/index'
-import { withMacroTask, isIE, supportsPassive } from 'core/util/index'
+import { isIE, supportsPassive, isUsingMicroTask } from 'core/util/index'
 import { RANGE_TOKEN, CHECKBOX_RADIO_TOKEN } from 'web/compiler/directives/model'
+import { currentFlushTimestamp } from 'core/observer/scheduler'
 
 // normalize v-model event tokens that can only be determined at runtime.
 // it's important to place the event as the first in the array because
@@ -28,7 +29,7 @@ function normalizeEvents (on) {
 
 let target: any
 
-function createOnceHandler (handler, event, capture) {
+function createOnceHandler (event, handler, capture) {
   const _target = target // save current target element in closure
   return function onceHandler () {
     const res = handler.apply(null, arguments)
@@ -39,16 +40,28 @@ function createOnceHandler (handler, event, capture) {
 }
 
 function add (
-  event: string,
+  name: string,
   handler: Function,
-  once: boolean,
   capture: boolean,
   passive: boolean
 ) {
-  handler = withMacroTask(handler)
-  if (once) handler = createOnceHandler(handler, event, capture)
+  // async edge case #6566: inner click event triggers patch, event handler
+  // attached to outer element during patch, and triggered again. This
+  // happens because browsers fire microtask ticks between event propagation.
+  // the solution is simple: we save the timestamp when a handler is attached,
+  // and the handler would only fire if the event passed to it was fired
+  // AFTER it was attached.
+  if (isUsingMicroTask) {
+    const attachedTimestamp = currentFlushTimestamp
+    const original = handler
+    handler = original._wrapper = function (e) {
+      if (e.timeStamp >= attachedTimestamp) {
+        return original.apply(this, arguments)
+      }
+    }
+  }
   target.addEventListener(
-    event,
+    name,
     handler,
     supportsPassive
       ? { capture, passive }
@@ -57,14 +70,14 @@ function add (
 }
 
 function remove (
-  event: string,
+  name: string,
   handler: Function,
   capture: boolean,
   _target?: HTMLElement
 ) {
   (_target || target).removeEventListener(
-    event,
-    handler._withTask || handler,
+    name,
+    handler._wrapper || handler,
     capture
   )
 }
@@ -77,7 +90,7 @@ function updateDOMListeners (oldVnode: VNodeWithData, vnode: VNodeWithData) {
   const oldOn = oldVnode.data.on || {}
   target = vnode.elm
   normalizeEvents(on)
-  updateListeners(on, oldOn, add, remove, vnode.context)
+  updateListeners(on, oldOn, add, remove, createOnceHandler, vnode.context)
   target = undefined
 }
 

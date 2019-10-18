@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <style>
+        .dragArea {
+            min-height: 50px;
+            outline: 1px dashed;
+        }
+        .ghost{
+            border:1px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div style="float:left;margin-right:20px;width:200px;">
+                <draggable
+                :list = list1
+                :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                >
+                  <div v-for="element in list1" :key="element.name">
+                      {{element.name}}
+                  </div>
+                </draggable>
+        </div>
+       <div  style="float:left;width:200px;border:1px solid #eee;height: 500px;">
+            <draggable
+            :list = list2
+            :options="{group:'people', ghostClass: 'ghost'}"
+            >
+              <div v-for="element in list2" :key="element.name">
+                  {{element.name}}
+              </div>
+            </draggable>
+       </div>
+        
+    </div>
+    <script>
+       
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list1: [
+                    {
+                        name: "task 1",
+                       
+                    },
+                    {
+                        name: "task 3",
+
+                    },
+                    {
+                        name: "task 5",
+                    }
+                ],
+                list2:[ {
+                        name: "task 5",
+                    }
+                    ]
+            }
+        });
+        
+
+    </script>
+</body>
+
+</html>

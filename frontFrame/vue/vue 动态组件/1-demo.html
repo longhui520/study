@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-for="(component,index) in components">
+            <components v-if="component.compType =='fn'" :is="component.compType" :index="index"  >
+                <components  v-for="(component2,index2) in component.forms" :index="index2" :is="component2.compType" v-bind="component2"></components>
+            </components>
+            <components  v-else :is="component.compType" v-bind="component" :index = "index"></components>
+        </template>
+    </div>
+    <script>
+        Vue.component('child1', {
+            props: ['msg','index'],
+            template: '<div>{{msg}}</div>'
+        });
+        Vue.component('child2', {
+            props: ['msg','index'],
+            template: '<h1>{{msg}}</h1>'
+        });
+        Vue.component('fn',{
+            props:['index'],
+            template:`<div><slot></slot></div>`
+        });
+        var sortforms = [
+            {
+                compType: 'child1',
+                msg: 111,
+                order: 1
+            },
+            {
+                compType: 'child2',
+                msg: 111,
+                order: 2
+            },
+            {
+                compType: 'fn',
+                order: 3,
+                forms: [
+                    {
+                        compType: 'child2',
+                        msg: 111,
+                        order: 5
+                    }, {
+                        compType: 'child2',
+                        msg: 111,
+                        order: 5
+                    },
+                ]
+            }
+        ]
+        new Vue({
+            el: '#app',
+            data: {
+                components: sortforms
+            }
+        });
+        setTimeout(function(){
+            sortforms.splice(2,0,{ compType: 'child2',msg: 444,order: 6})
+        },5000)
+    </script>
+</body>
+
+</html>

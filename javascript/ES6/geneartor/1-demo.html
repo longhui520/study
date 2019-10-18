@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = [1,[2,3],[4,[5,6]]];
+        var flat = function* flat(a){
+            for(let i= 0;i<a.length;i++){
+                if(Array.isArray(a[i])){
+                    yield* flat(a[i]);
+                }else{
+                    yield a[i];
+                }
+            }
+        }
+        for(let i of flat(a)){
+            console.log(i);
+        }
+        var myInterator = {};
+        myInterator[Symbol.iterator] = function* (){
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+        console.log([...myInterator]);
+    </script>
+</body>
+</html>

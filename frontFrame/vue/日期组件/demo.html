@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="vue-date-time-m-browser.js"></script>
+</head>
+<body>
+    <div id="app">
+            <div class="date-time-item">
+                <div class="date-time-input" @click="show">选择</div>
+                <d-date-time ref="dateTime" type="day"  color="#417df4" value="1992-10-10 12:10" min="1992/10/10 10:20" mam="1992/10/10 15:00" @confirm="select"></d-date-time>
+            </div>
+    </div>
+   <script>
+       var app = new Vue({
+           el:"#app",
+           methods:{
+               show:function(){
+                   this.$refs.dateTime.show();
+               },
+               select:function(e){
+                   console.log(e);
+               }
+           }
+       });
+   
+   </script> 
+</body>
+</html>

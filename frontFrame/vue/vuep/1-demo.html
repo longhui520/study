@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vuep</title>
+    <link rel="stylesheet" href="../node_modules/vuep/dist/vuep.css">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuep/dist/vuep.js"></script>
+</head>
+<body>
+    <div id="app">
+        <vuep template="#example1"></vuep>
+        <vuep template="#example2"></vuep>
+    </div>
+    <script v-pre type="text/x-template" id="example1">
+        <template>
+        <div>Hello, {{ name }}!</div>
+        </template>
+        <script>
+            module.exports = {
+                data: function () {
+                return { name: 'Vue' }
+                }
+            }
+        </script>
+    </script>
+    <script v-pre type="text/x-template" id="example2">
+        <template>
+        <div>Hello, {{ name }}!</div>
+        </template>
+        <script>
+            module.exports = {
+                data: function () {
+                return { name: 'Vue' }
+                }
+            }
+        </script>
+    </script>
+    <script>
+        Vue.use(Vuep);
+        new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>

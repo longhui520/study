@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+    class Toggle extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {isToggleOn:true};
+            this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick(e){
+            this.setState(preState=>(
+                {isToggleOn:!preState.isToggleOn}
+            ));
+        }
+        render(){
+            return (
+                <button onClick = {this.handleClick}>
+                    {this.state.isToggleOn?'ON':'OFF'}
+                </button>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Toggle />,
+        document.getElementById('example1')
+    )
+</script>
+</body>
+</html>

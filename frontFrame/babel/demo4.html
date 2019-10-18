@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var a = [
+            {
+                "rules": "【h1554286704】 ==1||【h1554286704】==2||【h1554286704】==4",
+                "rules_refer": {
+                    "【h1554286704】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "zhutimingchen"
+                ],
+                "operated_type": "label",
+                "result": "1",
+                "result_rules": "\"机构名称\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【l1554545073】==3",
+                "rules_refer": {
+                    "【l1554545073】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "zhutimingchen"
+                ],
+                "operated_type": "label",
+                "result": "1",
+                "result_rules": "\"姓名\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【d1554545180】==1||【d1554545180】==2||【d1554545180】==4",
+                "rules_refer": {
+                    "【d1554545180】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "range",
+                "result": "1",
+                "result_rules": "parentid=4",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【a1554545290】==3",
+                "rules_refer": {
+                    "【a1554545290】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "range",
+                "result": "1",
+                "result_rules": "parentid=1",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【p1555379551】==\"3\" &&【t1555379777】==''",
+                "rules_refer": {
+                    "【p1555379551】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【d1555379748】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "text",
+                            "mis_auto_levnz.orderno",
+                            "【项目主体信息】编号",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【t1555379777】": {
+                        "type": "tables",
+                        "sql_str": "select zhengjianleixing from mis_auto_levnz where orderno=&quot;【d1555379748】&quot;"
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "write_result",
+                "result": "1",
+                "result_rules": "\"\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "(【h1555379593】==\"1\" || 【h1555379593】==\"2\"||【h1555379593】==\"4\") &&【s1555379836】==\"\"",
+                "rules_refer": {
+                    "【h1555379593】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【r1555379813】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "text",
+                            "mis_auto_levnz.orderno",
+                            "【项目主体信息】编号",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【s1555379836】": {
+                        "type": "tables",
+                        "sql_str": "select zhengjianleixing from mis_auto_levnz where orderno=&quot;【r1555379813】&quot;"
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "write_result",
+                "result": "1",
+                "result_rules": "\"\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【q1555079801】==\"3\" && 【k1555377823】==''",
+                "rules_refer": {
+                    "【q1555079801】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【k1555377786】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "text",
+                            "mis_auto_levnz.orderno",
+                            "【项目主体信息】编号",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【k1555377823】": {
+                        "type": "tables",
+                        "sql_str": "select zhengjianleixing from           mis_auto_levnz where orderno=&quot;【k1555377786】&quot;"
+                    },
+                    "【c1555377935】": {
+                        "type": "tables",
+                        "sql_str": "select zhutileixing from        mis_auto_levnz         where orderno=&quot;【k1555377786】&quot;"
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "write_result",
+                "result": "1",
+                "result_rules": "\"2\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "(【z1555079905】==\"1\" || 【z1555079905】==\"2\"||【z1555079905】==\"4\")&&【j1555378674】==''",
+                "rules_refer": {
+                    "【z1555079905】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【k1555378649】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "text",
+                            "mis_auto_levnz.orderno",
+                            "【项目主体信息】编号",
+                            "MisAutoCpf"
+                        ]
+                    },
+                    "【j1555378674】": {
+                        "type": "tables",
+                        "sql_str": "select zhengjianleixing from  mis_auto_levnz where orderno=&quot;【k1555378649】&quot;"
+                    }
+                },
+                "operated_fields": [
+                    "zhengjianleixing"
+                ],
+                "operated_type": "write_result",
+                "result": "1",
+                "result_rules": "\"5\"",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【z1555561277】==3",
+                "rules_refer": {
+                    "【z1555561277】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "chushengriqi",
+                    "guanxi",
+                    "xingbie",
+                    "minzu",
+                    "lianxidianhua"
+                ],
+                "operated_type": "required",
+                "result": "1",
+                "result_rules": "",
+                "result_rules_refer": null
+            },
+            {
+                "rules": "【c1555561393】==1||【c1555561393】==2&&【c1555561393】==4",
+                "rules_refer": {
+                    "【c1555561393】": {
+                        "type": "control",
+                        "actionname": "MisAutoCpf",
+                        "rules": [
+                            "select",
+                            "mis_auto_levnz.zhutileixing",
+                            "【项目主体信息】主体类型",
+                            "MisAutoCpf"
+                        ]
+                    }
+                },
+                "operated_fields": [
+                    "chengliriqi",
+                    "farenxingming",
+                    "yingyeqixian",
+                    "zhucedizhi",
+                    "jingyingfanwei"
+                ],
+                "operated_type": "required",
+                "result": "1",
+                "result_rules": "",
+                "result_rules_refer": null
+            }
+        ]
+
+        function relation_exec(relation,options) {
+            options  = options ||{};
+            var reg = options.reg || /\【\w+\】/g;
+            var SYS_URL =options.SYS_URL || 'www.pp.com';
+            var getValueByApi = function (url, resolve, sentType, data) {
+                resolve('远程数据库的值');
+                return;
+                data = data || {};
+                sentType = sentType || "get"
+                $.ajax({
+                    url: url,
+                    data: data,
+                    type: sentType,
+                    dataType: 'jsonp',
+                    jsonCallback: 'callback',
+                    contentType: 'application/json',
+                    success: function (data) {
+                        resolve(data);
+                    }
+                });
+            }
+            var getValueByField = function (fields, fieldName, resolve) {
+                if (resolve) {
+                    resolve('当前表单的值2');
+                } else {
+                    return '当前表单值1';
+                }
+            }
+            var getRuleValue2 = function (reg, rules_str, rules_refer) {
+                return new Promise(function (resolve) {
+                    var rules_arr = rules_str.match(reg) || [];
+                    var rules_arr_value = getRuleValue(reg, rules_arr, rules_refer);
+                    Promise.all(rules_arr_value).then(function (data) {
+                        resolve(rules_str.replace(reg, function (m) {
+                            return data[rules_arr.indexOf(m)]
+                        }));
+                    });
+                });
+            };
+            var getRuleValue = function getRuleValue(reg, rules_arr, rules_refer) {
+                return rules_arr.map(function (e) {
+                    return new Promise(function (resolve) {
+                        var rules_obj = rules_refer[e]
+                        switch (rules_obj.type) {
+                            case 'control':
+                                getValueByField({}, {}, resolve);
+                                break;
+                            case 'tables':
+                                getRuleValue2(reg, rules_obj.sql_str, rules_refer).then(
+                                    function (sql_str) {
+                                        url = SYS_URL + "/callSQL/sql/" + sql_str;
+                                        getValueByApi(url, resolve);
+                                    }
+                                );
+                                break;
+                            case 'sp':
+                                getRuleValue2(reg, rules_obj.spname, rules_refer).then(
+                                    function (spname) {
+                                        url = SYS_URL + "/callStored?stored=" + spname;
+                                        getValueByApi(url, resolve);
+                                    }
+                                );
+                                break;
+                            case 'api':
+                                getRuleValue2(reg, rules_obj.url, rules_refer).then(
+                                    function (url) {
+                                        var param_value = rules_obj.param.map(function (e) {
+                                            return e[1];
+                                        });
+                                        var param_key = rules_obj.param.map(function (e) {
+                                            return e[0];
+                                        });
+                                        var send_type = rules_obj.send_type;
+                                        Promise.all(param_value.map(function (e) {
+                                            getRuleValue2(reg, e, rules_refer);
+                                        })).then(function (param_value) {
+                                            var data = {};
+                                            param_value.forEach(function (v, i) {
+                                                data[param_key[i]] = v;
+                                            });
+                                            getValueByApi(url, resolve, sentType, data);
+                                        });
+                                    }
+                                );
+                                break;
+                        }
+                    });
+                });
+            };
+            var relations_arr = function (e1) {
+                return new Promise(function (resolve) {
+                    //1. 预备规则中的替换值
+                    getRuleValue2(reg, e1.rules, e1.rules_refer).then(function (rules) {
+                        resolve("规则解析完毕");
+                        // 3 判断规则是否为真，为真，再看操作类型，来解析结果规则
+                        if (e1.operated_type === 'write_result') {
+                            //结果规则的规则
+                            getRuleValue2(reg, e1.result_rules, e1.result_rules_refer).then(function (result_rules) {
+                                console.log(result_rules);
+                                resolve("结果规则执行完毕");
+                            });
+                        }
+                    });
+                })
+            };
+            (async function () {
+                for (var i in relation) {
+                    var c = await relations_arr(relation[i]);
+                    console.log(c);
+                }
+            })();
+        }    
+        relation_exec(a);
+
+    </script>
+</body>
+
+</html>

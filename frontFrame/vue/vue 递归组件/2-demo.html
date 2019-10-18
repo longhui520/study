@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .bgc{
+           background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">增加</button>
+        <form-item :widget="item" v-for="item in list" :key="item.key" @click.native.stop="select(item)"></form-item>
+    </div>
+    <script>
+        Vue.component('child', {
+            props: ['msg'],
+            template: '<div>{{msg}}</div>'
+        })
+        Vue.component('form-item', {
+            name: 'form-item',
+            props: ['widget'],
+            template:
+                `
+             <div style="padding:10px;">
+                <template v-if="widget.type == 'child'">
+                    <child :msg="widget.options.msg" :class="{bgc:$root.selectData.key == widget.key}"></child>
+                </template>
+                <template v-else-if="widget.type == 'form-item'">
+                   <form-item v-for="widget_item in widget.list" :widget="widget_item" :key="widget_item.key" @click.native.stop="$root.select(widget_item)" :class="{bgc:$root.selectData.key == widget.key}"></form-item>
+                </template>
+            </div>
+            `
+        });
+       var app =  new Vue({
+            el: "#app",
+            data: {
+                selectData:{},
+                list: [
+                    {
+                        type: 'child',
+                        key:"1",
+                        options: {
+                            msg: '1111'
+                        }
+                    },
+                    {
+                        key:"2",
+                        type: 'form-item',
+                        list: [
+                            {
+                                key:"4",
+                                type: 'child',
+                                options: {
+                                    msg: '222'
+                                }
+                            },
+                            {
+                                key:'5',
+                                type: 'child',
+                                options: {
+                                    msg: '222'
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            methods:{
+                add:function(){
+                    this.list.push( {
+                        type: 'child',
+                        options: {
+                            msg: '1111'
+                        }
+                    });
+                },
+                select:function(item){
+                    this.$set(this.selectData,'key',item.key);
+                    if(item.type!="form-item"){
+                        item.options.msg = 3333;
+                    }
+                    console.log(this.list);
+                    // this.$set(this.select,type,item.type);
+                    // this.$set(this.select,key,item.key);
+                    // this.select.key = item.key;
+                    console.log(item);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

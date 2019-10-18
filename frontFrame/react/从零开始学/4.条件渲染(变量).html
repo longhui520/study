@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+    function UserGreeting(props) {
+        return <h1>Welcome back!</h1>;
+    }
+    function GuestGreeting(props) {
+        return <h1>Please sign up.</h1>;
+    }
+    function Greeting(props) {
+        const isLoggedIn = props.isLoggedIn;
+        if (isLoggedIn) {
+            return <UserGreeting />;
+        }
+        return <GuestGreeting />;
+    }
+    function LoginButton(props){
+        return <button onClick={props.onClick}>Login</button>
+    }
+    function LogoutBUtton(props){
+        return <button onClick={props.onClick}>logout</button>
+    }
+    class LoginControl extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={isLoggedIn:true};
+            this.handleLoginClick = this.handleLoginClick.bind(this);
+            this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        }
+        handleLoginClick(){
+            this.setState({isLoggedIn:false});
+        }
+        handleLogoutClick(){
+
+            this.setState({isLoggedIn:true});
+        }
+        render(){
+            const isLoggedIn = this.state.isLoggedIn;
+            let button = null;
+            if(isLoggedIn){
+                button = <LoginButton onClick={this.handleLoginClick}/>
+            }else{
+                button = <LogoutBUtton onClick={this.handleLogoutClick}/>
+            }
+            return (
+                <div>
+                    <Greeting isLoggedIn={isLoggedIn}/>
+                    {button}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <LoginControl />,
+        document.getElementById('example1')
+    )
+</script>
+</body>
+</html>

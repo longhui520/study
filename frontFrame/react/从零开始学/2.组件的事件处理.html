@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+    //函数方式组件的事件处理
+    function ActionLink(){
+        function handleClick(e){
+            e.preventDefault();
+            console.log('The link was clicked.');
+        }
+        return (
+          <a href="#" onClick={handleClick}>
+            Click me
+          </a>
+        );
+    }
+    ReactDOM.render(
+        <ActionLink />,
+        document.getElementById('example1')
+    );
+    //类方式
+    class Toggle extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {isToggleOn:true};
+            this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick(){
+            this.setState(prevState=>({
+                isToggleOn :!prevState.isToggleOn
+            }));
+        }
+        render(){
+            return (
+                <button onClick={this.handleClick}>
+                    {this.state.isToggleOn?'ON':'OFF'}
+                </button>
+            );
+        }
+
+    }
+    ReactDOM.render(
+        <Toggle />,
+        document.getElementById('example2')
+    );
+
+    ReactDOM.render(
+        <Model />,
+        document.getElementById('example3')
+    );
+</script>
+</body>
+</html>

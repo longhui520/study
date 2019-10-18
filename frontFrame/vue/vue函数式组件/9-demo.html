@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <script src="../vuex/vuex.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <fn :list="list"></fn>
+    </div>
+    <script>
+        Vue.component('layout',{
+            functional: true,
+            props:['list'],
+            render:function(h,c){
+                function hh(data){
+                    var data_config = {};
+                    data_config.props={};
+                    data_config.props.span = data.span;
+                    var children = [];
+                    if(data.list && data.list.length){
+                        children = data.list.map(function(value){
+                            return h(value.type,{props:{msg:value.options.msg}});
+                        })
+                    }
+                    return h('el-col',data_config,children);
+                }
+                return h('el-row',
+                Array.apply(null, { length: c.props.list.length }).map(function (value, index) { 
+                        return hh(c.props.list[index]);
+                    })
+                )
+            }
+        });
+        Vue.component('child', {
+            props: ['msg'],
+            template: '<div>{{msg}}</div>'
+        });
+        Vue.component('fn', {
+            functional: true,
+            props: {
+                list: Array,
+            },
+            render: function (h, c) {
+                function hh(data){
+                    var type = data.type;
+                    var data_config = {};
+                    if(data.options){
+                        data_config.props = JSON.parse(JSON.stringify(data.options));
+                    }
+                    var children =  [];
+                    if(data.list && data.list.length){
+                        children = data.list.map(function(value){
+                            return hh(value);
+                        })
+                    }
+                    return h(type,data_config,children)
+                }
+                return h(
+                    'div',
+                    Array.apply(null, { length: c.props.list.length }).map(function (value, index) {
+                        return hh(c.props.list[index]);
+                    })
+                );
+            }
+        });
+        var app =  new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    {
+                        type: 'child',
+                        key:"1",
+                        options: {
+                            msg: '1111'
+                        }
+                    },
+                    {
+                        key:"2",
+                        type: 'layout',
+                        options:{
+                            list: [
+                                {
+                                    span:6,
+                                    list:[
+                                        {
+                                            key:"4",
+                                            type: 'child',
+                                            options: {
+                                                msg: '222'
+                                            }
+                                        }
+                                    ]
+                                   
+                                },
+                                {
+                                    span:6,
+                                    list:[
+                                        {
+                                            key:"5",
+                                            type: 'child',
+                                            options: {
+                                                msg: '2225555'
+                                            }
+                                        }
+                                    ]
+                                   
+                                }
+                            ]
+                        } 
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

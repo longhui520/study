@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.0.0.js"></script>
+    <style>
+       .collapse .collapse-content{
+           display: none;
+       }
+       .collapse.active .collapse-content{
+           display: block;
+       }
+       .box{
+           width: 100px;
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="collapse-list">
+            <li class="collapse active">
+                <div class="collapse-title">
+                        collapse-title
+                </div>
+                <div class="collapse-content">
+                    我还是内容fafasfdadfasfaf
+                </div>
+            </li>
+            <li class="collapse">
+                <div class="collapse-title">
+                        collapse-title
+                </div>
+                <div class="collapse-content">
+                    我还是内容fafasfdadfasfaf
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function accordion(option){
+            var op = {
+                collapseClass:".collapse",
+                collapseTitleClass:".collapse-title",
+                collapseContentClass:".collapse-content",
+                collapseActiveClass:".active",
+                flag:false
+            }
+            Object.assign(op,option);
+            $(op.collapseClass).on("click",op.collapseTitleClass,function(){
+                var collapse = $(this).closest(op.collapseClass);
+                var content =  collapse.find(op.collapseContentClass);
+                if(op.flag && content.is(":hidden") ){
+                    collapse.siblings().each(function(){
+                        $(this).find(op.collapseContentClass).slideUp().closest(op.collapseClass).removeClass(op.collapseActiveClass);
+                    });   
+                }
+                content.slideToggle();
+                collapse.addClass(op.collapseActiveClass)
+            });
+        }
+        accordion({flag:true});
+    </script>
+</body>
+</html>

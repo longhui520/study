@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <style>
+        .dragArea {
+            min-height: 50px;
+            outline: 1px dashed;
+        }
+        .ghost{
+            border:1px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div  style="float:left;width:200px;border:1px solid #eee;height: 500px;">
+            <fn :type="fn1.type" :children="fn1.children" :options="fn1.options"></fn>
+        </div>
+        <div  style="float:left;width:200px;border:1px solid #eee;height: 500px;">
+            <fn :type="fn2.type" :children="fn2.children" :options="fn2.options"></fn>
+        </div>
+    </div>
+    <script>
+         Vue.component('fn',{
+            functional:true,
+            props:{
+                children:Array,
+                type:String,
+                options:Object
+            },
+            render:function(h,c){
+                var options = {};
+                options.props= {};
+                options.props.options = c.props.options;
+                options.props.list = c.props.children;
+                return h(
+                    c.props.type,
+                    options,
+                    Array.apply(null,{length:c.props.children.length}).map(function(value,index){
+                        if(c.props.children[index].compType=='draggable')  {
+
+                        }  
+                        return h(
+                            c.props.children[index].compType,c.props.children[index].name
+                        );
+                    })
+                );
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                fn1:{
+                    type:'draggable',
+                    options:{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'},
+                    children:[{compType:'div',name:'1111'},{compType:'div',name:'22222'}]
+                },
+                fn2:{
+                    type:'draggable',
+                    options:{group:{ name:'people'}, ghostClass: 'ghost'},
+                    children:[{compType:'div',name:'1111'},{compType:'div',name:'22222'}]
+                },
+            }
+        });
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合模式</title>
+</head>
+<body>
+    <script>
+        var MacroCommand = function(){
+            return {
+                commandList:[],
+                add:function(command){
+                    this.commandList.push(command)
+                },
+                execute:function(){
+                    for(var i=0,command;command = this.commandList[i++];){
+                        command.execute();
+                    }
+                }
+            }
+        };
+        var command1 = {
+                execute: function () {
+                    console.log(1);
+                }
+            }
+        var command2 = {
+                execute: function () {
+                    console.log(2);
+                }
+            }
+        var command3 = {
+                execute: function () {
+                    console.log(3);
+                }
+            }
+       var MacroCommand1 = MacroCommand();
+       MacroCommand1.add(command2);
+       MacroCommand1.add(command3);
+       var nn = MacroCommand();
+       nn.add(MacroCommand1);
+       nn.add(command1);
+       nn.execute();
+    </script>
+</body>
+</html>

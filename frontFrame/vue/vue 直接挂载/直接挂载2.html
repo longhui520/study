@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <test-b name="小龙"></test-b> -->
+    </div>
+    <script>
+        // Vue.component('button-counter', {
+        //     data: function () {
+        //         return {
+        //             count: 0
+        //         }
+        //     },
+        //     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        // });
+        Vue.component('test-b',{
+            name: 'test-b',
+            props: ['name'],
+            data:function(){return {show:true}},
+            methods:{
+                close:function(){
+                    this.show = false;
+                }
+            },
+            
+            template: '<p v-if="show">{{name}}</p>'
+        });
+        var P =  Vue.component('test-b');
+        var options = (new P()).$options;
+        console.log(options);
+        var Name = Vue.component('test-b');
+        Vue.$show = function(props){
+            var instance = new Name({
+                propsData:props
+            }).$mount();
+            document.body.appendChild(instance.$el);
+            return instance;
+        }
+       var b= Vue.$show({name:'小红杉树'});
+    </script>
+</body>
+
+</html>

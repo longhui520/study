@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            padding: 10px;
+        }
+        .arrow{
+            cursor: pointer;
+            display: inline-block;
+            transition: transform .3s;
+        }
+        .arrowTransform{
+            transform: rotate(90deg);
+        }
+        .selected{
+            background: #2b85e4;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-self-tree
+          :tree-data="treeData"
+          :flat-tree="flatTree">
+        </my-self-tree>
+    </div>
+</body>
+<script>
+    Vue.component("my-self-tree", {
+        props: ["treeData", "flatTree"],
+        data() {
+            return {
+                
+            }
+        },
+        template: `
+            <ul>
+                <li v-for="(item, index) in treeData" :key="index">
+                    <span
+                        :class="{arrowTransform: item.expand, arrow: true}"
+                        @click="handleExpand(item)"
+                        v-show="item.children && item.children.length">&gt;</span>
+                    <input type="checkbox" v-model="item.checked" @change="handleCheck(item)"/>
+                    <span :class="{selected: item.selected}" @click="handleSelect(item)">{{item.label}}</span>
+                    <transition name="fade">
+                        <my-self-tree
+                            v-show="item.expand"
+                            :tree-data="item.children"
+                            :flat-tree="flatTree">
+                        </my-self-tree>
+                    </transition>
+                </li>
+            </ul>
+        `,
+        created: function() {
+            
+        },
+        methods: {
+            //展开或收起
+            handleExpand(item) {
+                var expand = item.expand,
+                    nodeKey = item.nodeKey;
+                var node = this.flatTree[nodeKey].node;
+                this.$set(node, "expand", !expand);
+            },
+            //节点选中
+            handleSelect(item) {
+                var nodeKey = item.nodeKey;
+                var node = this.flatTree[nodeKey].node;
+                var currentSelectedKey = this.flatTree.findIndex(obj => {
+                    return obj.node.selected;
+                });
+                //每次只能选择一个
+                if(currentSelectedKey >= 0 && currentSelectedKey != item.nodeKey) {
+                    this.$set(this.flatTree[currentSelectedKey].node, 'selected', false);
+                }
+                this.$set(node, 'selected', !node.selected);
+                this.getSelectNodes();
+            },
+            //节点勾选
+            handleCheck(item) {
+                var checked = item.checked,
+                    nodeKey = item.nodeKey;
+                var node = this.flatTree[nodeKey].node;
+                this.$set(node, 'checked', checked);
+                this.updateTreeUp(nodeKey);
+                this.updateTreeDown(node, { checked: checked});
+                this.getCheckedNodes();
+            },
+            //判断当前勾选节点的父节点是否需要勾选
+            updateTreeUp(nodeKey) {
+                var parentKey = this.flatTree[nodeKey].parent;
+                var childrenKey = "children";
+                if (typeof parentKey == 'undefined') return;
+
+                var node = this.flatTree[nodeKey].node;
+                var parent = this.flatTree[parentKey].node; 
+                if (node.checked == parent.checked) return;
+
+                if (node.checked == true) {
+                    this.$set(parent, 'checked', parent[childrenKey].every(function (node) {
+                        return node.checked;
+                    }));
+                } else {
+                    this.$set(parent, 'checked', false);
+                }
+                this.updateTreeUp(parentKey);
+            },
+            //判断当前勾选节点的子节点是否勾选
+            updateTreeDown(node) {
+                var changes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+                var childrenKey = "children";
+
+                for (var key in changes) {
+                    this.$set(node, key, changes[key]);
+                }
+                if (node[childrenKey]) {
+                    node[childrenKey].forEach(function (child) {
+                        this.updateTreeDown(child, changes);
+                    }.bind(this));
+                }
+            },
+            //获取已勾选节点
+            getCheckedNodes() {
+                var arr = this.flatTree.filter(item => {
+                    return item.node.checked;
+                }).map(item => {
+                    return item.node;
+                });
+                console.log(arr)
+            },
+            //获取已选中节点
+            getSelectNodes() {
+                var arr = this.flatTree.filter(item => {
+                    return item.node.selected;
+                }).map(item => {
+                    return item.node;
+                });
+                console.log(arr)
+            }
+        }
+    })
+    var app = new Vue({
+        el: "#app",
+        data: {
+            treeData: [],
+            flatTree: []
+        },
+        created: function() {
+            //模拟请求数据
+            setTimeout(() => {
+                var arr = [
+                    {
+                        label: '一级 1',
+                        children: [
+                            {
+                                label: '二级 1-1',
+                                children: [
+                                    {
+                                        label: '三级 1-1-1',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label: '一级 2',
+                        children: [
+                            {
+                                label: '二级 2-1',
+                                children: [
+                                    {
+                                        label: '三级 2-1-1',
+                                    }
+                                ]
+                            }, {
+                                label: '二级 2-2',
+                                children: [
+                                    {
+                                        label: '三级 2-2-1',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label: '一级 3',
+                        children: [
+                            {
+                                label: '二级 3-1',
+                                children: [
+                                    {
+                                        label: '三级 3-1-1',
+                                    }
+                                ]
+                            },
+                            {
+                                label: '二级 3-2',
+                                children: [
+                                    {
+                                        label: '三级 3-2-1',
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ];
+                this.treeData = this.compileTreeData(arr);
+                this.flatTree = this.compileFlatTree(arr);
+            },2000);
+        },
+        methods: {
+            //数据初始化(添加某些必要属性)
+            compileTreeData(arr) {
+                function newAttr(node, parent) {
+                    node.expand = false;//是否展开
+                    node.checked = false;//是否勾选
+                    node.selected = false;//是否选中
+                    if(node.children) {
+                        node.children.forEach(child => {
+                            return newAttr(child, node);
+                        })
+                    }
+                }
+                arr.forEach(item => {
+                    newAttr(item);
+                });
+                return arr;
+            },
+            //编制各节点对应关系
+            compileFlatTree(arr) {
+                var keyCounter = 0;
+                var childrenKey = "children";
+                var flatTree = [];
+                function flattenChildren(node, parent) {
+                    node.nodeKey = keyCounter++;
+                    flatTree[node.nodeKey] = { 
+                        node: node,
+                        nodeKey: node.nodeKey
+                    };
+                    if (typeof parent != 'undefined') {
+                        flatTree[node.nodeKey].parent = parent.nodeKey;
+                        flatTree[parent.nodeKey][childrenKey].push(node.nodeKey);
+                    }
+                    if (node[childrenKey]) {
+                        flatTree[node.nodeKey][childrenKey] = [];
+                        node[childrenKey].forEach(function (child) {
+                            return flattenChildren(child, node);
+                        });
+                    }
+                }
+                arr.forEach(function (rootNode) {
+                    flattenChildren(rootNode);
+                });
+                return flatTree;
+            }
+        }
+    })
+</script>
+</html>

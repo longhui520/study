@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <button id="btn">加载页面</button>
+    <div id="dcontent"></div>
+    <script>
+        Vue.component('base-checkbox',{
+            model:{
+                prop:"checked",
+                event:"change"
+            },
+            props:['checked'],
+            template:`<input type="checkbox" :checked="checked" @change = "$emit('change',$event.target.checked)" />`
+        });
+        Vue.component('base-input',{
+            props:['title'],
+            template:`<input :value="title" @input="$emit('update:title',$event.target.value)"/>` 
+        })
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            var dc = document.getElementById('dcontent');
+            dc.innerHTML='<base-input :title.sync="value"></base-input><p>{{value}}<p>';
+            new Vue({
+                el:"#dcontent",
+                data:{
+                    value:'111'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

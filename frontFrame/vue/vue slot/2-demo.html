@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child :user="user">
+            <template v-slot:xioa="{user:person}">
+                <h1>{{person.lastname}}</h1>
+            </template>
+        </child>
+    </div>
+    <script>
+        Vue.component('child',{
+            props:['user'],
+            template:'<div><slot name="xioa" :user="user">{{user.firstname}}</slot></div>'
+        });
+        new Vue({
+            data:{
+                user:{
+                    firstname:"xiao",
+                    lastname:'ming'
+                }
+            },
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <style>
+        .dragArea {
+            min-height: 50px;
+            outline: 1px dashed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nested-draggable :tasks="list" />
+    </div>
+    <script>
+       
+
+        var draggable = Vue.component('draggable');
+        Vue.component('nested-draggable', {
+            name: "nested-draggable",
+            props: {
+                tasks: {
+                    required: true,
+                    type: Array
+                }
+            },
+            components: {
+                draggable
+            },
+            template: `
+                <draggable class="dragArea" tag="ul" :list="tasks" :group="{ name: 'g1' }">
+                    <li v-for="el in tasks" :key="el.name">
+                        <p>{{ el.name }}</p>
+                        <nested-draggable :tasks="el.tasks" />
+                    </li>
+                </draggable>
+            `
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    {
+                        name: "task 1",
+                        tasks: [
+                            {
+                                name: "task 2",
+                                tasks: []
+                            }
+                        ]
+                    },
+                    {
+                        name: "task 3",
+                        tasks: [
+                            {
+                                name: "task 4",
+                                tasks: []
+                            }
+                        ]
+                    },
+                    {
+                        name: "task 5",
+                        tasks: []
+                    }
+                ]
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

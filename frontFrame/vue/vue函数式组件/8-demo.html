@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../vuex/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fn :list="$store.state.list"></fn>
+    </div>
+    <script>
+        Vue.component('childPr', {
+            props: ['msg'],
+            methods:{
+                info:function(){
+                    console.log(this.$props);
+                }
+            },
+            template: `<h1 @click="info">{{msg}}</h1>`
+        });
+        Vue.component('child2', {
+            props: ['msg'],
+            template: `<h2>{{msg}}</h2>`
+        });
+        Vue.component('child3', {
+            props: ['msg'],
+            template: `<h3>{{msg}}</h3>`
+        });
+        Vue.component('child4', {
+            props: ['msg'],
+            template: `<h4>{{msg}}</h4>`
+        });
+        Vue.component('fn', {
+            functional: true,
+            props: {
+                list: Array,
+            },
+            render: function (h, c) {
+                return h(
+                    'div',
+                    Array.apply(null, { length: c.props.list.length }).map(function (value, index) {
+                        console.log(c.props.list[index].type);
+                        console.log(c.props.list[index].props);
+                        return h(
+                            c.props.list[index].type,
+                            {
+                                props: c.props.list[index].props
+                            }
+                        );
+                    })
+                );
+            }
+        });
+        var store = new Vuex.Store({
+            state: {
+                list: [
+                    {
+                        type: 'childPr',
+                        props: {
+                            msg: '我是子组件1',
+                        }
+                    },
+                    {
+                        type: 'fn',
+                        props: {
+                            list: [
+                                {
+                                    type: 'childPr',
+                                    props: {
+                                        msg: '我是子组件1-1',
+                                    }
+                                },
+                                {
+                                    type: 'fn',
+                                    props: {
+                                        list: [
+                                            {
+                                                type: 'childPr',
+                                                props: {
+                                                    msg: '我是子组件1-1-1',
+                                                }
+                                            },
+                                        ]
+                                    }
+                                },
+                            ],
+                        }
+                    },
+                    {
+                        type: 'child3',
+                        props: {
+                            msg: '我是子组件3',
+                        }
+                    },
+                    {
+                        type: 'child4',
+                        props: {
+                            msg: '我是子组件4',
+                        }
+                    },
+                ]
+            }
+        });
+
+
+        var app = new Vue({
+            el: '#app',
+            store,
+            data: {
+                items: [
+                    { name: 'child1' },
+                    { name: 'child2' },
+                    { name: 'child3' },
+                    { name: 'child4' },
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

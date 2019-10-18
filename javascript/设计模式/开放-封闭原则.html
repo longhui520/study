@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开放封闭原则ocp</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+            console.log(1);
+        };
+        Function.prototype.after = function(afterFn){
+            let _self = this;
+            return function(){
+                let ret = _self.apply(this,arguments);
+                afterFn.apply(this,arguments);
+                return ret;
+            }
+       };
+        window.onload = window.onload.after(function () {
+            console.log(2);
+        });
+        window.onload = window.onload.after(function(){
+            console.log(3);
+        });
+        let sound = function(animal){
+            animal.sound();
+        };
+        let Duck = function(){};
+        Duck.prototype.sound = function(){console.log('我是鸭子类型');};
+        let Chicken = function () {};
+        Chicken.prototype.sound = function(){console.log('我是鸡类型');};
+        sound(new Duck());
+        sound(new Chicken());
+    </script>
+</body>
+</html>

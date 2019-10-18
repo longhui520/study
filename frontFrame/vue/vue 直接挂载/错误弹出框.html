@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .error-dialog{
+            position: fixed;
+            z-index: 99999;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom:0;
+            background: rgba(0,0,0,0.5);
+        }
+        .error-dialog .error-box{
+            position: absolute;
+            width:100%;
+            background: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            top:50%;
+            transform: translate(0,-50%);
+            overflow: auto;
+        }
+        .error-dialog .error-title{
+            background: #f00;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin:0;
+            color:#fff;
+            width: 100%;
+        }
+        .error-dialog .error-close{
+            text-align: center;
+            padding-bottom: 20px;
+            padding-top:20px;
+        }
+        .error-dialog .error-close>span{
+            padding:.3em .8em;
+            background: #f00;
+            color:#fff;
+            border-radius: 4px;
+        }
+        .error-dialog .error-content{
+            box-sizing: border-box;
+            padding:10px;
+            overflow: auto;
+            width: 100%;
+            min-height: 150px;
+            max-height: 500px;
+            font-size:14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <test-b name="小龙"></test-b> -->
+    </div>
+    <script>
+        Vue.component('comp-error',{
+            name: 'comp-error',
+            data:function(){return {show:false,errorMsg:""}},
+            methods:{
+                close:function(){
+                    this.show = false;
+                    this.errorMsg = "";
+                },
+                check:function(fn,debug){
+                    if(!debug){return;}
+                    try{
+                        fn();
+                    }catch(e){
+                        this.errorMsg = decodeURI(e.stack);
+                        this.show = true;
+                    }
+                }
+            },
+            template: `
+                <div v-if="show" @click.self="close" class="error-dialog">
+                    <div class="error-box">
+                        <h1 class="error-title">错误</h1>
+                        <div class="error-content">
+                            <pre>{{errorMsg}}</pre>
+                        </div>
+                        <div class="error-close" @click="close"><span>关闭</span></div>
+                    </div>
+                </div>
+            
+            `
+        });
+        var compError = Vue.component('comp-error');
+        Vue.$check = function(fn,debug){
+            var instance = new compError().$mount();
+            document.body.appendChild(instance.$el);
+            return instance.check(fn,debug);
+        }
+       Vue.$check(function(){
+           throw new Error('错误');
+       },true);
+    </script>
+</body>
+
+</html>

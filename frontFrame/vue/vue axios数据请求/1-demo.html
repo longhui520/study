@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,43 @@
     <!-- axios CDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
-    <div id="app">
+
+    <script>
+        axios.interceptors.request.use(function (config) {
+            console.log(config);
+            return config;
+        }, function (error) {
+            console.log(error);
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+
+
+        // 添加响应拦截器
+        axios.interceptors.response.use(function (response) {
+            console.log(2);
+            // 对响应数据做点什么
+            return response;
+        }, function (error) {
+            // 对响应错误做点什么
+            return Promise.reject(error);
+        });
+        axios
+            .get('https://api.coindesk.com/v1/bpi/currentprice.json3')
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            .finally(() => { console.log(3) })
+
+    </script>
+
+
+    <!-- <div id="app">
         {{info}}
     </div>
     <script>
@@ -28,6 +64,7 @@
                     .then(response=>this.info=response)
             }
         })
-    </script>
+    </script> -->
 </body>
+
 </html>

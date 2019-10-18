@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <script src="../node_modules/vue/dist/vue.js"></script>
+     <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <comp-form :nodes="$store.state.forms"></comp-form>
+        <button type="text" @click="submit">提交</button>
+        <button type="text" @click="reset">重置表单</button>
+        <button type="text" @click="add">增加表单字段</button>
+    </div>
+    <script>
+   
+        Vue.component('CompChild1',{
+            props:['value',"id"],
+            data:function(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                update:function(){
+                    this.count++;
+                    this.$store.commit('updateProps',{id:this.id,props:[{key:'value',value:this.count}]});
+                }
+            },
+            template:'<div @click="update">{{value}}</div>'
+        });
+        Vue.component('CompForm',{
+            functional: true,
+            render:function(createElement, context){
+                function createData(node){
+                    var data = {};
+                    data.props = node.props;
+                    data.key = node.props.id;
+                    return data;
+                }
+                function createName(node){
+                    return Vue.component(node.name)||node.name ||'div';
+                }
+                function create(nodes){
+                    if(Object.prototype.toString.call(nodes)=='[object Array]'){
+                        return nodes.map(function(node){
+                            return createElement(createName(node),createData(node),create(node.children));
+                        });
+                    }
+                    if(Object.prototype.toString.call(nodes)=='[object String]'){
+                        return nodes;
+                    }
+                    if(Object.prototype.toString.call(nodes)=='[object Object]'){
+                        return createElement(createName(nodes),createData(nodes),create(nodes.children));
+                    }
+                    if(nodes === undefined || nodes===null){
+                        return "";
+                    }
+                    return String(nodes);
+                }
+                return create(context.data.attrs.nodes);
+            }
+        });
+        Vue.component('compBox',{
+            render:function(){
+                return this.$scopedSlots.default(Object.assign({},this.$props,this.$attrs));
+            }
+        });
+        Vue.component('CompFieldSet',{
+            props:['id','value'],
+            template:'<div style="padding:10px;"><slot></slot></div>'
+        });
+        var data = [
+                {name:'CompChild1',props:{fieldName:"text1",value:'这是子组件222'}},
+                {name:'CompChild1',props:{fieldName:"text2",value:'这是子组件222'}},
+                {name:'CompFieldSet',props:{fieldName:"text2",value:'这是子组件222'},children:[{name:'CompChild1',props:{fieldName:"text002",value:'这是子组件333'}},{name:'CompChild1',props:{fieldName:"text001",value:'这是子组件333'}}]}
+        ];
+        function adaptData(data){
+            for(var i=0;i<data.length;i++){
+                data[i].props.id=Math.random().toString(32).slice(2);
+                if(data[i].children){
+                    adaptData(data[i].children);
+                }
+            }  
+            return data;
+        }   
+        data = adaptData(data);
+        var store = new Vuex.Store({
+                state:{forms:data},
+                getters:{
+                    compById:function(state){
+                        var obj = {};
+                        function create(data){
+                            for(var i=0;i<data.length;i++){
+                                obj[data[i].props.id] = data[i];
+                                if(data[i].children){
+                                    create(data[i].children);
+                                }
+                            }
+                        }
+                        create(state.forms)
+                        return obj;
+                    },
+                    formValue:function(state){
+                        var obj = {};
+                        function create(data){
+                            for(var i=0;i<data.length;i++){
+                                obj[data[i].props.fieldName] = data[i].props.value;
+                                if(data[i].children){
+                                    create(data[i].children);
+                                }
+                            }
+                        }
+                        create(state.forms)
+                        return obj;
+                    }
+                },
+                mutations:{
+                    updateProps:function(state,data){
+                        var props = this.getters.compById[data.id].props;
+                        for(let i=0;i<data.props.length;i++){
+                            props[data.props[i].key]=data.props[i].value;
+                        }
+                    },
+                    reset:function(state,data){
+                        for(let i=0;i<data.length;i++){
+                            state.forms[i].props = data[i].props;
+                        }
+                    },
+                    add:function(state,data){
+                        state.forms.push(data);
+                    }
+                } 
+            })
+        var app = new Vue({
+            el:"#app",
+            store,
+            data:{
+                initialData:JSON.stringify(data),
+                count:3
+            },
+            methods:{
+                submit:function(){
+                    console.log(this.$store.getters.formValue);
+                },
+                reset:function(){
+                    this.$store.commit('reset',JSON.parse(this.initialData));
+                },
+                add:function(){
+                    this.$store.commit('add',{name:'CompChild1',props:{fieldName:"text"+this.count++,value:'这是子组件222',id:Math.random().toString(32).slice(2)}});
+                }
+            }
+        });
+    </script>
+</body>
+</html>

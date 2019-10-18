@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    //函数定义,一个函数就是一个组件,并且利用了jsx语法
+    function Name(props){
+        return <h1>{props.name}</h1>
+    }
+    function Url(props){
+        return <h1>{props.url}</h1>
+    }
+    function App(props){
+        //组合组件
+        return (
+            <div>
+                <Name name="小红" />
+                <Url url="www.baidu.com" />
+            </div>
+        )
+    }
+    class Welcome extends React.Component {
+        render(){
+            return (
+                <div>你好</div>
+            )
+        }
+    }
+    // jsx常量构建组件
+    const Hello = <div>Hello Word</div>;
+    ReactDOM.render(Hello,document.getElementById('example2'));
+    // ReactDom.render 函数第一个参数是要渲染的组件，第二个参数是组件的挂载dom节点
+    ReactDOM.render(
+        <App />,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

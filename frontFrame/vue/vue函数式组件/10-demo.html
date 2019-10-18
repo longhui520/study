@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数式组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <script src="../vuex/vuex.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <fn :list="list"></fn>
+    </div>
+    <script>
+        Vue.component('child', {
+            props: ['msg'],
+            template: '<div>{{msg}}<slot></slot></div>'
+        });
+        Vue.component('fn', {
+            functional: true,
+            props: {
+                list: Array,
+            },
+            render: function (h, c) {
+                function hh(config){
+                    var type = config.type;
+                    var data = JSON.parse(JSON.stringify(config.data));
+                    var children =  [];
+                    if(config.children && config.children.length){
+                        children = config.children.map(function(config){
+                            return hh(config);
+                        })
+                    }
+                    console.log(children.length);
+                    return h(type,data,children)
+                }
+                return h(
+                    'div',
+                    Array.apply(null, { length: c.props.list.length }).map(function (value, index) {
+                        return hh(c.props.list[index]);
+                    })
+                );
+            }
+        });
+        var app =  new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    {
+                        type: 'child',
+                        data: {
+                            props:{
+                                msg: '1111'
+                            }  
+                        },
+                        children:[
+                            {
+                                type:'child',
+                                data:{
+                                    props:{
+                                        msg: '222222'
+                                    }
+                                },
+                                children:[]
+                            }
+                        ]
+
+                    }  
+                ]     
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function timeout(ms) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, ms, ms);
+            })
+        }
+        async function aa() {
+            var str = "aaaa";
+            var tt = await str.replace(/a/g, function (m) {
+                async function bb(){
+                    var bb = await timeout(100);
+                return bb 
+                }
+               bb().then(v=>console.log(v));
+            });
+            console.log(typeof tt)
+        }
+        aa();
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+    .keith li {
+        position: relative;
+        float:left;
+        margin-left:2px;
+        color:#fff;
+        text-decoration: none;
+        list-style:none;
+        padding:5px 10px;
+        }
+        .keith li::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: -1;
+        background: #069e06;
+        -moz-transform: skewX(-25deg);
+        -ms-transform: skewX(-25deg);
+        -webkit-transform: skewX(-25deg);
+        transform: skewX(-25deg);
+        }
+        .keith li:hover::after {
+        background: #0ee80e;
+        }
+    </style>
+</head>
+<body>
+        <div class="keith">
+                <ul>
+                    <li>导航条</li>
+                    <li>首页</li>
+                    <li>呼呼呼</li>
+                    <li>嘻嘻嘻</li>
+                    <li>设置</li>
+                    <li>个人中心</li>
+                </ul>
+        </div>
+</html>

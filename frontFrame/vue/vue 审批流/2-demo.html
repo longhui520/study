@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="../vant/vant.css">
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <van-steps :active="active" :direction="direction" active-color="#f44">
+            <van-step>买家下单</van-step>
+            <van-step>
+                <van-row type="flex" align="center"> 
+                    <van-col span="1" >
+                        1
+                    </van-col>
+                    <van-col span="23">
+                        <van-steps :active="active" :direction="direction">
+                            <van-step>买家下单</van-step>
+                            <van-step>1111</van-step>
+                            <van-step>买家提货</van-step>
+                            <van-step>交易完成</van-step>
+                        </van-steps>     
+                    </van-col>
+                    
+                </van-row>
+                <van-row type="flex" align="center">
+                    <van-col span="1">
+                        2
+                    </van-col>
+                    <van-col span="23">
+                        <van-steps :active="active" :direction="direction">
+                            <van-step>买家下单</van-step>
+                            <van-step>1111</van-step>
+                            <van-step>买家提货</van-step>
+                            <van-step>交易完成</van-step>
+                        </van-steps>     
+                    </van-col> 
+                </van-row>
+            </van-step>
+            <van-step>买家提货</van-step>
+            <van-step>交易完成</van-step>
+        </van-steps>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                active:2,
+                direction:"vertical"
+            }
+        })
+    </script>
+</body>
+</html>

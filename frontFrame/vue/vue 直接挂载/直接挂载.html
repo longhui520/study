@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // var Profile = Vue.extend({
+        //     template:'<p v-show="show">{{firstName}}</p>',
+        //     data:function(){return {firstName:"hello world",show:false}}
+        // });
+        // new Profile().$mount(document.body.appendChild(document.createElement("div")));
+
+
+
+        Vue.my = (function(){
+            var my = Vue.extend({
+                props:['name'],
+                template:'<p>{{name}}</p>',
+                data:function(){return {firstName:"hello world"}}
+            });
+            var el;
+            return function(props){
+                var instance;
+                if(!el){
+                    instance = new my({propsData:props});
+                    instance.vm = instance.$mount();
+                    document.body.appendChild(instance.vm.$el)
+                    instance.vm.show = true;
+                }else {
+                    instance.show = true;
+                }
+            }
+        })();
+        Vue.my({name:"小明"});
+    </script>
+</body>
+</html>

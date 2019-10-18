@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>城市选择</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@1.6/lib/index.css">
+
+    <!-- 引入组件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@1.6/lib/vant.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <van-cell-group>
+            <van-cell title="单元格" required>
+                <van-icon slot="right-icon" name="eye-o"></van-icon>
+                <van-field slot="label" v-model="value" placeholder="请输入用户名" clearable></van-field>
+            </van-cell>
+        </van-cell-group>
+        <van-cell-group>
+            <van-cell title="单元格" required>
+                <van-icon slot="right-icon" name="eye-o"></van-icon>
+                <van-field slot="label" v-model="value" placeholder="请输入用户名" readonly @click="show=true" ></van-field>
+                <van-popup v-model="show" position="bottom" >
+                    <van-datetime-picker title="重置" v-model="currentDate" type="datetime" @cancel="show=false">
+                    </van-datetime-picker>
+                </van-popup>
+            </van-cell>
+        </van-cell-group>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                value: "",
+                currentDate:new Date(),
+                show:false
+            }
+        });
+
+    </script>
+</body>
+
+</html>

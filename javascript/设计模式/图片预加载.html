@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预加载</title>
+</head>
+<body>
+    <script>
+        let myImg = (function(){
+            let imgNode = document.createElement('img');
+            document.body.appendChild(imgNode);
+            return {
+                setSrc:function(src){
+                    imgNode.src = src;
+                }
+            };
+        })();
+        let ProxyImg = (function(){
+            let img = new Image;
+            img.onload = function(){
+                myImg.setSrc(this.src);
+            };
+            return {
+                setSrc:function(src){
+                    myImg.src = 'loading.jpg';
+                    img.src = src;
+                }
+            }
+        })();
+        ProxyImg.setSrc('www.baidu.com');
+    </script>
+</body>
+</html>

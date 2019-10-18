@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.0.0.js"></script>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .tabsHeaderContent {
+            width:50%;
+            height: 50px;
+            overflow-y: hidden;
+        }
+
+        .tabsHeaderContent>ul>li {
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            margin-left: 5px;
+        }
+        .more_btn{
+            position: relative;
+            float:left;
+            line-height: 50px;
+            margin-left: 5px;
+        }
+        .more_box{
+            position: fixed;
+            width:100px;
+            border:1px solid red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabsHeaderContent design_tabs_content">
+        <ul>
+            <li>11111</li>
+            <li>22222</li>
+            <li>23343r2322`</li>
+            <li>243242</li>
+            <li>423423</li>
+        </ul>
+    </div>
+    <script>
+        $('window').resize(function(){
+            console.log('尺寸变换')
+        });
+         function setMoreBtn(parentNode,options){
+            var op = {
+                more_btn_tpl:'<a class="more_btn">更多</a>',
+                more_box_tpl:'<ul class="more_box"></ul>',
+                more_box_item_tpl:'<li><a href="#">{{text}}</a></li>',
+                more_btn_width:40,
+                child_selector:'li',
+            };
+            op = Object.assign(op,options);
+            var $p = $(parentNode);
+            var p_width = $p.innerWidth();
+            var p_child = $p.find(op.child_selector);
+            var index = null;
+            var c_width = 0;
+            var nodes = [];
+            for (var i = 0; i < p_child.length; i++) {
+                c_width += $(p_child[i]).innerWidth() + 5;
+                if (p_width - c_width > op.more_btn_width) {
+                    index = i;
+                } else {
+                    $(p_child[i]).hide();
+                    nodes.push($(op.more_box_item_tpl.replace('{{text}}',$(p_child[i]).text())));
+                }
+            }
+            if (index !== null) {
+                var more_btn = $(op.more_btn_tpl);
+                $p.append(more_btn);
+                var more_box = $(op.more_box_tpl);
+                more_box.css({top:more_btn.offset().top+more_btn.innerHeight(),left:more_btn.offset().left-more_btn.innerWidth()});
+                more_btn.append(more_box);
+                for (var i = 0; i < nodes.length; i++) {
+                    nodes[i].on('click', (function (i, moreul) {
+                        return function (event) {
+                            event.stopPropagation();
+                            more_box.hide();
+                            $(p_child[index + i+1]).find('a').click();
+                        }
+                    })(i, more_box));
+                    more_box.append(nodes);
+                }
+                $('body').on('click',function(){
+                   more_box.hide();
+                });
+                more_btn.on('click',function(e){
+                    if(more_box.is(':hidden')){
+                         more_box.show();
+                    }else{
+                        more_box.hide();
+                    }
+                    e.stopPropagation;
+                    return false;
+                });
+            }
+         }   
+        $('.tabsHeaderContent.design_tabs_content>ul').each(function () {
+            setMoreBtn(this);
+        });
+        $('.tabsHeaderContent.design_tabs_content>ul>li').on('click',function () {
+           console.log($(this).text());
+        });
+    </script>
+</body>
+
+</html>

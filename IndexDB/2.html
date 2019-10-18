@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>indexDb</title>
+</head>
+    <div><input type="checkbox">111111</div>
+<body>
+    <script>
+        var request = window.indexedDB.open('test');
+        var db;
+        request.onsuccess = function (event) {
+            db = request.result;
+            console.log('数据库打开成功');
+            function add() {
+                var request = db.transaction(['person'], 'readwrite')
+                    .objectStore('person')
+                    .add({ id: 1, name: '张三', age: 24, email: 'zhangsan@example.com' });
+
+                request.onsuccess = function (event) {
+                    console.log('数据写入成功');
+                };
+
+                request.onerror = function (event) {
+                    console.log('数据写入失败');
+                }
+            }
+            add();
+
+            function read() {
+                var transaction = db.transaction(['person']);
+                var objectStore = transaction.objectStore('person');
+                var request = objectStore.get(1);
+
+                request.onerror = function (event) {
+                    console.log('事务失败');
+                };
+
+                request.onsuccess = function (event) {
+                    if (request.result) {
+                        console.log('Name: ' + request.result.name);
+                        console.log('Age: ' + request.result.age);
+                        console.log('Email: ' + request.result.email);
+                    } else {
+                        console.log('未获得数据记录');
+                    }
+                };
+            }
+
+            read();
+        };
+        request.onupgradeneeded = function (e) {
+            var db = e.target.result;
+            if (!db.objectStoreNames.contains('person')) {
+                var objectStore = db.createObjectStore('person', { keyPath: 'id' });
+                objectStore.createIndex('name', 'name', { unique: false });
+                objectStore.createIndex('email', 'email', { unique: true });
+                objectStore.createIndex('age', 'age', { unique: false });
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

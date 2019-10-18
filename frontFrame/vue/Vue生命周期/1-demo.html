@@ -21,17 +21,21 @@
                 console.log(this.$options)
                 // alert(this.$options.data()['message'])
                 this.$nextTick(function(){
-                    alert(this.message)
+                    // alert(this.message)
                 })
             },
             created() {
-                alert(this.message)
+                // alert(this.message)
             },
             beforeMount() {
-                alert(this.$refs.hh)
+                // alert(this.$refs.hh)
             },
             mounted() {
-                alert(this.$refs.hh)
+                setTimeout(function(){
+                    alert(1);
+                },1000)
+                // alert('页面已经显示')
+                // alert(this.$refs.hh)
             },
         })
     </script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child  :post.sync="list.post" @commit="commit"></child>
+        <child  :post.sync="list.list.post"  @commit="commit"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            props:['post'],
+            created:function(){
+                console.log(this.post);
+            },
+            methods:{
+                changeValue:function(e){
+                    this.$emit('update:post',e.target.value);
+                    this.$emit('commit',this);
+                }
+            },
+            template:`<div>
+                        <p>{{post}}</p>
+                        <input :value="post" @change="changeValue"/>
+                    </div>`
+        });
+
+       var store = new Vuex.Store({
+           state:{
+               list:{
+                   post:3333,
+                   list:{
+                       post:2222
+                   }
+               }
+           },
+           mutations:{
+               commit(state,playLoad){
+                   console.log(playLoad.post);
+               }
+           }
+       })
+       var app = new Vue({
+           el:"#app",
+           store,
+           computed: {
+               ... Vuex.mapState(['list'])
+           },
+           methods :{
+               ...Vuex.mapMutations(['commit'])
+           }
+       })
+    </script>
+</body>
+</html>

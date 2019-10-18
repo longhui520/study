@@ -13,6 +13,7 @@
         <main-com></main-com>
     </div>
     <script>
+        var Bus = new Vue();
         Vue.component('main-com',{
             data:function(){
                 return {
@@ -23,7 +24,7 @@
             methods:{
                 countAdd:function(){
                     this.count++;
-                    // this.$emit('countAdd',this.count)
+                    Bus.$emit('message',this.count);
                 }
             },
             template:`
@@ -35,17 +36,22 @@
 
         })
         Vue.component('son-com',{
-            props:["myCount"],
+            data:function(){
+                return {
+                    count:0
+                }
+            },
+            mounted:function(){
+                var vm = this;
+                Bus.$on("message",function(count){
+                    vm.count = count;
+                })
+            },
             template:`
                 <div>
-                    <p>{{myCount}}</p>
+                    <p>{{count}}</p>
                 </div>
-            `,
-            updated:function(){
-                if(this.myCount>10){
-                    this.$parent.isDisabled=false;
-                }
-            }
+            `
         })
         new Vue({
             el:"#app",

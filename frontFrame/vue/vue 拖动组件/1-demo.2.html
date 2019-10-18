@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        /* *{
+            margin: 0;
+            padding:0;
+        } */
+        .dragArea {
+            padding-bottom: 50px;
+            
+        }
+        /* ul{
+            padding-bottom: 20px;
+        } */
+        ul,li{
+            list-style: none;
+        }
+        .el-row {
+            padding-bottom: 50px;
+            border:1px solid #f00;
+        }
+        .el-col{
+            padding-bottom: 50px;
+            border:1px solid #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div style="float:left;width: 45%;">
+                <draggable
+                 tag="ul"
+                :list = layoutComponents
+                :group="{ name:'people', pull:'clone',put:false}"
+                :sort ="false",
+                ghostClass='ghost'
+                >
+                    <li  v-for="(el, index) in layoutComponents" :key="index" :names="el.name">
+                            {{el.name}}
+                    </li>
+                </draggable>
+        </div>
+        <div style="float:right;width: 45%;">
+            <draggable class="dragArea" tag="div" :list="list" :group="{ name: 'people' }" >
+                <fn :compType="el.compType" v-for="(el,index) in list" :key="index" v-bind="el"></fn>     
+            </draggable>
+        </div>
+    </div>
+    <script>
+       Vue.component('grid',{
+           name:'grid',
+           props:['list'],
+           template:`
+            <el-row>
+                <el-col :span="el.span" v-for="(el,index) in list">
+                    <draggable tag="div" :list = "el.list"  class="dragArea" :group="{ name: 'people' }" @add="$root.end($event,el.list,index)">
+                            <div  v-for="item in el.list">{{item.name}}</div>
+                    </draggable>
+                </el-col>
+            </el-row>
+           `
+       });
+       Vue.component('fn',{
+            functional:true,
+            props:{
+                compType:String
+            },
+            render:function(h,c){
+                console.log(c)
+                return h(
+                    c.props.compType,
+                    c.data,
+                    c.children
+                );
+            }
+        }    
+       );
+       Vue.component('m-li',{
+           inheritAttrs:false,
+           name:'m-li',
+           props:['name'],
+           mounted:function(){
+               console.log(this);
+           },
+           template:`<li>
+           <p>{{name}}</p>
+           <slot></slot>
+           </li>`
+       });
+     
+        var app = new Vue({
+            el: "#app",
+            data: {
+                keys:1,
+                layoutComponents:[
+                    {
+
+                        compType:'grid',
+                        name:'我是布局组件',
+                        list:[{
+                            name:'1',
+                            span:12,
+                            list:[]
+                        },
+                        {
+                            name:'2',
+                            span:12,
+                            list:[]
+                        }
+                        ]
+                    },
+                    {
+                        compType:"m-li",
+                        name:'我不是嵌套'
+                    },
+                   
+                ],
+                list: [
+                   
+                ]
+            },
+            methods:{
+                add:function(){
+                    this.layoutComponents[0]=[{
+                            name:'1',
+                            span:12,
+                            list:[]
+                        },
+                        {
+                            name:'2',
+                            span:12,
+                            list:[]
+                        }
+                        ];
+                },
+                end:function(e,row,index){
+                    // if(e.item.getAttribute('names')=="我是布局组件"){
+
+                    //     console.log(row);
+                    //     console.log(index);
+                    //     // this.layoutComponents[0].list.splice(index,0,row[index])     
+                    //     row.splice(e.newIndex,1);
+                    // };
+                }
+            }
+           
+        });
+
+
+    </script>
+</body>
+
+</html>

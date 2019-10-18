@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树型控件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vant/lib/vant.js"></script>
+    <link rel="stylesheet" href="../node_modules/vant/lib/index.css">
+    <style>
+        .height-light{
+            background-color:#42b5dc;
+            padding:3px 6px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <tree-select :selecteds="selecteds" :selections="selections" @change="updateSelection"></tree-select>
+    </div>
+</body>
+    <script>
+        Vue.component("VerticalToggle", {
+            functional: true,
+            render(h, { children }) {
+                var elTransition = 'height .3s ease-in-out, padding-top .3s ease-in-out,  padding-bottom .3s ease-in-out'
+                var data = {
+                    on: {
+                        'before-enter'(el) {
+                            el.style.transition = elTransition
+                            if (!el.dataset) el.dataset = {}
+                            el.dataset.oldPaddingTop = el.style.paddingTop
+                            el.dataset.oldPaddingBottom = el.style.paddingBottom
+                            el.style.height = 0
+                            el.style.paddingTop = 0
+                            el.style.paddingBottom = 0
+                        },
+                        'enter'(el) {
+                            el.dataset.oldOverflow = el.style.overflow
+                            if (el.scrollHeight !== 0) {
+                                el.style.height = el.scrollHeight + 'px'
+                                el.style.paddingTop = el.dataset.oldPaddingTop
+                                el.style.paddingBottom = el.dataset.oldPaddingBottom
+                            } else {
+                                el.style.height = ''
+                                el.style.paddingTop = el.dataset.oldPaddingTop
+                                el.style.paddingBottom = el.dataset.oldPaddingBottom
+                            }
+                            el.style.overflow = 'hidden'
+                        },
+                        'after-enter'(el) {
+                            el.style.transition = ''
+                            el.style.height = ''
+                            el.style.overflow = el.dataset.oldOverflow
+                        },
+                        'before-leave'(el) {
+                            if (!el.dataset) el.dataset = {}
+                            el.dataset.oldPaddingTop = el.style.paddingTop
+                            el.dataset.oldPaddingBottom = el.style.paddingBottom
+                            el.dataset.oldOverflow = el.style.overflow
+                            el.style.height = el.scrollHeight + 'px'
+                            el.style.overflow = 'hidden'
+                        },
+                        'leave'(el) {
+                            if (el.scrollHeight !== 0) {
+                                el.style.transition = elTransition
+                                el.style.height = 0
+                                el.style.paddingTop = 0
+                                el.style.paddingBottom = 0
+                            }
+                        },
+                        'after-leave'(el) {
+                            el.style.transition = ''
+                            el.style.height = ''
+                            el.style.overflow = el.dataset.oldOverflow
+                            el.style.paddingTop = el.dataset.oldPaddingTop
+                            el.style.paddingBottom = el.dataset.oldPaddingBottom
+                        }
+                    }
+                }
+                return h('transition', data, children)
+            }
+        });
+        Vue.component('tree-select',{
+            props:['selecteds','selections'],
+            methods:{
+                check:function(item){
+                    this.$emit('change',item);
+                },
+                updateSelection:function(item){
+                    this.$emit('change',item);
+                },
+                heightLight:function(item){
+                    if(this.selecteds.indexOf(item.code)>-1){
+                        return {'height-light':true};
+                    }
+                },
+                toggleFold:function(item){
+                    item._fold = !item._fold;
+                }
+            },
+            template:
+                `
+                <div>
+                    <van-cell-group v-for="item in selections" :key="item['code']">
+                        <van-cell >
+                            <van-icon slot="icon" name="arrow"  @click="toggleFold(item)" v-if="item.child"/>
+                            <span @click="check(item)" :class="heightLight(item)">测试</span>
+                            <vertical-toggle> 
+                                <tree-select v-show="item.child &&item._fold" :selecteds="selecteds" :selections="item.child" @change="updateSelection"></tree-select>
+                            </vertical-toggle>     
+                        </van-cell>
+                    </van-cell-group>
+                </div>    
+                `
+        });
+        var app = new Vue({
+            el:"#app",
+            data:{
+                selections:[
+                    {
+                        code:'1',
+                        text:'测试',
+                        _checked:false,
+                        _fold:true,
+                        child:[
+                            {
+                                code:'3',
+                                text:'测试3',
+                                _checked:false,
+                                _fold:false,
+                                child:[
+                                    {
+                                    code:'8',
+                                    text:'测试3',
+                                    _checked:false
+                                    }
+                                ]
+                            },
+                            {
+                                code:'4',
+                                text:'测试4',
+                                _checked:false
+                            },
+                            {
+                                code:'5',
+                                text:'测试5',
+                                _checked:false
+                            },
+                            {
+                                code:'6',
+                                text:'测试6',
+                                _checked:false
+                            }
+                        ]
+                    },
+                    {
+                        code:'2',
+                        text:'测试',
+                        _checked:false
+                    }
+            ],
+                selecteds:['1']
+            },
+            methods:{
+                updateSelection:function(item){
+                    item._checked = true;
+                    this.selecteds= [item.code];
+                }
+            }
+        })
+    </script>
+</html>

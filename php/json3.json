@@ -1,0 +1,74 @@
+[
+  {
+    "base": {
+      "label": "输入框",
+      "fieldName": "shuruzujian",
+      "showFlag": true,
+      "readonlyFlag": false,
+      "disabledFlag": false,
+      "requiredFlag": false,
+      "clearableFlag": true
+    },
+    "outerVal": {
+      "code": "",
+      "text": ""
+    },
+    "transform": "",
+    "placeholder": "请输入",
+    "type": "text",
+    "minLen": 0,
+    "maxLen": 0,
+    "regexRule": "",
+    "regexMsg": "",
+    "validatorFlag": false,
+    "compType": "compInput",
+    "test": "12"
+  },
+  {
+    "base": {
+      "label": "输入框",
+      "fieldName": "shuruzujian",
+      "showFlag": true,
+      "readonlyFlag": false,
+      "disabledFlag": false,
+      "requiredFlag": false,
+      "clearableFlag": true
+    },
+    "outerVal": {
+      "code": "",
+      "text": ""
+    },
+    "transform": "",
+    "placeholder": "请输入",
+    "type": "text",
+    "minLen": 0,
+    "maxLen": 0,
+    "regexRule": "",
+    "regexMsg": "",
+    "validatorFlag": false,
+    "compType": "compInput",
+    "test": "12"
+  },
+  {
+    "base": {
+      "label": "下拉框",
+      "fieldName": "xialakuang",
+      "showFlag": true,
+      "readonlyFlag": false,
+      "disabledFlag": false,
+      "requiredFlag": false,
+      "clearableFlag": true,
+      "dialogFlag": false
+    },
+    "outerVal": {
+      "code": "",
+      "text": ""
+    },
+    "placeholder": "请选择",
+    "dataUrl": "",
+    "options": [],
+    "validatorFlag": false,
+    "compType": "compSelect",
+    "test": "12"
+  }
+]

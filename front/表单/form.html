@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="username">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        var form = document.getElementsByTagName('form')[0];
+        form.onsubmit = function(e){
+            console.log(this.username.value);
+            return false;
+        }
+    </script>
+</body>
+</html>

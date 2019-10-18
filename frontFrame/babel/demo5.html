@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //      var status = 1;
+    //      var index = 0;
+    //      var a = [1,2,3,4];
+    //      var b = function(index){
+    //         setTimeout(function(){
+    //             status = 2;
+    //             console.log(index);
+    //         },1000)
+    //      }
+    //    let timer = setInterval(()=> {
+    //         if(index>=3){
+    //             status = 3;
+    //         }
+    //         if (status == 2 || index === 0) {
+    //             b(a[index++]);
+    //         }else if (status == 3) {
+    //             clearInterval(timer);
+    //         }
+    //     },10)    
+                
+    function evil3(js,value){
+        var fn = Function;
+        return (new Function('value','return '+js))(value);
+ }
+ console.log(evil3('value ===3','3'));
+        
+    </script>
+</body>
+</html>

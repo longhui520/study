@@ -90,7 +90,7 @@
                         var index = value.indexOf(this.name);
                         if (index !== -1) {
                             value.splice(index, 1);
-          是                  parent.$emit('input', value);
+             parent.$emit('input', value);
                         }
                     }
                 }
@@ -104,7 +104,6 @@
                     </div>
                 </div> 
                 `
-
         });
 
         Vue.component("checkboxGroup",{

@@ -45,8 +45,8 @@
                 "minlen" =>$minLen,
                 "maxlen"=>$maxLen,
                 "regeMsg"=>$regeMsg,
-                "regexRule"=>$regexRule,
-                "comType"=>$compType,
+                "regexRule"=>array(),
+                "comType"=>array(),
                 )
             );
         $json_string = json_encode($data);

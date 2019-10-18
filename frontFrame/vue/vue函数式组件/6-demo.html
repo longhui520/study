@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>容器组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+       <fn></fn>
+       <component is="child" :value="2"></component>
+</div>
+<script>
+//   Vue.component('container',{
+//     functional:true,
+//     render:function(){
+
+//     }
+//   });
+    Vue.component('child',{
+        name:'child',
+        props:['value'],
+        template:'<div>{{value}}</div>'
+    });
+    Vue.component('fnn',{
+        name:'fnn',
+        props:['value',"_is"],
+        template:'<component :is="_is" :value="value"></component>'
+    });
+    
+    Vue.component('fn',{
+        functional:true,
+        props:['list'],
+        render:function(h,c){
+           return h('fnn',{ props: {_is:'child',value:1}});
+       }
+    });
+    new Vue({
+        el:"#app",
+        data:{
+            value:2
+        }
+    });
+</script>
+</body>
+</html>

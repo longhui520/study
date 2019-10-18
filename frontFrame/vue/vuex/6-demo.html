@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vuex</title>
     <script src="../node_modules/vue/dist/vue.min.js"></script>
-    <script src="https://unpkg.com/vuex"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
 </head>
 <body>
     <div id="app">
@@ -36,6 +36,7 @@
             },
             actions:{
                 increment(context,playLoad){
+                    console.log(context);
                     context.commit('increment',playLoad);
                 },
                 incrementAsync({commit},playLoad){

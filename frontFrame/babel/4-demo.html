@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+</head>
+<body>
+    <script>
+        async function getTitle(url){
+            let response = await fetch(url);
+            
+            let html = await response.text();
+            console.log(html);
+            console.log(1);
+            return html.match(/<title>([\s\S]+)<\/title>/i)[1];
+
+        }    
+        getTitle('https://tc39.github.io/ecma262/').then(console.log);
+    </script>
+</body>
+</html>

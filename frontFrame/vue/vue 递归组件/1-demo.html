@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <v-dg :number="3" :result="1"></v-dg>
+    </div>
+    <script>
+        Vue.component('v-dg',{
+            name:'dg',
+            props:['number','result'],
+            template:
+            `
+             <div>
+                <p v-if="number <=1" >{{result}}</p>  
+                 <v-dg  v-else :result="result*number" :number="number-1"></v-dg>
+              </div> 
+            `
+        });
+        new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>

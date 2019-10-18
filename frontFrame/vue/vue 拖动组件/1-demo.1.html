@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖动组件</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        /* *{
+            margin: 0;
+            padding:0;
+        } */
+        .dragArea {
+            padding-bottom: 50px;
+            
+        }
+        /* ul{
+            padding-bottom: 20px;
+        } */
+        ul,li{
+            list-style: none;
+        }
+        .el-row {
+            padding-bottom: 50px;
+            border:1px solid #f00;
+        }
+        .el-col{
+            padding-bottom: 50px;
+            border:1px solid #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div style="float:left;width: 45%;">
+                <draggable
+                 tag="ul"
+                :list = layoutComponents
+                :group="{ name:'people', pull:'clone',put:false}"
+                :sort ="false",
+                ghostClass='ghost'
+                @end="end"
+                >
+                    <li  v-for="(el, index) in layoutComponents" :key="index">
+                            {{el.name}}
+                    </li>
+                </draggable>
+        </div>
+        <div style="float:right;width: 45%;">
+                <!-- <draggable
+                tag="div"
+               :list =" list"
+               :options="{group:{ name:'people'},ghostClass: 'ghost'}"
+               > -->
+                    <nested-draggable :list="list" />
+               <!-- </draggable> -->
+           
+        </div>
+    </div>
+    <script>
+       
+       Vue.component('fn',{
+            functional:true,
+            props:{
+                compType:String
+            },
+            render:function(h,c){
+                console.log(c)
+                return h(
+                    c.props.compType,
+                    c.data,
+                    c.children
+                );
+            }
+        }    
+       );
+       Vue.component('m-li',{
+           inheritAttrs:false,
+           name:'m-li',
+           props:['name'],
+           mounted:function(){
+               console.log(this);
+           },
+           template:`<li>
+           <p>{{name}}</p>
+           <slot></slot>
+           </li>`
+       });
+        var draggable = Vue.component('draggable');
+        Vue.component('nested-draggable', {
+            name: "nested-draggable",
+            props: {
+                list: {
+                    required: true,
+                    type: Array
+                }
+            },
+            components: {
+                draggable
+            },
+            template: `
+                <draggable class="dragArea" tag="div" :list="list" :group="{ name: 'people' }">
+                    <fn :compType="el.compType" v-for="(el,index) in list" :key="index" v-bind="el">
+                        <nested-draggable v-if="el.stype == 1 " :list="el.list" />
+                    </fn>     
+                </draggable>
+            `
+        });
+        // Vue.component('nested-draggable', {
+        //     name: "nested-draggable",
+        //     props: {
+        //         list: {
+        //             required: true,
+        //             type: Array
+        //         }
+        //     },
+        //     components: {
+        //         draggable
+        //     },
+        //     template: `
+        //         <draggable class="dragArea" tag="ul" :list="list" :group="{ name: 'people' }">
+                   
+        //             <li v-for="el in list" :key="el.name">
+        //                 <p>{{ el.name }}</p>
+        //                 <nested-draggable v-if="el.type == 1 " :list="el.list" />
+        //             </li>
+        //         </draggable>
+        //     `
+        // });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                keys:1,
+                layoutComponents:[
+                    {
+                        name:"我是嵌套",
+                        stype:1,
+                        compType:'m-li',
+                        list:[]
+                    },
+                    {
+                        stype:2,
+                        compType:'m-li',
+                        name:'我不是嵌套'
+                    },
+                    {
+                        stype:1,
+                        compType:'el-row',
+                        name:'我是嵌套row',
+                        list:[]
+                    },
+                    {
+                        stype:1,
+                        compType:'el-col',
+                        name:'我是嵌套col',
+                        span:6,
+                        list:[]
+                    }
+                ],
+                list: [
+                   
+                ]
+            },
+            methods:{
+                end:function(e){
+                    this.layoutComponents[0] = {name:'我是嵌套'+this.keys++, compType:'m-li',list:[],stype:1};
+                    this.layoutComponents[2] = {name:'我是嵌套row'+this.keys++, compType:'el-row',list:[],stype:1};
+                    this.layoutComponents[3] = {name:'我是嵌套col'+this.keys++, compType:'el-col', span:6,list:[],stype:1};
+
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

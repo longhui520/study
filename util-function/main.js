@@ -17,5 +17,37 @@ function getType(o){
           '[object Object]'   : 'object',
           '[object Error]'    : 'error'
     }
-    return _type[typeof o] || _type[_toString.call(0)] || (o ?"object":"null");
+    return _type[typeof o] || _type[_toString.call(o)] || (o ?"object":"null");
 }
+
+
+// function getSafeReduce(data, keys, defaultValue) {
+//     function isExist(data) {
+//         return data !== undefined && data !== null;
+//     }
+//     function isNothing(data) {
+//         return !isExist(data);
+//     }
+//     function isVaild(data) {
+//         return typeof data === 'string' || typeof data === 'number';
+//     }
+//     if (isNothing(data)) {
+//         return defaultValue || "";
+//     }
+//     data = isExist(data) ? data : {};
+//     return isVaild(keys) &&  String(keys).split(",").reduce((item, key, i, arr) => {
+//             let result = item[key.trim()];
+//             result = isExist(result) ? result : ((i === arr.length - 1) ? defaultValue : {});
+//             return result;
+//         }, data);
+// }
+function reg_replace(regs,reps,str){
+    regs.forEach(function(v,i){
+        str = str.replace(v,reps[i]);
+    });
+    return str;
+}
+var str = '#a##a#2222#b#';
+var regs = [/#a#/gm,/#b#/gm];
+var reps = ['fa','fb'];
+console.log(reg_replace(regs,reps,str));

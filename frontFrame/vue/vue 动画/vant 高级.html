@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="../vant/vant.css">
+    <script src="../vant/vue.min.js"></script>
+    <script src="../vant/vant.min.js"></script>
+</head>
+<body>
+    <div id="app">
+            <van-button @click="show=true">高级用法</van-button>
+            <van-dialog v-model="show" show-cancel-button :before-close="beforeClose">
+                <div>
+                    <van-field v-model="username" label="用户名" placeholder="请输入用户名"/>
+                    <van-field v-model="username" label="用户名" placeholder="请输入用户名"/>
+                  
+                </div>    
+            </van-dialog>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                show: false,
+                username: '',
+                password: ''
+            },
+            methods: {
+                beforeClose(action, done) {
+                if (action === 'confirm') {
+                    setTimeout(done, 1000);
+                } else {
+                    done();
+                }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

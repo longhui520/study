@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+<input type="text" placeholder="请输入"/>
+    <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+    </ul>
+<script>
+    $('input').keydown(function(e){
+        var val = $(this).val();
+        $('ul li').each(function(){
+            $(this).css('display','none');
+            if(~$(this).text().indexOf(val)){
+              $(this).css('display','block') ;
+            }
+        });
+    })
+</script>
+</body>
+</html>
