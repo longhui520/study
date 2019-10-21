@@ -7,6 +7,12 @@
     <title>Document</title>
      <script src="../node_modules/vue/dist/vue.js"></script>
      <script src="../node_modules/vuex/dist/vuex.js"></script>
+     <style>
+         .comp-wrapper{
+            border:1px solid red;
+            padding:10px;
+         }
+     </style>
 </head>
 <body>
     <div id="app">
@@ -71,18 +77,30 @@
                 return create({name:'form',children:this.nodes});
             }
         });
-       
+        Vue.component('compBox',{
+            template:'<div><slot></slot></div>'
+        });
+        Vue.component('compWrapper',{
+            template:'<div class="comp-wrapper"><slot></slot></div>'
+        })
         var data = [
                 {name:'CompChild1',props:{fieldName:"text1",value:'这是子组件222'}},
-                {name:'CompChild1',props:{fieldName:"text2",value:'这是子组件222'}}
+                {name:'CompChild1',props:{fieldName:"text2",value:'这是子组件222'}},
+                {name:'compBox',children:[{name:'CompChild1',props:{fieldName:"text3",value:'这是子组件3333'}}]}
         ];
         function adaptData(data){
             for(var i=0;i<data.length;i++){
+                var wrapper = {name:'compWrapper',props:{id:Math.random().toString(32).slice(2)}}
+                if(!('props' in data[i])){
+                    data[i].props = {};
+                }
                 data[i].props.id=Math.random().toString(32).slice(2);
-                if(data[i].children){
+                if(Array.isArray([i].children)){
                     adaptData(data[i].children);
                 }
-            }  
+                wrapper.children=[data[i]];
+                data[i] = wrapper;
+            } 
             return data;
         }   
         data = adaptData(data);
