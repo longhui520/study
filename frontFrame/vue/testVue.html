@@ -9,23 +9,19 @@
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="item in list">{{item.text}}</li>
-        </ul>
+       <input type="text" :value="value" @change="change">
     </div>
     <script>
         var  app = new Vue({
             el:"#app",
             data:{
-                list:[]
-            },
-            created:function(){
-                this.list = [{text:222222}];
+                value:"2222"
             },
             methods:{
-                modifyListItem:function(index,value){
-                    this.list[index].text = value;
-                }
+               change:function(e){
+                   this.value= "";
+                   e.target.value="";
+               }
             }
         })
     

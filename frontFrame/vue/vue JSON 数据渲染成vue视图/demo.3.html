@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <script src="../node_modules/vue/dist/vue.js"></script>
+     <script src="../node_modules/vuex/dist/vuex.js"></script>
+     <style>
+         .comp-wrapper{
+            border:1px solid red;
+            padding:10px;
+         }
+         .layout{
+             width: 50%;
+         }
+         .edit{
+            position: absolute;
+            top:10px;
+            right:10px;
+            width: 300px;
+            height: 500px;
+         }
+     </style>
+</head>
+<body>
+    <div id="app">
+         <div class="layout">
+             <comp-render-wrapper :nodes="nodes" @update="update" @delete_node="delete_node" @edit_node="edit_node"></comp-render-wrapper>
+         </div>
+         <div class="edit">
+               <h1>配置属性</h1>
+                <template v-if="currentNode">
+                    <div v-for="(value,key) in currentNode.props" :key="key">
+                        <label>{{key}}<input type="text" :value="value" @input="change(key,$event.target.value)"/></label>
+                    </div>
+                </template>
+         </div>
+        <div class="form">
+            <comp-render :nodes="nodes" @update="update"></comp-render>
+        </div>
+        <button type="text" @click="add">增加</button>
+    </div>
+    <script>
+        var componentProps = {
+            compText:{
+                id:{
+                    title:"id",
+                    referkey:"id",
+                    conponents:{
+                        name:"compText",
+                        props:{
+                            value:"",
+                            fieldName:"id"
+                        }
+                    }
+                    
+                }
+            }
+        }
+        Vue.component('compText',{
+            props:['value',"id"],
+            data:function(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                update:function(){
+                    this.$emit('update',{key:'value',value:this.count++,id:this.id});
+                }
+            },
+            template:'<div @click="update">{{value}}</div>'
+        });
+        Vue.component('compEditProps',{
+            props:[],
+            template:'<comp-render></comp-render>'
+        });
+        Vue.component('compWrapper',{
+            props:['wrapperid',"id"],
+            methods:{
+                delete_node:function(){
+                    this.$emit("delete_node",this.wrapperid);
+                },
+                edit_node:function(){
+                    this.$emit("edit_node",this.wrapperid);
+                },
+                clickEvent:function(){
+                    console.log(111);
+                }
+            },
+            template:`<div class="comp-wrapper" @click="clickEvent">
+                        <slot></slot>
+                        <div @click="delete_node">删除</div>
+                        <div @click="edit_node">编辑</div>
+                      </div>`
+        });
+        Vue.component('compRenderWrapper',{
+            props:['nodes'],
+            computed:{
+                nodesWrapper:function(){
+                    var obj = [];
+                    for(var i = 0; i<this.nodes.length;i++){
+                        var wrapper = {name:'compWrapper',props:{id:Math.random().toString(32).slice(2)}};
+                        wrapper.children = [this.nodes[i]];
+                        wrapper.props.wrapperid=this.nodes[i].props.id;
+                        obj[i] = wrapper; 
+                    }
+                    return obj;
+                }
+            },
+            methods:{
+                update:function(e){
+                    console.log(e)
+                },
+                delete_node:function(data){
+                    console.log(data);
+                }
+            },
+            template:'<comp-render :nodes="nodesWrapper" v-on="$listeners"></comp-render>'
+        });
+        Vue.component('compRender',{
+            props:['nodes'],
+            methods:{
+                update:function(data){
+                    this.$emit('update',data);
+                },
+                delete_node:function(data){
+                    this.$emit('delete_node',data);
+                }
+            },
+            render:function(createElement){
+                var vm = this;
+                function createData(node){
+                    var data = {};
+                    if(node.props){
+                        data.props = node.props;
+                        data.key = node.props.id;
+                        data.ref =data.key;
+                        data.refInFor = true;
+                        data.on = vm.$listeners
+                    }
+                    return data;
+                }
+                function createName(node){
+                    return Vue.component(node.name)||node.name ||'div';
+                }
+                function create(nodes){
+                    if(Object.prototype.toString.call(nodes)=='[object Array]'){
+                        return nodes.map(function(node){
+                            return createElement(createName(node),createData(node),create(node.children));
+                        });
+                    }
+                    if(Object.prototype.toString.call(nodes)=='[object String]'){
+                        return nodes;
+                    }
+                    if(Object.prototype.toString.call(nodes)=='[object Object]'){
+                        return createElement(createName(nodes),createData(nodes),create(nodes.children));
+                    }
+                    if(nodes === undefined || nodes===null){
+                        return "";
+                    }
+                    return String(nodes);
+                }
+                return create({name:'div',children:this.nodes});
+            }
+        });
+        var data = [
+                {name:'compText',props:{fieldName:"text1",value:'这是子组件'}}
+        ];  
+        function adaptData(data){
+            for(var i=0;i<data.length;i++){
+                if(!('props' in data[i])){
+                    data[i].props = {};
+                }
+                data[i].props.id=Math.random().toString(32).slice(2);
+                if(Array.isArray([i].children)){
+                    adaptData(data[i].children);
+                }
+            } 
+            return data;
+        }   
+        data = adaptData(data);
+        var app = new Vue({
+            el:"#app",
+            data:{
+                nodes:data,
+                count:10,
+                currentNode:null,
+                listeners:{"update":this.update,"delete_node":this.delete_node,"edit_node":this.edit_node}
+            },
+            methods:{
+                update:function(data){
+                    console.log(data);
+                    for(var i=0;i<this.nodes.length;i++){
+                        if(this.nodes[i].props.id == data.id){
+                            this.nodes[i].props[data.key]=data.value;
+                        }
+                    }
+                },
+                change:function(key,value){
+                    this.currentNode.props[key]=value;
+                },
+                delete_node:function(data){
+                    console.log(data);
+                    for(var i=0;i<this.nodes.length;i++){
+                        if(this.nodes[i].props.id == data){
+                            this.nodes.splice(i,1);
+                        }
+                    }
+                },
+                edit_node:function(data){
+                    console.log(data);
+                    for(var i=0;i<this.nodes.length;i++){
+                        if(this.nodes[i].props.id == data){
+                            this.currentNode = this.nodes[i]
+                        }
+                    }
+                },
+                add:function(){
+                    this.nodes.push({name:'compText',props:{fieldName:"text"+this.count++,value:'这是子组件'+this.count++,id:Math.random().toString(32).slice(2)}})
+                }
+            }
+        });
+    </script>
+</body>
+</html>
