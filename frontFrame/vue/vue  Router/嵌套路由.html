@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vueRouter</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script> -->
+   
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello App!</h1>
+      <p>
+        <router-link to="/user/11">11</router-link>
+        <router-link to="/user/12">22</router-link>
+      </p>
+      <router-view></router-view>
+    </div>
+    
+    <script>
+      const User = {
+       data:function(){
+           return {
+               parentr:this.$route.fullPath
+           }
+       },
+        template:`
+            <div>
+                <h2>{{$route.params.id}}</h2>
+                <router-link :to="parentr+'/profile'">profile</router-link>
+                <router-link :to="parentr+'/post'">post</router-link>
+                <router-view></router-view>
+            </div>
+            `
+      }
+      const User2 = {
+        template:`
+            <div>
+                <h1>profile</h1>
+            </div>
+            `
+      }
+      const User3= {
+        template:`
+            <div>
+                <h1>post</h1>
+            </div>
+            `
+      }
+      const routes = [
+        {
+            path:'/user/:id',
+            component:User,
+            children:[
+                {
+                    path:'profile',
+                    component:User2,
+                },
+                {
+                    path:'post',
+                    component:User3,
+                }
+            ]
+
+        }
+      ];
+
+      const router = new VueRouter({
+        routes
+      });
+      const app = new Vue({
+        router
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

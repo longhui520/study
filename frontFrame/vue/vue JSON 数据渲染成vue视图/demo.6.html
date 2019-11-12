@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <script src="../node_modules/vue/dist/vue.js"></script>
+     <script src="../node_modules/vuex/dist/vuex.js"></script>
+     <script src="http://cdn.jsdelivr.net/npm/sortablejs@1.8.3/Sortable.min.js"></script>
+     <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>
+     <style>
+         .comp-wrapper{
+            border:1px solid red;
+            padding:10px;
+         }
+         .layout{
+             width: 50%;
+         }
+         .edit{
+            position: absolute;
+            top:10px;
+            right:10px;
+            width: 300px;
+            height: 500px;
+         }
+         .ghost{
+             border-top:2px solid red;
+         }
+     </style>
+</head>
+<body>
+    <div id="app">
+        <div class="form">
+            <comp-render ref="render" :node="node" 
+                @update="update" 
+                @delete_node="delete_node" 
+                @change_sort="change_sort"
+                @copy_node = "copy_node"
+            ></comp-render>
+        </div>
+        <button type="text" @click="add">增加</button>
+    </div>
+    <script>
+        Vue.component('compText',{
+            props:['value',"id"],
+            data:function(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                update:function(){
+                    this.$emit('update',{key:'value',value:this.count++,id:this.id});
+                }
+            },
+            template:'<div @click="update">{{value}}</div>'
+        });
+        Vue.component('compDraggable',{
+            props:["id","children"],
+            created:function(){
+                this.list = this.children;
+            },
+            data:function(){
+                return {
+                    list:null,
+                }
+            },
+            methods:{
+                input:function(data){
+                   this.$emit('change_sort',{id:this.id,data:data});
+                }
+            },
+            template:'<draggable :value="list" ghostClass="ghost" @input="input" :animation="500"><transition-group><slot></slot></transition-group></draggable>'
+        })
+        Vue.component('compWrapper',{
+            props:["wrapperid","id"],
+            methods:{
+                delete_node:function(){
+                    this.$emit("delete_node",{id:this.id,wrapperid:this.wrapperid});
+                },
+                edit_node:function(){
+                    this.$emit("edit_node",{id:this.id,wrapperid:this.wrapperid});
+                },
+                copy_node:function(){
+                    this.$emit("copy_node",{id:this.id,wrapperid:this.wrapperid});
+                }
+            },
+            template:`<div class="comp-wrapper">
+                        <slot></slot>
+                        <div @click="delete_node">删除</div>
+                        <div @click="edit_node">编辑</div>
+                        <div @click="copy_node">复制</div>
+                      </div>`
+        });
+        Vue.component('compRender',{
+            props:['node'],
+            methods:{
+                update:function(data){
+                    this.$emit('update',data);
+                },
+                delete_node:function(data){
+                    this.$emit('delete_node',data);
+                }
+            },
+            render:function(h){
+                var vm = this;
+                function getType(obj){
+                    return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+                }
+                function getData(node){
+                    var context = vm ;
+                    var result = {};
+                    if(getType(node)!=='object'){
+                        return result;
+                    }
+                    result.class = node.class||{};
+                    result.style = node.style||{};
+                    result.props = node.props||{};
+                    result.attrs = node.attrs||{};
+                    result.domProps = node.domProps||{};
+                    result.on = context.$listeners;
+                    result.ref =  node.id;
+                    result.key =  node.id;
+                    result.refInFor = true;
+                    result.props.children = node.children;
+                    result.props.id = node.id;
+                    return result;
+                }
+                function getName(name){
+                    if(!name){
+                        throw new Error('组件名不能为空');
+                    }
+                    if(getType(name)=='string'){
+                        return Vue.component(name)|| name;
+                    }
+                    if(getType(name)=='object'){
+                        return name;
+                    }
+                    if(getType(name)=='function'){
+                        return name;
+                    }
+                    throw new Error('组件必须是自定义组件名或者html标签名字符串;或者一个注册了的全局组件或者一个组件选项对象;或者返回一个组件的异步函数');
+                }
+                function createEle(node){
+                    if(getType(node)=='array'){
+                        return node.map(function(subNode){
+                            if(getType(subNode)=="string"){
+                                return subNode;
+                            }
+                            if(getType(subNode)=="object"){
+                                if(subNode.wrap){
+                                    subNode.wrap.props.wrapperid=subNode.id;
+                                    return h(subNode.wrap.name,getData(subNode.wrap),[h(getName(subNode.name),getData(subNode),createEle(subNode.children))]);
+                                }
+                                return h(getName(subNode.name),getData(subNode),createEle(subNode.children))
+                            }
+                            throw new Error('子组件必须是一个字符串(html的text),或者一个动态组件的配置的对象');
+                        });
+                    }
+                    if(getType(node)=='string'){
+                        return node;
+                    }
+                    if(getType(node)=='object'){
+                        if(node.wrap){
+                            return h(node.wrap,{},h(getName(node.name),getData(node),createEle(node.children)));
+                        }
+                        return h(getName(node.name),getData(node),createEle(node.children));
+                    }
+                    if(node === undefined || node===null){
+                        return null;
+                    }
+                }
+                if(getType(this.node)==='object'){
+                    return createEle(this.node);
+                }
+                if(getType(this.node)=='array'){
+                    // console.log(createEle(this.node));
+                    return h('div',{},createEle(this.node));
+                }
+                throw new Error('渲染数据必须是一个对象或者数组');
+            }
+        });
+        var data = [
+                {   name:'compText',
+                    id:Math.random().toString(32).slice(2),
+                    props:{fieldName:"text",value:'这是子组件1'},
+                    wrap:{
+                        name:'compWrapper',
+                        id:Math.random().toString(32).slice(2),
+                        props:{}
+                    }
+                },
+                {   name:'compText',
+                    id:Math.random().toString(32).slice(2),
+                    props:{fieldName:"text",value:'这是子组件2'},
+                    wrap:{
+                        name:'compWrapper',
+                        id:Math.random().toString(32).slice(2),
+                        props:{}
+                    }
+                }
+        ];  
+        var data2 = {
+            name:"compDraggable",
+            id:Math.random().toString(32).slice(2),
+            children:data,
+            props:{
+                ghostClass: 'ghost'
+            }
+        }        
+
+        var app = new Vue({
+            el:"#app",
+            data:{
+                node:data2,
+                count:10,
+                currentNode:null,
+                listeners:{"update":this.update,"delete_node":this.delete_node,"edit_node":this.edit_node}
+            },
+            methods:{
+                update:function(data){
+                    console.log(data);
+                },
+                change:function(data){
+                    console.log(data)
+                },
+                delete_node:function(data){
+                    console.log(data);
+                },
+                edit_node:function(data){
+                    console.log(data);
+                },
+                copy_node:function(data){
+                    var res = this.findByid(data.wrapperid);
+                    var node  = JSON.parse(JSON.stringify(res.result));
+                    node.id = Math.random().toString(32).slice(2);
+                    node.wrap.id =  Math.random().toString(32).slice(2);
+                    node.props.value="这是子组件"+this.count++;
+                    console.log(node);
+                    res.parent.children.push(node);
+                },
+                findByid:function(id){
+                    var stack = [this.node];
+                    var parent = this.node;
+                    var result = null;
+                    while(stack.length && !result){
+                        var node = stack.pop();
+                        if(node.id === id){
+                            result = node;
+                        }
+                        else if(Array.isArray(node.children)){
+                            for(var i = 0;i<node.children.length;i++){
+                                if(node.children[i].id === id){
+                                    result = node.children[i];
+                                    parent = node;
+                                    break;
+                                }else if(Array.isArray(node.children[i].children)){
+                                    stack = stack.concat(node.children[i].children);
+                                }
+                            }
+                        }
+                    }
+                    return {result:result,parent:parent};
+                },
+                add:function(){
+                    var comp =  {  
+                         name:'compText',
+                         id:Math.random().toString(32).slice(2),
+                         wrap:{
+                            name:'compWrapper',
+                            id:Math.random().toString(32).slice(2)
+                        }
+                     };
+                },
+                change_sort:function(data){
+                    var res = this.findByid(data.id);
+                    this.$set(res.result,'children',data.data);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

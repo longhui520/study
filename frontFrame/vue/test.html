@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <!-- 引入组件库 -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-html="c_text"></div>
+        <div><span v-for="item in label" @click="change(item)">{{item}}</span></div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                text:'我是测试',
+                label:[{
+                    text:'测试',
+                    state:0
+                }]
+            },
+            computed:{
+                c_text:function(){
+                    var result = this.text;
+                    for(var i=0;i<this.label.length;i++){
+                        if(this.label[i].state){
+                            result.replace( new RegExp(this.label[i].text, 'g'), '<span class="search-text">' + this.label[i].text + '</span>')//加上html标签和类名
+                        }
+                    }
+                   return result;
+                }
+            },
+            methods:{
+                change:function(item){
+                   item.state = !item.state;
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>

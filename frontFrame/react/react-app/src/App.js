@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
 import CompInput from './components/CompInput'
 import CompRadio from './components/CompRadio'
-
 import { Button } from 'element-react';
 import 'element-theme-default';
 

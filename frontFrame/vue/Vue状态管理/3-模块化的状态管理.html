@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块化状态管理</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const moduleA = {
+            namespaced: true,
+            state:{
+                value:'这是模块A'
+            },
+            mutations:{
+                updateValue:function(state,value){
+                    console.log('这是模块A :');
+                    state.value = value
+                }
+            }
+        }
+        const moduleB = {
+            state:{
+                value:'这是模块B'
+            },
+            mutations:{
+                updateValue:function(state,value){
+                    console.log('这是模块B :');
+                    state.value = value
+                }
+            }
+        }
+        const store = new Vuex.Store({
+            modules:{
+                a:moduleA,
+                b:moduleB
+            }
+        })
+        console.log(store.state);
+    </script>
+</body>
+</html>
