@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>监听测试</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child :count="count1" @update= "setCount1"></child>
+      <child :count="count2" @update = "setCount2"></child>
+    </div>
+    <script>
+      var customWatch = {
+        props: {
+            customWatch: {
+                default: function() {
+                return {
+                    count: {
+                        expOrFn: 'count',
+                        callback: function(newValue, oldValue) {
+                        //    console.log(newValue)
+                        },
+                        options: {
+                            deep: true,
+                            immediate: true
+                        }
+                    }
+                };
+            }
+          }
+        },
+        created: function() {
+          if (this.customWatch) {
+            for (let key in this.customWatch) {
+              var op = this.customWatch[key];
+              this.$watch(op.expOrFn, op.callback, op.options);
+            }
+          }
+        }
+      };
+      Vue.component('child', {
+        mixins:[customWatch],  
+        props:['count'],
+        template: ` 
+                    <div>
+                        <h1>{{count}}</h1>
+                        <button @click="$emit('update',count+1)">点击+1</button>
+                    </div>`
+      });
+      var app = new Vue({
+        el: '#app',
+        data:{
+            count1:0,
+            count2:1,
+            customWatch:{
+                count12:{ 
+                    expOrFn:function(){
+                        return this.count1 + this.count2;
+                    },
+                    callback:function(newValue, oldValue){
+                        console.log(newValue);
+                    },
+                    options: {
+                        deep: true,
+                        immediate: true
+                    }
+                }
+            }
+        },
+        created: function() {
+          if (this.customWatch) {
+            for (let key in this.customWatch) {
+              var op = this.customWatch[key];
+              this.$watch(op.expOrFn, op.callback, op.options);
+            }
+          }
+        },
+        methods:{
+            setCount1:function(val){
+                this.count1  = val
+            },
+            setCount2:function(val){
+                this.count2 = val
+            }
+        }
+
+      });
+    </script>
+  </body>
+</html>
