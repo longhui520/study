@@ -1,0 +1,39 @@
+# linux 命令
+## grep
+- grep "searchString" filename //从文件中搜索 字符串，返回匹配的行
+    - 修饰参数
+      - -i 忽略大小写
+      - -c 统计匹配的次数/行数
+      - -extended-regexp(-E) 可以使用正则匹配
+      - -invert match(-V) 反选匹配
+      - -recursive(-r) 递归目录所有文件搜索
+      - --files-with-matches(-l) 只打印匹配到的文件名
+      - -L 与-l相反
+      - --fixed-regexp(-F) 不支持正则匹配
+      - -only(-o) 只打印符合要求的内容，而非整行
+      - --text(-a) 不忽略二进制数据
+      - --after-context(-A) 显示之后的几行，后跟数字
+      - --before-context(-B) 显示之前的几行 ，后跟数字
+      - --context(-C) 显示前后几行，后跟数字
+- ls 列出当前路径中的文件和目录
+- pwd 显示工作目录
+- cat 查看文件
+   - cat "内容" > filename //将内容写入文件中
+   - cat filename1 filename2 >filename3 将文件1和文件2 合并到文件3中
+- echo "内容" //批处理脚本中打印内容
+- touch somefile 创建文件
+- mkdir some-dirctory 创建目录
+- rm somefile 删除目录
+    - -i 删除前逐一询问确认
+    - -f 强制删除
+    - -r 递归目录删除
+    - -rf /* 跑路删除
+- tail somefile //查看文档默认显示最后10行，可多个文件
+    - -n n 显示n行
+    - -f 循环读取
+    - + n 从n行到结尾
+    - -c n 最后n行
+- find path -name filename //搜索文件  file文件可使用正则符匹配(*,^,$等)
+- mv somefile path 移动文件
+- wget //下载工具
+- tree 以树状列出目录的内容
