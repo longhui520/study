@@ -1,65 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1c436e3-dbcc-416d-a486-39405f777cb7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/__invoke.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/strage_pattern.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javacsript/内联绑定.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/__call.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/class_const.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontFrame/react/从零开始学/1.组件的定义.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontFrame/vue/vue函数式组件/5-demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javacsript/设计模式/开放-封闭原则.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontFrame/react/从零开始学/6.表单.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/single.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/demo-string.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/__set.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/clone.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontFrame/react/从零开始学/5.列表渲染.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javacsript/排序算法/插入排序.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/__tostring.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/charthtml.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javacsript/排序算法/快速排序.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/方法修饰符/抽象类.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/cookie/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/implements.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/css tricks/绝对底部.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontFrame/jquery/json函数.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/relisze.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/study/intertor.php" />
-      <change type="DELETED" beforePath="E:\GitHub\study\任务组件.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\fonts\mui.ttf" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\javacsript\动态绑定事件\1-demo.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\frontFrame\vue\vue sync\2-demo.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\javacsript\customEvent.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\mui.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\frontFrame\vue\vue sync\1-demo.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\4.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\style.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\fonts\iconfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\3.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\1.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\2.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\study\javacsript\json\json字符串的解析.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util-function/main.js" afterPath="$PROJECT_DIR$/util-function/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/函数节流和防抖/1-demo.html" afterPath="$PROJECT_DIR$/front/函数节流和防抖/1-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/index.php" afterPath="$PROJECT_DIR$/php/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vue基础/8-计算属性.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vue基础/8-计算属性.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vue函数式组件/4-demo.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vue函数式组件/4-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vuex/6-demo.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vuex/6-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/test.json" afterPath="$PROJECT_DIR$/php/test.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vue 动画/vue 函数式组件实现折叠.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vue 动画/vue 函数式组件实现折叠.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/package-lock.json" afterPath="$PROJECT_DIR$/frontFrame/vue/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javacsript/test.html" afterPath="$PROJECT_DIR$/javacsript/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vue函数式组件/2-demo.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vue函数式组件/2-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javacsript/函数设计/1-函数节流.js" afterPath="$PROJECT_DIR$/javacsript/函数设计/1-函数节流.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javacsript/存取器.html" afterPath="$PROJECT_DIR$/javacsript/存取器.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javacsript/放大图片.html" afterPath="$PROJECT_DIR$/javacsript/放大图片.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/vue/vue lookup 组件/1-demo.html" afterPath="$PROJECT_DIR$/frontFrame/vue/vue lookup 组件/1-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontFrame/react/组件/1.组件的简单定义.html" afterPath="$PROJECT_DIR$/frontFrame/react/组件/1.组件的简单定义.html" />
-    </list>
+    <list default="true" id="f1c436e3-dbcc-416d-a486-39405f777cb7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +68,7 @@
       <file leaf-file-name="1-demo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontFrame/jquery/20- jquery 搜索/1-demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19288175">
+            <state vertical-scroll-proportion="0.19858156">
               <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
@@ -214,8 +156,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -312,11 +252,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="IntelliLang.Configuration" />
@@ -385,10 +327,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1989446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1989446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32749325" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -511,6 +453,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontFrame/jquery/jquery-3.0.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontFrame/jquery/19-自定义关联选择框.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontFrame/jquery/18-自定义关联选择框.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontFrame/jquery/20- jquery 搜索/1-demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontFrame/jquery/17-jquery插件/1-demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/note/ps.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -573,7 +557,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontFrame/jquery/20- jquery 搜索/1-demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19288175">
+        <state vertical-scroll-proportion="0.19858156">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding />
         </state>
