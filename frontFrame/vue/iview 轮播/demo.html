@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>轮播</title>
+    <!-- <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/iview/dist/iview.js"></script>
+    <script src="../node_modules/iview/dist/styles/iview.css"></script> -->
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css" />
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+    <style>
+      #app {
+        width: 300px;
+        padding: 10px;
+        margin: 100px auto;
+      }
+      .demo-carousel {
+        height: 100px;
+        width: 300px;
+        background: red;
+      }
+      .demo-carousel img {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <Carousel v-model="value1">
+        <Carousel-item>
+          <div class="demo-carousel">
+            <img src="./test.png" alt="" />
+          </div>
+        </Carousel-item>
+        <Carousel-item>
+          <div class="demo-carousel">
+            <img src="./test2.png" alt="" />
+          </div>
+        </Carousel-item>
+        <Carousel-item>
+          <div class="demo-carousel">
+            <img src="./test.png" alt="" />
+          </div>
+        </Carousel-item>
+        <Carousel-item>
+          <div class="demo-carousel">
+            <img src="./test2.png" alt="" />
+          </div>
+        </Carousel-item>
+      </Carousel>
+    </div>
+    <script>
+      var app = new Vue({
+        data: {
+          value1: 1,
+          loop: true
+        },
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

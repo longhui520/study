@@ -6,5 +6,6 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.post('/api/:action/:method', controller.home.api);
+  router.get('/api/:action/:method', controller.home.api);
+  router.post('/json',controller.home.json);
 };

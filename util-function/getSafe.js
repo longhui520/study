@@ -9,7 +9,7 @@ function getSafe(data, keys, defaultValue) {
         return typeof data === 'string' || typeof data === 'number';
     }
     if (isNothing(data)) {
-        return defaultValue || "";
+        return defaultValue ;
     }
     data = isExist(data) ? data : {};
     return isVaild(keys) &&  String(keys).split(".").reduce(function(item, key, i, arr){

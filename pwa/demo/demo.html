@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pwademo</title>
+</head>
+<body>
+    <img src="" alt="">
+    <script>
+        // 注册service worker.
+        registerWorker();
+    
+        function registerWorker(){
+          // 判断是否支持serviceWorker.
+          if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('/sw.js').then(
+              registration => {
+                // 注册成功
+                console.log('注册成功，', registration.scope);
+              }
+            ).catch(err => {
+              // 注册失败
+              console.log(err);
+            })
+          }
+        }
+      </script>
+</body>
+</html>
