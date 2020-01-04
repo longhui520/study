@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>我是子窗口</h1>
+    <button id="btn">发送消息</button>
+    <script>
+        var i = 1;
+        document.querySelector("#btn").addEventListener('click',function(){
+            window.top.postMessage(`我是第${i++}消息`,"*")
+        })
+    </script>
+</body>
+</html>

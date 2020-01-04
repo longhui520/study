@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Fish Chan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-demo</title>
+    <script src="./Dep.js"></script>
+    <script src="./Watch.js"></script>
+    <script src="./Compile.js"></script>
+    <script src="./Observer.js"></script>
+    <script src="./core.js"></script>
+</head>
+<body>
+    <div id="app">{{name}}</div>
+
+    <script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            name: 'Fish Chan'
+        }
+    });
+    </script>
+</body>
+</html>

@@ -14,7 +14,7 @@
 </body> 
 <script>
     window.onload = function(){
-        document.getElementById('child').contentWindow.postMessage("主页面消息", "1-b.html")
+        document.getElementById('child').contentWindow.postMessage("主页面消息", "E:/GitHub/study/front/iframe的运用//1-b.html")
     }
     window.addEventListener('message', function(event){document.getElementById('message').innerHTML = "收到"
     + event.origin + "消息：" + event.data;

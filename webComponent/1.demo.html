@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webComponent</title>
+</head>
+<body>
+    <template id="custom-title-template">
+        <style>
+            h1{
+                font-size: 18px;
+            }
+        </style>
+        <h1>
+            Hello WC!
+        </h1>
+    </template>
+    <custom-title></custom-title>
+    <script>
+        class CustomTitle extends HTMLElement{
+            constructor(){
+                super()
+                this.attachShadow({mode:'open'})
+                var tmpl = document.querySelector('#custom-title-template')
+                // this.shadowRoot.appendChild(tmpl.content.cloneNode(true))
+                this.shadowRoot.innerHTML = document.querySelector('#custom-title-template').innerHTML
+            }
+        }    
+        window.customElements.define('custom-title',CustomTitle)
+    </script>
+</body>
+</html>

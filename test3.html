@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <a href="" download="文件.csv" id="btn">下载</a>
+    <script>
+    var blob = new Blob(["Hello,world!\n123123,123123"], {type: "text/csv,charset=UTF-8"});
+    console.log(blob)
+    document.getElementById("btn").href = window.URL.createObjectURL(blob);
+    </script>
+</body>
+</html

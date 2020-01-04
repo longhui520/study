@@ -6,22 +6,12 @@
 		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 	</head>
 	<body>
-		<h1></h1>
-		<script type="text/javascript">
-			$.ajax({
-				url:"./index.php",
-				data:{
-					conditions:[{name:'2',vals:'2'}]
-				},
-				type:'post'
-			});
+		<h1>父窗口</h1>
+		<iframe src="http://192.168.43.164:8012/WebReport/ReportServer?reportlet=Text.cpt&op=write" frameborder="1"></iframe>
+		<script>
+			window.addEventListener('message',function(e){
+				console.log(e.data)
+			})
 		</script>
-		<?php
-			echo 2;
-		?>
-		<?php
-			$a = 0 ||2;
-			echo $a;
-		<?>
-	</body>
+    </body>
 </html>
