@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+        <style type="text/css">
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            #div1 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background: red;
+            }
+        </style>
+
+        <script type="text/javascript">
+            window.onload = function() {
+                startMove('div1');
+                function startMove(id) {
+                    var iSpeedX = 10;
+                    var iSpeedY = 10;
+                    setInterval(function() {
+                        var oDiv = document.getElementById(id);
+
+                        var l = oDiv.offsetLeft + iSpeedX; //物体在X方向上的位移
+                        var t = oDiv.offsetTop + iSpeedY; //物体在Y方向上的位移
+                        document.title = l + ' , ' + t + ' , ' + iSpeedX + ' , ' + iSpeedY; //在标题栏显示位移坐标和当前在X、Y方向上的速度
+                        if (t > document.documentElement.clientHeight - oDiv.offsetHeight) {
+                            //判断物体在Y方向上是否超出屏幕可视区的底部
+                            t = document.documentElement.clientHeight - oDiv.offsetHeight;
+                            iSpeedY *= -1; //改变当前在Y方向上的速度、回弹
+                        } else if (t < 0) {
+                            //判断物体在Y方向上是否超出屏幕可视区的顶部
+                            t = 0;
+                            iSpeedY *= -1; //再改变当前在Y方向上的速度、回弹
+                        }
+                        if (l > document.documentElement.clientWidth - oDiv.offsetWidth) {
+                            //判断物体当前在X方向上是否超出屏幕可视区的右边
+                            l = document.documentElement.clientWidth - oDiv.offsetWidth;
+                            iSpeedX *= -1; //改变当前在X方向上的速度、回弹
+                        } else if (l < 0) {
+                            //判断物体当前在X方向上是否超出屏幕可视区的左边
+                            l = 0;
+                            iSpeedX *= -1; //改变当前物体在X方向上的速度、回弹
+                        }
+
+                        oDiv.style.left = l + 'px';
+                        oDiv.style.top = t + 'px';
+                    }, 30);
+                }
+            };
+        </script>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+    </body>
+</html>

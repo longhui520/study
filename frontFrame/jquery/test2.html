@@ -55,70 +55,71 @@
         </ul>
     </div>
     <script>
-        $.ajax({url:"http://127.0.0.1:7001/api/UserOftenMenu/getUserMue",type:'post'})
-        $('window').resize(function(){
-            console.log('尺寸变换')
-        });
-         function setMoreBtn(parentNode,options){
-            var op = {
-                more_btn_tpl:'<a class="more_btn">更多</a>',
-                more_box_tpl:'<ul class="more_box"></ul>',
-                more_box_item_tpl:'<li><a href="#">{{text}}</a></li>',
-                more_btn_width:40,
-                child_selector:'li',
-            };
-            op = Object.assign(op,options);
-            var $p = $(parentNode);
-            var p_width = $p.innerWidth();
-            var p_child = $p.find(op.child_selector);
-            var index = null;
-            var c_width = 0;
-            var nodes = [];
-            for (var i = 0; i < p_child.length; i++) {
-                c_width += $(p_child[i]).innerWidth() + 5;
-                if (p_width - c_width > op.more_btn_width) {
-                    index = i;
-                } else {
-                    $(p_child[i]).hide();
-                    nodes.push($(op.more_box_item_tpl.replace('{{text}}',$(p_child[i]).text())));
-                }
-            }
-            if (index !== null) {
-                var more_btn = $(op.more_btn_tpl);
-                $p.append(more_btn);
-                var more_box = $(op.more_box_tpl);
-                more_box.css({top:more_btn.offset().top+more_btn.innerHeight(),left:more_btn.offset().left-more_btn.innerWidth()});
-                more_btn.append(more_box);
-                for (var i = 0; i < nodes.length; i++) {
-                    nodes[i].on('click', (function (i, moreul) {
-                        return function (event) {
-                            event.stopPropagation();
-                            more_box.hide();
-                            $(p_child[index + i+1]).find('a').click();
-                        }
-                    })(i, more_box));
-                    more_box.append(nodes);
-                }
-                $('body').on('click',function(){
-                   more_box.hide();
-                });
-                more_btn.on('click',function(e){
-                    if(more_box.is(':hidden')){
-                         more_box.show();
-                    }else{
-                        more_box.hide();
-                    }
-                    e.stopPropagation;
-                    return false;
-                });
-            }
-         }   
-        $('.tabsHeaderContent.design_tabs_content>ul').each(function () {
-            setMoreBtn(this);
-        });
-        $('.tabsHeaderContent.design_tabs_content>ul>li').on('click',function () {
-           console.log($(this).text());
-        });
+        
+        // $.ajax({url:"http://127.0.0.1:7001/api/UserOftenMenu/getUserMue",type:'post'})
+        // $('window').resize(function(){
+        //     console.log('尺寸变换')
+        // });
+        //  function setMoreBtn(parentNode,options){
+        //     var op = {
+        //         more_btn_tpl:'<a class="more_btn">更多</a>',
+        //         more_box_tpl:'<ul class="more_box"></ul>',
+        //         more_box_item_tpl:'<li><a href="#">{{text}}</a></li>',
+        //         more_btn_width:40,
+        //         child_selector:'li',
+        //     };
+        //     op = Object.assign(op,options);
+        //     var $p = $(parentNode);
+        //     var p_width = $p.innerWidth();
+        //     var p_child = $p.find(op.child_selector);
+        //     var index = null;
+        //     var c_width = 0;
+        //     var nodes = [];
+        //     for (var i = 0; i < p_child.length; i++) {
+        //         c_width += $(p_child[i]).innerWidth() + 5;
+        //         if (p_width - c_width > op.more_btn_width) {
+        //             index = i;
+        //         } else {
+        //             $(p_child[i]).hide();
+        //             nodes.push($(op.more_box_item_tpl.replace('{{text}}',$(p_child[i]).text())));
+        //         }
+        //     }
+        //     if (index !== null) {
+        //         var more_btn = $(op.more_btn_tpl);
+        //         $p.append(more_btn);
+        //         var more_box = $(op.more_box_tpl);
+        //         more_box.css({top:more_btn.offset().top+more_btn.innerHeight(),left:more_btn.offset().left-more_btn.innerWidth()});
+        //         more_btn.append(more_box);
+        //         for (var i = 0; i < nodes.length; i++) {
+        //             nodes[i].on('click', (function (i, moreul) {
+        //                 return function (event) {
+        //                     event.stopPropagation();
+        //                     more_box.hide();
+        //                     $(p_child[index + i+1]).find('a').click();
+        //                 }
+        //             })(i, more_box));
+        //             more_box.append(nodes);
+        //         }
+        //         $('body').on('click',function(){
+        //            more_box.hide();
+        //         });
+        //         more_btn.on('click',function(e){
+        //             if(more_box.is(':hidden')){
+        //                  more_box.show();
+        //             }else{
+        //                 more_box.hide();
+        //             }
+        //             e.stopPropagation;
+        //             return false;
+        //         });
+        //     }
+        //  }   
+        // $('.tabsHeaderContent.design_tabs_content>ul').each(function () {
+        //     setMoreBtn(this);
+        // });
+        // $('.tabsHeaderContent.design_tabs_content>ul>li').on('click',function () {
+        //    console.log($(this).text());
+        // });
     </script>
 </body>
 

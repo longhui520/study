@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+        <!-- 引入组件库 -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <l-render :node="node"></l-render>
+        </div>
+        <script>
+           Vue.component('l-render',{
+               name:'l-render',
+               props:['node'],
+               created() {
+                   console.log(this.node.name)
+               },
+               template:`
+               <component :is="node.name">
+                    <template v-if="node.children" v-for="(subnode,index) in node.children">
+                        <l-render :node="subnode" :key="index"></l-render>
+                    </template>
+               </component>`
+           })
+           Vue.component('child1',{
+                name:"child1",
+                template:`<div>child1  <slot></slot></div>`
+            })
+            Vue.component('child2',{
+                name:"child2",
+                template:`<div>child2  <slot></slot></div>`
+            })
+            Vue.component('child3',{
+                name:"child3",
+                template:`<div>child3  <slot></slot></div>`
+            })
+            var app = new Vue({
+                el:"#app",
+                components:{
+                    child1:{
+                        name:"child1",
+                        template:`<div>child1  <slot></slot></div>`
+                    },
+                    child2:{
+                        name:"child2",
+                        template:`<div>child2  <slot></slot></div>`
+                    },
+                    child3:{
+                        name:"child3",
+                        template:`<div>child3  <slot></slot></div>`
+                    }
+                },
+                data:{
+                    node:{
+                        name:'child1',
+                        children:[{
+                            name:'child2',
+                            children:[{name:'child3'}]
+                        }]
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

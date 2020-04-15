@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs 切换</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        .tablist{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            white-space:nowrap;
+            font-size: 0;
+            -webkit-overflow-scrolling: touch; 
+        }
+        .tab{
+            width: 33.3333%;
+            height: 100%;
+            text-align: center;
+            display: inline-block;
+            color:#000;
+            box-sizing: border-box;
+            font-size: 16px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 0 0.4em;
+            border-bottom: 1px solid;
+            border-color: transparent;
+        }
+        .tab.active-tab{
+            border-color:blue;
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div style="margin: 100px auto;">
+            <comp-tabs :tabs="tabs" :activeindex="activeindex" @toggle="activeindex=$event"></comp-tabs>
+        </div>
+    </div>
+    <script>
+        Vue.component('comp-tabs',{
+            props:['tabs','activeindex'],
+            methods:{
+                toogle(index){
+                    this.$emit('toggle',index)
+                }
+            },
+            template:
+            `
+                <div class="tablist">
+                    <div :class="{'tab':true,'active-tab':activeindex===index}" v-for="(tab,index) in tabs" @click="toogle(index)" >
+                        <span>{{tab.label}}</span>
+                    </div>
+                </div>
+            `
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                tabs:[
+                    {
+                        label:"苹果"
+                    },
+                    {
+                        label:"水果水果水果水果水果" 
+                    },
+                    {
+                        label:"其他"
+                    },
+                    {
+                        label:"其他2"
+                    }
+                ],
+                activeindex:0
+            }
+        })
+    </script>
+</body>
+</html>

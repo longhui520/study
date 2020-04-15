@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>demo3</title>
+        <link rel="stylesheet" href="demo3.css" />
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="./demo3.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ly-tab v-model="selectedId" :items="items" :options="options" @change="handleChange"> </ly-tab>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    selectedId: 1,
+                    bottomSelectedId: 0,
+                    items: [{ label: '首页' }, { label: '推荐' }, { label: 'Android' },{ label: 'Android2' },{ label: 'Android2' },{ label: 'Android2' }],
+                    options: {
+                        activeColor: '#1d98bd'
+                    }
+                },
+                methods: {
+                    handleChange(item, index) {
+                        console.log(item, index);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

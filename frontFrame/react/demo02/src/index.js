@@ -5,11 +5,12 @@ import ReactDOM from 'react-dom';
 import Count from './reducer/Count'
 import Parent from './context/mycontext'
 import ChangeColor from './example/ChangeColor'
+import HookUseState from './example/HookUseState'
 // import './index.css';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<ChangeColor />, document.getElementById('root'));
+ReactDOM.render(<HookUseState />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs 切换</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/ly-tab/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ly-tab v-model="selected" fixBottom>
+            <!--  selected是你自己定义的一个在data中用于存放当前tab-item的索引值的变量 -->
+            <ly-tab-item v-for="(item, index) in tabList" :key="index">
+              {{item.itemName}}
+            </ly-tab-item>
+          </ly-tab>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                selected:0,
+                tabList:[
+                    {
+                        itemName:'新闻'
+                    },
+                    {
+                        itemName:'报纸'
+                    },
+                    {
+                        itemName:'书籍'
+                    },
+                    {
+                        itemName:'书籍'
+                    },
+                    {
+                        itemName:'书籍'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

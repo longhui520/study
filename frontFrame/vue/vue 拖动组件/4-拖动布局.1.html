@@ -58,6 +58,7 @@
 </head>
 <body>
     <div id="app">
+        <render conf="111"></render>
         <el-container>
             <el-header>拖动布局</el-header>
             <el-container>
@@ -115,6 +116,13 @@
                 </draggable>
             `
         });
+        
+        Vue.component('render',{
+            render(h) {
+                console.log(this.conf)
+                return h('div',{},'111')
+            },
+        })
         var app = new Vue({
             el:"#app",
             data:{

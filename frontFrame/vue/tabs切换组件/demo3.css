@@ -1,0 +1,65 @@
+.ly-tab-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+}
+
+.ly-tab-item-icon {
+    margin: 0 auto 5px;
+}
+
+.ly-tabbar {
+    position: relative;
+    background-color: rgba(255, 255, 255, .8);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 0px 6px 1px #eee
+}
+
+.ly-tabbar.ly-tabbar-fix-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
+}
+
+.ly-tabbar.ly-tabbar-fix-bottom .ly-tab-item {
+    border-bottom: none !important;
+}
+
+.ly-tab-list {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-shrink: 0;
+    padding: 14px 10px;
+    min-width: 100%;
+}
+
+.ly-tab-active-bar {
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    border-radius: 4px;
+}
+
+.ly-tab-item {
+    flex-grow: 1;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.ly-tab-item:not(:first-child) {
+    margin-left: 15px;
+}

@@ -1,196 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="../node_modules/vue2-better-scroll/dist/vue-better-scroll.js"></script>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/vue2-better-scroll/dist/vue-better-scroll.js"></script>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
+            body,
+            html {
+                height: 100%;
+                overflow: hidden;
+            }
 
-        body,
-        html {
-            height: 100%;
-            overflow: hidden;
-        }
+            #app {
+                font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #2c3e50;
+            }
 
-        #app {
-            font-family: '微软雅黑', Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            color: #2c3e50;
-        }
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                z-index: 9;
+                height: 40px;
+                line-height: 40px;
+                color: #fff;
+                background-color: #009a61;
+            }
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 9;
-            height: 40px;
-            line-height: 40px;
-            color: #fff;
-            background-color: #009a61;
-        }
+            .position-box {
+                position: fixed;
+                top: 40px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
 
-        .position-box {
-            position: fixed;
-            top: 40px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
+            .list-content {
+                list-style: none;
+                background: #fff;
+            }
 
-        .list-content {
-            list-style: none;
-            background: #fff;
-        }
+            .list-item {
+                height: 60px;
+                line-height: 60px;
+                font-size: 18px;
+                padding-left: 20px;
+                border-bottom: 1px solid #e5e5e5;
+            }
 
-        .list-item {
-            height: 60px;
-            line-height: 60px;
-            font-size: 18px;
-            padding-left: 20px;
-            border-bottom: 1px solid #e5e5e5;
-        }
+            .go-top {
+                position: fixed;
+                right: 20px;
+                bottom: 20px;
+                background-color: #009a61;
+                border-radius: 5px;
+                border: 1px solid #fff;
+                color: #fff;
+                padding: 10px 15px;
+            }
+            .scroll-wrapper {
+                height: 100%;
+                overflow: hidden;
+            }
+            .scroll-loading {
+                width: 20px;
+                height: 20px;
+            }
+            .pulldown-wrapper {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all;
+            }
+            .pulldown-wrapper .after-trigger {
+                margin-top: 10px;
+            }
+            .pullup-wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 16px 0;
+            }
+        </style>
+    </head>
 
-        .go-top {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background-color: #009a61;
-            border-radius: 5px;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 10px 15px;
-        }
-        .scroll-wrapper {
-    height: 100%;
-    overflow: hidden;
-  }
-  .scroll-loading {
-    width: 20px;
-    height: 20px;
-  }
-  .pulldown-wrapper {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all;
-  }
-  .pulldown-wrapper .after-trigger {
-    margin-top: 10px;
-  }
-  .pullup-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0;
-  }
-    </style>
-</head>
-
-<body>
+    <body>
         <div id="app">
-                <header>vue-better-scroll demo</header>
-                <main class="position-box">
-                  <vue-better-scroll class="wrapper"
-                                     ref="scroll"
-                                     :scrollbar="scrollbarObj"
-                                     :pullDownRefresh="pullDownRefreshObj"
-                                     :pullUpLoad="pullUpLoadObj"
-                                     :startY="parseInt(startY)"
-                                     @pullingDown="onPullingDown"
-                                     @pullingUp="onPullingUp">
-                    <ul class="list-content">
-                      <li class="list-item"
-                          v-for="item in items">{{item}}</li>
-                    </ul>
-                  </vue-better-scroll>
-                </main>
-                <button class="go-top"
-                        @click="scrollTo">返回顶部</button>
-            </div>
-    <script>
-        var app = new Vue({
-            el: "#app",
-            data: {
-                scrollbarObj: {
-                    fade: true
-                },
-                pullDownRefreshObj: {
-                    threshold: 90,
-                    stop: 40
-                },
+            <header>vue-better-scroll demo</header>
+            <main class="position-box">
+               <load-list></load-list>
+            </main>
+        </div>
+        <script>
+            Vue.component('load-list',{
+                data(){
+                    return {
+                        scrollbarObj: {
+                        fade: true
+                    },
+                    pullDownRefreshObj: {
+                        threshold: 90,
+                        stop: 40
+                    },
 
-                pullUpLoadObj: {
-                    threshold: 0,
-                    txt: {
-                        more: '加载更多',
-                        noMore: '没有更多数据了'
+                    pullUpLoadObj: {
+                        threshold: 0,
+                        txt: {
+                            more: '加载更多',
+                            noMore: '没有更多数据了'
+                        }
+                    },
+                    startY: 0,
+                    scrollToX: 0,
+                    scrollToY: 0,
+                    scrollToTime: 700,
+                    items: []
                     }
                 },
-                startY: 0,
-                scrollToX: 0,
-                scrollToY: 0,
-                scrollToTime: 700,
-                items: []
-            },
-            mounted() {
-                this.onPullingDown()
-            },
-            methods: {
-                // 滚动到页面顶部
-                scrollTo() {
-                    this.$refs.scroll.scrollTo(this.scrollToX, this.scrollToY, this.scrollToTime)
+                mounted() {
+                    this.onPullingDown();
                 },
-                // 模拟数据请求
-                getData() {
-                    return new Promise(resolve => {
-                        setTimeout(() => {
-                            const arr = []
-                            for (let i = 0; i < 10; i++) {
-                                arr.push(count++)
+                methods: {
+                    // 滚动到页面顶部
+                    scrollTo() {
+                        this.$refs.scroll.scrollTo(this.scrollToX, this.scrollToY, this.scrollToTime);
+                    },
+                    // 模拟数据请求
+                    getData() {
+                        return new Promise(resolve => {
+                            setTimeout(() => {
+                                const arr = [];
+                                for (let i = 0; i < 10; i++) {
+                                    arr.push(count++);
+                                }
+                                resolve(arr);
+                            }, 1000);
+                        });
+                    },
+                    onPullingDown() {
+                        // 模拟下拉刷新
+                        console.log('下拉刷新');
+                        count = 0;
+                        this.getData().then(res => {
+                            this.items = res;
+                            this.$refs.scroll.forceUpdate(true);
+                        });
+                    },
+                    onPullingUp() {
+                        // 模拟上拉 加载更多数据
+                        console.log('上拉加载');
+                        this.getData().then(res => {
+                            this.items = this.items.concat(res);
+                            if (count < 30) {
+                                this.$refs.scroll.forceUpdate(true);
+                            } else {
+                                this.$refs.scroll.forceUpdate(false);
                             }
-                            resolve(arr)
-                        }, 1000)
-                    })
+                        });
+                    }
                 },
-                onPullingDown() {
-                    // 模拟下拉刷新
-                    console.log('下拉刷新')
-                    count = 0
-                    this.getData().then(res => {
-                        this.items = res
-                        this.$refs.scroll.forceUpdate(true)
-                    })
-                },
-                onPullingUp() {
-                    // 模拟上拉 加载更多数据
-                    console.log('上拉加载')
-                    this.getData().then(res => {
-                        this.items = this.items.concat(res)
-                        if (count < 30) {
-                            this.$refs.scroll.forceUpdate(true)
-                        } else {
-                            this.$refs.scroll.forceUpdate(false)
-                        }
-                    })
-                }
-            }
-        });
-    </script>
-</body>
-
+                template:
+                ` <vue-better-scroll
+                    class="wrapper"
+                    ref="scroll"
+                    :scrollbar="scrollbarObj"
+                    :pullDownRefresh="pullDownRefreshObj"
+                    :pullUpLoad="pullUpLoadObj"
+                    :startY="parseInt(startY)"
+                    @pullingDown="onPullingDown"
+                    @pullingUp="onPullingUp"
+                >
+                    <ul class="list-content">
+                        <li class="list-item" v-for="item in items">{{item}}</li>
+                    </ul>
+                </vue-better-scroll>
+                `
+            })
+            var app = new Vue({
+                el: '#app'
+            });
+        </script>
+    </body>
 </html>

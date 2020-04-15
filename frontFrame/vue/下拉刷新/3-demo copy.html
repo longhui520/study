@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="https://unpkg.com/mescroll.js@1.4.1/mescroll.min.css" />
+        <script src="https://unpkg.com/mescroll.js@1.4.1/mescroll.min.js" charset="utf-8"></script>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <style>
+             .mescroll {
+			    position: fixed;
+			    top: 44px;
+			    bottom: 0;
+			    height: auto;
+			  }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <comp-pull-refresh :size="size" :upcallback="upcallback">
+                <div v-for="item in dataList">{{item}}</div>
+            </comp-pull-refresh>
+        </div>
+        <script>
+            Vue.component('mescroll-vue', {
+                name: 'mescroll-vue',
+                data: function() {
+                    return {
+                        mescroll: null,
+                        lastScrollTop: 0, // 路由切换时滚动条的位置
+                        lastBounce: null // 路由切换时是否禁止ios回弹
+                    };
+                },
+                props: {
+                    up: Object,
+                    down: Object
+                },
+                mounted: function() {
+                    this.mescroll = new MeScroll(this.$refs.mescroll, {
+                        up: this.up,
+                        down: this.down
+                    });
+                    this.$emit('init', this.mescroll); // init回调mescroll对象
+                },
+                methods: {
+                    beforeRouteEnter() {
+                        if (this.mescroll) {
+                            // 滚动到之前列表的位置
+                            if (this.lastScrollTop) {
+                                this.mescroll.setScrollTop(this.lastScrollTop);
+                                setTimeout(() => {
+                                    // 需延时,因为setScrollTop内部会触发onScroll,可能会渐显回到顶部按钮
+                                    this.mescroll.setTopBtnFadeDuration(0); // 设置回到顶部按钮显示时无渐显动画
+                                }, 16);
+                            }
+                            // 恢复到之前设置的isBounce状态
+                            if (this.lastBounce != null) this.mescroll.setBounce(this.lastBounce);
+                        }
+                    },
+                    beforeRouteLeave() {
+                        if (this.mescroll) {
+                            this.lastScrollTop = this.mescroll.getScrollTop(); // 记录当前滚动条的位置
+                            this.mescroll.hideTopBtn(0); // 隐藏回到顶部按钮,无渐隐动画
+                            this.lastBounce = this.mescroll.optUp.isBounce; // 记录当前是否禁止ios回弹
+                            this.mescroll.setBounce(true); // 允许bounce
+                        }
+                    }
+                },
+                template:
+                `   <div ref="mescroll" class="mescroll">
+                        <div>
+                        <slot></slot>
+                        </div>
+                    </div>
+                `
+            });
+            Vue.component('comp-pull-refresh',{
+                name:'comp-pull-refresh',
+                props:{
+                    size:{
+                        type:Number,
+                        default:10
+                    },
+                    upcallback:{
+                        type:Function
+                    }
+                },
+                data(){
+                    return {
+                        mescroll:null,
+                        mescrollUp:{
+                            callback:this.upcallback,
+                            page: {
+                                num: 0, 
+                                size: this.size
+                            }
+                        }
+                    }
+                },
+                methods:{
+                    mescrollInit(mescroll){
+                        this.mescroll = mescroll
+                    }  
+                },
+                template:
+                ` <mescroll-vue ref="mescroll"  :up="mescrollUp" @init="mescrollInit">
+                        <slot></slot>
+                </mescroll-vue>
+                `
+            })
+            
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    size:5,
+                    dataList:[]
+                },
+                methods:{
+                    upcallback(page, mescroll){
+                        setTimeout(()=>{
+                            if (page.num === 1) this.dataList = []
+                            this.dataList = this.dataList.concat([1,2,3,4,5])
+                            this.$nextTick(()=>{
+                                mescroll && mescroll.endByPage(5,10)
+                            })
+                        },1000) 
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

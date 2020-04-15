@@ -37,3 +37,4 @@
 - mv somefile path 移动文件
 - wget //下载工具
 - tree 以树状列出目录的内容
+
